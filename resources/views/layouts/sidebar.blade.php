@@ -67,8 +67,8 @@
                 class="dark:hidden" src="/images/logo/logo-icon.svg" alt="Logo" width="150" height="40" /> 
                  --}}
             <div class="flex items-center space-x-2">
-                <img x-show="$store.sidebar.isExpanded" src="/images/logo/logo-icon.svg" alt="Logo Icon"
-                    class="h-10 w-auto" /> <!-- height diatur -->
+                <img x-show="$store.sidebar.isExpanded" src="/images/logo/logo-bencana.png" alt="Logo Icon"
+                    class="h-10 w-auto" />
                 <span x-show="$store.sidebar.isExpanded" class="text-xl font-bold dark:text-white">
                     GeoRescue
                 </span>
