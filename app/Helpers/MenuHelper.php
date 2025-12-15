@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Facades\Route;
+
 class MenuHelper
 {
     public static function getMainNavItems()
@@ -11,6 +13,26 @@ class MenuHelper
                 'icon' => 'dashboard',
                 'name' => 'Dashboard',
                 'path' => '/',
+            ],
+            [
+                'icon' => 'forms',
+                'name' => 'Jalur Evakuasi',
+                'path' => '/admin/jalur_evakuasi',
+                'subItems' => [
+                    ['name' => 'Jalur Evakuasi', 'path' => route('jalur_evakuasi.index'), 'pro' => false],
+                    ['name' => 'Tambah Jalur Evakuasi', 'path' => route('jalur_evakuasi.create'), 'pro' => false],
+                    // ['name' => 'Update Jalur Evakuasi', 'path' => route('jalur_evakuasi.edit'), 'pro' => false]
+                ],
+            ],
+            [
+                'icon' => 'pages',
+                'name' => 'Data Bencana',
+                'path' => '/admin/bencana',
+                'subItems' => [
+                    ['name' => 'Data Bencana', 'path' => route('bencana.index'), 'pro' => false],
+                    // ['name' => 'Tambah Data Bencana', 'path' => route('bencana.create'), 'pro' => false],
+                    // ['name' => 'Update Jalur Evakuasi', 'path' => route('jalur_evakuasi.edit'), 'pro' => false]
+                ],
             ],
             // [
             //     'icon' => 'calendar',

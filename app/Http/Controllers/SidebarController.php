@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
 
@@ -15,15 +16,16 @@ class SidebarController extends Controller
                     [
                         'icon' => 'grid-icon',
                         'name' => 'Dashboard',
-                        // 'subItems' => [
-                        //     ['name' => 'Ecommerce', 'path' => '/'],
-                        //     ['name' => 'Analytics', 'path' => '/analytics'],
-                        //     ['name' => 'Marketing', 'path' => '/marketing'],
-                        //     ['name' => 'CRM', 'path' => '/crm'],
-                        //     ['name' => 'Stocks', 'path' => '/stocks'],
-                        //     ['name' => 'SaaS', 'path' => '/saas', 'new' => true],
-                        //     ['name' => 'Logistics', 'path' => '/logistics', 'new' => true],
-                        // ],
+                    ],
+                    [
+                        'icon' => 'grid-icon',
+                        'name' => 'Jalur Evakuasi',
+                        'new' => true,
+                        'subItems' => [
+                            ['name' => 'Tambah Jalur Evakuasi', 'path' => 'jalur_evakuasi.create'],
+                            // ['name' => 'Update Jalur Evakuasi', 'path' => 'jalur_evakuasi.edit'],
+                            ['name' => 'Jalur Evakuasi', 'path' => 'jalur_evakuasi.index'],
+                        ],
                     ],
                     [
                         'icon' => 'bot-icon',

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BencanaController;
+use App\Http\Controllers\EvakuasiController;
 
 // Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
 
@@ -10,13 +11,27 @@ Route::get('/', function () {
     return view('dashboard', ['title' => 'Dashboard']);
 })->name('dashboard');
 
-Route::group(['middleware' => ['role:admin']], function (){
+// data bencana
+Route::prefix('bencana')->name('bencana.')->group(function () {
+    Route::get('/', [BencanaController::class, 'index'])->name('index');
+});
+
+// jalur evakuasi
+Route::prefix('jalur_evakuasi')->name('jalur_evakuasi.')->group(function () {
+    Route::get('/', [EvakuasiController::class, 'index'])->name('index');
+    Route::get('/create', [EvakuasiController::class, 'create'])->name('create');
+    Route::post('/', [EvakuasiController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [EvakuasiController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [EvakuasiController::class, 'update'])->name('update');
+    Route::delete('/{id}', [EvakuasiController::class, 'destroy'])->name('destroy');
+});
+
+Route::group(['middleware' => ['role:admin']], function () {
 
     // Route Bencana
     Route::prefix('Bencana')->name('Bencana.')->group(function () {
         Route::get('/Bencana', [BencanaController::class, 'index'])->name('index');
     });
-
 });
 
 // calender pages
@@ -93,25 +108,3 @@ Route::get('/image', function () {
 Route::get('/videos', function () {
     return view('pages.ui-elements.videos', ['title' => 'Videos']);
 })->name('videos');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

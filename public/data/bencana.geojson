@@ -1,0 +1,291 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Dayeuhkolot",
+        "Desa": "Dayeuhkolot",
+        "Jenis_Bencana": "Banjir",
+        "Tingkat_Kerawanan": "Tinggi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.615, -6.9756]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Dayeuhkolot",
+        "Desa": "Cangkuang Kulon",
+        "Jenis_Bencana": "Banjir",
+        "Tingkat_Kerawanan": "Tinggi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6103, -6.9789]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Baleendah",
+        "Desa": "Baleendah",
+        "Jenis_Bencana": "Banjir",
+        "Tingkat_Kerawanan": "Tinggi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6267, -6.9864]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Baleendah",
+        "Desa": "Rancamanyar",
+        "Jenis_Bencana": "Banjir",
+        "Tingkat_Kerawanan": "Tinggi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6201, -6.9821]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Bojongsoang",
+        "Desa": "Lengkong",
+        "Jenis_Bencana": "Banjir",
+        "Tingkat_Kerawanan": "Tinggi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6423, -6.9819]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Bojongsoang",
+        "Desa": "Buahbatu",
+        "Jenis_Bencana": "Banjir",
+        "Tingkat_Kerawanan": "Tinggi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6488, -6.9762]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Majalaya",
+        "Desa": "Majalaya",
+        "Jenis_Bencana": "Banjir",
+        "Tingkat_Kerawanan": "Tinggi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.7456, -6.9989]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Majalaya",
+        "Desa": "Sukamaju",
+        "Jenis_Bencana": "Banjir",
+        "Tingkat_Kerawanan": "Tinggi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.7402, -7.0021]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Katapang",
+        "Desa": "Katapang",
+        "Jenis_Bencana": "Banjir",
+        "Tingkat_Kerawanan": "Tinggi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.5784, -7.0064]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Katapang",
+        "Desa": "Gandasari",
+        "Jenis_Bencana": "Banjir",
+        "Tingkat_Kerawanan": "Tinggi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.5723, -7.0122]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Pangalengan",
+        "Desa": "Margamukti",
+        "Jenis_Bencana": "Longsor",
+        "Tingkat_Kerawanan": "Sedang"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.5502, -7.1867]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Pangalengan",
+        "Desa": "Banjarsari",
+        "Jenis_Bencana": "Longsor",
+        "Tingkat_Kerawanan": "Sedang"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.5441, -7.1782]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Kertasari",
+        "Desa": "Cibeureum",
+        "Jenis_Bencana": "Longsor",
+        "Tingkat_Kerawanan": "Sedang"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6734, -7.2033]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Kertasari",
+        "Desa": "Tarumajaya",
+        "Jenis_Bencana": "Longsor",
+        "Tingkat_Kerawanan": "Sedang"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6899, -7.1956]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Rancabali",
+        "Desa": "Patengan",
+        "Jenis_Bencana": "Longsor",
+        "Tingkat_Kerawanan": "Sedang"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.3812, -7.138]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Rancabali",
+        "Desa": "Alamendah",
+        "Jenis_Bencana": "Longsor",
+        "Tingkat_Kerawanan": "Sedang"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.3728, -7.1314]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Ciwidey",
+        "Desa": "Lebakmuncang",
+        "Jenis_Bencana": "Longsor",
+        "Tingkat_Kerawanan": "Sedang"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.4523, -7.0994]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Ciwidey",
+        "Desa": "Panundaan",
+        "Jenis_Bencana": "Longsor",
+        "Tingkat_Kerawanan": "Sedang"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.4487, -7.1058]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Cicalengka",
+        "Desa": "Tenjolaya",
+        "Jenis_Bencana": "Gempa",
+        "Tingkat_Kerawanan": "Rendah"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.8376, -6.9848]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Nagreg",
+        "Desa": "Nagreg",
+        "Jenis_Bencana": "Gempa",
+        "Tingkat_Kerawanan": "Rendah"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.8867, -7.0156]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Ibun",
+        "Desa": "Ibun",
+        "Jenis_Bencana": "Gempa",
+        "Tingkat_Kerawanan": "Rendah"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.7704, -7.0412]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Paseh",
+        "Desa": "Cipaku",
+        "Jenis_Bencana": "Gempa",
+        "Tingkat_Kerawanan": "Rendah"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.8146, -7.0319]
+      }
+    }
+  ]
+}

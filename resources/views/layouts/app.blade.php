@@ -5,8 +5,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
 
-    <title>{{ $title ?? 'Dashboard' }} | TailAdmin - Laravel Tailwind CSS Admin Dashboard Template</title>
+    @php
+        $routeTitle = [
+            // dashboard
+            'dashboard' => 'Dashboard',
+
+            // data bencana
+            'bencana.index' => 'Data Bencana',
+            
+            // jalur evakuasi
+            'jalur_evakuasi.index' => 'Jalur Evakuasi',
+            'jalur_evakuasi.create' => 'Tambah Jalur Evakuasi',
+            'jalur_evakuasi.update' => 'Update Jalur Evakuasi',
+        ];
+    @endphp
+
+    <title>{{ $routeTitle[Route::currentRouteName()] ?? 'Default Title' }}</title>
+
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -90,25 +108,23 @@
             }
         })();
     </script>
-    
+
 </head>
 
-<body
-    x-data="{ 'loaded': true}"
-    x-init="$store.sidebar.isExpanded = window.innerWidth >= 1280;
-    const checkMobile = () => {
-        if (window.innerWidth < 1280) {
-            $store.sidebar.setMobileOpen(false);
-            $store.sidebar.isExpanded = false;
-        } else {
-            $store.sidebar.isMobileOpen = false;
-            $store.sidebar.isExpanded = true;
-        }
-    };
-    window.addEventListener('resize', checkMobile);">
+<body x-data="{ 'loaded': true }" x-init="$store.sidebar.isExpanded = window.innerWidth >= 1280;
+const checkMobile = () => {
+    if (window.innerWidth < 1280) {
+        $store.sidebar.setMobileOpen(false);
+        $store.sidebar.isExpanded = false;
+    } else {
+        $store.sidebar.isMobileOpen = false;
+        $store.sidebar.isExpanded = true;
+    }
+};
+window.addEventListener('resize', checkMobile);">
 
     {{-- preloader --}}
-    <x-common.preloader/>
+    <x-common.preloader />
     {{-- preloader end --}}
 
     <div class="min-h-screen xl:flex">
@@ -134,5 +150,7 @@
 </body>
 
 @stack('scripts')
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
 
 </html>

@@ -47,7 +47,13 @@
         },
         isActive(path) {
             return window.location.pathname === path || '{{ $currentPath }}' === path.replace(/^\//, '');
+        },
+         isActiveMenu(item) {
+        if(item.subItems) {
+            return item.subItems.some(sub => this.isActive(sub.path));
         }
+        return this.isActive(item.path);
+    }
     }"
     :class="{
         'w-[290px]': $store.sidebar.isExpanded || $store.sidebar.isMobileOpen || $store.sidebar.isHovered,
