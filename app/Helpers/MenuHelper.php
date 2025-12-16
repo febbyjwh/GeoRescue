@@ -15,16 +15,6 @@ class MenuHelper
                 'path' => '/',
             ],
             [
-                'icon' => 'forms',
-                'name' => 'Jalur Evakuasi',
-                'path' => '/admin/jalur_evakuasi',
-                'subItems' => [
-                    ['name' => 'Jalur Evakuasi', 'path' => route('jalur_evakuasi.index'), 'pro' => false],
-                    ['name' => 'Tambah Jalur Evakuasi', 'path' => route('jalur_evakuasi.create'), 'pro' => false],
-                    // ['name' => 'Update Jalur Evakuasi', 'path' => route('jalur_evakuasi.edit'), 'pro' => false]
-                ],
-            ],
-            [
                 'icon' => 'pages',
                 'name' => 'Data Bencana',
                 'path' => '/admin/bencana',
@@ -35,12 +25,22 @@ class MenuHelper
                 ],
             ],
             [
-            'icon' => 'home',
+                'icon' => 'forms',
+                'name' => 'Jalur Evakuasi',
+                'path' => '/admin/jalur_evakuasi',
+                'subItems' => [
+                    ['name' => 'Jalur Evakuasi', 'path' => route('jalur_evakuasi.index'), 'pro' => false],
+                    ['name' => 'Tambah Jalur Evakuasi', 'path' => route('jalur_evakuasi.create'), 'pro' => false],
+                    // ['name' => 'Update Jalur Evakuasi', 'path' => route('jalur_evakuasi.edit'), 'pro' => false]
+                ],
+            ],
+            [
+            'icon' => 'tables',
             'name' => 'Posko',
             'path' => '/posko',
             ],
             [
-            'icon' => 'table',
+            'icon' => 'tables',
             'name' => 'Fasilitas Vital',
             'path' => '/fasilitasvital',
             ],
