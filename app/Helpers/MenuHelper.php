@@ -34,6 +34,16 @@ class MenuHelper
                     // ['name' => 'Update Jalur Evakuasi', 'path' => route('jalur_evakuasi.edit'), 'pro' => false]
                 ],
             ],
+            [
+            'icon' => 'home',
+            'name' => 'Posko',
+            'path' => '/posko',
+            ],
+            [
+            'icon' => 'table',
+            'name' => 'Fasilitas Vital',
+            'path' => '/fasilitasvital',
+            ],
             // [
             //     'icon' => 'calendar',
             //     'name' => 'Calendar',
