@@ -6,6 +6,7 @@ use App\Http\Controllers\BencanaController;
 use App\Http\Controllers\EvakuasiController;
 use App\Http\Controllers\PoskoController;
 use App\Http\Controllers\FasilitasVitalController;
+use App\Http\Controllers\MitigasiController;
 
 
 // Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
@@ -13,6 +14,11 @@ use App\Http\Controllers\FasilitasVitalController;
 Route::get('/', function () {
     return view('dashboard', ['title' => 'Dashboard']);
 })->name('dashboard');
+
+// data mitigasi
+Route::prefix('mitigasi')->name('mitigasi.')->group(function () {
+    Route::get('/', [MitigasiController::class, 'index'])->name('index');
+});
 
 // data bencana
 Route::prefix('bencana')->name('bencana.')->group(function () {
@@ -23,6 +29,8 @@ Route::prefix('bencana')->name('bencana.')->group(function () {
 Route::prefix('jalur_evakuasi')->name('jalur_evakuasi.')->group(function () {
     Route::get('/', [EvakuasiController::class, 'index'])->name('index');
     Route::get('/create', [EvakuasiController::class, 'create'])->name('create');
+    Route::get('/geojson/jalur-evakuasi', [EvakuasiController::class, 'geojson']);
+    Route::get('/jalur_evakuasi/{id}/geojson', [EvakuasiController::class, 'geojsonById']);
     Route::post('/', [EvakuasiController::class, 'store'])->name('store');
     Route::get('/{id}/edit', [EvakuasiController::class, 'edit'])->name('edit');
     Route::put('/{id}', [EvakuasiController::class, 'update'])->name('update');

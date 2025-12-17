@@ -11,8 +11,9 @@
         <x-common.page-breadcrumb pageTitle="Tambah Jalur Evakuasi" class="z-10 relative" />
 
         <!-- Map Container -->
-        <div id="map" style="height:500px; margin-bottom:20px;"></div>
+        <div id="map" style="height:100%; margin-bottom:20px;"></div>
     </div>
 </div>
 @endsection
 @include('maps')
+
