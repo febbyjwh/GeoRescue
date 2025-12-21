@@ -2,18 +2,20 @@
 
 @section('content')
 <div class="container-fluid">
+    {{-- Header --}}
     <div class="mb-6 flex items-center justify-between">
         <h1 class="text-xl font-semibold">Tambah Posko</h1>
 
         <a href="{{ route('posko.index') }}"
-           class="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100">
+           class="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition">
             Kembali
         </a>
     </div>
 
+    {{-- Validation Error --}}
     @if ($errors->any())
         <div class="mb-4 rounded-lg bg-red-100 px-4 py-3 text-red-700">
-            <ul class="list-disc pl-5">
+            <ul class="list-disc pl-5 space-y-1">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
@@ -21,6 +23,7 @@
         </div>
     @endif
 
+    {{-- Form Card --}}
     <div class="rounded-xl border border-gray-200 bg-white p-6">
         <form action="{{ route('posko.store') }}" method="POST" class="space-y-6">
             @csrf

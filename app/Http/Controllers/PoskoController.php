@@ -16,7 +16,7 @@ class PoskoController extends Controller
 
      public function create()
     {
-        return view('admin.mitigasi.partials.posko');
+        return view('Admin.Posko.create');
     }
 
    public function store(Request $request)
