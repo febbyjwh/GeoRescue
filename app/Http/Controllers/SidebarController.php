@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
@@ -21,11 +22,6 @@ class SidebarController extends Controller
                         'icon' => 'grid-icon',
                         'name' => 'Jalur Evakuasi',
                         'new' => true,
-                        'subItems' => [
-                            ['name' => 'Tambah Jalur Evakuasi', 'path' => 'jalur_evakuasi.create'],
-                            // ['name' => 'Update Jalur Evakuasi', 'path' => 'jalur_evakuasi.edit'],
-                            ['name' => 'Jalur Evakuasi', 'path' => 'jalur_evakuasi.index'],
-                        ],
                     ],
                     [
                         'icon' => 'grid-icon',

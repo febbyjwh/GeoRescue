@@ -1,0 +1,41 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Jalur Evakuasi Dayeuhkolot",
+        "dari": "Dayeuhkolot",
+        "ke": "Titik Aman 1",
+        "jenis_bencana": "Banjir"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [107.615, -6.9756], 
+          [107.616, -6.9760], 
+          [107.618, -6.9770],  
+          [107.620, -6.9780]  
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Jalur Evakuasi Cangkuang Kulon",
+        "dari": "Cangkuang Kulon",
+        "ke": "Titik Aman 2",
+        "jenis_bencana": "Banjir"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [107.6103, -6.9789], 
+          [107.611, -6.9795],
+          [107.613, -6.9805],
+          [107.615, -6.9815]
+        ]
+      }
+    }
+  ]
+}

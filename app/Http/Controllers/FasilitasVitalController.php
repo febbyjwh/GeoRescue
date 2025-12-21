@@ -16,7 +16,7 @@ class FasilitasVitalController extends Controller
 
     public function create()
     {
-        return view('Admin.FasilitasVital.create');
+        return view('admin.FasilitasVital.create');
     }
 
     public function store(Request $request)

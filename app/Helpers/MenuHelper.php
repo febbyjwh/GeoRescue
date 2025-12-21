@@ -16,6 +16,11 @@ class MenuHelper
             ],
             [
                 'icon' => 'pages',
+                'name' => 'Mitigasi Bencana Alam',
+                'path' => '/mitigasi',
+            ],
+            [
+                'icon' => 'pages',
                 'name' => 'Data Bencana',
                 'path' => '/admin/bencana',
                 'subItems' => [
@@ -27,12 +32,7 @@ class MenuHelper
             [
                 'icon' => 'forms',
                 'name' => 'Jalur Evakuasi',
-                'path' => '/admin/jalur_evakuasi',
-                'subItems' => [
-                    ['name' => 'Jalur Evakuasi', 'path' => route('jalur_evakuasi.index'), 'pro' => false],
-                    ['name' => 'Tambah Jalur Evakuasi', 'path' => route('jalur_evakuasi.create'), 'pro' => false],
-                    // ['name' => 'Update Jalur Evakuasi', 'path' => route('jalur_evakuasi.edit'), 'pro' => false]
-                ],
+                'path' => '/jalur_evakuasi',
             ],
             [
             'icon' => 'tables',

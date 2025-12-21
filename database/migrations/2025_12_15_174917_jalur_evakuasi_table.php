@@ -6,24 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('jalur_evakuasis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_jalur');
-            $table->text('geojson');
-            $table->foreignId('created_by')->constrained('users');
-            $table->timestamps();
+            $table->string('nama_jalur');          // Nama jalur
+            $table->text('deskripsi')->nullable(); // Deskripsi jalur
+            $table->json('geojson');         // GeoJSON untuk garis jalur evakuasi
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->timestamps();           // created_at & updated_at
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('jalur_evakuasis');
     }
