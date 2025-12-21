@@ -6,6 +6,7 @@ use App\Http\Controllers\BencanaController;
 use App\Http\Controllers\EvakuasiController;
 use App\Http\Controllers\PoskoController;
 use App\Http\Controllers\FasilitasVitalController;
+use App\Http\Controllers\JalurDistribusiLogistikController;
 
 
 // Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
@@ -49,6 +50,14 @@ Route::group(['middleware' => ['isadmin']], function () {
         'store' => 'fasilitasvital.store',
         'update' => 'fasilitasvital.update',
         'destroy' => 'fasilitasvital.destroy',
+    ]);
+
+    Route::resource('jalur_distribusi_logistik', JalurDistribusiLogistikController::class)->names([
+        'index' => 'jalur_distribusi_logistik.index',
+        'create' => 'jalur_distribusi_logistik.create',
+        'store' => 'jalur_distribusi_logistik.store',
+        'update' => 'jalur_distribusi_logistik.update',
+        'destroy' => 'jalur_distribusi_logistik.destroy',
     ]);
 });
 

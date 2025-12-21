@@ -3,9 +3,9 @@
 @section('content')
 <div class="container-fluid">
     <div class="mb-6 flex items-center justify-between">
-        <h1 class="text-xl font-semibold">Tambah Fasilitas Vital</h1>
+        <h1 class="text-xl font-semibold">Tambah Posko</h1>
 
-        <a href="{{ route('fasilitasvital.index') }}"
+        <a href="{{ route('posko.index') }}"
            class="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100">
             Kembali
         </a>
@@ -22,53 +22,44 @@
     @endif
 
     <div class="rounded-xl border border-gray-200 bg-white p-6">
-        <form action="{{ route('fasilitasvital.store') }}" method="POST" class="space-y-6">
+        <form action="{{ route('posko.store') }}" method="POST" class="space-y-6">
             @csrf
 
+            {{-- Nama Posko --}}
             <x-form.form-elements.default-inputs
-                label="Nama Fasilitas"
-                name="nama_fasilitas"
-                placeholder="Masukkan nama fasilitas"
-                value="{{ old('nama_fasilitas') }}"
+                label="Nama Posko"
+                name="nama_posko"
+                placeholder="Masukkan nama posko"
+                value="{{ old('nama_posko') }}"
                 required
             />
 
-            <x-form.form-elements.select-inputs
-                label="Jenis Fasilitas"
-                name="jenis_fasilitas"
+            {{-- Jenis Posko --}}
+            <x-form.form-elements.default-inputs
+                label="Jenis Posko"
+                name="jenis_posko"
+                placeholder="Contoh: Kesehatan, Logistik"
+                value="{{ old('jenis_posko') }}"
+                required
+            />
+
+            {{-- Alamat --}}
+            <x-form.form-elements.text-area-inputs
+                label="Alamat Posko"
+                name="alamat_posko"
+                rows="3"
                 required
             >
-                <option value="">-- Pilih Jenis --</option>
-                @foreach([
-                    'Rumah Sakit',
-                    'Puskesmas',
-                    'Sekolah',
-                    'SPBU',
-                    'Kantor Polisi',
-                    'Pemadam Kebakaran',
-                    'Kantor Pemerintahan'
-                ] as $jenis)
-                    <option value="{{ $jenis }}" {{ old('jenis_fasilitas') == $jenis ? 'selected' : '' }}>
-                        {{ $jenis }}
-                    </option>
-                @endforeach
-            </x-form.form-elements.select-inputs>
-
-            <x-form.form-elements.text-area-inputs
-                label="Alamat"
-                name="alamat"
-                placeholder="Masukkan alamat lengkap"
-                rows="3"
-            >
-                {{ old('alamat') }}
+                {{ old('alamat_posko') }}
             </x-form.form-elements.text-area-inputs>
 
+            {{-- Desa & Kecamatan --}}
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <x-form.form-elements.default-inputs
-                    label="Desa"
-                    name="desa"
+                    label="Nama Desa"
+                    name="nama_desa"
                     placeholder="Masukkan nama desa"
-                    value="{{ old('desa') }}"
+                    value="{{ old('nama_desa') }}"
                     required
                 />
 
@@ -81,6 +72,7 @@
                 />
             </div>
 
+            {{-- Koordinat --}}
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <x-form.form-elements.default-inputs
                     label="Latitude"
@@ -97,24 +89,26 @@
                 />
             </div>
 
+            {{-- Status --}}
             <x-form.form-elements.select-inputs
-                label="Status"
-                name="status"
+                label="Status Posko"
+                name="status_posko"
                 required
             >
                 <option value="">-- Pilih Status --</option>
-                <option value="Aktif" {{ old('status') == 'Aktif' ? 'selected' : '' }}>Aktif</option>
-                <option value="Rusak" {{ old('status') == 'Rusak' ? 'selected' : '' }}>Rusak</option>
-                <option value="Tidak Aktif" {{ old('status') == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
+                <option value="Aktif" {{ old('status_posko') == 'Aktif' ? 'selected' : '' }}>Aktif</option>
+                <option value="Penuh" {{ old('status_posko') == 'Penuh' ? 'selected' : '' }}>Penuh</option>
+                <option value="Tutup" {{ old('status_posko') == 'Tutup' ? 'selected' : '' }}>Tutup</option>
             </x-form.form-elements.select-inputs>
 
+            {{-- Action --}}
             <div class="flex justify-end gap-3 pt-4">
                 <button type="submit"
                         class="inline-flex items-center rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition">
                     Simpan
                 </button>
 
-                <a href="{{ route('fasilitasvital.index') }}"
+                <a href="{{ route('posko.index') }}"
                    class="inline-flex items-center rounded-lg border border-gray-300 px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 transition">
                     Batal
                 </a>

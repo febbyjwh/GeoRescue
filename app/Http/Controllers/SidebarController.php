@@ -28,6 +28,36 @@ class SidebarController extends Controller
                         ],
                     ],
                     [
+                        'icon' => 'grid-icon',
+                        'name' => 'Posko Bencana',
+                        'new' => true,
+                        'subItems' => [
+                            ['name' => 'Tambah Posko Bencana', 'path' => 'posko.create'],
+                            // ['name' => 'Update Posko Bencana', 'path' => 'posko.edit'],
+                            ['name' => 'Posko Bencana', 'path' => 'posko.index'],
+                        ],
+                    ],
+                    [
+                        'icon' => 'grid-icon',
+                        'name' => 'Fasilitas Vital',
+                        'new' => true,
+                        'subItems' => [
+                            ['name' => 'Tambah Fasilitas Vital', 'path' => 'fasilitasvital.create'],
+                            // ['name' => 'Update Fasilitas Vital', 'path' => 'fasilitasvital.edit'],
+                            ['name' => 'Fasilitas Vital', 'path' => 'fasilitasvital.index'],
+                        ],
+                    ],
+                    [
+                        'icon' => 'grid-icon',
+                        'name' => 'Jalur Distribusi Logistik',
+                        'new' => true,
+                        'subItems' => [
+                            ['name' => 'Tambah Jalur Distribusi Logistik', 'path' => 'jalur_distribusi_logistik.create'],
+                            // ['name' => 'Update Jalur Distribusi Logistik', 'path' => 'jalur_distribusi_logistik.edit'],
+                            ['name' => 'Jalur Distribusi Logistik', 'path' => 'jalur_distribusi_logistik.index'],
+                        ],
+                    ],
+                    [
                         'icon' => 'bot-icon',
                         'name' => 'AI Assistant',
                         'new' => true,

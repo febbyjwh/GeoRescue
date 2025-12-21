@@ -37,13 +37,30 @@ class MenuHelper
             [
             'icon' => 'tables',
             'name' => 'Posko',
-            'path' => '/posko',
+            'path' => '/admin/posko',
+            'subItems' => [
+                ['name' => 'Tambah Posko', 'path' => route('posko.create')],
+                ['name' => 'Data Posko', 'path' => route('posko.index')],
+                ],
             ],
             [
             'icon' => 'tables',
             'name' => 'Fasilitas Vital',
-            'path' => '/fasilitasvital',
+            'path' => '/admin/fasilitasvital',
+            'subItems' => [
+                ['name' => 'Tambah Fasilitas Vital', 'path' => route('fasilitasvital.create')],
+                ['name' => 'Data Fasilitas Vital', 'path' => route('fasilitasvital.index')],
+                 ],
             ],
+            [
+            'icon' => 'tables',
+            'name' => 'Jalur Distribusi Logistik',
+            'path' => '/admin/jalur_distribusi_logistik',
+            'subItems' => [
+                ['name' => 'Tambah Jalur Distribusi Logistik', 'path' => route('jalur_distribusi_logistik.create')],
+                ['name' => 'Data Jalur Distribusi Logistik', 'path' => route('jalur_distribusi_logistik.index')],
+            ],
+            ]
             // [
             //     'icon' => 'calendar',
             //     'name' => 'Calendar',

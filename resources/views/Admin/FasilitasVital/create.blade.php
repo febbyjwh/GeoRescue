@@ -32,7 +32,6 @@
                 <option>Rumah Sakit</option>
                 <option>Puskesmas</option>
                 <option>Sekolah</option>
-                <option>SPBU</option>
                 <option>Kantor Polisi</option>
                 <option>Pemadam Kebakaran</option>
                 <option>Kantor Pemerintahan</option>
