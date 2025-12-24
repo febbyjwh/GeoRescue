@@ -1,16 +1,8 @@
-@extends('layouts.app')
-
-@section('content')
 <div class="container-fluid">
-    <div class="mb-6 flex items-center justify-between">
-        <h1 class="text-xl font-semibold">Tambah Fasilitas Vital</h1>
 
-        <a href="{{ route('fasilitasvital.index') }}"
-           class="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100">
-            Kembali
-        </a>
-    </div>
-
+    <!-- Navbar/Header -->
+    <x-common.page-breadcrumb pageTitle="Data Fasilitas Vital" class="z-10 relative" />
+    
     <div class="rounded-xl border border-gray-200 bg-white p-6">
         <form action="{{ route('fasilitasvital.store') }}" method="POST" class="space-y-6">
             @csrf
@@ -32,7 +24,6 @@
                 <option>Rumah Sakit</option>
                 <option>Puskesmas</option>
                 <option>Sekolah</option>
-                <option>SPBU</option>
                 <option>Kantor Polisi</option>
                 <option>Pemadam Kebakaran</option>
                 <option>Kantor Pemerintahan</option>
@@ -92,4 +83,3 @@
         </form>
     </div>
 </div>
-@endsection

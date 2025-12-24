@@ -12,11 +12,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
             @endif
-
-            <a href="{{ route('posko.create') }}"
-                class="inline-flex items-center gap-2 rounded-lg border border-blue-600 px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50 transition">
-                Tambah Posko
-            </a>
         </div>
     </div>
 

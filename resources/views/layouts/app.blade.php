@@ -13,18 +13,20 @@
             // dashboard
             'dashboard' => 'Dashboard',
 
+            // mitigasi bencana
+            'mitigasi.index' => 'Mitigasi Bencana',
+
             // data bencana
             'bencana.index' => 'Data Bencana',
-            
+
             // jalur evakuasi
             'jalur_evakuasi.index' => 'Jalur Evakuasi',
-            'jalur_evakuasi.create' => 'Tambah Jalur Evakuasi',
-            'jalur_evakuasi.update' => 'Update Jalur Evakuasi',
         ];
     @endphp
 
     <title>{{ $routeTitle[Route::currentRouteName()] ?? 'Default Title' }}</title>
 
+    @stack('styles')
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -99,13 +101,12 @@
             const savedTheme = localStorage.getItem('theme');
             const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
             const theme = savedTheme || systemTheme;
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-                document.body.classList.add('dark', 'bg-gray-900');
-            } else {
-                document.documentElement.classList.remove('dark');
-                document.body.classList.remove('dark', 'bg-gray-900');
-            }
+
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.body.classList.toggle('bg-gray-900', theme === 'dark');
+            });
         })();
     </script>
 </head>
@@ -149,7 +150,5 @@ window.addEventListener('resize', checkMobile);">
 </body>
 
 @stack('scripts')
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
 
 </html>

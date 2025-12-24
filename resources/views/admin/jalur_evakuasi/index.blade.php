@@ -1,28 +1,74 @@
 @extends('layouts.app')
 
 @section('content')
-<h2 class="text-2xl font-bold mb-4">Daftar Jalur Evakuasi</h2>
+    <div class="container-fluid">
+        <!-- Navbar/Header -->
+        <x-common.page-breadcrumb pageTitle="Data Jalur Evakuasi" class="z-10 relative" />
+        <div class="row mb-4">
+            <div class="col-12">
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                @endif
+            </div>
+        </div>
 
-<div id="map" style="height:500px; margin-bottom:20px;"></div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
 
-<ul class="list-disc ml-5">
-    @foreach($jalurs as $jalur)
-        <li>{{ $jalur->nama_jalur }}</li>
-    @endforeach
-</ul>
-@endsection
+                        <x-tables.basic-tables.basic-tables-one>
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Nama Jalur</th>
+                                    <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Deskripsi</th>
+                                    <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Created By</th>
+                                    <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Created At</th>
+                                    <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Updated At</th>
+                                    <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Aksi</th>
+                                </tr>
+                            </thead>
 
-@section('scripts')
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                            <tbody>
+                                @forelse($jalurs as $jalur)
+                                    <tr class="border-b border-gray-100">
+                                        <td class="px-5 py-4 text-sm">{{ $jalur->nama_jalur }}</td>
+                                        <td class="px-5 py-4 text-sm">{{ $jalur->deskripsi }}</td>
+                                        <td class="px-5 py-4 text-sm">{{ $jalur->created_by ?? '-' }}</td>
+                                        <td class="px-5 py-4 text-sm">{{ $jalur->created_at }}</td>
+                                        <td class="px-5 py-4 text-sm">{{ $jalur->updated_at }}</td>
+                                        <td class="px-5 py-4 text-sm whitespace-nowrap">
+                                            <a href="{{ route('mitigasi.index', ['edit_jalur' => $jalur->id]) }}"
+                                                class="text-yellow-600 hover:underline">
+                                                Edit
+                                            </a>
+                                            <form action="{{ route('jalur_evakuasi.destroy', $jalur->id) }}" method="POST"
+                                                class="inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="text-red-600 hover:underline ml-2"
+                                                    onclick="return confirm('Yakin hapus?')">
+                                                    Hapus
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="6" class="px-5 py-4 text-center text-gray-500">
+                                            Belum ada data jalur evakuasi
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </x-tables.basic-tables.basic-tables-one>
 
-<script>
-var map = L.map('map').setView([-6.9, 107.6], 12);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-@foreach($jalurs as $jalur)
-    var geo = {!! $jalur->geojson !!};
-    L.geoJSON(geo).addTo(map).bindPopup("{{ $jalur->nama_jalur }}");
-@endforeach
-</script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
