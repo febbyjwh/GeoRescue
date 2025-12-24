@@ -17,7 +17,7 @@ class BencanaController extends Controller
         $bencanas = Bencana::get()->map(function ($bn) {
             return [
                 'id' => $bn->id,
-                "kecamatan" => $bn->kecamantan,
+                "kecamatan" => $bn->kecamatan,
                 "desa" => $bn->desa,
                 "nama_bencana" => $bn->nama_bencana,
                 "tingkat_kerawanan" => $bn->tingkat_kerawanan,
