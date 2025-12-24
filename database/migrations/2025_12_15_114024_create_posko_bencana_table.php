@@ -21,6 +21,7 @@ return new class extends Migration
             $table->decimal('latitude',10,7);
             $table->decimal('longitude',10,7);
             $table->enum('status_posko',['Aktif','Penuh','Tutup']);
+            $table->foreignId('bencana_id');
             $table->timestamps();
 
         });

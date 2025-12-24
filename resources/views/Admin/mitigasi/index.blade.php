@@ -25,7 +25,7 @@
             <div id="formPlaceholder" class="text-gray-500 italic">
                 Silakan pilih jenis data pada dropdown di atas untuk mulai mengelola peta mitigasi.
             </div>
-            
+
             <div id="formContainer">
                 <div class="form-item hidden" data-form="bencana">
                     @include('admin.mitigasi.partials.bencana')

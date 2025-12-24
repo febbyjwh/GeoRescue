@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const jenis = feature.properties.Jenis_Bencana;
                     const warna = warnaBencana[jenis] ?? '#2563eb'; // fallback biru
                     return L.circleMarker(latlng, {
-                        radius: 8,
+                        radius: 10,
+                        color: 'blue',
                         fillColor: warna,
                         fillOpacity: 0.8,
                         color: '#ffffffff',

@@ -24,6 +24,7 @@ Route::prefix('mitigasi')->name('mitigasi.')->group(function () {
 // data bencana
 Route::prefix('bencana')->name('bencana.')->group(function () {
     Route::get('/', [BencanaController::class, 'index'])->name('index');
+    Route::get('/get-bencana', [BencanaController::class, 'getBencana'])->name('get_bencana');
 });
 
 // jalur evakuasi
