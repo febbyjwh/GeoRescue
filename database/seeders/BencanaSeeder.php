@@ -19,8 +19,8 @@ class BencanaSeeder extends Seeder
         $states = json_decode($json);
         foreach ($states as $state) {
             Bencana::create([
-                "kecamatan" => $state->kecamatan,
-                "desa" => $state->desa,
+                "kecamatan_id" => $state->kecamatan_id,
+                "desa_id" => $state->desa_id,
                 "nama_bencana" => $state->nama_bencana,
                 "tingkat_kerawanan" => $state->tingkat_kerawanan,
                 "lang" => $state->lang,

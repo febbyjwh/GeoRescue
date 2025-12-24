@@ -50,5 +50,7 @@
         </div>
 
     </div>
-    @include('maps')
+    @push('scripts')
+        @include('maps')
+    @endpush
 @endsection

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('bencana', function (Blueprint $table) {
             $table->id();
-            $table->string('kecamatan');
-            $table->string('desa');
+            $table->foreignId('kecamatan_id');
+            $table->foreignId('desa_id');
             $table->string('nama_bencana');
             $table->string('tingkat_kerawanan');
             $table->decimal('lang', 11, 8)->nullable();
