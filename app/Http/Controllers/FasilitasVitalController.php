@@ -14,6 +14,24 @@ class FasilitasVitalController extends Controller
         return view('Admin.FasilitasVital.index', compact('fasilitas'));
     }
 
+    public function mapData()
+    {
+        return response()->json(
+            FasilitasVital::select(
+                'id',
+                'nama_fasilitas',
+                'jenis_fasilitas',
+                'latitude',
+                'longitude',
+                'status'
+            )
+            ->whereNotNull('latitude')
+            ->whereNotNull('longitude')
+            ->get()
+        );
+    }
+
+
     public function create()
     {
         return view('admin.FasilitasVital.create');

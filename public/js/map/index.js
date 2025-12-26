@@ -12,5 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // default layers
     layers.bencana.addTo(MapState.map);
     layers.jalur.addTo(MapState.map);
+    layers.fasilitas.addTo(MapState.map);
     drawnItems.addTo(MapState.map);
 });

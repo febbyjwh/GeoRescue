@@ -28,6 +28,8 @@
                                 <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Alamat</th>
                                 <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Desa</th>
                                 <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Kecamatan</th>
+                                <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Latitude</th>
+                                <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Longitude</th>
                                 <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Status</th>
                                 <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Aksi</th>
                             </tr>
@@ -41,6 +43,8 @@
                                 <td class="px-5 py-4 text-sm">{{ $item->alamat }}</td>
                                 <td class="px-5 py-4 text-sm">{{ $item->desa }}</td>
                                 <td class="px-5 py-4 text-sm">{{ $item->kecamatan }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->latitude }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->longitude }}</td>
                                 <td class="px-5 py-4 text-sm">
                                     <span class="inline-block rounded-full px-2 py-0.5 text-xs
                                         {{ $item->status == 'Beroperasi'
