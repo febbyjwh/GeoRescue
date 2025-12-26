@@ -4,7 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BencanaController extends Model
+class Bencana extends Model
 {
-    //
+    protected $table = "bencana";
+    protected $fillable = [
+        "kecamatan_id",
+        "desa_id",
+        "nama_bencana",
+        "tingkat_kerawanan",
+        "lang",
+        "lat"
+    ];
+
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'kecamatan_id');
+    }
+
+    public function village()
+    {
+        return $this->belongsTo(Village::class, 'desa_id');
+    }
 }

@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PoskoController;
 use App\Http\Controllers\BencanaController;
 use App\Http\Controllers\EvakuasiController;
-use App\Http\Controllers\PoskoController;
+use App\Http\Controllers\MitigasiController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RegionApiController;
 use App\Http\Controllers\FasilitasVitalController;
 use App\Http\Controllers\JalurDistribusiLogistikController;
-use App\Http\Controllers\MitigasiController;
 
 
 // Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
@@ -15,6 +16,12 @@ use App\Http\Controllers\MitigasiController;
 Route::get('/', function () {
     return view('dashboard', ['title' => 'Dashboard']);
 })->name('dashboard');
+
+//region api
+Route::prefix('api/region')->name('api.region.')->group(function () {
+    Route::get('/districts', [RegionApiController::class, 'districts'])->name('districts');
+    Route::get('/villages', [RegionApiController::class, 'villages'])->name('villages');
+});
 
 // data mitigasi
 Route::prefix('mitigasi')->name('mitigasi.')->group(function () {
@@ -24,6 +31,9 @@ Route::prefix('mitigasi')->name('mitigasi.')->group(function () {
 // data bencana
 Route::prefix('bencana')->name('bencana.')->group(function () {
     Route::get('/', [BencanaController::class, 'index'])->name('index');
+    Route::get('/get-bencana', [BencanaController::class, 'getBencana'])->name('get_bencana');
+    Route::post('/', [BencanaController::class, 'store'])->name('store');
+    Route::put('/{id}', [BencanaController::class, 'update'])->name('update');
 });
 
 // jalur evakuasi

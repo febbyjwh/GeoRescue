@@ -1,0 +1,200 @@
+[
+  {
+    "id": "1",
+    "kecamatan_id": "320412",
+    "desa_id": "3204122002",
+    "nama_bencana": "Banjir",
+    "tingkat_kerawanan": "Tinggi",
+    "lang": "107.615",
+    "lat": "-6.9756"
+  },
+  {
+    "id": "2",
+    "kecamatan_id": "320412",
+    "desa_id": "3204122004",
+    "nama_bencana": "Banjir",
+    "tingkat_kerawanan": "Tinggi",
+    "lang": "107.6103",
+    "lat": "-6.9789"
+  },
+  {
+    "id": "3",
+    "kecamatan_id": "320432",
+    "desa_id": "3204321001",
+    "nama_bencana": "Banjir",
+    "tingkat_kerawanan": "Tinggi",
+    "lang": "107.6267",
+    "lat": "-6.9864"
+  },
+  {
+    "id": "4",
+    "kecamatan_id": "320432",
+    "desa_id": "3204322006",
+    "nama_bencana": "Banjir",
+    "tingkat_kerawanan": "Tinggi",
+    "lang": "107.6201",
+    "lat": "-6.9821"
+  },
+  {
+    "id": "5",
+    "kecamatan_id": "320408",
+    "desa_id": "3204082001",
+    "nama_bencana": "Banjir",
+    "tingkat_kerawanan": "Tinggi",
+    "lang": "107.6423",
+    "lat": "-6.9819"
+  },
+  {
+    "id": "6",
+    "kecamatan_id": "320408",
+    "desa_id": "3204082003",
+    "nama_bencana": "Banjir",
+    "tingkat_kerawanan": "Tinggi",
+    "lang": "107.6488",
+    "lat": "-6.9762"
+  },
+  {
+    "id": "7",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Banjir",
+    "tingkat_kerawanan": "Tinggi",
+    "lang": "107.7456",
+    "lat": "-6.9989"
+  },
+  {
+    "id": "8",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Banjir",
+    "tingkat_kerawanan": "Tinggi",
+    "lang": "107.7402",
+    "lat": "-7.0021"
+  },
+  {
+    "id": "9",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Banjir",
+    "tingkat_kerawanan": "Tinggi",
+    "lang": "107.5784",
+    "lat": "-7.0064"
+  },
+  {
+    "id": "10",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Banjir",
+    "tingkat_kerawanan": "Tinggi",
+    "lang": "107.5723",
+    "lat": "-7.0122"
+  },
+  {
+    "id": "11",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Longsor",
+    "tingkat_kerawanan": "Sedang",
+    "lang": "107.5502",
+    "lat": "-7.1867"
+  },
+  {
+    "id": "12",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Longsor",
+    "tingkat_kerawanan": "Sedang",
+    "lang": "107.5441",
+    "lat": "-7.1782"
+  },
+  {
+    "id": "13",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Longsor",
+    "tingkat_kerawanan": "Sedang",
+    "lang": "107.6734",
+    "lat": "-7.2033"
+  },
+  {
+    "id": "14",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Longsor",
+    "tingkat_kerawanan": "Sedang",
+    "lang": "107.6899",
+    "lat": "-7.1956"
+  },
+  {
+    "id": "15",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Longsor",
+    "tingkat_kerawanan": "Sedang",
+    "lang": "107.3812",
+    "lat": "-7.138"
+  },
+  {
+    "id": "16",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Longsor",
+    "tingkat_kerawanan": "Sedang",
+    "lang": "107.3728",
+    "lat": "-7.1314"
+  },
+  {
+    "id": "17",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Longsor",
+    "tingkat_kerawanan": "Sedang",
+    "lang": "107.4523",
+    "lat": "-7.0994"
+  },
+  {
+    "id": "18",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Longsor",
+    "tingkat_kerawanan": "Sedang",
+    "lang": "107.4487",
+    "lat": "-7.1058"
+  },
+  {
+    "id": "19",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Gempa",
+    "tingkat_kerawanan": "Rendah",
+    "lang": "107.8376",
+    "lat": "-6.9848"
+  },
+  {
+    "id": "20",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Gempa",
+    "tingkat_kerawanan": "Rendah",
+    "lang": "107.8867",
+    "lat": "-7.0156"
+  },
+  {
+    "id": "21",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Gempa",
+    "tingkat_kerawanan": "Rendah",
+    "lang": "107.7704",
+    "lat": "-7.0412"
+  },
+  {
+    "id": "22",
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "nama_bencana": "Gempa",
+    "tingkat_kerawanan": "Rendah",
+    "lang": "107.8146",
+    "lat": "-7.0319"
+  }
+]

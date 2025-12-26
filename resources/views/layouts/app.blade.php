@@ -7,7 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
-
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Datatables/datatables.min.css') }}">
     @php
         $routeTitle = [
             // dashboard
@@ -150,6 +151,10 @@ window.addEventListener('resize', checkMobile);">
 
 </body>
 
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/select2.full.min.js') }}"></script>
+<script src="{{ asset('Datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('js/select-region.js') }}"></script>
 @stack('scripts')
 
 </html>

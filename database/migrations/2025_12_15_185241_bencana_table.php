@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bencanas', function (Blueprint $table) {
+        Schema::create('bencana', function (Blueprint $table) {
             $table->id();
-            $table->string('Kecamatan');
-            $table->string('Desa');
-            $table->string('Jenis_Bencana');
-            $table->string('Tingkat_Kerawanan');
-            $table->json('geojson');
+            $table->foreignId('kecamatan_id');
+            $table->foreignId('desa_id');
+            $table->string('nama_bencana');
+            $table->string('tingkat_kerawanan');
+            $table->decimal('lang', 11, 8)->nullable();
+            $table->decimal('lat', 10, 8)->nullable();
             $table->timestamps();
         });
     }
