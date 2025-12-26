@@ -52,6 +52,8 @@ Route::group(['middleware' => ['isadmin']], function () {
         'destroy' => 'posko.destroy',
     ]);
 
+    Route::get('/data/fasilitas-vital', [FasilitasVitalController::class, 'mapData']);
+
     Route::resource('fasilitasvital', FasilitasVitalController::class)->names([
         'index' => 'fasilitasvital.index',
         'create' => 'fasilitasvital.create',

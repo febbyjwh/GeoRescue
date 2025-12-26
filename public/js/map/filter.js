@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             default:
                 map.addLayer(MapState.layers.bencana);
                 map.addLayer(MapState.layers.jalur);
+                map.addLayer(MapState.layers.fasilitas);
         }
     });
 });
