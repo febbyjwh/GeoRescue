@@ -38,14 +38,14 @@
             />
 
             {{-- Alamat --}}
-            <x-form.form-elements.text-area-inputs
+            {{-- <x-form.form-elements.text-area-inputs
                 label="Alamat Posko"
                 name="alamat_posko"
                 rows="3"
                 required
             >
                 {{ old('alamat_posko') }}
-            </x-form.form-elements.text-area-inputs>
+            </x-form.form-elements.text-area-inputs> --}}
 
             {{-- Desa & Kecamatan --}}
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -67,7 +67,7 @@
             </div>
 
             {{-- Koordinat --}}
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {{-- <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <x-form.form-elements.default-inputs
                     label="Latitude"
                     name="latitude"
@@ -81,7 +81,7 @@
                     placeholder="106.816666"
                     value="{{ old('longitude') }}"
                 />
-            </div>
+            </div> --}}
 
             {{-- Status --}}
             <x-form.form-elements.select-inputs
@@ -101,11 +101,6 @@
                         class="inline-flex items-center rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition">
                     Simpan
                 </button>
-
-                <a href="{{ route('posko.index') }}"
-                   class="inline-flex items-center rounded-lg border border-gray-300 px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 transition">
-                    Batal
-                </a>
             </div>
         </form>
     </div>
