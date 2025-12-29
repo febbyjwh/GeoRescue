@@ -60,12 +60,7 @@ class MenuHelper
             [
                 'icon' => 'pages',
                 'name' => 'Data Bencana',
-                'path' => '/admin/bencana',
-                'subItems' => [
-                    ['name' => 'Data Bencana', 'path' => route('bencana.index'), 'pro' => false],
-                    // ['name' => 'Tambah Data Bencana', 'path' => route('bencana.create'), 'pro' => false],
-                    // ['name' => 'Update Jalur Evakuasi', 'path' => route('jalur_evakuasi.edit'), 'pro' => false]
-                ],
+                'path' => '/bencana',
             ],
             [
                 'icon' => 'forms',
