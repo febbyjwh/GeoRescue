@@ -62,16 +62,15 @@ Route::group(['middleware' => ['isadmin']], function () {
         'destroy' => 'posko.destroy',
     ]);
 
-    Route::get('/data/fasilitas-vital', [FasilitasVitalController::class, 'mapData']);
-
-    Route::resource('fasilitasvital', FasilitasVitalController::class)->names([
-        'index' => 'fasilitasvital.index',
-        'create' => 'fasilitasvital.create',
-        'store' => 'fasilitasvital.store',
-        'update' => 'fasilitasvital.update',
-        'destroy' => 'fasilitasvital.destroy',
-    ]);
-
+    Route::prefix('fasilitasvital')->group(function () {
+    Route::get('/', [FasilitasVitalController::class, 'index'])->name('fasilitasvital.index');
+    Route::get('/create', [FasilitasVitalController::class, 'create'])->name('fasilitasvital.create');
+    Route::post('/', [FasilitasVitalController::class, 'store'])->name('fasilitasvital.store');
+    Route::get('/{id}/edit', [FasilitasVitalController::class, 'edit'])->name('fasilitasvital.edit');
+    Route::put('/{id}', [FasilitasVitalController::class, 'update'])->name('fasilitasvital.update');
+    Route::delete('/{id}', [FasilitasVitalController::class, 'destroy'])->name('fasilitasvital.destroy');
+    Route::get('/get-fasilitas', [FasilitasVitalController::class, 'getFasilitas'])->name('fasilitasvital.get');
+});
     Route::resource('jalur_distribusi_logistik', JalurDistribusiLogistikController::class)->names([
         'index' => 'jalur_distribusi_logistik.index',
         'create' => 'jalur_distribusi_logistik.create',
