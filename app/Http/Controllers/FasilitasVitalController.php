@@ -2,35 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\FasilitasVital;
+use Illuminate\Http\Request;
 
 class FasilitasVitalController extends Controller
 {
     public function index()
     {
-        $fasilitas = FasilitasVital::all();
-        return view('Admin.FasilitasVital.index', compact('fasilitas'));
+        $fasilitas = FasilitasVital::with(['district', 'village'])->get();
+        return view('admin.FasilitasVital.index', compact('fasilitas'));
     }
 
-    public function mapData()
+    public function getFasilitas()
     {
-        return response()->json(
-            FasilitasVital::select(
-                'id',
-                'nama_fasilitas',
-                'jenis_fasilitas',
-                'latitude',
-                'longitude',
-                'status'
-            )
-            ->whereNotNull('latitude')
-            ->whereNotNull('longitude')
-            ->get()
-        );
-    }
+        $fasilitas = FasilitasVital::with('district', 'village')->get()->map(function ($f) {
+            return [
+                'id' => $f->id,
+                'kecamatan_id' => $f->kecamatan_id,
+                'desa_id' => $f->desa_id,
+                'nama_kecamatan' => $f->district->name ?? '-',
+                'nama_desa' => $f->village->name ?? '-',
+                'nama_fasilitas' => $f->nama_fasilitas,
+                'jenis_fasilitas' => $f->jenis_fasilitas,
+                'alamat' => $f->alamat,
+                'status' => $f->status,
+                'latitude' => $f->latitude,
+                'longitude' => $f->longitude,
+            ];
+        });
 
+        return response()->json(['data' => $fasilitas]);
+    }
 
     public function create()
     {
@@ -40,46 +42,57 @@ class FasilitasVitalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_fasilitas' => 'required',
-            'jenis_fasilitas' => 'required',
-            'alamat' => 'nullable',
-            'desa' => 'required',
-            'kecamatan' => 'required',
-            'latitude' => 'nullable|numeric',
-            'longitude' => 'nullable|numeric',
+            'kecamatan_id' => 'required|exists:districts,id',
+            'desa_id' => 'required|exists:villages,id',
+            'nama_fasilitas' => 'required|string|max:255',
+            'jenis_fasilitas' => 'required|string|max:100',
+            'alamat' => 'nullable|string',
             'status' => 'required|in:Beroperasi,Tidak Tersedia',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ]);
 
         FasilitasVital::create($request->all());
 
-        return redirect()->route('fasilitasvital.index')
-            ->with('success', 'Fasilitas vital berhasil ditambahkan');
+        return response()->json(['message' => 'Fasilitas vital berhasil ditambahkan']);
     }
 
     public function edit($id)
     {
-        $fasilitas = FasilitasVital::findOrFail($id);
-        return view('Admin.FasilitasVital.edit', compact('fasilitas'));
+        $fasilitas = FasilitasVital::with('district', 'village')->findOrFail($id);
+
+        return response()->json([
+            'id' => $fasilitas->id,
+            'kecamatan_id' => $fasilitas->kecamatan_id,
+            'desa_id' => $fasilitas->desa_id,
+            'nama_fasilitas' => $fasilitas->nama_fasilitas,
+            'jenis_fasilitas' => $fasilitas->jenis_fasilitas,
+            'alamat' => $fasilitas->alamat,
+            'status' => $fasilitas->status,
+            'latitude' => $fasilitas->latitude,
+            'longitude' => $fasilitas->longitude,
+        ]);
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_fasilitas' => 'required',
-            'jenis_fasilitas' => 'required',
-            'alamat' => 'nullable',
-            'desa' => 'required',
-            'kecamatan' => 'required',
-            'latitude' => 'nullable|numeric',
-            'longitude' => 'nullable|numeric',
+            'kecamatan_id' => 'required|exists:districts,id',
+            'desa_id' => 'required|exists:villages,id',
+            'nama_fasilitas' => 'required|string|max:255',
+            'jenis_fasilitas' => 'required|string|max:100',
+            'alamat' => 'nullable|string',
             'status' => 'required|in:Beroperasi,Tidak Tersedia',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ]);
 
         $fasilitas = FasilitasVital::findOrFail($id);
         $fasilitas->update($request->all());
 
-        return redirect()->route('fasilitasvital.index')
-            ->with('success', 'Fasilitas vital berhasil diperbarui');
+        return response()->json([
+            'message' => 'Fasilitas vital berhasil diperbarui'
+        ]);
     }
 
     public function destroy($id)
@@ -87,7 +100,8 @@ class FasilitasVitalController extends Controller
         $fasilitas = FasilitasVital::findOrFail($id);
         $fasilitas->delete();
 
-        return redirect()->route('fasilitasvital.index')
-            ->with('success', 'Fasilitas vital berhasil dihapus');
+        return response()->json([
+            'message' => 'Fasilitas vital berhasil dihapus'
+        ]);
     }
 }

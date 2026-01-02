@@ -1,85 +1,94 @@
 <div class="container-fluid">
-
-    <!-- Navbar/Header -->
     <x-common.page-breadcrumb pageTitle="Data Fasilitas Vital" class="z-10 relative" />
     
     <div class="rounded-xl border border-gray-200 bg-white p-6">
-        <form action="{{ route('fasilitasvital.store') }}" method="POST" class="space-y-6">
-            @csrf
-
-            <x-form.form-elements.default-inputs
+        
+        <div class="mb-3">
+            <x-form.form-elements.default-inputs 
+                id="nama_fasilitas"
                 label="Nama Fasilitas"
                 name="nama_fasilitas"
                 placeholder="Masukkan nama fasilitas"
                 value="{{ old('nama_fasilitas') }}"
                 required
             />
+        </div>
 
+        <input type="hidden" id="fasilitas_id">
+
+        <div class="mb-3">
             <x-form.form-elements.select-inputs
                 label="Jenis Fasilitas"
                 name="jenis_fasilitas"
+                id="jenis_fasilitas"
                 required
             >
                 <option value="">-- Pilih --</option>
-                <option>Rumah Sakit</option>
-                <option>Puskesmas</option>
-                <option>Sekolah</option>
-                <option>Kantor Polisi</option>
-                <option>Pemadam Kebakaran</option>
-                <option>Kantor Pemerintahan</option>
+                <option value="Rumah Sakit">Rumah Sakit</option>
+                <option value="Puskesmas">Puskesmas</option>
+                <option value="Sekolah">Sekolah</option>
+                <option value="Kantor Polisi">Kantor Polisi</option>
+                <option value="Pemadam Kebakaran">Pemadam Kebakaran</option>
+                <option value="Kantor Pemerintahan">Kantor Pemerintahan</option>
             </x-form.form-elements.select-inputs>
+        </div>
 
+        <div class="mb-3">
             <x-form.form-elements.text-area-inputs
                 label="Alamat"
                 name="alamat"
+                id="alamat"
                 rows="3"
             >
                 {{ old('alamat') }}
             </x-form.form-elements.text-area-inputs>
+        </div>
 
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <x-form.form-elements.default-inputs
-                    label="Desa"
-                    name="desa"
-                    value="{{ old('desa') }}"
-                    required
-                />
+        <div class="mb-3">
+            <label class="block text-sm font-medium mb-1">Kecamatan</label>
+            <select id="fasilitas_district_id" class="w-full" style="width: 100%"></select>
+        </div>
 
-                <x-form.form-elements.default-inputs
-                    label="Kecamatan"
-                    name="kecamatan"
-                    value="{{ old('kecamatan') }}"
-                    required
-                />
-            </div>
+        <div class="mb-3">
+            <label class="block text-sm font-medium mb-1">Desa</label>
+            <select id="fasilitas_village_id" class="w-full" style="width: 100%"></select>
+        </div>
 
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <x-form.form-elements.default-inputs
-                    label="Latitude"
-                    name="latitude"
-                    value="{{ old('latitude') }}"
-                />
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <x-form.form-elements.default-inputs
+                label="Latitude"
+                name="latitude"
+                id="latitude"
+                placeholder="-6.200000"
+                value="{{ old('latitude') }}"
+            />
 
-                <x-form.form-elements.default-inputs
-                    label="Longitude"
-                    name="longitude"
-                    value="{{ old('longitude') }}"
-                />
-            </div>
+            <x-form.form-elements.default-inputs
+                label="Longitude"
+                name="longitude"
+                id="longitude"
+                placeholder="106.816666"
+                value="{{ old('longitude') }}"
+            />
+        </div>
 
+        <div class="mb-3">
             <x-form.form-elements.select-inputs
                 label="Status"
                 name="status"
+                id="status"
             >
-                <option>Beroperasi</option>
-                <option>Tidak Tersedia</option>
+                <option value="">-- Pilih Status --</option>
+                <option value="Beroperasi">Beroperasi</option>
+                <option value="Tidak Tersedia">Tidak Tersedia</option>
             </x-form.form-elements.select-inputs>
+        </div>
 
-            <div class="flex justify-end gap-3">
-                <button class="inline-flex rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700">
-                    Simpan
-                </button>
-            </div>
-        </form>
+        <div class="mb-3">
+            <button type="button" onclick="submitFasilitas()"
+                class="inline-flex items-center rounded-lg bg-blue-600 px-5 py-2.5 text-sm mt-6 font-medium text-white hover:bg-blue-700 transition">
+                Simpan
+            </button>
+        </div>
     </div>
 </div>
