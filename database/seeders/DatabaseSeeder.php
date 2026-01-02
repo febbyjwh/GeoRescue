@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\FasilitasVital;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\FasilitasVitalSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +23,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(BencanaSeeder::class);
+        $this->call(FasilitasVitalSeeder::class);
         $this->call(DistrictSeeder::class);
         $this->call(VillageSeeder::class);
     }

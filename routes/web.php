@@ -9,13 +9,11 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegionApiController;
 use App\Http\Controllers\FasilitasVitalController;
 use App\Http\Controllers\JalurDistribusiLogistikController;
+use App\Http\Controllers\UserController;
 
 
-// Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
-
-Route::get('/', function () {
-    return view('dashboard', ['title' => 'Dashboard']);
-})->name('dashboard');
+// dashboard
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 //region api
 Route::prefix('api/region')->name('api.region.')->group(function () {
@@ -48,12 +46,12 @@ Route::prefix('jalur_evakuasi')->name('jalur_evakuasi.')->group(function () {
     Route::delete('/{id}', [EvakuasiController::class, 'destroy'])->name('destroy');
 });
 
-Route::group(['middleware' => ['isadmin']], function () {
+// user
+Route::prefix('user')->name('user.')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+});
 
-    // Route Bencana
-    // Route::prefix('bencana')->name('bencana.')->group(function () {
-    //     Route::get('/', [BencanaController::class, 'index'])->name('index');
-    // });
+Route::group(['middleware' => ['isadmin']], function () {
     Route::resource('posko', PoskoController::class)->names([
         'index' => 'posko.index',
         'create' => 'posko.create',

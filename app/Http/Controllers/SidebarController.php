@@ -20,11 +20,6 @@ class SidebarController extends Controller
                     ],
                     [
                         'icon' => 'grid-icon',
-                        'name' => 'Jalur Evakuasi',
-                        'new' => true,
-                    ],
-                    [
-                        'icon' => 'grid-icon',
                         'name' => 'Posko Bencana',
                         'new' => true,
                         'subItems' => [

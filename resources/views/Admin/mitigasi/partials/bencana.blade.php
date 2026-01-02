@@ -18,7 +18,7 @@
             <select id="village_id" class="w-full" style="width: 100%"></select>
         </div>
 
-        <x-form.form-elements.select-inputs label="tingkat_kerawanan" name="tingkat_kerawanan" id="tingkat_kerawanan"
+        <x-form.form-elements.select-inputs label="Tingkat Kerawanan" name="tingkat_kerawanan" id="tingkat_kerawanan"
             required>
             <option value="">-- Pilih Tingkat Kerawanan --</option>
             <option value="Tinggi" {{ old('tingkat_kerawanan') == 'Tinggi' ? 'selected' : '' }}>Tinggi</option>

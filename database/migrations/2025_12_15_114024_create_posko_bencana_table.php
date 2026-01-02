@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nama_posko');
             $table->string('jenis_posko');
             $table->text('alamat_posko')->nullable();
-            $table->string('nama_desa');
-            $table->string('kecamatan');
+            $table->foreignId('kecamatan_id');
+            $table->foreignId('desa_id');
             $table->decimal('latitude',10,7);
             $table->decimal('longitude',10,7);
             $table->enum('status_posko',['Aktif','Penuh','Tutup']);
