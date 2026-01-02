@@ -15,21 +15,13 @@ class FasilitasVitalSeeder extends Seeder
         FasilitasVital::truncate();
 
         $json = File::get(database_path('data/fasilitas_vital.json'));
-        $payload = json_decode($json, true);
-
-        $table = collect($payload)->first(fn ($item) =>
-            ($item['type'] ?? null) === 'table'
-            && ($item['name'] ?? null) === 'fasilitas_vital'
-        );
-
-        $rows = $table['data'] ?? [];
+        $rows = json_decode($json, true);
 
         foreach ($rows as $row) {
 
             $kecamatan = Kecamatan::where('name', $row['kecamatan'])->first();
             $desa      = Desa::where('name', $row['desa'])->first();
 
-            // skip kalau relasi tidak ketemu
             if (!$kecamatan || !$desa) {
                 continue;
             }
@@ -40,8 +32,8 @@ class FasilitasVitalSeeder extends Seeder
                 'alamat'          => $row['alamat'],
                 'kecamatan_id'    => $kecamatan->id,
                 'desa_id'         => $desa->id,
-                'latitude'        => $row['latitude'],
-                'longitude'       => $row['longitude'],
+                'latitude'        => (float) $row['latitude'],
+                'longitude'       => (float) $row['longitude'],
                 'status'          => $row['status'],
             ]);
         }
