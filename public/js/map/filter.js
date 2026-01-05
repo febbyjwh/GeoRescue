@@ -20,10 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 map.addLayer(MapState.layers.bencana);
                 break;
 
+            case 'logistik':
+                map.addLayer(MapState.layers.logistik);
+                break;
+
             default:
                 map.addLayer(MapState.layers.bencana);
                 map.addLayer(MapState.layers.jalur);
                 map.addLayer(MapState.layers.fasilitas);
+                map.addLayer(MapState.layers.logistik);
         }
     });
 });

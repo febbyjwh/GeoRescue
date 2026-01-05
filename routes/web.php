@@ -72,6 +72,31 @@ Route::group(['middleware' => ['isadmin']], function () {
         'destroy' => 'fasilitasvital.destroy',
     ]);
 
+    Route::get('/data/bandung-villages', function () {
+    $path = database_path('data/bandung_villages.geojson');
+
+    if (!File::exists($path)) {
+        abort(404, 'File GeoJSON tidak ditemukan');
+    }
+
+    return response()->file($path, [
+        'Content-Type' => 'application/geo+json'
+    ]);
+    });
+
+    Route::get('/data/logistik.geojson', function () {
+        $path = base_path('database/data/logistik.geojson');
+
+        if (!file_exists($path)) {
+            abort(404);
+        }
+
+        return response()->file($path, [
+            'Content-Type' => 'application/geo+json'
+        ]);
+    });
+
+
     Route::resource('jalur_distribusi_logistik', JalurDistribusiLogistikController::class)->names([
         'index' => 'jalur_distribusi_logistik.index',
         'create' => 'jalur_distribusi_logistik.create',

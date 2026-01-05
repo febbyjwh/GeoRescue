@@ -6,16 +6,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class JalurDistribusiLogistik extends Model
 {
-    protected $table = 'jalur_distribusi_logistik';
+    protected $table = 'logistiks';
 
     protected $fillable = [
-        'nama_jalur',
-        'asal_logistik',
-        'asal_latitude',
-        'asal_longitude',
-        'tujuan_distribusi',
-        'tujuan_latitude',
-        'tujuan_longitude',
-        'status_jalur'
+        'nama_lokasi',
+        'district_id',
+        'village_id',
+        'jenis_logistik',
+        'jumlah',
+        'satuan',
+        'status',
     ];
+
+    /**
+     * Relasi ke tabel districts
+     */
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id');
+    }
+
+    /**
+     * Relasi ke tabel villages
+     */
+    public function village()
+    {
+        return $this->belongsTo(Village::class, 'village_id');
+    }
 }
