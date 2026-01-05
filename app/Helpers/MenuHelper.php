@@ -51,7 +51,7 @@ class MenuHelper
             //         ['name' => '404 Error', 'path' => '/error-404', 'pro' => false]
             //     ],
             // ],
-        ];  
+        ];
     }
 
     public static function getOthersItems()
@@ -60,12 +60,7 @@ class MenuHelper
             [
                 'icon' => 'pages',
                 'name' => 'Data Bencana',
-                'path' => '/admin/bencana',
-                'subItems' => [
-                    ['name' => 'Data Bencana', 'path' => route('bencana.index'), 'pro' => false],
-                    // ['name' => 'Tambah Data Bencana', 'path' => route('bencana.create'), 'pro' => false],
-                    // ['name' => 'Update Jalur Evakuasi', 'path' => route('jalur_evakuasi.edit'), 'pro' => false]
-                ],
+                'path' => '/bencana',
             ],
             [
                 'icon' => 'forms',
@@ -73,19 +68,19 @@ class MenuHelper
                 'path' => '/jalur_evakuasi',
             ],
             [
-            'icon' => 'tables',
-            'name' => 'Posko',
-            'path' => '/posko',
+                'icon' => 'tables',
+                'name' => 'Posko',
+                'path' => '/posko',
             ],
             [
-            'icon' => 'tables',
-            'name' => 'Fasilitas Vital',
-            'path' => '/fasilitasvital',
+                'icon' => 'tables',
+                'name' => 'Fasilitas Vital',
+                'path' => '/fasilitasvital',
             ],
             [
-            'icon' => 'tables',
-            'name' => 'Jalur Distribusi Logistik',
-            'path' => '/jalur_distribusi_logistik',
+                'icon' => 'tables',
+                'name' => 'Jalur Distribusi Logistik',
+                'path' => '/jalur_distribusi_logistik',
             ]
             // [
             //     'icon' => 'charts',

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nama_fasilitas');
             $table->string('jenis_fasilitas');
             $table->text('alamat')->nullable();
-            $table->string('desa');
-            $table->string('kecamatan');
+            $table->foreignId('kecamatan_id');
+            $table->foreignId('desa_id');
             $table->decimal('latitude', 10, 7)->nullable();
             $table->decimal('longitude', 10, 7)->nullable();
             $table->enum('status', ['Beroperasi', 'Tidak Tersedia']);

@@ -3,36 +3,30 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\FasilitasVital;
 use Illuminate\Support\Facades\File;
+use App\Models\FasilitasVital;
 
 class FasilitasVitalSeeder extends Seeder
 {
     public function run(): void
     {
+        // Kosongkan tabel
         FasilitasVital::truncate();
 
+        // Ambil file JSON
         $json = File::get(database_path('data/fasilitas_vital.json'));
-        $payload = json_decode($json, true); // jadi array biar gampang
+        $states = json_decode($json);
 
-        // cari item yang type = table dan name = fasilitas_vital
-        $table = collect($payload)->first(function ($item) {
-            return ($item['type'] ?? null) === 'table'
-                && ($item['name'] ?? null) === 'fasilitas_vital';
-        });
-
-        $rows = $table['data'] ?? [];
-
-        foreach ($rows as $row) {
+        foreach ($states as $state) {
             FasilitasVital::create([
-                'nama_fasilitas'  => $row['nama_fasilitas'] ?? null,
-                'jenis_fasilitas' => $row['jenis_fasilitas'] ?? null,
-                'alamat'          => $row['alamat'] ?? null,
-                'desa'            => $row['desa'] ?? null,
-                'kecamatan'       => $row['kecamatan'] ?? null,
-                'latitude'        => $row['latitude'] ?? null,
-                'longitude'       => $row['longitude'] ?? null,
-                'status'          => $row['status'] ?? null,
+                'nama_fasilitas'   => $state->nama_fasilitas,
+                'jenis_fasilitas'  => $state->jenis_fasilitas,
+                'alamat'           => $state->alamat,
+                'desa'             => $state->desa,
+                'kecamatan'        => $state->kecamatan,
+                'latitude'         => $state->latitude,
+                'longitude'        => $state->longitude,
+                'status'           => $state->status,
             ]);
         }
     }

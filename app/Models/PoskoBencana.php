@@ -11,10 +11,20 @@ class PoskoBencana extends Model
         'nama_posko',
         'jenis_posko',
         'alamat_posko',
-        'nama_desa',
-        'kecamatan',
+        "kecamatan_id",
+        "desa_id",
         'latitude',
         'longitude',
         'status_posko'
     ];
+
+     public function district()
+    {
+        return $this->belongsTo(District::class, 'kecamatan_id');
+    }
+
+    public function village()
+    {
+        return $this->belongsTo(Village::class, 'desa_id');
+    }
 }

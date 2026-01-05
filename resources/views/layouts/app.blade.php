@@ -96,7 +96,7 @@
         });
     </script>
 
-    <!-- Apply dark mode immediately to prevent flash -->
+    {{-- <!-- Apply dark mode immediately to prevent flash -->
     <script>
         (function() {
             const savedTheme = localStorage.getItem('theme');
@@ -110,7 +110,7 @@
                 document.body.classList.remove('dark', 'bg-gray-900');
             }
         })();
-    </script>
+    </script> --}}
 </head>
 
 <body x-data="{ 'loaded': true }" x-init="$store.sidebar.isExpanded = window.innerWidth >= 1280;

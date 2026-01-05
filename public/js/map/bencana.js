@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     if (typeof initDistrictVillageSelect === "function") {
-        initDistrictVillageSelect('#district_id', '#village_id');
+        initDistrictVillageSelect("#district_id", "#village_id");
     }
 
     if (!window.MapState || !MapState.map) {
@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         MapState.layers.inputPoint = L.layerGroup().addTo(MapState.map);
     }
     const inputLayer = MapState.layers.inputPoint;
+    let formMode = "create";
     let inputMarker = null;
 
     const warnaBencana = {
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const res = await fetch("/bencana/get-bencana");
             const json = await res.json();
 
-            json.data.forEach(item => {
+            json.data.forEach((item) => {
                 const lat = parseFloat(item.lat);
                 const lng = parseFloat(item.lang);
                 if (isNaN(lat) || isNaN(lng)) return;
@@ -57,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 marker.on("click", () => fillForm(item));
                 layerBencana.addLayer(marker);
             });
-
         } catch (err) {
             console.error("Gagal load bencana:", err);
         }
@@ -67,9 +67,12 @@ document.addEventListener("DOMContentLoaded", () => {
      * FILL FORM (EDIT MODE)
      * =============================== */
     function fillForm(item) {
+        formMode = "edit";
+
         document.getElementById("bencana_id").value = item.id;
         document.getElementById("nama_bencana").value = item.nama_bencana;
-        document.getElementById("tingkat_kerawanan").value = item.tingkat_kerawanan;
+        document.getElementById("tingkat_kerawanan").value =
+            item.tingkat_kerawanan;
         document.getElementById("lat").value = item.lat;
         document.getElementById("lang").value = item.lang;
 
@@ -80,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             true,
             true
         );
-        $('#district_id').append(districtOption).trigger('change');
+        $("#district_id").append(districtOption).trigger("change");
 
         // Desa
         setTimeout(() => {
@@ -90,13 +93,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 true,
                 true
             );
-            $('#village_id').append(villageOption).trigger('change');
+            $("#village_id").append(villageOption).trigger("change");
         }, 300);
 
-        // Marker edit
         inputLayer.clearLayers();
         inputMarker = L.marker([item.lat, item.lang], {
-            draggable: true
+            draggable: true,
         }).addTo(inputLayer);
 
         inputMarker.on("dragend", (ev) => {
@@ -114,7 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
             nama_bencana: document.getElementById("nama_bencana").value,
             kecamatan_id: document.getElementById("district_id").value,
             desa_id: document.getElementById("village_id").value,
-            tingkat_kerawanan: document.getElementById("tingkat_kerawanan").value,
+            tingkat_kerawanan:
+                document.getElementById("tingkat_kerawanan").value,
             lat: document.getElementById("lat").value,
             lang: document.getElementById("lang").value,
         };
@@ -141,27 +144,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!res.ok) throw await res.json();
 
-            alert(isEdit ? "Data berhasil diupdate" : "Data berhasil ditambahkan");
+            alert(
+                isEdit ? "Data berhasil diupdate" : "Data berhasil ditambahkan"
+            );
             resetForm();
             loadBencana();
-
         } catch (err) {
             console.error("Gagal simpan:", err);
             alert("Gagal menyimpan data");
         }
     };
 
+    function switchToCreateBencana(lat = null, lng = null) {
+        formMode = "create";
+
+        document.getElementById("bencana_id").value = "";
+        document.querySelector("form")?.reset();
+
+        $("#district_id").val(null).trigger("change");
+        $("#village_id").empty().trigger("change");
+
+        inputLayer.clearLayers();
+
+        if (lat && lng) {
+            document.getElementById("lat").value = lat;
+            document.getElementById("lang").value = lng;
+
+            inputMarker = L.marker([lat, lng], { draggable: true }).addTo(
+                inputLayer
+            );
+            inputMarker.on("dragend", (ev) => {
+                const pos = ev.target.getLatLng();
+                document.getElementById("lat").value = pos.lat.toFixed(6);
+                document.getElementById("lang").value = pos.lng.toFixed(6);
+            });
+        }
+    }
+
     function resetForm() {
         document.getElementById("bencana_id").value = "";
         document.querySelector("form")?.reset();
 
-        $('#district_id').val(null).trigger('change');
-        $('#village_id').empty().trigger('change');
+        $("#district_id").val(null).trigger("change");
+        $("#village_id").empty().trigger("change");
 
         inputLayer.clearLayers();
     }
 
     MapState.map.on("click", (e) => {
+        if (formMode === "edit") {
+            switchToCreateBencana(
+                e.latlng.lat.toFixed(6),
+                e.latlng.lng.toFixed(6)
+            );
+            return;
+        }
         const lat = e.latlng.lat.toFixed(6);
         const lng = e.latlng.lng.toFixed(6);
 
@@ -171,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
         inputLayer.clearLayers();
 
         inputMarker = L.marker([lat, lng], {
-            draggable: true
+            draggable: true,
         }).addTo(inputLayer);
 
         inputMarker.on("dragend", (ev) => {
