@@ -11,9 +11,16 @@ use App\Http\Controllers\FasilitasVitalController;
 use App\Http\Controllers\JalurDistribusiLogistikController;
 use App\Http\Controllers\UserController;
 
+Route::get(
+    '/jalur_distribusi_logistik/geojson',
+    [JalurDistribusiLogistikController::class, 'geojson']
+);
+
+Route::get('/logistik/villages/{districtId}', [JalurDistribusiLogistikController::class, 'villagesByDistrict']);
 
 // dashboard
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
 
 //region api
 Route::prefix('api/region')->name('api.region.')->group(function () {
@@ -69,6 +76,14 @@ Route::group(['middleware' => ['isadmin']], function () {
         'update' => 'fasilitasvital.update',
         'destroy' => 'fasilitasvital.destroy',
     ]);
+
+    Route::get('/jalur_distribusi_logistik/villages/{districtId}', [JalurDistribusiLogistikController::class, 'villagesByDistrict'])
+    ->name('jalur_distribusi_logistik.villages');
+
+    Route::get('/jalur_distribusi_logistik/get-logistik', [JalurDistribusiLogistikController::class, 'getLogistik'])
+    ->name('jalur_distribusi_logistik.get');
+
+
 
     Route::resource('jalur_distribusi_logistik', JalurDistribusiLogistikController::class)->names([
         'index' => 'jalur_distribusi_logistik.index',

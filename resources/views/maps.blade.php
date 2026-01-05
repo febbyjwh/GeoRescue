@@ -32,4 +32,5 @@
     <script src="{{ asset('js/map/posko.js') }}"></script>
     <script src="{{ asset('js/map/fasilitas.js') }}"></script>
     <script src="{{ asset('js/map/logistik.js') }}"></script>
+    
 @endpush

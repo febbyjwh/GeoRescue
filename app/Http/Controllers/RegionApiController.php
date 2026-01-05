@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\District;
 use App\Models\Village;
+use Illuminate\Support\Facades\File;
 
 class RegionApiController extends Controller
 {
@@ -39,4 +40,6 @@ class RegionApiController extends Controller
 
         return response()->json($data);
     }
+
+    
 }

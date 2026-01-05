@@ -15,21 +15,28 @@
             />
 
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <x-form.form-elements.default-inputs
+                <x-form.form-elements.select-inputs
                     label="Kecamatan"
                     name="district_id"
-                    placeholder="Contoh: Cicalengka"
-                    value="{{ old('district_id') }}"
+                    id="district"
                     required
-                />
+                >
+                    <option value="">-- Pilih Kecamatan --</option>
+                   @foreach ($districts as $d)
+                        <option value="{{ $d->id }}">{{ $d->name }}</option>
+                    @endforeach
+                </x-form.form-elements.select-inputs>
 
-                <x-form.form-elements.default-inputs
+
+                <x-form.form-elements.select-inputs
                     label="Desa"
                     name="village_id"
-                    placeholder="Contoh: Nagrog"
-                    value="{{ old('village_id') }}"
+                    id="village"
                     required
-                />
+                >
+                    <option value="">-- Pilih Desa --</option>
+                </x-form.form-elements.select-inputs>
+
             </div>
 
             <x-form.form-elements.select-inputs
@@ -68,6 +75,7 @@
                 <x-form.form-elements.default-inputs
                     label="Latitude"
                     name="latitude"
+                    id="latitude"
                     placeholder="-6.914744"
                     value="{{ old('latitude') }}"
                     required
@@ -76,6 +84,7 @@
                 <x-form.form-elements.default-inputs
                     label="Longitude"
                     name="longitude"
+                    id="longitude"
                     placeholder="107.609810"
                     value="{{ old('longitude') }}"
                     required

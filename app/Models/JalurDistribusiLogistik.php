@@ -33,4 +33,6 @@ class JalurDistribusiLogistik extends Model
     {
         return $this->belongsTo(Village::class, 'village_id');
     }
+
+    
 }
