@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(BencanaSeeder::class);
-        $this->call(FasilitasVitalSeeder::class);
         $this->call(DistrictSeeder::class);
         $this->call(VillageSeeder::class);
         $this->call(FasilitasVitalSeeder::class);
+        $this->call(PoskoSeeder::class);
     }
 }

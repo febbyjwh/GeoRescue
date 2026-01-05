@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "nama_posko": "Posko Kesehatan 1",
+    "jenis_posko": "Kesehatan",
+    "alamat_posko": null,
+    "kecamatan_id": "320412",
+    "desa_id": "3204122000",
+    "latitude": -6.9760,
+    "longitude": 107.6120,
+    "status_posko": "Aktif"
+  },
+  {
+    "id": 2,
+    "nama_posko": "Posko Logistik 1",
+    "jenis_posko": "Logistik",
+    "alamat_posko": null,
+    "kecamatan_id": "320412",
+    "desa_id": "3204122001",
+    "latitude": -6.9790,
+    "longitude": 107.6170,
+    "status_posko": "Aktif"
+  },
+  {
+    "id": 3,
+    "nama_posko": "Posko Kesehatan 2",
+    "jenis_posko": "Kesehatan",
+    "alamat_posko": null,
+    "kecamatan_id": "320432",
+    "desa_id": "3204321000",
+    "latitude": -6.9840,
+    "longitude": 107.6230,
+    "status_posko": "Aktif"
+  },
+  {
+    "id": 4,
+    "nama_posko": "Posko Logistik 2",
+    "jenis_posko": "Logistik",
+    "alamat_posko": null,
+    "kecamatan_id": "320432",
+    "desa_id": "3204321002",
+    "latitude": -6.9810,
+    "longitude": 107.6190,
+    "status_posko": "Aktif"
+  },
+  {
+    "id": 5,
+    "nama_posko": "Posko Kesehatan 3",
+    "jenis_posko": "Kesehatan",
+    "alamat_posko": null,
+    "kecamatan_id": "320408",
+    "desa_id": "3204082000",
+    "latitude": -6.9790,
+    "longitude": 107.6440,
+    "status_posko": "Aktif"
+  },
+  {
+    "id": 6,
+    "nama_posko": "Posko Logistik 3",
+    "jenis_posko": "Logistik",
+    "alamat_posko": null,
+    "kecamatan_id": "320408",
+    "desa_id": "3204082002",
+    "latitude": -6.9770,
+    "longitude": 107.6490,
+    "status_posko": "Aktif"
+  },
+  {
+    "id": 7,
+    "nama_posko": "Posko Kesehatan 4",
+    "jenis_posko": "Kesehatan",
+    "alamat_posko": null,
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "latitude": -7.0000,
+    "longitude": 107.7400,
+    "status_posko": "Aktif"
+  },
+  {
+    "id": 8,
+    "nama_posko": "Posko Logistik 4",
+    "jenis_posko": "Logistik",
+    "alamat_posko": null,
+    "kecamatan_id": "1",
+    "desa_id": "1",
+    "latitude": -7.0050,
+    "longitude": 107.7700,
+    "status_posko": "Aktif"
+  }
+]

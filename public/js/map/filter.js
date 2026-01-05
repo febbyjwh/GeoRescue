@@ -1,28 +1,27 @@
-document.addEventListener('DOMContentLoaded', () => {
-
+document.addEventListener("DOMContentLoaded", () => {
     const selector = document.querySelector('select[name="jenis_data"]');
     if (!selector) return;
 
-    selector.addEventListener('change', () => {
-
+    selector.addEventListener("change", () => {
         const map = MapState.map;
 
-        Object.values(MapState.layers).forEach(l => map.removeLayer(l));
+        Object.values(MapState.layers).forEach((l) => map.removeLayer(l));
         map.addLayer(MapState.drawnItems);
 
         switch (selector.value) {
-            case 'jalur':
+            case "bencana":
                 map.addLayer(MapState.layers.bencana);
-                map.addLayer(MapState.layers.jalur);
                 break;
 
-            case 'bencana':
+            case "posko":
                 map.addLayer(MapState.layers.bencana);
+                map.addLayer(MapState.layers.posko);
                 break;
 
             default:
                 map.addLayer(MapState.layers.bencana);
-                map.addLayer(MapState.layers.jalur);
+                map.addLayer(MapState.layers.posko);
+                map.addLayer(MapState.layers.logistik);
                 map.addLayer(MapState.layers.fasilitas);
         }
     });
