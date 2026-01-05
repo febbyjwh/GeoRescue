@@ -77,12 +77,12 @@ document.addEventListener("DOMContentLoaded", function() {
         xaxis: {
             categories: labels,
             labels: {
-                style: { colors: '#4B5563', fontSize: '12px' }
+                style: { colors: '#000000', fontSize: '12px' }
             },
             tooltip: { enabled: false }
         },
         yaxis: {
-            labels: { style: { colors: '#4B5563', fontSize: '12px' } }
+            labels: { style: { colors: '#000000', fontSize: '12px' } }
         },
         stroke: {
             curve: 'smooth',
@@ -93,12 +93,12 @@ document.addEventListener("DOMContentLoaded", function() {
             gradient: {
                 shade: 'light',
                 type: 'vertical',
-                gradientToColors: ['#3B82F6'],
+                gradientToColors: ['#EAB308'],
                 opacityFrom: 0.4,
                 opacityTo: 0.05,
             }
         },
-        colors: ['#3B82F6'],
+        colors: ['#EAB308'],
         tooltip: {
             theme: 'dark',
             x: { show: true },

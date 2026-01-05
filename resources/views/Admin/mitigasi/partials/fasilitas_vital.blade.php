@@ -86,7 +86,7 @@
 
         <div class="mb-3">
             <button type="button" onclick="submitFasilitas()"
-                class="inline-flex items-center rounded-lg bg-blue-600 px-5 py-2.5 text-sm mt-6 font-medium text-white hover:bg-blue-700 transition">
+                class="inline-flex items-center rounded-lg bg-amber-300 px-5 py-2.5 text-sm mt-6 font-medium text-black hover:bg-amber-500 transition">
                 Simpan
             </button>
         </div>

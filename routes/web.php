@@ -78,16 +78,6 @@ Route::group(['middleware' => ['isadmin']], function () {
     });
 
 // Jalur distribusi logistik
-    Route::get('/data/fasilitas-vital', [FasilitasVitalController::class, 'mapData']);
-
-    Route::resource('fasilitasvital', FasilitasVitalController::class)->names([
-        'index' => 'fasilitasvital.index',
-        'create' => 'fasilitasvital.create',
-        'store' => 'fasilitasvital.store',
-        'update' => 'fasilitasvital.update',
-        'destroy' => 'fasilitasvital.destroy',
-    ]);
-
     Route::resource('jalur_distribusi_logistik', JalurDistribusiLogistikController::class)->names([
         'index' => 'jalur_distribusi_logistik.index',
         'create' => 'jalur_distribusi_logistik.create',
