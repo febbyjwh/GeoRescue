@@ -1,0 +1,339 @@
+document.addEventListener("DOMContentLoaded", async () => {
+    const map = L.map("map").setView([-6.9, 107.6], 11);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+    }).addTo(map);
+
+    if (!window.MapState) window.MapState = {};
+    if (!MapState.layers) MapState.layers = {};
+    if (!MapState.layers.kabBandung)
+        MapState.layers.kabBandung = L.layerGroup();
+
+    try {
+        const res = await fetch("/js/geojson/kab-bandung.geojson");
+        const geojsonData = await res.json();
+
+        const kabPolygon = L.geoJSON(geojsonData, {
+            style: {
+                color: "#947519", // border
+                weight: 2,
+                fillColor: "#FFCA28", // fill
+                fillOpacity: 0.2,
+            },
+        });
+
+        MapState.layers.kabBandung.clearLayers();
+        MapState.layers.kabBandung.addLayer(kabPolygon).addTo(map);
+
+        map.fitBounds(kabPolygon.getBounds());
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    if (!isUsingCustomLocation) {
+                        userLocation = {
+                            lat: pos.coords.latitude,
+                            lng: pos.coords.longitude,
+                        };
+
+                        // renderNearby();
+                    }
+
+                    gpsMarker = L.circleMarker(
+                        [userLocation.lat, userLocation.lng],
+                        {
+                            radius: 8,
+                            color: "#2563eb",
+                            fillColor: "#3b82f6",
+                            fillOpacity: 0.9,
+                        }
+                    )
+                        .addTo(map)
+                        .bindPopup("Lokasi Anda");
+
+                    // renderNearby();
+                },
+                () => console.warn("Izin lokasi ditolak")
+            );
+        }
+    } catch (err) {
+        console.error("Gagal load geojson Bandung:", err);
+    }
+
+    const layerBencana = L.layerGroup().addTo(map);
+    const layerPosko = L.layerGroup().addTo(map);
+    const layerFasilitas = L.layerGroup().addTo(map);
+    const layerLogistik = L.layerGroup().addTo(map);
+
+    // ================= LOKASI USER & UTIL =================
+    let userLocation = null;
+    let isAddCustomActive = false;
+    let customMarker = null;
+    let gpsMarker = null;
+    let isUsingCustomLocation = false;
+    let routingControl = null;
+
+    function hitungJarak(lat1, lng1, lat2, lng2) {
+        const R = 6371;
+        const dLat = ((lat2 - lat1) * Math.PI) / 180;
+        const dLng = ((lng2 - lng1) * Math.PI) / 180;
+
+        const a =
+            Math.sin(dLat / 2) ** 2 +
+            Math.cos((lat1 * Math.PI) / 180) *
+                Math.cos((lat2 * Math.PI) / 180) *
+                Math.sin(dLng / 2) ** 2;
+
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    // function getCustomLocations() {
+    //     return JSON.parse(localStorage.getItem("customLocations")) || [];
+    // }
+
+    function saveCustomLocation(lat, lng) {
+        userLocation = { lat, lng };
+        isUsingCustomLocation = true;
+
+        // hapus marker GPS
+        if (gpsMarker) {
+            map.removeLayer(gpsMarker);
+            gpsMarker = null;
+        }
+    }
+
+    const layers = {
+        bencana: layerBencana,
+        posko: layerPosko,
+        fasilitas: layerFasilitas,
+        logistik: layerLogistik,
+    };
+
+    const warnaBencana = {
+        Banjir: "#1E40AF",
+        Longsor: "#F59E0B",
+        Gempa: "#10B981",
+    };
+
+    try {
+        const resB = await fetch("/user/bencana-data");
+        const dataB = await resB.json();
+
+        dataB.data.forEach((item) => {
+            const lat = parseFloat(item.lat);
+            const lng = parseFloat(item.lang);
+            if (isNaN(lat) || isNaN(lng)) return;
+
+            const marker = L.circleMarker([lat, lng], {
+                radius: 8,
+                fillColor: warnaBencana[item.nama_bencana] ?? "#2563eb",
+                fillOpacity: 0.8,
+                color: "#fff",
+                weight: 1,
+            }).bindPopup(`
+                <div class="p-2 w-48 bg-white rounded shadow-md">
+                    <h3 class="font-bold text-blue-600">${item.nama_bencana}</h3>
+                    <p class="text-sm">Kecamatan: ${item.nama_kecamatan}</p>
+                    <p class="text-sm">Desa: ${item.nama_desa}</p>
+                    <p class="text-sm">Kerawanan: ${item.tingkat_kerawanan}</p>
+                </div>
+            `);
+
+            layerBencana.addLayer(marker);
+        });
+    } catch (err) {
+        console.error("Gagal load bencana:", err);
+    }
+
+    try {
+        const resP = await fetch("/user/posko-data");
+        const dataP = await resP.json();
+
+        dataP.data.forEach((item) => {
+            const lat = parseFloat(item.latitude);
+            const lng = parseFloat(item.longitude);
+            if (isNaN(lat) || isNaN(lng)) return;
+
+            const marker = L.marker([lat, lng], {
+                icon: L.icon({
+                    iconUrl: "/posko-icon.png",
+                    iconSize: [30, 30],
+                    iconAnchor: [15, 30],
+                }),
+            }).bindPopup(`
+    <div class="p-2 w-48 bg-white rounded shadow-md">
+        <h3 class="font-bold text-blue-600">${item.nama_posko}</h3>
+        <p class="text-sm">Jenis: ${item.jenis_posko}</p>
+        <p class="text-sm">Status: ${item.status_posko}</p>
+        <button 
+            class="mt-2 w-full bg-blue-600 text-white px-2 py-1 rounded"
+            onclick="window.routeToPosko(${lat}, ${lng})"
+        >
+            Tampilkan Rute
+        </button>
+    </div>
+`);
+
+            layerPosko.addLayer(marker);
+            renderNearby();
+        });
+    } catch (err) {
+        console.error("Gagal load posko:", err);
+    }
+
+    function renderNearby() {
+        if (!userLocation) return;
+
+        const list = document.getElementById("nearby-list");
+        if (!list) return;
+        list.innerHTML = "";
+
+        const poskoLocations = layerPosko.getLayers().map((m) => ({
+            nama: "Posko Evakuasi",
+            lat: m.getLatLng().lat,
+            lng: m.getLatLng().lng,
+            type: "posko",
+        }));
+
+        const allLocations = poskoLocations;
+
+        // const allLocations = [...getCustomLocations(), ...poskoLocations];
+
+        const MAX_DISTANCE_KM = 5; // 👈 BATAS MAKSIMAL
+
+        allLocations
+            .map((l) => ({
+                ...l,
+                jarak: hitungJarak(
+                    userLocation.lat,
+                    userLocation.lng,
+                    l.lat,
+                    l.lng
+                ),
+            }))
+            .filter((l) => l.jarak <= MAX_DISTANCE_KM) // 👈 TAMBAHKAN DI SINI
+            .sort((a, b) => a.jarak - b.jarak)
+            .slice(0, 5)
+            .forEach((l) => {
+                const li = document.createElement("li");
+                li.className = "p-2 hover:bg-gray-100 rounded cursor-pointer";
+                li.innerHTML = `
+                <strong>${l.nama}</strong><br>
+                <span class="text-sm text-gray-500">
+                    ${l.jarak.toFixed(2)} km
+                </span>
+            `;
+
+                li.onclick = () => {
+                    map.setView([l.lat, l.lng], 15);
+                    showRouteTo(l.lat, l.lng);
+                };
+                list.appendChild(li);
+            });
+    }
+
+    function showRouteTo(destLat, destLng) {
+        if (!userLocation) {
+            alert("Lokasi anda belum ditentukan");
+            return;
+        }
+
+        if (routingControl) {
+            map.removeControl(routingControl);
+        }
+        routingControl = L.Routing.control({
+            waypoints: [
+                L.latLng(userLocation.lat, userLocation.lng),
+                L.latLng(destLat, destLng),
+            ],
+            router: L.Routing.osrmv1({
+                serviceUrl: "https://router.project-osrm.org/route/v1",
+                profile: "foot", // 👈 PENTING
+            }),
+            routeWhileDragging: false,
+            addWaypoints: false,
+            draggableWaypoints: false,
+            show: false,
+            lineOptions: {
+                styles: [{ weight: 5 }],
+            },
+            createMarker: () => null,
+        }).addTo(map);
+    }
+
+    // L.control.layers(null, {
+    //     "Bencana": layerBencana,
+    //     "Posko": layerPosko
+    // }).addTo(map);
+
+    const layerConfig = {
+        bencana: layerBencana,
+        posko: layerPosko,
+    };
+
+    // event toggle button
+    document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const id = btn.id;
+            const layer = layers[id];
+            if (!layer) return;
+
+            if (map.hasLayer(layer)) {
+                map.removeLayer(layer);
+                btn.classList.remove("bg-yellow-300", "font-semibold");
+            } else {
+                map.addLayer(layer);
+                btn.classList.add("bg-yellow-300", "font-semibold");
+            }
+        });
+    });
+
+    // set kondisi awal tombol aktif
+    ["bencana", "posko"].forEach((id) => {
+        document
+            .getElementById(id)
+            ?.classList.add("bg-yellow-300", "font-semibold");
+    });
+
+    map.on("click", (e) => {
+        if (!isAddCustomActive) return;
+
+        // hapus marker lama kalau ada
+        if (customMarker) {
+            map.removeLayer(customMarker);
+        }
+
+        saveCustomLocation(e.latlng.lat, e.latlng.lng);
+
+        customMarker = L.marker(e.latlng)
+            .addTo(map)
+            .bindPopup("Lokasi Saya")
+            .openPopup();
+
+        isAddCustomActive = false;
+
+        addCustomBtn.classList.remove("bg-blue-700");
+        addCustomBtn.textContent = "📍 Tambah Lokasi Saya";
+
+        renderNearby();
+    });
+
+    const addCustomBtn = document.getElementById("addCustomLocation");
+
+    addCustomBtn.addEventListener("click", () => {
+        isAddCustomActive = !isAddCustomActive;
+
+        if (isAddCustomActive) {
+            addCustomBtn.classList.add("bg-blue-700");
+            addCustomBtn.textContent = "Klik Peta untuk Menentukan Lokasi";
+        } else {
+            addCustomBtn.classList.remove("bg-blue-700");
+            addCustomBtn.textContent = "📍 Tambah Lokasi Saya";
+        }
+    });
+    // ================= GLOBAL ROUTE HANDLER =================
+    window.routeToPosko = function (lat, lng) {
+        showRouteTo(lat, lng);
+    };
+});

@@ -59,7 +59,6 @@
                             <td class="px-5 py-4 text-sm">
                                 {{ $bencana->lang }}
                             </td>
-{{-- 
                             <td class="px-5 py-4 text-sm whitespace-nowrap">
                                 <a href="{{ route('bencana.edit', $bencana->id) }}"
                                    class="text-yellow-600 hover:underline">
@@ -75,7 +74,7 @@
                                         Hapus
                                     </button>
                                 </form>
-                            </td> --}}
+                            </td>
                         </tr>
                     @empty
                         <tr>

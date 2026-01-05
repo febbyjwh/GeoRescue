@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("select2:", $.fn.select2);
+    console.log("initDistrictVillageSelect:", typeof initDistrictVillageSelect);
 
     if (typeof initDistrictVillageSelect === "function") {
-        console.log(typeof initDistrictVillageSelect);
         initDistrictVillageSelect("#district_id", "#village_id");
     }
 
@@ -47,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <strong>${item.nama_posko}</strong><br>
                     Kecamatan: ${item.nama_kecamatan}<br>
                     Desa: ${item.nama_desa}<br>
+                    Jenis: ${item.jenis_posko}<br>
                     Status: ${item.status_posko}
                 `);
 
@@ -71,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Kecamatan
         const districtOption = new Option(
             item.nama_kecamatan,
-            item.kecamatan_id,
+            item.district_id,
             true,
             true
         );
@@ -81,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             const villageOption = new Option(
                 item.nama_desa,
-                item.desa_id,
+                item.village_id,
                 true,
                 true
             );
@@ -95,13 +97,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
         inputMarker.on("dragend", (ev) => {
             const pos = ev.target.getLatLng();
-            document.getElementById("latitude").value =
-                pos.lat.toFixed(7);
-            document.getElementById("longitude").value =
-                pos.lng.toFixed(7);
+            document.getElementById("latitude").value = pos.lat.toFixed(7);
+            document.getElementById("longitude").value = pos.lng.toFixed(7);
         });
 
         MapState.map.setView([item.latitude, item.longitude], 15);
+    }
+
+    function switchToCreatePosko(lat = null, lng = null) {
+        formMode = "create";
+        document.getElementById("posko_id").value = "";
+        document.querySelector("form")?.reset();
+        $("#district_id").val(null).trigger("change");
+        $("#village_id").empty().trigger("change");
+
+        inputLayer.clearLayers();
+
+        if (lat && lng) {
+            document.getElementById("latitude").value = lat;
+            document.getElementById("longitude").value = lng;
+
+            inputMarker = L.marker([lat, lng], { draggable: true }).addTo(
+                inputLayer
+            );
+
+            inputMarker.on("dragend", (ev) => {
+                const pos = ev.target.getLatLng();
+                document.getElementById("latitude").value = pos.lat.toFixed(7);
+                document.getElementById("longitude").value = pos.lng.toFixed(7);
+            });
+        }
     }
 
     function getFormData() {
@@ -109,9 +134,9 @@ document.addEventListener("DOMContentLoaded", () => {
             id: document.getElementById("posko_id").value || null,
             nama_posko: document.getElementById("nama_posko").value,
             jenis_posko: document.getElementById("jenis_posko").value,
-            kecamatan_id: document.getElementById("district_id").value,
-            desa_id: document.getElementById("village_id").value,
             status_posko: document.getElementById("status_posko").value,
+            district_id: document.getElementById("district_id").value, // sesuaikan
+            village_id: document.getElementById("village_id").value, // sesuaikan
             latitude: document.getElementById("latitude").value,
             longitude: document.getElementById("longitude").value,
         };
@@ -151,42 +176,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    function switchToCreatePosko(lat = null, lng = null) {
-        formMode = "create";
-
-        document.getElementById("posko_id").value = "";
-        document.querySelector("form")?.reset();
-
-        $("#district_id").val(null).trigger("change");
-        $("#village_id").empty().trigger("change");
-
-        inputLayer.clearLayers();
-
-        if (lat && lng) {
-            document.getElementById("latitude").value = lat;
-            document.getElementById("longitude").value = lng;
-
-            inputMarker = L.marker([lat, lng], {
-                draggable: true,
-            }).addTo(inputLayer);
-
-            inputMarker.on("dragend", (ev) => {
-                const pos = ev.target.getLatLng();
-                document.getElementById("latitude").value =
-                    pos.lat.toFixed(7);
-                document.getElementById("longitude").value =
-                    pos.lng.toFixed(7);
-            });
-        }
-    }
-
     function resetForm() {
         document.getElementById("posko_id").value = "";
         document.querySelector("form")?.reset();
-
         $("#district_id").val(null).trigger("change");
         $("#village_id").empty().trigger("change");
-
         inputLayer.clearLayers();
     }
 
@@ -207,16 +201,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         inputLayer.clearLayers();
 
-        inputMarker = L.marker([lat, lng], {
-            draggable: true,
-        }).addTo(inputLayer);
+        inputMarker = L.marker([lat, lng], { draggable: true }).addTo(
+            inputLayer
+        );
 
         inputMarker.on("dragend", (ev) => {
             const pos = ev.target.getLatLng();
-            document.getElementById("latitude").value =
-                pos.lat.toFixed(7);
-            document.getElementById("longitude").value =
-                pos.lng.toFixed(7);
+            document.getElementById("latitude").value = pos.lat.toFixed(7);
+            document.getElementById("longitude").value = pos.lng.toFixed(7);
         });
     });
 

@@ -1,6 +1,5 @@
 <?php
-use App\Http\Controllers\BencanaController;
-use App\Http\Controllers\PoskoController;
+use App\Http\Controllers\UserController;
 
-Route::get('/bencana', [BencanaController::class, 'getBencana']);
-Route::get('/posko', [PoskoController::class, 'getPosko']);
+Route::get('bencana', [UserController::class, 'bencana']);
+Route::get('posko', [UserController::class, 'posko']);

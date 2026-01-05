@@ -10,19 +10,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
         switch (selector.value) {
             case "bencana":
+                map.addLayer(MapState.layers.kabBandung);
                 map.addLayer(MapState.layers.bencana);
                 break;
 
             case "posko":
+                map.addLayer(MapState.layers.kabBandung);
                 map.addLayer(MapState.layers.bencana);
                 map.addLayer(MapState.layers.posko);
                 break;
 
-            case 'logistik':
+            case "fasilitas":
+                map.addLayer(MapState.layers.kabBandung);
+                map.addLayer(MapState.layers.bencana);
+                map.addLayer(MapState.layers.fasilitas);
+                break;
+
+            case "logistik":
+                map.addLayer(MapState.layers.kabBandung);
                 map.addLayer(MapState.layers.logistik);
                 break;
 
             default:
+                map.addLayer(MapState.layers.kabBandung);
                 map.addLayer(MapState.layers.bencana);
                 map.addLayer(MapState.layers.posko);
                 map.addLayer(MapState.layers.logistik);

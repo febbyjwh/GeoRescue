@@ -19,15 +19,14 @@
         <input type="hidden" id="posko_id">
 
         {{-- Kecamatan --}}
-        <div class="mb-3">
+         <div class="mb-3">
             <label class="block text-sm font-medium mb-1">Kecamatan</label>
-            <select id="district_id" class="w-full" style="width:100%"></select>
+            <select id="district_id" class="w-full" style="width: 100%"></select>
         </div>
 
-        {{-- Desa --}}
         <div class="mb-3">
             <label class="block text-sm font-medium mb-1">Desa</label>
-            <select id="village_id" class="w-full" style="width:100%"></select>
+            <select id="village_id" class="w-full" style="width: 100%"></select>
         </div>
 
         {{-- Jenis Posko --}}
@@ -87,3 +86,6 @@
 
     <div id="map" style="height:400px" class="mt-6 rounded-lg"></div>
 </div>
+@push('scripts')
+    <script src="{{ asset('js/select-region.js') }}"></script>
+@endpush

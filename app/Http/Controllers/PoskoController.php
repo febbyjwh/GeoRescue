@@ -3,22 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PoskoBencana;
+use App\Models\PoskoBencana;    
 
 class PoskoController extends Controller
 {
     public function index()
     {
-        return view('admin.posko.index');
+        $poskos = PoskoBencana::with(['district', 'village'])->get();
+        return view('admin.posko.index', compact('poskos'));
     }
 
     public function getPosko()
     {
         $poskos = PoskoBencana::with(['district', 'village'])->get()->map(function ($p) {
+        //    dd($poskos);
             return [
                 'id' => $p->id,
-                'district_id' => $p->district_id, 
-                'village_id' => $p->village_id,   
+                'kecamatan_id' => $p->kecamatan_id,
+                'desa_id' => $p->desa_id,
                 'nama_posko' => $p->nama_posko,
                 'jenis_posko' => $p->jenis_posko,
                 'status_posko' => $p->status_posko,

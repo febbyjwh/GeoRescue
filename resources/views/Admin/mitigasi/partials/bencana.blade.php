@@ -1,5 +1,6 @@
 <div class="container-fluid">
-    <x-common.page-breadcrumb pageTitle="Data Titik Bencana" class="z-10 relative" />    <div class="rounded-xl border border-gray-200 bg-white p-6">
+    <x-common.page-breadcrumb pageTitle="Data Titik Bencana" class="z-10 relative" />
+    <div class="rounded-xl border border-gray-200 bg-white p-6">
 
         <div class="mb-3">
             <x-form.form-elements.default-inputs id="nama_bencana" label="Nama Bencana" name="nama_bencana"
@@ -39,5 +40,7 @@
             </button>
         </div>
     </div>
-  
 </div>
+@push('scripts')
+    <script src="{{ asset('js/select-region.js') }}"></script>
+@endpush
