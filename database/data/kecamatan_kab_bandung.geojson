@@ -1,0 +1,346 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Arjasari",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.485, -7.145], [107.515, -7.145], [107.515, -7.175], [107.485, -7.175], [107.485, -7.145]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Baleendah",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.602, -7.001], [107.632, -7.001], [107.632, -7.028], [107.602, -7.028], [107.602, -7.001]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Banjaran",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.565, -7.035], [107.595, -7.035], [107.595, -7.065], [107.565, -7.065], [107.565, -7.035]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Bojongsoang",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.639, -6.973], [107.669, -6.973], [107.669, -6.995], [107.639, -6.995], [107.639, -6.973]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Cangkuang",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.835, -7.015], [107.865, -7.015], [107.865, -7.045], [107.835, -7.045], [107.835, -7.015]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Cicalengka",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.815, -6.985], [107.855, -6.985], [107.855, -7.015], [107.815, -7.015], [107.815, -6.985]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Cikancung",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.765, -7.025], [107.795, -7.025], [107.795, -7.055], [107.765, -7.055], [107.765, -7.025]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Cilengkrang",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.705, -6.915], [107.735, -6.915], [107.735, -6.945], [107.705, -6.945], [107.705, -6.915]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Cileunyi",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.685, -6.935], [107.725, -6.935], [107.725, -6.965], [107.685, -6.965], [107.685, -6.935]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Cimaung",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.595, -7.105], [107.625, -7.105], [107.625, -7.135], [107.595, -7.135], [107.595, -7.105]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Cimenyan",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.665, -6.865], [107.695, -6.865], [107.695, -6.895], [107.665, -6.895], [107.665, -6.865]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Ciparay",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.705, -7.025], [107.745, -7.025], [107.745, -7.055], [107.705, -7.055], [107.705, -7.025]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Ciwidey",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.485, -7.155], [107.515, -7.155], [107.515, -7.195], [107.485, -7.195], [107.485, -7.155]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Dayeuhkolot",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.610, -6.965], [107.640, -6.965], [107.640, -6.995], [107.610, -6.995], [107.610, -6.965]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Ibun",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.695, -7.055], [107.735, -7.055], [107.735, -7.095], [107.695, -7.095], [107.695, -7.055]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Katapang",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.555, -7.005], [107.585, -7.005], [107.585, -7.035], [107.555, -7.035], [107.555, -7.005]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Kertasari",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.915, -7.115], [107.955, -7.115], [107.955, -7.155], [107.915, -7.155], [107.915, -7.115]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Kutawaringin",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.635, -6.885], [107.665, -6.885], [107.665, -6.915], [107.635, -6.915], [107.635, -6.885]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Majalaya",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.745, -7.025], [107.785, -7.025], [107.785, -7.065], [107.745, -7.065], [107.745, -7.025]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Margaasih",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.575, -6.965], [107.605, -6.965], [107.605, -6.995], [107.575, -6.995], [107.575, -6.965]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Margahayu",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.560, -6.975], [107.590, -6.975], [107.590, -7.005], [107.560, -7.005], [107.560, -6.975]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Nagreg",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.865, -7.015], [107.905, -7.015], [107.905, -7.055], [107.865, -7.055], [107.865, -7.015]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Pacet",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.825, -7.055], [107.865, -7.055], [107.865, -7.095], [107.825, -7.095], [107.825, -7.055]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Pameungpeuk",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.565, -7.075], [107.595, -7.075], [107.595, -7.105], [107.565, -7.105], [107.565, -7.075]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Pangalengan",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.575, -7.125], [107.615, -7.125], [107.615, -7.175], [107.575, -7.175], [107.575, -7.125]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Paseh",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.735, -7.065], [107.765, -7.065], [107.765, -7.095], [107.735, -7.095], [107.735, -7.065]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Pasirjambu",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.685, -7.135], [107.715, -7.135], [107.715, -7.165], [107.685, -7.165], [107.685, -7.135]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Rancabali",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.365, -7.135], [107.405, -7.135], [107.405, -7.175], [107.365, -7.175], [107.365, -7.135]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Rancaekek",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.725, -6.945], [107.765, -6.945], [107.765, -6.975], [107.725, -6.975], [107.725, -6.945]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Solokanjeruk",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.695, -7.085], [107.725, -7.085], [107.725, -7.115], [107.695, -7.115], [107.695, -7.085]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kecamatan": "Soreang",
+        "kabupaten": "Bandung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.515, -7.015], [107.555, -7.015], [107.555, -7.055], [107.515, -7.055], [107.515, -7.015]]]
+      }
+    }
+  ]
+}

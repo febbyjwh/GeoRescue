@@ -33,7 +33,7 @@
   --text-title-lg--line-height: 60px;
   --text-title-md: 36px;
   --text-title-md--line-height: 44px;
-  --text-title-sm: 30px;
+  --text-title-sm: 30px; 
   --text-title-sm--line-height: 38px;
   --text-theme-xl: 20px;
   --text-theme-xl--line-height: 30px;
@@ -198,7 +198,7 @@
 }
 
 @utility menu-item-active {
-  @apply bg-brand-50 text-brand-500 dark:bg-brand-500/[0.12] dark:text-brand-400;
+  @apply bg-amber-100 text-black dark:bg-amber-500/20 dark:text-amber-400;
 }
 
 @utility menu-item-inactive {
@@ -210,7 +210,7 @@
 }
 
 @utility menu-item-icon-active {
-  @apply text-brand-500 dark:text-brand-400;
+  @apply text-amber-500 dark:text-amber-400;
 }
 
 @utility menu-item-icon-inactive {
@@ -234,7 +234,7 @@
 }
 
 @utility menu-dropdown-item-active {
-  @apply bg-brand-50 text-brand-500 dark:bg-brand-500/[0.12] dark:text-brand-400;
+  @apply bg-amber-100 text-black dark:bg-amber-500/20 dark:text-amber-400;
 }
 
 @utility menu-dropdown-item-inactive {
@@ -258,7 +258,7 @@
 }
 
 @utility menu-dropdown-badge-active {
-  @apply bg-success-100 dark:bg-success-500/20;
+  @apply bg-amber-500 text-black dark:bg-amber-400/30;
 }
 
 @utility menu-dropdown-badge-inactive {

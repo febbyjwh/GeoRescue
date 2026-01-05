@@ -94,12 +94,13 @@
             </x-form.form-elements.select-inputs>
 
             <div class="flex justify-end gap-3">
-                <button
+               <button
                     type="submit"
-                    class="inline-flex rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700"
+                    class="inline-flex rounded-lg bg-amber-300 px-5 py-2.5 text-sm font-medium text-black hover:bg-amber-500"
                 >
                     Simpan
                 </button>
+
             </div>
 
         </form>
