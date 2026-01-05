@@ -18,11 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 map.addLayer(MapState.layers.posko);
                 break;
 
+            case 'logistik':
+                map.addLayer(MapState.layers.logistik);
+                break;
+
             default:
                 map.addLayer(MapState.layers.bencana);
                 map.addLayer(MapState.layers.posko);
                 map.addLayer(MapState.layers.logistik);
                 map.addLayer(MapState.layers.fasilitas);
+                map.addLayer(MapState.layers.logistik);
         }
     });
 });

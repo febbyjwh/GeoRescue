@@ -1,0 +1,6271 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2025-12-29T13:05:45Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/668050361",
+        "name": "Santosa",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6395302,
+          -7.2544444
+        ]
+      },
+      "id": "node/668050361"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308636842",
+        "name": "Cileunyi Kulon",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7473027,
+          -6.9363837
+        ]
+      },
+      "id": "node/1308636842"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308637281",
+        "name": "Cikasungka",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8239435,
+          -7.0053354
+        ]
+      },
+      "id": "node/1308637281"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308637369",
+        "name": "Sarimahi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7092203,
+          -7.0326372
+        ]
+      },
+      "id": "node/1308637369"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308637435",
+        "name": "Cilame",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4996246,
+          -7.0322971
+        ]
+      },
+      "id": "node/1308637435"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308638171",
+        "name": "Narawita",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8506527,
+          -7.0113628
+        ]
+      },
+      "id": "node/1308638171"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308638345",
+        "name": "Pakutandang",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.710101,
+          -7.0463494
+        ]
+      },
+      "id": "node/1308638345"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308639795",
+        "name": "Sindangsari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7771033,
+          -7.0709301
+        ]
+      },
+      "id": "node/1308639795"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308639975",
+        "name": "Mekarlaksana",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8251883,
+          -7.0440412
+        ]
+      },
+      "id": "node/1308639975"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308641187",
+        "name": "Mekarjaya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.62791,
+          -7.0697352
+        ]
+      },
+      "id": "node/1308641187"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308641367",
+        "name": "Ciapus",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.588924,
+          -7.0600388
+        ]
+      },
+      "id": "node/1308641367"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308642993",
+        "name": "Margamulya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4572847,
+          -7.1125789
+        ]
+      },
+      "id": "node/1308642993"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308643269",
+        "name": "Sukawening",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4692652,
+          -7.0781167
+        ]
+      },
+      "id": "node/1308643269"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308644515",
+        "name": "Sukarame",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7032318,
+          -7.1295813
+        ]
+      },
+      "id": "node/1308644515"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308644766",
+        "name": "Lengkong",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6393034,
+          -6.9747354
+        ]
+      },
+      "id": "node/1308644766"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308644958",
+        "name": "Cikembang",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6733418,
+          -7.2105499
+        ]
+      },
+      "id": "node/1308644958"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308645460",
+        "name": "Sukamaju",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5448057,
+          -7.1025455
+        ]
+      },
+      "id": "node/1308645460"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308645532",
+        "name": "Bojongemas",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7141388,
+          -6.9947164
+        ]
+      },
+      "id": "node/1308645532"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308645624",
+        "name": "Cikitu",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6915734,
+          -7.1433079
+        ]
+      },
+      "id": "node/1308645624"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308646176",
+        "name": "Neglawangi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.675258,
+          -7.2730794
+        ]
+      },
+      "id": "node/1308646176"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308647088",
+        "name": "Karangtunggal",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8054003,
+          -7.0510621
+        ]
+      },
+      "id": "node/1308647088"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308647431",
+        "name": "Langonsari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6035814,
+          -7.0199153
+        ]
+      },
+      "id": "node/1308647431"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308648475",
+        "name": "Langensari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7563911,
+          -7.0116429
+        ]
+      },
+      "id": "node/1308648475"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308648704",
+        "name": "Serangmekar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7053854,
+          -7.0329084
+        ]
+      },
+      "id": "node/1308648704"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308648908",
+        "name": "Cipeundeuy",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8243465,
+          -7.0193354
+        ]
+      },
+      "id": "node/1308648908"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308649258",
+        "name": "Mekar Rahayu",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5536018,
+          -6.9772339
+        ]
+      },
+      "id": "node/1308649258"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308650142",
+        "name": "Talun",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7637572,
+          -7.0689233
+        ]
+      },
+      "id": "node/1308650142"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308650724",
+        "name": "Rancaekek Kulon",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7533291,
+          -6.9667995
+        ]
+      },
+      "id": "node/1308650724"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308651449",
+        "name": "Jagabaya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5650836,
+          -7.0724608
+        ]
+      },
+      "id": "node/1308651449"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308651626",
+        "name": "Kamasan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5832419,
+          -7.0490205
+        ]
+      },
+      "id": "node/1308651626"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308651952",
+        "name": "Margahayu Selatan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5683646,
+          -6.9713867
+        ]
+      },
+      "id": "node/1308651952"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308652654",
+        "name": "Baros",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6297775,
+          -7.0605905
+        ]
+      },
+      "id": "node/1308652654"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308652907",
+        "name": "Cipaku",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7784815,
+          -7.0543854
+        ]
+      },
+      "id": "node/1308652907"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308654657",
+        "name": "Tenjolaya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4699784,
+          -7.1152852
+        ]
+      },
+      "id": "node/1308654657"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308654871",
+        "name": "Babakanpeuteuy",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8540345,
+          -6.9892329
+        ]
+      },
+      "id": "node/1308654871"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308655354",
+        "name": "Ciporeat",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7219399,
+          -6.88757
+        ]
+      },
+      "id": "node/1308655354"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308656122",
+        "name": "Mekarsari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5628719,
+          -7.111392
+        ]
+      },
+      "id": "node/1308656122"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308656200",
+        "name": "Sukamulya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4865259,
+          -7.0066683
+        ]
+      },
+      "id": "node/1308656200"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308656279",
+        "name": "Margamukti",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5831461,
+          -7.1859148
+        ]
+      },
+      "id": "node/1308656279"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308656796",
+        "name": "Sukamanah",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7399116,
+          -6.9932966
+        ]
+      },
+      "id": "node/1308656796"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308657899",
+        "name": "Mandalawangi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8608721,
+          -7.0252968
+        ]
+      },
+      "id": "node/1308657899"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308658065",
+        "name": "Manguharja",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.719129,
+          -7.0398536
+        ]
+      },
+      "id": "node/1308658065"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308658880",
+        "name": "Bandasari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5357537,
+          -7.0535118
+        ]
+      },
+      "id": "node/1308658880"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308659336",
+        "name": "Pasawahan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.615879,
+          -6.9747468
+        ]
+      },
+      "id": "node/1308659336"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308659613",
+        "name": "Malasari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5479511,
+          -7.0795193
+        ]
+      },
+      "id": "node/1308659613"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308659671",
+        "name": "Rawabogo",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4452162,
+          -7.0763423
+        ]
+      },
+      "id": "node/1308659671"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308659994",
+        "name": "Tegalsumedang",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7166316,
+          -6.9816411
+        ]
+      },
+      "id": "node/1308659994"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308660533",
+        "name": "Kiangroke",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5699895,
+          -7.0556718
+        ]
+      },
+      "id": "node/1308660533"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308660847",
+        "name": "Mandalahaji",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.713764,
+          -7.1036689
+        ]
+      },
+      "id": "node/1308660847"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308661483",
+        "name": "Cisondari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4793672,
+          -7.09268
+        ]
+      },
+      "id": "node/1308661483"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308661523",
+        "name": "Rancamanyar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5971078,
+          -6.9967213
+        ]
+      },
+      "id": "node/1308661523"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308661562",
+        "name": "Margamekar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5748565,
+          -7.1914195
+        ]
+      },
+      "id": "node/1308661562"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308661608",
+        "name": "Melatiwangi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7043551,
+          -6.8921001
+        ]
+      },
+      "id": "node/1308661608"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308661852",
+        "name": "Cikalong",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5573693,
+          -7.114075
+        ]
+      },
+      "id": "node/1308661852"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308661905",
+        "name": "Sangkanhurip",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5656624,
+          -7.0025535
+        ]
+      },
+      "id": "node/1308661905"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308661960",
+        "name": "Girimulya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6800946,
+          -7.1511663
+        ]
+      },
+      "id": "node/1308661960"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308662606",
+        "name": "Nanjung",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5363667,
+          -6.9518599
+        ]
+      },
+      "id": "node/1308662606"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308663184",
+        "name": "Margaasih",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8487522,
+          -6.9982889
+        ]
+      },
+      "id": "node/1308663184"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308663353",
+        "name": "Ciheulang",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6821626,
+          -7.0222913
+        ]
+      },
+      "id": "node/1308663353"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308663479",
+        "name": "Sadu",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5075929,
+          -7.0305124
+        ]
+      },
+      "id": "node/1308663479"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308663850",
+        "name": "Wangisagara",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7389153,
+          -7.0775804
+        ]
+      },
+      "id": "node/1308663850"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308664780",
+        "name": "Sigaracipta",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.711014,
+          -7.0681185
+        ]
+      },
+      "id": "node/1308664780"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308664882",
+        "name": "Panyirapan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5281191,
+          -7.0385943
+        ]
+      },
+      "id": "node/1308664882"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308665282",
+        "name": "Karyalaksana",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7552526,
+          -7.0807384
+        ]
+      },
+      "id": "node/1308665282"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308665320",
+        "name": "Rancakole",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6803067,
+          -7.0751619
+        ]
+      },
+      "id": "node/1308665320"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308665590",
+        "name": "Pangauban",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5575435,
+          -6.9918792
+        ]
+      },
+      "id": "node/1308665590"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308665702",
+        "name": "Cikadut",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6762122,
+          -6.8896928
+        ]
+      },
+      "id": "node/1308665702"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308666313",
+        "name": "Pangauban",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6914197,
+          -7.1321218
+        ]
+      },
+      "id": "node/1308666313"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308666532",
+        "name": "Tenjolaya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8385487,
+          -6.9841744
+        ]
+      },
+      "id": "node/1308666532"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308666659",
+        "name": "Warnasari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5439771,
+          -7.1934322
+        ]
+      },
+      "id": "node/1308666659"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308667805",
+        "name": "Cibodas",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7622749,
+          -7.0119624
+        ]
+      },
+      "id": "node/1308667805"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308667873",
+        "name": "Cinunuk",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7317897,
+          -6.9374505
+        ]
+      },
+      "id": "node/1308667873"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308668411",
+        "name": "Gandasari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5490968,
+          -7.0234032
+        ]
+      },
+      "id": "node/1308668411"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308669279",
+        "name": "Manggahang",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6463184,
+          -7.0152087
+        ]
+      },
+      "id": "node/1308669279"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308669486",
+        "name": "Pananjung",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5293752,
+          -7.046902
+        ]
+      },
+      "id": "node/1308669486"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308669832",
+        "name": "Lebakmuncang",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4354604,
+          -7.0973536
+        ]
+      },
+      "id": "node/1308669832"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308669869",
+        "name": "Padamulya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7514284,
+          -7.0564651
+        ]
+      },
+      "id": "node/1308669869"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308670165",
+        "name": "Mekarjaya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5917888,
+          -7.0811911
+        ]
+      },
+      "id": "node/1308670165"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308670206",
+        "name": "Pinggirsari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6537764,
+          -7.0574779
+        ]
+      },
+      "id": "node/1308670206"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308670469",
+        "name": "Sukamenak",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5847286,
+          -6.968322
+        ]
+      },
+      "id": "node/1308670469"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308670849",
+        "name": "Neglasari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5716748,
+          -7.0636878
+        ]
+      },
+      "id": "node/1308670849"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308671206",
+        "name": "Cibeet",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7612476,
+          -7.0873135
+        ]
+      },
+      "id": "node/1308671206"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308671721",
+        "name": "Mekarsari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5136871,
+          -7.1326659
+        ]
+      },
+      "id": "node/1308671721"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308671761",
+        "name": "Cicalengka Wetan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8433632,
+          -6.992855
+        ]
+      },
+      "id": "node/1308671761"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308671835",
+        "name": "Tribaktimulya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5637089,
+          -7.141524
+        ]
+      },
+      "id": "node/1308671835"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308672472",
+        "name": "Bojongmalaka",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6030862,
+          -6.997411
+        ]
+      },
+      "id": "node/1308672472"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308672857",
+        "name": "Majasetra",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.753226,
+          -7.0359797
+        ]
+      },
+      "id": "node/1308672857"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308673094",
+        "name": "Bojongkunci",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5682753,
+          -7.0198792
+        ]
+      },
+      "id": "node/1308673094"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308673135",
+        "name": "Mekarsari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7365837,
+          -7.0275703
+        ]
+      },
+      "id": "node/1308673135"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308673250",
+        "name": "Bojongloa",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7688009,
+          -6.9626987
+        ]
+      },
+      "id": "node/1308673250"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308673828",
+        "name": "Batukarut",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5992413,
+          -7.046148
+        ]
+      },
+      "id": "node/1308673828"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308673875",
+        "name": "Patrolsari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6735176,
+          -7.0584359
+        ]
+      },
+      "id": "node/1308673875"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308673975",
+        "name": "Jatisari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.530962,
+          -6.988591
+        ]
+      },
+      "id": "node/1308673975"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308674127",
+        "name": "Loa",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7855951,
+          -7.0718962
+        ]
+      },
+      "id": "node/1308674127"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308674167",
+        "name": "Jatisari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5472013,
+          -7.0673765
+        ]
+      },
+      "id": "node/1308674167"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308674398",
+        "name": "Lamajang",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5484172,
+          -7.1233052
+        ]
+      },
+      "id": "node/1308674398"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308675057",
+        "name": "Cibeureum",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6745071,
+          -7.1942922
+        ]
+      },
+      "id": "node/1308675057"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308675225",
+        "name": "Mekarsaluyu",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6553314,
+          -6.8620365
+        ]
+      },
+      "id": "node/1308675225"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308675432",
+        "name": "Bojongsalam",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8007157,
+          -6.994496
+        ]
+      },
+      "id": "node/1308675432"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308675531",
+        "name": "Sindanglaya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6849271,
+          -6.8890554
+        ]
+      },
+      "id": "node/1308675531"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308676356",
+        "name": "Banjarsari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.596169,
+          -7.2118482
+        ]
+      },
+      "id": "node/1308676356"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308677027",
+        "name": "Cihanyir",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8170574,
+          -7.0239985
+        ]
+      },
+      "id": "node/1308677027"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308677113",
+        "name": "Ciaro",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.9212437,
+          -7.0391168
+        ]
+      },
+      "id": "node/1308677113"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308677669",
+        "name": "Rancaekek Wetan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7609689,
+          -6.9588507
+        ]
+      },
+      "id": "node/1308677669"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308678207",
+        "name": "Sekarwangi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5418439,
+          -7.0191288
+        ]
+      },
+      "id": "node/1308678207"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308678260",
+        "name": "Biru",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7285113,
+          -7.0526818
+        ]
+      },
+      "id": "node/1308678260"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308678968",
+        "name": "Tanggulun",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7617466,
+          -7.0530784
+        ]
+      },
+      "id": "node/1308678968"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308679024",
+        "name": "Margahurip",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5627871,
+          -7.0630979
+        ]
+      },
+      "id": "node/1308679024"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308679307",
+        "name": "Nagrak",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7260402,
+          -7.0974984
+        ]
+      },
+      "id": "node/1308679307"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308679458",
+        "name": "Cikoneng",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4726514,
+          -7.0751453
+        ]
+      },
+      "id": "node/1308679458"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308679604",
+        "name": "Tegalluar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6902414,
+          -6.9839729
+        ]
+      },
+      "id": "node/1308679604"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308680264",
+        "name": "Mekarjaya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.700029,
+          -7.1007492
+        ]
+      },
+      "id": "node/1308680264"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308680422",
+        "name": "Sindangpanon",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.584205,
+          -7.0586238
+        ]
+      },
+      "id": "node/1308680422"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308680809",
+        "name": "Cibodas",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4840654,
+          -7.0936157
+        ]
+      },
+      "id": "node/1308680809"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308681140",
+        "name": "Laksana",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7703512,
+          -7.1041933
+        ]
+      },
+      "id": "node/1308681140"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308681180",
+        "name": "Andir",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.622618,
+          -7.0071484
+        ]
+      },
+      "id": "node/1308681180"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308681267",
+        "name": "Pulosari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5588721,
+          -7.1907715
+        ]
+      },
+      "id": "node/1308681267"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308681605",
+        "name": "Jalekong",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6661979,
+          -7.0234836
+        ]
+      },
+      "id": "node/1308681605"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308682111",
+        "name": "Cimekar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7389307,
+          -6.9359353
+        ]
+      },
+      "id": "node/1308682111"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308682857",
+        "name": "Tangsimekar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7895831,
+          -7.0319135
+        ]
+      },
+      "id": "node/1308682857"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308683290",
+        "name": "Dampit",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8535612,
+          -6.9708294
+        ]
+      },
+      "id": "node/1308683290"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308683456",
+        "name": "Pasirhuni",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5746326,
+          -7.0920136
+        ]
+      },
+      "id": "node/1308683456"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308683503",
+        "name": "Banjaran Wetan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.595406,
+          -7.0503005
+        ]
+      },
+      "id": "node/1308683503"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308683671",
+        "name": "Buahbatu",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6707479,
+          -6.9878509
+        ]
+      },
+      "id": "node/1308683671"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308683822",
+        "name": "Cikawao",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.740335,
+          -7.0975967
+        ]
+      },
+      "id": "node/1308683822"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308683859",
+        "name": "Sukanagara",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5180352,
+          -7.0569886
+        ]
+      },
+      "id": "node/1308683859"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308684539",
+        "name": "Cinanggela",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6819953,
+          -7.1232879
+        ]
+      },
+      "id": "node/1308684539"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308684581",
+        "name": "Sulaeman",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5656262,
+          -6.9841164
+        ]
+      },
+      "id": "node/1308684581"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308684626",
+        "name": "Sukamanah",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.59095,
+          -7.2058813
+        ]
+      },
+      "id": "node/1308684626"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308685014",
+        "name": "Nagrog",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8573773,
+          -7.0019457
+        ]
+      },
+      "id": "node/1308685014"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308685512",
+        "name": "Tarumajaya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6642026,
+          -7.2046599
+        ]
+      },
+      "id": "node/1308685512"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308685897",
+        "name": "Cingcin",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5388276,
+          -7.0233092
+        ]
+      },
+      "id": "node/1308685897"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308685983",
+        "name": "Sukasari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5966611,
+          -7.0180915
+        ]
+      },
+      "id": "node/1308685983"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308686062",
+        "name": "Jelegong",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.774961,
+          -6.96604
+        ]
+      },
+      "id": "node/1308686062"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308686307",
+        "name": "Buninagara",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5038051,
+          -7.0252566
+        ]
+      },
+      "id": "node/1308686307"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308686364",
+        "name": "Majakerta",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7565525,
+          -7.0525462
+        ]
+      },
+      "id": "node/1308686364"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308686663",
+        "name": "Lampegan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7602715,
+          -7.0676553
+        ]
+      },
+      "id": "node/1308686663"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308686703",
+        "name": "Tanjungsari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5715914,
+          -7.0337424
+        ]
+      },
+      "id": "node/1308686703"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308686826",
+        "name": "Citeureup",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6230921,
+          -6.984231
+        ]
+      },
+      "id": "node/1308686826"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308686974",
+        "name": "Tanjungwangi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7206577,
+          -7.0885693
+        ]
+      },
+      "id": "node/1308686974"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308687014",
+        "name": "Sukamanah",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7647884,
+          -7.0491849
+        ]
+      },
+      "id": "node/1308687014"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308687103",
+        "name": "Cipagalo",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6373903,
+          -6.9671749
+        ]
+      },
+      "id": "node/1308687103"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308687341",
+        "name": "Sudi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7704468,
+          -7.0795719
+        ]
+      },
+      "id": "node/1308687341"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308687379",
+        "name": "Drawati",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7933557,
+          -7.0610855
+        ]
+      },
+      "id": "node/1308687379"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308687646",
+        "name": "Mekarwangi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7786272,
+          -7.0998076
+        ]
+      },
+      "id": "node/1308687646"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308687698",
+        "name": "Cilampeni",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5527686,
+          -6.9877748
+        ]
+      },
+      "id": "node/1308687698"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308688233",
+        "name": "Neglasari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7482191,
+          -7.1159768
+        ]
+      },
+      "id": "node/1308688233"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308688285",
+        "name": "Sukamukti",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5769513,
+          -7.003425
+        ]
+      },
+      "id": "node/1308688285"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308688378",
+        "name": "Sukapura",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6911742,
+          -7.1606567
+        ]
+      },
+      "id": "node/1308688378"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308688419",
+        "name": "Cileunyi Wetan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7530044,
+          -6.9386989
+        ]
+      },
+      "id": "node/1308688419"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308689140",
+        "name": "Rancamulya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5928156,
+          -7.0038002
+        ]
+      },
+      "id": "node/1308689140"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308690182",
+        "name": "Jelegong",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5250234,
+          -6.9557272
+        ]
+      },
+      "id": "node/1308690182"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308690759",
+        "name": "Bojongsari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6479971,
+          -7.000692
+        ]
+      },
+      "id": "node/1308690759"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308691003",
+        "name": "Banyusari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5551611,
+          -7.0180571
+        ]
+      },
+      "id": "node/1308691003"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308692490",
+        "name": "Mandalasari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.826582,
+          -7.0120686
+        ]
+      },
+      "id": "node/1308692490"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308692699",
+        "name": "Panyadap",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7685843,
+          -7.0278757
+        ]
+      },
+      "id": "node/1308692699"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308692991",
+        "name": "Tanjungwangi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8909455,
+          -6.963629
+        ]
+      },
+      "id": "node/1308692991"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308694023",
+        "name": "Karamatmulya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5156643,
+          -7.0371626
+        ]
+      },
+      "id": "node/1308694023"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308694185",
+        "name": "Sangiang",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.796531,
+          -6.997716
+        ]
+      },
+      "id": "node/1308694185"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308694493",
+        "name": "Cikoneng",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7066426,
+          -7.0727186
+        ]
+      },
+      "id": "node/1308694493"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308694500",
+        "name": "Malakasari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6091205,
+          -7.0073961
+        ]
+      },
+      "id": "node/1308694500"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308694622",
+        "name": "Cangkuang Kulon",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5908782,
+          -6.9721704
+        ]
+      },
+      "id": "node/1308694622"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308695052",
+        "name": "Ancolmekar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6773749,
+          -7.0855807
+        ]
+      },
+      "id": "node/1308695052"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308695183",
+        "name": "Sukamantri",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7687494,
+          -7.0558715
+        ]
+      },
+      "id": "node/1308695183"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308695539",
+        "name": "Indragiri",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3419604,
+          -7.1427976
+        ]
+      },
+      "id": "node/1308695539"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308695681",
+        "name": "Cilengkrang",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7257343,
+          -6.8922288
+        ]
+      },
+      "id": "node/1308695681"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308695973",
+        "name": "Sukaresmi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3263995,
+          -7.1642517
+        ]
+      },
+      "id": "node/1308695973"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308696076",
+        "name": "Sukaluyu",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5353247,
+          -7.2225224
+        ]
+      },
+      "id": "node/1308696076"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308696330",
+        "name": "Panundaan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4409422,
+          -7.1124862
+        ]
+      },
+      "id": "node/1308696330"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308696450",
+        "name": "Girimekar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.692184,
+          -6.8994421
+        ]
+      },
+      "id": "node/1308696450"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308696681",
+        "name": "Wanasuka",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6182363,
+          -7.2455456
+        ]
+      },
+      "id": "node/1308696681"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308696684",
+        "name": "Padasuka",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5176927,
+          -7.0173254
+        ]
+      },
+      "id": "node/1308696684"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308696724",
+        "name": "Lagadar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5387086,
+          -6.9227481
+        ]
+      },
+      "id": "node/1308696724"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308696961",
+        "name": "Pamekaran",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5241684,
+          -7.0261808
+        ]
+      },
+      "id": "node/1308696961"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308697313",
+        "name": "Bojong",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7761048,
+          -7.0384815
+        ]
+      },
+      "id": "node/1308697313"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308697604",
+        "name": "Rahayu",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5631737,
+          -6.9535027
+        ]
+      },
+      "id": "node/1308697604"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308698537",
+        "name": "Ciluluk",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.807638,
+          -7.0277066
+        ]
+      },
+      "id": "node/1308698537"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308698848",
+        "name": "Bojongmanggu",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6037292,
+          -7.0274928
+        ]
+      },
+      "id": "node/1308698848"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308700341",
+        "name": "Tarajusari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5796043,
+          -7.0386833
+        ]
+      },
+      "id": "node/1308700341"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308700640",
+        "name": "Cankuang",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8023586,
+          -6.9710722
+        ]
+      },
+      "id": "node/1308700640"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308701294",
+        "name": "Cipeujeuh",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7134891,
+          -7.089877
+        ]
+      },
+      "id": "node/1308701294"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308701332",
+        "name": "Wargaluyu",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6172483,
+          -7.0348277
+        ]
+      },
+      "id": "node/1308701332"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308702382",
+        "name": "Panyocokan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4580052,
+          -7.0900712
+        ]
+      },
+      "id": "node/1308702382"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308702556",
+        "name": "Lebakwangi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6054525,
+          -7.0454233
+        ]
+      },
+      "id": "node/1308702556"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308702911",
+        "name": "Ciburial",
+        "official_name": "Desa Ciburial",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6439289,
+          -6.8551793
+        ]
+      },
+      "id": "node/1308702911"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308703598",
+        "name": "Campakamulya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5866181,
+          -7.0982113
+        ]
+      },
+      "id": "node/1308703598"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308704497",
+        "name": "Cipinang",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5583684,
+          -7.1056802
+        ]
+      },
+      "id": "node/1308704497"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308704673",
+        "name": "Kopo",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5253387,
+          -7.0041796
+        ]
+      },
+      "id": "node/1308704673"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308704839",
+        "name": "Margamulya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.571448,
+          -7.1725772
+        ]
+      },
+      "id": "node/1308704839"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308705794",
+        "name": "Citaman",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.875985,
+          -7.0099567
+        ]
+      },
+      "id": "node/1308705794"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308707779",
+        "name": "Parungserab",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5288615,
+          -7.011954
+        ]
+      },
+      "id": "node/1308707779"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308708074",
+        "name": "Ciherang",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.9087802,
+          -7.0381492
+        ]
+      },
+      "id": "node/1308708074"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308708348",
+        "name": "Bojong",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.870048,
+          -7.0265426
+        ]
+      },
+      "id": "node/1308708348"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308710352",
+        "name": "Sukamukti",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7437651,
+          -7.0560582
+        ]
+      },
+      "id": "node/1308710352"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308710864",
+        "name": "Margahayu Tengah",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.569218,
+          -6.9624623
+        ]
+      },
+      "id": "node/1308710864"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308711350",
+        "name": "Sukajadi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4990155,
+          -7.0602076
+        ]
+      },
+      "id": "node/1308711350"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308711655",
+        "name": "Pameuntasan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5491895,
+          -6.9777672
+        ]
+      },
+      "id": "node/1308711655"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308712374",
+        "name": "Mekarmaju",
+        "place": "village",
+        "population": "8998",
+        "population:date": "2024-08-06",
+        "source:population": "https://mekarmaju.desa.id"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4703136,
+          -7.0876829
+        ]
+      },
+      "id": "node/1308712374"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308712603",
+        "name": "Cukanggenteng",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4849275,
+          -7.0809138
+        ]
+      },
+      "id": "node/1308712603"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308713416",
+        "name": "Maruyung",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7008988,
+          -7.116085
+        ]
+      },
+      "id": "node/1308713416"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308713548",
+        "name": "Nengkelan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4562759,
+          -7.0766471
+        ]
+      },
+      "id": "node/1308713548"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308714558",
+        "name": "Alamendah",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4194272,
+          -7.1316591
+        ]
+      },
+      "id": "node/1308714558"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308714816",
+        "name": "Haurpugur",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8028288,
+          -6.9811987
+        ]
+      },
+      "id": "node/1308714816"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308715048",
+        "name": "Cihawuk",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7026009,
+          -7.1890023
+        ]
+      },
+      "id": "node/1308715048"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308715917",
+        "name": "Dukuh",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7558154,
+          -7.1146845
+        ]
+      },
+      "id": "node/1308715917"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308716224",
+        "name": "Sugihmukti",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4417251,
+          -7.120656
+        ]
+      },
+      "id": "node/1308716224"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308718629",
+        "name": "Cijagra",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7889613,
+          -7.0416117
+        ]
+      },
+      "id": "node/1308718629"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308718775",
+        "name": "Bumiwangi",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6940358,
+          -7.0321787
+        ]
+      },
+      "id": "node/1308718775"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308719279",
+        "name": "Linggar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7971605,
+          -6.9645477
+        ]
+      },
+      "id": "node/1308719279"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308720334",
+        "name": "Padaulun",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7373476,
+          -7.0512329
+        ]
+      },
+      "id": "node/1308720334"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308720582",
+        "name": "Cangkuang Wetan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6003234,
+          -6.9727647
+        ]
+      },
+      "id": "node/1308720582"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308721134",
+        "name": "Neglasari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7294791,
+          -7.0774711
+        ]
+      },
+      "id": "node/1308721134"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308722256",
+        "name": "Mekarsari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6991598,
+          -7.0930523
+        ]
+      },
+      "id": "node/1308722256"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308722352",
+        "name": "Nagrak",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5492964,
+          -7.055211
+        ]
+      },
+      "id": "node/1308722352"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308722445",
+        "name": "Sayati",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5746479,
+          -6.9713642
+        ]
+      },
+      "id": "node/1308722445"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308723054",
+        "name": "Mangunjaya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6102695,
+          -7.0598626
+        ]
+      },
+      "id": "node/1308723054"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308723598",
+        "name": "Cipanjalu",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7099965,
+          -6.8835657
+        ]
+      },
+      "id": "node/1308723598"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308724422",
+        "name": "Pangguh",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7494783,
+          -7.0959757
+        ]
+      },
+      "id": "node/1308724422"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308724654",
+        "name": "Cibodas",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5173759,
+          -6.9883438
+        ]
+      },
+      "id": "node/1308724654"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308725269",
+        "name": "Mandalamekar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6696611,
+          -6.8827179
+        ]
+      },
+      "id": "node/1308725269"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308726107",
+        "name": "Cipelah",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.2829983,
+          -7.1879068
+        ]
+      },
+      "id": "node/1308726107"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308726230",
+        "name": "Sumbersari",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7093321,
+          -6.9980678
+        ]
+      },
+      "id": "node/1308726230"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1308727879",
+        "name": "Cibiru Hilir",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7205933,
+          -6.9403683
+        ]
+      },
+      "id": "node/1308727879"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2700952926",
+        "name": "Babakan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.689977,
+          -7.0769957
+        ]
+      },
+      "id": "node/2700952926"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4269139782",
+        "name": "Rancaekek Kencana",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7577902,
+          -6.975949
+        ]
+      },
+      "id": "node/4269139782"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4687656697",
+        "name": "Margaluyu",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5525653,
+          -7.2226248
+        ]
+      },
+      "id": "node/4687656697"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4832031519",
+        "name": "Kampung Cibuluh",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5536379,
+          -7.1985182
+        ]
+      },
+      "id": "node/4832031519"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5977227109",
+        "name": "PASIRMULYA",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5843878,
+          -7.0855492
+        ]
+      },
+      "id": "node/5977227109"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6125040384",
+        "name": "Warjabakti",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5664383,
+          -7.1282377
+        ]
+      },
+      "id": "node/6125040384"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7638601753",
+        "name": "Nagreg Kendan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8878654,
+          -7.0110077
+        ]
+      },
+      "id": "node/7638601753"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12347597952",
+        "admin_level": "8",
+        "name": "Cilondok",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4208777,
+          -7.253786
+        ]
+      },
+      "id": "node/12347597952"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12347597953",
+        "admin_level": "8",
+        "name": "Paranggong",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4414182,
+          -7.2292481
+        ]
+      },
+      "id": "node/12347597953"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12419053512",
+        "name": "Patengan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3741376,
+          -7.1516739
+        ]
+      },
+      "id": "node/12419053512"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12419510347",
+        "name": "Ibun",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7637338,
+          -7.101212
+        ]
+      },
+      "id": "node/12419510347"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12419843840",
+        "name": "Mekarpawitan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7855241,
+          -7.0505903
+        ]
+      },
+      "id": "node/12419843840"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12419843841",
+        "name": "Sukapura",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6343226,
+          -6.9692826
+        ]
+      },
+      "id": "node/12419843841"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12419938106",
+        "name": "Wargamekar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6751995,
+          -7.0208876
+        ]
+      },
+      "id": "node/12419938106"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12419938107",
+        "name": "Gunungleutik",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7049076,
+          -7.0357099
+        ]
+      },
+      "id": "node/12419938107"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12419938108",
+        "name": "Srirahayu",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8076362,
+          -7.0318553
+        ]
+      },
+      "id": "node/12419938108"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12419938109",
+        "name": "Cigentur",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7966499,
+          -7.0277664
+        ]
+      },
+      "id": "node/12419938109"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12419938110",
+        "name": "Cipedes",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7940106,
+          -7.0323664
+        ]
+      },
+      "id": "node/12419938110"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12419956782",
+        "name": "Rancatungku",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5769609,
+          -7.0216649
+        ]
+      },
+      "id": "node/12419956782"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12419956783",
+        "name": "Ciluncat",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5516462,
+          -7.0434723
+        ]
+      },
+      "id": "node/12419956783"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12420164181",
+        "name": "Panenjolan",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8305745,
+          -6.9737341
+        ]
+      },
+      "id": "node/12420164181"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12420164182",
+        "name": "Cikuya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8302741,
+          -6.9838936
+        ]
+      },
+      "id": "node/12420164182"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12420164184",
+        "name": "Hegermanah",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8332675,
+          -7.002753
+        ]
+      },
+      "id": "node/12420164184"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12420164185",
+        "name": "Waluya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8375053,
+          -6.9953094
+        ]
+      },
+      "id": "node/12420164185"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656178",
+        "name": "Campaka Dua",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.2939812,
+          -7.2059035
+        ]
+      },
+      "id": "node/12424656178"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656179",
+        "name": "Campaka",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.2950728,
+          -7.1953098
+        ]
+      },
+      "id": "node/12424656179"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656180",
+        "name": "Nyampai",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.367864,
+          -7.1154542
+        ]
+      },
+      "id": "node/12424656180"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656181",
+        "name": "Riunggunung",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5257897,
+          -7.1737412
+        ]
+      },
+      "id": "node/12424656181"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656188",
+        "name": "Cimanggu",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3889501,
+          -7.1457404
+        ]
+      },
+      "id": "node/12424656188"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656190",
+        "name": "Cukup",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3126936,
+          -7.1713913
+        ]
+      },
+      "id": "node/12424656190"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656191",
+        "name": "Rancamulya",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3295768,
+          -7.1602553
+        ]
+      },
+      "id": "node/12424656191"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656192",
+        "name": "Buninagara",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3331401,
+          -7.1577856
+        ]
+      },
+      "id": "node/12424656192"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656193",
+        "name": "Muaracagak",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3332822,
+          -7.1640809
+        ]
+      },
+      "id": "node/12424656193"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656194",
+        "name": "Sukaharja",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3242432,
+          -7.1600517
+        ]
+      },
+      "id": "node/12424656194"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656195",
+        "name": "Sukamandi",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.320983,
+          -7.1629911
+        ]
+      },
+      "id": "node/12424656195"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656196",
+        "name": "Citiis",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3250478,
+          -7.171229
+        ]
+      },
+      "id": "node/12424656196"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656197",
+        "name": "Kimhui",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3241252,
+          -7.1735389
+        ]
+      },
+      "id": "node/12424656197"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656198",
+        "name": "Rancawalini",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.386229,
+          -7.1454995
+        ]
+      },
+      "id": "node/12424656198"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656199",
+        "name": "Sindangreret",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3718122,
+          -7.1545747
+        ]
+      },
+      "id": "node/12424656199"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656200",
+        "name": "Cipanganten",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3843501,
+          -7.1694899
+        ]
+      },
+      "id": "node/12424656200"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656201",
+        "name": "Brusel",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4000478,
+          -7.17434
+        ]
+      },
+      "id": "node/12424656201"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656202",
+        "name": "Persil",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3669654,
+          -7.1194446
+        ]
+      },
+      "id": "node/12424656202"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656203",
+        "name": "Kanaan Dua",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3208341,
+          -7.1366663
+        ]
+      },
+      "id": "node/12424656203"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656204",
+        "name": "Malahnenggang",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3315582,
+          -7.1451768
+        ]
+      },
+      "id": "node/12424656204"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656205",
+        "name": "Ransasuni",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3504977,
+          -7.140366
+        ]
+      },
+      "id": "node/12424656205"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656206",
+        "name": "Rancasunikadempet",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3560414,
+          -7.1490598
+        ]
+      },
+      "id": "node/12424656206"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656207",
+        "name": "Bayongbong",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3617204,
+          -7.1492747
+        ]
+      },
+      "id": "node/12424656207"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656208",
+        "name": "Pamagersaren",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3633257,
+          -7.1588501
+        ]
+      },
+      "id": "node/12424656208"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656209",
+        "name": "Seperata",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3402908,
+          -7.1663975
+        ]
+      },
+      "id": "node/12424656209"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656210",
+        "name": "Parukuda",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.329216,
+          -7.1946884
+        ]
+      },
+      "id": "node/12424656210"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656211",
+        "name": "Cibuni",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3311686,
+          -7.1880423
+        ]
+      },
+      "id": "node/12424656211"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656212",
+        "name": "Cikidang",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3480599,
+          -7.1835583
+        ]
+      },
+      "id": "node/12424656212"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656213",
+        "name": "Bauan",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3665483,
+          -7.1718344
+        ]
+      },
+      "id": "node/12424656213"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656214",
+        "name": "Negal",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3701143,
+          -7.1747285
+        ]
+      },
+      "id": "node/12424656214"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656215",
+        "name": "Patuhawati",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4025114,
+          -7.2062428
+        ]
+      },
+      "id": "node/12424656215"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656216",
+        "name": "Cipaku",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.430979,
+          -7.203599
+        ]
+      },
+      "id": "node/12424656216"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656217",
+        "name": "Karang Tengah",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4854547,
+          -7.217045
+        ]
+      },
+      "id": "node/12424656217"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656218",
+        "name": "Cibadak",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4372084,
+          -7.2428969
+        ]
+      },
+      "id": "node/12424656218"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656219",
+        "name": "Cikole",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4232878,
+          -7.2106214
+        ]
+      },
+      "id": "node/12424656219"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656220",
+        "name": "Alkateri",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4161544,
+          -7.2168255
+        ]
+      },
+      "id": "node/12424656220"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656221",
+        "name": "Sukasari",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3924813,
+          -7.2096528
+        ]
+      },
+      "id": "node/12424656221"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656222",
+        "name": "Sukaasih",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3841168,
+          -7.2039529
+        ]
+      },
+      "id": "node/12424656222"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656223",
+        "name": "Cibitu",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.369374,
+          -7.2005149
+        ]
+      },
+      "id": "node/12424656223"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656224",
+        "name": "Cileueur Tengah",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3969606,
+          -7.1843859
+        ]
+      },
+      "id": "node/12424656224"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656225",
+        "name": "Cileueur",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3952225,
+          -7.1873424
+        ]
+      },
+      "id": "node/12424656225"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656226",
+        "name": "Babakan",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4112876,
+          -7.1863725
+        ]
+      },
+      "id": "node/12424656226"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656227",
+        "name": "Banjar",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.430979,
+          -7.1952007
+        ]
+      },
+      "id": "node/12424656227"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656228",
+        "name": "Dewata",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4763325,
+          -7.2150227
+        ]
+      },
+      "id": "node/12424656228"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656229",
+        "name": "Sugihmukti",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4316603,
+          -7.2425283
+        ]
+      },
+      "id": "node/12424656229"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656230",
+        "name": "Rancabolang",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4171013,
+          -7.1881062
+        ]
+      },
+      "id": "node/12424656230"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656235",
+        "name": "Sinumbra",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3336712,
+          -7.1491323
+        ]
+      },
+      "id": "node/12424656235"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656255",
+        "name": "Kanaan",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3261583,
+          -7.1378081
+        ]
+      },
+      "id": "node/12424656255"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12424656256",
+        "name": "Ciparay",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.339859,
+          -7.1264011
+        ]
+      },
+      "id": "node/12424656256"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12426505305",
+        "name": "Pindokdatar",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3639238,
+          -7.2180961
+        ]
+      },
+      "id": "node/12426505305"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12426505306",
+        "name": "Ciadak",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3627061,
+          -7.1947749
+        ]
+      },
+      "id": "node/12426505306"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12426505307",
+        "name": "Perumahan Cibadak",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3743361,
+          -7.1845243
+        ]
+      },
+      "id": "node/12426505307"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12426505308",
+        "name": "Suren",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4020755,
+          -7.2014329
+        ]
+      },
+      "id": "node/12426505308"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12426505309",
+        "name": "Datarkiara",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4663091,
+          -7.2142351
+        ]
+      },
+      "id": "node/12426505309"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12495654378",
+        "name": "Nanjungmekar",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8185153,
+          -6.9686224
+        ]
+      },
+      "id": "node/12495654378"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12495654379",
+        "name": "Tanjunglaya",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8175068,
+          -6.9981421
+        ]
+      },
+      "id": "node/12495654379"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12495682899",
+        "name": "Mekarmanik",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.694726,
+          -6.8658427
+        ]
+      },
+      "id": "node/12495682899"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12749778254",
+        "name": "Baleugeur",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4501863,
+          -7.2345485
+        ]
+      },
+      "id": "node/12749778254"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12750104316",
+        "admin_level": "8",
+        "name": "Gunungmaud",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4817479,
+          -7.2316136
+        ]
+      },
+      "id": "node/12750104316"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12750104324",
+        "admin_level": "8",
+        "name": "Sukasari",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4040443,
+          -7.2043947
+        ]
+      },
+      "id": "node/12750104324"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12750104345",
+        "admin_level": "8",
+        "name": "Bedengtilu",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4116054,
+          -7.2076864
+        ]
+      },
+      "id": "node/12750104345"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12750104358",
+        "admin_level": "8",
+        "name": "Babakan Cipaku",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4344096,
+          -7.2084634
+        ]
+      },
+      "id": "node/12750104358"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12750104359",
+        "admin_level": "8",
+        "name": "Lengkop",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4397793,
+          -7.1985776
+        ]
+      },
+      "id": "node/12750104359"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12750104360",
+        "admin_level": "8",
+        "name": "Cerem",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4319433,
+          -7.2490566
+        ]
+      },
+      "id": "node/12750104360"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12750104361",
+        "admin_level": "8",
+        "name": "Karasak",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4356058,
+          -7.2248403
+        ]
+      },
+      "id": "node/12750104361"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12750104362",
+        "admin_level": "8",
+        "name": "Londok",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4254818,
+          -7.2457865
+        ]
+      },
+      "id": "node/12750104362"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13123501019",
+        "name": "Cae",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5652026,
+          -7.0489348
+        ]
+      },
+      "id": "node/13123501019"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267171087",
+        "name": "Beubeudahan",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4243057,
+          -7.0797641
+        ]
+      },
+      "id": "node/13267171087"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267171088",
+        "name": "Pasirkoang",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.419064,
+          -7.0868623
+        ]
+      },
+      "id": "node/13267171088"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267171089",
+        "name": "Gelaranyar",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4267264,
+          -7.1056131
+        ]
+      },
+      "id": "node/13267171089"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267171090",
+        "name": "Waluri",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4300054,
+          -7.0986742
+        ]
+      },
+      "id": "node/13267171090"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267171091",
+        "name": "Buniasih",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4229377,
+          -7.113333
+        ]
+      },
+      "id": "node/13267171091"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267171092",
+        "name": "Pasirhoe",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4351297,
+          -7.1368367
+        ]
+      },
+      "id": "node/13267171092"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267171093",
+        "name": "Lengkong",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4510996,
+          -7.1263239
+        ]
+      },
+      "id": "node/13267171093"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267171094",
+        "name": "Cigenteng",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4638844,
+          -7.1310533
+        ]
+      },
+      "id": "node/13267171094"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267171095",
+        "name": "Pangkalan",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4926618,
+          -7.1336203
+        ]
+      },
+      "id": "node/13267171095"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267192208",
+        "name": "Sukaati",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3113203,
+          -7.1769666
+        ]
+      },
+      "id": "node/13267192208"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267192209",
+        "historic": "ruins",
+        "name": "Lewengdatar",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3369274,
+          -7.1836168
+        ]
+      },
+      "id": "node/13267192209"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267192210",
+        "historic": "ruins",
+        "name": "Kihujan",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3519142,
+          -7.1787842
+        ]
+      },
+      "id": "node/13267192210"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267192212",
+        "historic": "ruins",
+        "name": "Tanjakanjambe",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3791695,
+          -7.2266324
+        ]
+      },
+      "id": "node/13267192212"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267192213",
+        "name": "Mandala",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4513933,
+          -7.1821253
+        ]
+      },
+      "id": "node/13267192213"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267192214",
+        "name": "Camara",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4479976,
+          -7.1840626
+        ]
+      },
+      "id": "node/13267192214"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267192215",
+        "name": "Keneng",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4412572,
+          -7.1820893
+        ]
+      },
+      "id": "node/13267192215"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267192216",
+        "name": "Kasimukan",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4154222,
+          -7.2034713
+        ]
+      },
+      "id": "node/13267192216"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267192217",
+        "name": "Euleul",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3402667,
+          -7.1456592
+        ]
+      },
+      "id": "node/13267192217"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13267192218",
+        "name": "Kramat",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3546702,
+          -7.1269706
+        ]
+      },
+      "id": "node/13267192218"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182616",
+        "name": "Cihejo",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6820351,
+          -7.1570923
+        ]
+      },
+      "id": "node/13285182616"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182617",
+        "name": "Ciherang",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6796104,
+          -7.1555608
+        ]
+      },
+      "id": "node/13285182617"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182618",
+        "name": "Pasanggrahan",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.678571,
+          -7.1512494
+        ]
+      },
+      "id": "node/13285182618"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182619",
+        "name": "Talunlima",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6802944,
+          -7.1471389
+        ]
+      },
+      "id": "node/13285182619"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182620",
+        "name": "Cisaat",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.684024,
+          -7.1326103
+        ]
+      },
+      "id": "node/13285182620"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182621",
+        "name": "Pereng",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6777878,
+          -7.1350648
+        ]
+      },
+      "id": "node/13285182621"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182622",
+        "name": "Pasirmuncang",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6807463,
+          -7.1254602
+        ]
+      },
+      "id": "node/13285182622"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182623",
+        "name": "Pasirhuni",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6664367,
+          -7.0958755
+        ]
+      },
+      "id": "node/13285182623"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182624",
+        "name": "Cidulang",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6523833,
+          -7.0937275
+        ]
+      },
+      "id": "node/13285182624"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182625",
+        "name": "Cimantri",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6551265,
+          -7.0853285
+        ]
+      },
+      "id": "node/13285182625"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182626",
+        "name": "Babakansaukasari",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6538853,
+          -7.0843496
+        ]
+      },
+      "id": "node/13285182626"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182627",
+        "name": "Pakusoro",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6376915,
+          -7.0772208
+        ]
+      },
+      "id": "node/13285182627"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182628",
+        "name": "Cikawalu",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6313166,
+          -7.0780998
+        ]
+      },
+      "id": "node/13285182628"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182629",
+        "name": "Citiis",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6386785,
+          -7.0826734
+        ]
+      },
+      "id": "node/13285182629"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182630",
+        "name": "Pasirkadu",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6279028,
+          -7.0683464
+        ]
+      },
+      "id": "node/13285182630"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182631",
+        "name": "Pasirpogor",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6178418,
+          -7.0729087
+        ]
+      },
+      "id": "node/13285182631"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182632",
+        "name": "Pasirjaya",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6137219,
+          -7.0743208
+        ]
+      },
+      "id": "node/13285182632"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182633",
+        "name": "Cimanis",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6110873,
+          -7.0798686
+        ]
+      },
+      "id": "node/13285182633"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182634",
+        "name": "Pasirpeundeuy",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6028201,
+          -7.0797481
+        ]
+      },
+      "id": "node/13285182634"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182635",
+        "name": "Pasirsalam",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6030561,
+          -7.0864158
+        ]
+      },
+      "id": "node/13285182635"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182636",
+        "name": "Pasirbungur",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6034417,
+          -7.088645
+        ]
+      },
+      "id": "node/13285182636"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182637",
+        "name": "Jatipadua",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.601357,
+          -7.0923807
+        ]
+      },
+      "id": "node/13285182637"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182638",
+        "name": "Leuweungmalang",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6053776,
+          -7.0941174
+        ]
+      },
+      "id": "node/13285182638"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182639",
+        "name": "Pasirpanjang",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5965585,
+          -7.1039861
+        ]
+      },
+      "id": "node/13285182639"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182640",
+        "name": "Ngamcur",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5872257,
+          -7.1097585
+        ]
+      },
+      "id": "node/13285182640"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182641",
+        "name": "Jugud",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5878574,
+          -7.1133549
+        ]
+      },
+      "id": "node/13285182641"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182642",
+        "name": "Pleret",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5850035,
+          -7.1182848
+        ]
+      },
+      "id": "node/13285182642"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182643",
+        "name": "Pasirbatu",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5729644,
+          -7.1229318
+        ]
+      },
+      "id": "node/13285182643"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182644",
+        "name": "Cigoong",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5740252,
+          -7.125918
+        ]
+      },
+      "id": "node/13285182644"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182645",
+        "name": "Neglasari",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5771017,
+          -7.1276214
+        ]
+      },
+      "id": "node/13285182645"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182646",
+        "name": "Depok",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5788076,
+          -7.1293287
+        ]
+      },
+      "id": "node/13285182646"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182647",
+        "name": "Babakanlogawa",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5769857,
+          -7.1325205
+        ]
+      },
+      "id": "node/13285182647"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182648",
+        "name": "Logawa",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5807388,
+          -7.1357661
+        ]
+      },
+      "id": "node/13285182648"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182649",
+        "name": "Cipatra",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5693354,
+          -7.1344014
+        ]
+      },
+      "id": "node/13285182649"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182650",
+        "name": "Rancagadog",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5576054,
+          -7.1331472
+        ]
+      },
+      "id": "node/13285182650"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182651",
+        "name": "Mekarmukti",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5661489,
+          -7.1418148
+        ]
+      },
+      "id": "node/13285182651"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182652",
+        "name": "Patrol",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5618426,
+          -7.1426465
+        ]
+      },
+      "id": "node/13285182652"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182653",
+        "name": "Ciruntah",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5610393,
+          -7.1455221
+        ]
+      },
+      "id": "node/13285182653"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182654",
+        "name": "Panyindangan",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5623965,
+          -7.1561449
+        ]
+      },
+      "id": "node/13285182654"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182655",
+        "name": "Lebaksaat",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5620009,
+          -7.1528821
+        ]
+      },
+      "id": "node/13285182655"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182656",
+        "name": "Mekarbakti",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5643559,
+          -7.1485175
+        ]
+      },
+      "id": "node/13285182656"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182657",
+        "name": "Mekarmulya",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5674572,
+          -7.1518409
+        ]
+      },
+      "id": "node/13285182657"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182658",
+        "name": "Warunggoler",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5689907,
+          -7.1551369
+        ]
+      },
+      "id": "node/13285182658"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182659",
+        "name": "Bojonmulyasari",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5775778,
+          -7.1604722
+        ]
+      },
+      "id": "node/13285182659"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182660",
+        "name": "Babakantirtasari",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5835806,
+          -7.1659278
+        ]
+      },
+      "id": "node/13285182660"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182661",
+        "name": "Padawaas",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5762488,
+          -7.1708431
+        ]
+      },
+      "id": "node/13285182661"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182662",
+        "name": "Narogtog",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5765291,
+          -7.169414
+        ]
+      },
+      "id": "node/13285182662"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182663",
+        "name": "Babakanmulya",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5802734,
+          -7.1698744
+        ]
+      },
+      "id": "node/13285182663"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182664",
+        "name": "Rawa",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5881645,
+          -7.1662937
+        ]
+      },
+      "id": "node/13285182664"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182665",
+        "name": "Cibunian",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5847822,
+          -7.1707613
+        ]
+      },
+      "id": "node/13285182665"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182666",
+        "name": "Langbong",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5851772,
+          -7.1726135
+        ]
+      },
+      "id": "node/13285182666"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182667",
+        "name": "Pangkalan",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5974342,
+          -7.1817713
+        ]
+      },
+      "id": "node/13285182667"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182668",
+        "name": "Cinyiruan",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6014589,
+          -7.1731211
+        ]
+      },
+      "id": "node/13285182668"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13285182669",
+        "name": "Munjul",
+        "place": "hamlet",
+        "source": "BIG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.599462,
+          -7.170263
+        ]
+      },
+      "id": "node/13285182669"
+    }
+  ]
+}

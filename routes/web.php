@@ -62,6 +62,7 @@ Route::group(['middleware' => ['isadmin']], function () {
     ]);
     Route::get('/posko/get-posko', [PoskoController::class, 'getPosko'])->name('posko.get-posko');
 
+<<<<<<< HEAD
 // Fasilitas vital
     Route::prefix('fasilitasvital')->group(function () {
         Route::get('/', [FasilitasVitalController::class, 'index'])->name('fasilitasvital.index');
@@ -74,6 +75,18 @@ Route::group(['middleware' => ['isadmin']], function () {
     });
 
 // Jalur distribusi logistik
+=======
+    Route::get('/data/fasilitas-vital', [FasilitasVitalController::class, 'mapData']);
+
+    Route::resource('fasilitasvital', FasilitasVitalController::class)->names([
+        'index' => 'fasilitasvital.index',
+        'create' => 'fasilitasvital.create',
+        'store' => 'fasilitasvital.store',
+        'update' => 'fasilitasvital.update',
+        'destroy' => 'fasilitasvital.destroy',
+    ]);
+
+>>>>>>> 5997120986c69162a38bfaf07929ea1da487fc4f
     Route::resource('jalur_distribusi_logistik', JalurDistribusiLogistikController::class)->names([
         'index' => 'jalur_distribusi_logistik.index',
         'create' => 'jalur_distribusi_logistik.create',

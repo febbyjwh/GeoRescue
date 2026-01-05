@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     layers.bencana.addTo(MapState.map);
     layers.jalur.addTo(MapState.map);
     layers.fasilitas.addTo(MapState.map);
+<<<<<<< HEAD
     layers.posko.addTo(MapState.map);
+=======
+    layers.logistik.addTo(MapState.map);
+>>>>>>> 5997120986c69162a38bfaf07929ea1da487fc4f
     drawnItems.addTo(MapState.map);
 });
