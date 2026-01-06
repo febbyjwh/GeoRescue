@@ -16,6 +16,9 @@ class JalurDistribusiLogistik extends Model
         'jumlah',
         'satuan',
         'status',
+        'geojson',
+        'lat',
+        'lang',
     ];
 
     /**
@@ -33,4 +36,6 @@ class JalurDistribusiLogistik extends Model
     {
         return $this->belongsTo(Village::class, 'village_id');
     }
+
+    
 }

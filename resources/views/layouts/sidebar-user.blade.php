@@ -35,11 +35,11 @@
         </div>
 
         <h3 class="font-semibold text-gray-700 mt-6 mb-2">Lokasi Terdekat</h3>
-        <ul id="nearby-list" class="space-y-2">
+        {{-- <ul id="nearby-list" class="space-y-2">
             <li class="p-2 hover:bg-gray-100 rounded cursor-pointer">Posko Evakuasi 1</li>
             <li class="p-2 hover:bg-gray-100 rounded cursor-pointer">Fasilitas Vital 2</li>
             <li class="p-2 hover:bg-gray-100 rounded cursor-pointer">Distribusi Logistik 3</li>
-        </ul>
+        </ul> --}}
 
         <button id="addCustomLocation"
             class="mt-4 w-full px-3 py-2 rounded bg-blue-500 text-white hover:bg-blue-600 transition">

@@ -1,12 +1,13 @@
 @props([
     'label' => null,
     'name',
+    'id' => null,
     'required' => false
 ])
 
 <div class="space-y-2">
     @if($label)
-        <label for="{{ $name }}" class="text-sm font-medium text-gray-700">
+        <label for="{{ $id ?? $name }}" class="text-sm font-medium text-gray-700">
             {{ $label }}
             @if($required)
                 <span class="text-red-500">*</span>
@@ -16,7 +17,7 @@
 
     <select
         name="{{ $name }}"
-        id="{{ $name }}"
+        id="{{ $id ?? $name }}"
         @if($required) required @endif
         {{ $attributes->merge([
             'class' => 'w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200'
