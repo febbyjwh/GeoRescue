@@ -42,9 +42,9 @@ class JalurDistribusiLogistikController extends Controller
 
 
 
-    public function store(Request $request)
+   public function store(Request $request)
 {
-    $request->validate([
+    $validated = $request->validate([
         'district_id'    => 'required|exists:districts,id',
         'village_id'     => 'required|exists:villages,id',
         'nama_lokasi'    => 'required|string|max:255',
@@ -52,33 +52,43 @@ class JalurDistribusiLogistikController extends Controller
         'jumlah'         => 'required|numeric',
         'satuan'         => 'required|string|max:100',
         'status'         => 'required|string|max:100',
+
+        // ✅ pastikan input lat/lang masuk
+        'lat'            => 'required|numeric',
+        'lang'           => 'required|numeric',
     ]);
 
-    $logistik = JalurDistribusiLogistik::create([
-        'district_id'    => $request->district_id,
-        'village_id'     => $request->village_id,
-        'nama_lokasi'    => $request->nama_lokasi,
-        'jenis_logistik' => $request->jenis_logistik,
-        'jumlah'         => $request->jumlah,
-        'satuan'         => $request->satuan,
-        'status'         => $request->status,
-        'geojson'        => $request->geojson ?? null, // nullable
-    ]);
+    // ✅ normalize biar pasti numeric rapi
+    $validated['lat']  = (float) $validated['lat'];
+    $validated['lang'] = (float) $validated['lang'];
 
-    return response()->json([
-        'message' => 'Logistik created successfully.',
-        'data' => [
-            'id'             => $logistik->id,
-            'district_id'    => $logistik->district_id,
-            'village_id'     => $logistik->village_id,
-            'nama_lokasi'    => $logistik->nama_lokasi,
-            'jenis_logistik' => $logistik->jenis_logistik,
-            'jumlah'         => $logistik->jumlah,
-            'satuan'         => $logistik->satuan,
-            'status'         => $logistik->status,
-        ]
-    ]);
+    $logistik = JalurDistribusiLogistik::create($validated);
+
+    // ✅ Kalau request dari fetch/ajax → balikin JSON
+    if ($request->wantsJson()) {
+        return response()->json([
+            'message' => 'Logistik created successfully.',
+            'data'    => [
+                'id'             => $logistik->id,
+                'kecamatan_id'    => $logistik->district_id,
+                'desa_id'         => $logistik->village_id,
+                'nama_lokasi'     => $logistik->nama_lokasi,
+                'jenis_logistik'  => $logistik->jenis_logistik,
+                'jumlah'          => $logistik->jumlah,
+                'satuan'          => $logistik->satuan,
+                'status'          => $logistik->status,
+                'lat'             => $logistik->lat,
+                'lang'            => $logistik->lang,
+            ]
+        ], 201);
+    }
+
+    // ✅ Kalau submit form biasa → redirect
+    return redirect()
+        ->route('jalur_distribusi_logistik.index')
+        ->with('success', 'Data logistik berhasil ditambahkan');
 }
+
 
 
 

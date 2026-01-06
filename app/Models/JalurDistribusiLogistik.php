@@ -16,6 +16,9 @@ class JalurDistribusiLogistik extends Model
         'jumlah',
         'satuan',
         'status',
+        'geojson',
+        'lat',
+        'lang',
     ];
 
     /**

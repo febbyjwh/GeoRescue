@@ -1,44 +1,52 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const district = document.getElementById("district");
-  const village = document.getElementById("village");
+  // ===============================
+  // 1) Dependent dropdown: Kecamatan -> Desa
+  // ===============================
+  const district = document.getElementById("district_id");
+  const village = document.getElementById("village_id");
 
-  if (!district || !village) return;
+  if (district && village) {
+    district.addEventListener("change", async function () {
+      village.innerHTML = '<option value="">-- Pilih Desa --</option>';
 
-  district.addEventListener("change", async function () {
-    village.innerHTML = '<option value="">-- Pilih Desa --</option>';
+      if (!this.value) return;
 
-    if (!this.value) return;
+      const res = await fetch(
+        `/jalur_distribusi_logistik/villages/${this.value}`
+      );
+      const json = await res.json();
 
-    const res = await fetch(`/jalur_distribusi_logistik/villages/${this.value}`);
-    const json = await res.json();
-
-    (json.data || []).forEach((v) => {
-      const opt = document.createElement("option");
-      opt.value = v.id;
-      opt.textContent = v.name;
-      village.appendChild(opt);
+      (json.data || []).forEach((v) => {
+        const opt = document.createElement("option");
+        opt.value = v.id;
+        opt.textContent = v.name;
+        village.appendChild(opt);
+      });
     });
-  });
+  }
 
-  document.addEventListener("DOMContentLoaded", () => {
-  // kalau kamu punya helper select2 dependent:
+  // Optional: kalau kamu pakai helper select2
   if (typeof initDistrictVillageSelect === "function") {
-    // sesuaikan selector id kamu (di component id biasanya = name)
+
+
     initDistrictVillageSelect("#district_id", "#village_id");
   }
 
+  // ===============================
+  // 2) Leaflet setup
+  // ===============================
   if (!window.MapState || !MapState.map) {
     console.error("MapState belum tersedia");
     return;
   }
 
-  // Layer marker logistik
+
   if (!MapState.layers.logistik) {
     MapState.layers.logistik = L.layerGroup().addTo(MapState.map);
   }
   const layerLogistik = MapState.layers.logistik;
 
-  // Layer marker input (klik map / edit posisi)
+
   if (!MapState.layers.inputPoint) {
     MapState.layers.inputPoint = L.layerGroup().addTo(MapState.map);
   }
@@ -47,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let formMode = "create";
   let inputMarker = null;
 
-  // warna marker berdasarkan jenis logistik (bebas kamu sesuaikan)
+
   const warnaLogistik = {
     Makanan: "#10B981",
     "Obat-obatan": "#EF4444",
@@ -62,21 +70,27 @@ document.addEventListener("DOMContentLoaded", () => {
       ?.getAttribute("content");
   }
 
-  /* ===============================
-   * LOAD LOGISTIK KE MAP
-   * =============================== */
+  // ===============================
+  // 3) Load logistik markers
+  // ===============================
   async function loadLogistik() {
     layerLogistik.clearLayers();
 
     try {
-      // ⚠️ ganti URL ini sesuai route getLogistik kamu
+
       const res = await fetch(`/jalur_distribusi_logistik/get-logistik`);
       const json = await res.json();
 
+      console.log("LOGISTIK JSON:", json); // debug
+
       (json.data || []).forEach((item) => {
         const lat = parseFloat(item.lat);
-        const lng = parseFloat(item.lng); // pastikan getLogistik return "lng"
-        if (isNaN(lat) || isNaN(lng)) return;
+        const lng = parseFloat(item.lang); // ✅ penting: backend kirim "lang", bukan "lng"
+
+        if (isNaN(lat) || isNaN(lng)) {
+          console.warn("Koordinat invalid:", item);
+          return;
+        }
 
         const warna = warnaLogistik[item.jenis_logistik] ?? "#2563eb";
 
@@ -100,18 +114,20 @@ document.addEventListener("DOMContentLoaded", () => {
         marker.on("click", () => fillForm(item));
         layerLogistik.addLayer(marker);
       });
+
+      console.log("Jumlah marker:", layerLogistik.getLayers().length);
     } catch (err) {
       console.error("Gagal load logistik:", err);
     }
   }
 
-  /* ===============================
-   * FILL FORM (EDIT MODE)
-   * =============================== */
+  // ===============================
+  // 4) Fill form edit mode
+  // ===============================
   function fillForm(item) {
     formMode = "edit";
+  
 
-    // id hidden input (kamu perlu input hidden id di form)
     const idEl = document.getElementById("logistik_id");
     if (idEl) idEl.value = item.id;
 
@@ -121,44 +137,38 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("satuan").value = item.satuan ?? "";
     document.getElementById("status").value = item.status ?? "";
 
-    // posisi map (pakai item.lat/lng)
-    const lat = parseFloat(item.lat);
-    const lng = parseFloat(item.lng);
 
-    // isi input latitude/longitude form
-    const latEl = document.getElementById("latitude");
-    const lngEl = document.getElementById("longitude");
+    const lat = parseFloat(item.lat);
+    const lng = parseFloat(item.lang); // ✅ "lang"
+
+    // ✅ input form pakai lat/lang (sesuai backend)
+    const latEl = document.getElementById("lat");   // kalau masih pakai #latitude, ganti ke "latitude"
+    const lngEl = document.getElementById("lang");  // kalau masih pakai #longitude, ganti ke "longitude"
+
     if (latEl) latEl.value = isNaN(lat) ? "" : lat.toFixed(6);
     if (lngEl) lngEl.value = isNaN(lng) ? "" : lng.toFixed(6);
 
     // Kecamatan (select2 friendly)
-    const districtSelect = document.getElementById("district_id");
-    const villageSelect = document.getElementById("village_id");
+    const districtOption = new Option(
+      item.nama_kecamatan ?? "Kecamatan",
+      item.kecamatan_id ?? item.district_id,
+      true,
+      true
+    );
+    $("#district_id").append(districtOption).trigger("change");
 
-    if (districtSelect) {
-      const districtOption = new Option(
-        item.nama_kecamatan ?? "Kecamatan",
-        item.district_id,
+    // Desa
+    setTimeout(() => {
+      const villageOption = new Option(
+        item.nama_desa ?? "Desa",
+        item.desa_id ?? item.village_id,
         true,
         true
       );
-      $("#district_id").append(districtOption).trigger("change");
-    }
-
-    // Desa (tunggu dependent dropdown selesai)
-    setTimeout(() => {
-      if (villageSelect) {
-        const villageOption = new Option(
-          item.nama_desa ?? "Desa",
-          item.village_id,
-          true,
-          true
-        );
-        $("#village_id").append(villageOption).trigger("change");
-      }
+      $("#village_id").append(villageOption).trigger("change");
     }, 300);
 
-    // marker input draggable
+
     inputLayer.clearLayers();
     if (!isNaN(lat) && !isNaN(lng)) {
       inputMarker = L.marker([lat, lng], { draggable: true }).addTo(inputLayer);
@@ -183,20 +193,21 @@ document.addEventListener("DOMContentLoaded", () => {
       jumlah: document.getElementById("jumlah").value,
       satuan: document.getElementById("satuan").value,
       status: document.getElementById("status").value,
-      // optional: kalau kamu mau simpan koordinat sendiri
-      latitude: document.getElementById("latitude")?.value,
-      longitude: document.getElementById("longitude")?.value,
+
+      // ✅ kirim lat/lang ke backend
+      lat: document.getElementById("lat")?.value,
+      lang: document.getElementById("lang")?.value,
     };
   }
 
-  /* ===============================
-   * SUBMIT LOGISTIK (CREATE/EDIT)
-   * =============================== */
+  // ===============================
+  // 5) Submit create/edit (AJAX)
+  // ===============================
   window.submitLogistik = async function () {
     const data = getFormData();
     const isEdit = !!data.id;
 
-    // ⚠️ sesuaikan base url CRUD logistik kamu
+
     const url = isEdit
       ? `/jalur_distribusi_logistik/${data.id}`
       : `/jalur_distribusi_logistik`;
@@ -224,90 +235,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  /* ===============================
-   * DELETE (optional)
-   * =============================== */
-  window.deleteLogistik = async function (id) {
-    if (!confirm("Yakin hapus data logistik ini?")) return;
-
-    try {
-      const res = await fetch(`/jalur_distribusi_logistik/${id}`, {
-        method: "DELETE",
-        headers: {
-          "X-CSRF-TOKEN": getCsrf(),
-          Accept: "application/json",
-        },
-      });
-
-      if (!res.ok) throw await res.json();
-
-      alert("Data berhasil dihapus");
-      resetForm();
-      loadLogistik();
-    } catch (err) {
-      console.error("Gagal hapus:", err);
-      alert("Gagal menghapus data");
-    }
-  };
-
-  function switchToCreateLogistik(lat = null, lng = null) {
-    formMode = "create";
-
-    const idEl = document.getElementById("logistik_id");
-    if (idEl) idEl.value = "";
-
-    document.querySelector("form")?.reset();
-
-    $("#district_id").val(null).trigger("change");
-    $("#village_id").empty().trigger("change");
-
-    inputLayer.clearLayers();
-
-    const latEl = document.getElementById("latitude");
-    const lngEl = document.getElementById("longitude");
-
-    if (lat != null && lng != null) {
-      if (latEl) latEl.value = lat;
-      if (lngEl) lngEl.value = lng;
-
-      inputMarker = L.marker([lat, lng], { draggable: true }).addTo(inputLayer);
-      inputMarker.on("dragend", (ev) => {
-        const pos = ev.target.getLatLng();
-        if (latEl) latEl.value = pos.lat.toFixed(6);
-        if (lngEl) lngEl.value = pos.lng.toFixed(6);
-      });
-    }
-  }
-
+  // ===============================
+  // 6) Reset / Create mode
+  // ===============================
   function resetForm() {
-    const idEl = document.getElementById("logistik_id");
-    if (idEl) idEl.value = "";
-
+    document.getElementById("logistik_id") && (document.getElementById("logistik_id").value = "");
     document.querySelector("form")?.reset();
 
     $("#district_id").val(null).trigger("change");
     $("#village_id").empty().trigger("change");
 
     inputLayer.clearLayers();
+    formMode = "create";
   }
 
-  /* ===============================
-   * Klik map -> isi latitude/longitude + marker input
-   * =============================== */
+  // ===============================
+  // 7) Klik map -> isi lat/lang + marker input
+  // ===============================
   MapState.map.on("click", (e) => {
-    if (formMode === "edit") {
-      switchToCreateLogistik(
-        e.latlng.lat.toFixed(6),
-        e.latlng.lng.toFixed(6)
-      );
-      return;
-    }
-
+    
     const lat = e.latlng.lat.toFixed(6);
     const lng = e.latlng.lng.toFixed(6);
 
-    const latEl = document.getElementById("latitude");
-    const lngEl = document.getElementById("longitude");
+    const latEl = document.getElementById("lat");
+    const lngEl = document.getElementById("lang");
+
     if (latEl) latEl.value = lat;
     if (lngEl) lngEl.value = lng;
 
@@ -319,10 +271,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (latEl) latEl.value = pos.lat.toFixed(6);
       if (lngEl) lngEl.value = pos.lng.toFixed(6);
     });
+
+    // kalau lagi edit, klik map otomatis balik create mode biar konsisten
+    if (formMode === "edit") formMode = "create";
   });
 
   // initial load
   loadLogistik();
 });
 
-});
+
