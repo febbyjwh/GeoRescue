@@ -154,7 +154,6 @@ window.addEventListener('resize', checkMobile);">
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/select2.full.min.js') }}"></script>
 <script src="{{ asset('Datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('js/select-region.js') }}"></script>
 @stack('scripts')
 
 </html>

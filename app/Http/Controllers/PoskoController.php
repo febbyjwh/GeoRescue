@@ -3,53 +3,79 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PoskoBencana;
+use App\Models\PoskoBencana;    
+
 class PoskoController extends Controller
 {
     public function index()
     {
-        $poskos = PoskoBencana::all();
-        return view('Admin.Posko.index', compact('poskos'));
-
+        $poskos = PoskoBencana::with(['district', 'village'])->get();
+        return view('admin.posko.index', compact('poskos'));
     }
 
-     public function create()
+    public function getPosko()
     {
-        return view('Admin.Posko.create');
+        $poskos = PoskoBencana::with(['district', 'village'])->get()->map(function ($p) {
+        //    dd($poskos);
+            return [
+                'id' => $p->id,
+                'kecamatan_id' => $p->kecamatan_id,
+                'desa_id' => $p->desa_id,
+                'nama_posko' => $p->nama_posko,
+                'jenis_posko' => $p->jenis_posko,
+                'status_posko' => $p->status_posko,
+                'longitude' => $p->longitude,
+                'latitude' => $p->latitude,
+                'nama_kecamatan' => $p->district->name ?? '-',
+                'nama_desa' => $p->village->name ?? '-',
+            ];
+        });
+
+        return response()->json(['data' => $poskos]);
     }
 
-   public function store(Request $request)
+    public function store(Request $request)
     {
-    $request->validate([
-        'nama_posko' => 'required',
-        'jenis_posko' => 'required',
-        'alamat_posko' => 'nullable',
-        'nama_desa' => 'required',
-        'kecamatan' => 'required',
-        'latitude' => 'required|numeric',
-        'longitude' => 'required|numeric',
-        'status_posko' => 'required|in:Aktif,Penuh,Tutup',
-    ]);
+        $request->validate([
+            'nama_posko' => 'required|string|max:255',
+            'jenis_posko' => 'required|string|max:100',
+            'district_id' => 'required|exists:districts,id',
+            'village_id' => 'required|exists:villages,id',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'status_posko' => 'required|in:Aktif,Penuh,Tutup',
+        ]);
 
-    PoskoBencana::create($request->all());
+        PoskoBencana::create($request->all());
 
-    return redirect()->route('posko.index')->with('success', 'Posko berhasil ditambahkan');
+        return response()->json(['message' => 'Posko berhasil ditambahkan']);
     }
 
     public function edit($id)
     {
-        $posko = PoskoBencana::findOrFail($id);
-        return view('Admin.Posko.edit', compact('posko'));
+        $posko = PoskoBencana::with(['district', 'village'])->findOrFail($id);
+
+        return response()->json([
+            'id' => $posko->id,
+            'district_id' => $posko->district_id,
+            'village_id' => $posko->village_id,
+            'nama_posko' => $posko->nama_posko,
+            'jenis_posko' => $posko->jenis_posko,
+            'status_posko' => $posko->status_posko,
+            'latitude' => $posko->latitude,
+            'longitude' => $posko->longitude,
+            'nama_kecamatan' => $posko->district->name ?? '-',
+            'nama_desa' => $posko->village->name ?? '-',
+        ]);
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_posko' => 'required',
-            'jenis_posko' => 'required',
-            'alamat_posko' => 'nullable',
-            'nama_desa' => 'required',
-            'kecamatan' => 'required',
+            'nama_posko' => 'required|string|max:255',
+            'jenis_posko' => 'required|string|max:100',
+            'district_id' => 'required|exists:districts,id',
+            'village_id' => 'required|exists:villages,id',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'status_posko' => 'required|in:Aktif,Penuh,Tutup',
@@ -58,7 +84,7 @@ class PoskoController extends Controller
         $posko = PoskoBencana::findOrFail($id);
         $posko->update($request->all());
 
-        return redirect()->route('posko.index')->with('success', 'Posko berhasil diperbarui');
+        return response()->json(['message' => 'Posko berhasil diperbarui']);
     }
 
     public function destroy($id)
@@ -66,7 +92,6 @@ class PoskoController extends Controller
         $posko = PoskoBencana::findOrFail($id);
         $posko->delete();
 
-        return redirect()->route('posko.index')->with('success', 'Posko berhasil dihapus');
+        return response()->json(['message' => 'Posko berhasil dihapus']);
     }
-
 }

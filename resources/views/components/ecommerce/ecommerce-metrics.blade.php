@@ -40,7 +40,7 @@
             </div>
 
             <span
-                class="flex items-center gap-1 rounded-full bg-success-50 py-0.5 pl-2 pr-2.5 text-sm font-medium text-success-600 dark:bg-success-500/15 dark:text-success-500">
+                class="flex items-center gap-1 rounded-full bg-black py-0.5 pl-2 pr-2.5 text-sm font-medium text-white">
                 <svg class="fill-current" width="12" height="12" viewBox="0 0 12 12" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -75,7 +75,7 @@
             </div>
 
             <span
-                class="flex items-center gap-1 rounded-full bg-error-50 py-0.5 pl-2 pr-2.5 text-sm font-medium text-error-600 dark:bg-error-500/15 dark:text-error-500">
+                class="flex items-center gap-1 rounded-full bg-amber-300 py-0.5 pl-2 pr-2.5 text-sm font-medium text-black">
                 <svg class="fill-current" width="12" height="12" viewBox="0 0 12 12" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -105,7 +105,7 @@
             </div>
 
             <span
-                class="flex items-center gap-1 rounded-full bg-error-50 py-0.5 pl-2 pr-2.5 text-sm font-medium text-error-600 dark:bg-error-500/15 dark:text-error-500">
+                class="flex items-center gap-1 rounded-full bg-amber-300 py-0.5 pl-2 pr-2.5 text-sm font-medium text-black">
                 <svg class="fill-current" width="12" height="12" viewBox="0 0 12 12" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -141,7 +141,7 @@
             </div>
 
             <span
-                class="flex items-center gap-1 rounded-full bg-error-50 py-0.5 pl-2 pr-2.5 text-sm font-medium text-error-600 dark:bg-error-500/15 dark:text-error-500">
+                class="flex items-center gap-1 rounded-full bg-amber-300 py-0.5 pl-2 pr-2.5 text-sm font-medium text-black">
                 <svg class="fill-current" width="12" height="12" viewBox="0 0 12 12" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"

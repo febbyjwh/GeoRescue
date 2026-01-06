@@ -55,7 +55,7 @@
                                     {{ $posko->status_posko }}
                                 </span>
                             </td>
-                            <td class="px-5 py-4 text-sm whitespace-nowrap">
+                            {{-- <td class="px-5 py-4 text-sm whitespace-nowrap">
                                 <a href="{{ route('posko.edit', $posko->id) }}" class="text-yellow-600 hover:underline">Edit</a>
                                 <form action="{{ route('posko.destroy', $posko->id) }}" method="POST" class="inline">
                                     @csrf
@@ -64,7 +64,7 @@
                                         Hapus
                                     </button>
                                 </form>
-                            </td>
+                            </td> --}}
                         </tr>
                     @empty
                         <tr>

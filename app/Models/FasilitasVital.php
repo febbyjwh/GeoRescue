@@ -9,11 +9,11 @@ class FasilitasVital extends Model
     protected $table = 'fasilitas_vital';
 
     protected $fillable = [
-        'desa_id',
-        'kecamatan_id',
         'nama_fasilitas',
         'jenis_fasilitas',
         'alamat',
+        'desa_id',
+        'kecamatan_id',
         'latitude',
         'longitude',
         'status'

@@ -41,16 +41,19 @@
                                         <td class="px-5 py-4 text-sm">{{ $jalur->created_at }}</td>
                                         <td class="px-5 py-4 text-sm">{{ $jalur->updated_at }}</td>
                                         <td class="px-5 py-4 text-sm whitespace-nowrap">
-                                            <a href="{{ route('mitigasi.index', ['edit_jalur' => $jalur->id]) }}"
+                                        <td>
+                                            <a href="{{ route('bencana.edit', $bencana->id) }}"
                                                 class="text-yellow-600 hover:underline">
                                                 Edit
                                             </a>
-                                            <form action="{{ route('jalur_evakuasi.destroy', $jalur->id) }}" method="POST"
+
+                                            <!-- Tombol Hapus -->
+                                            <form action="{{ route('bencana.destroy', $bencana->id) }}" method="POST"
                                                 class="inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="text-red-600 hover:underline ml-2"
-                                                    onclick="return confirm('Yakin hapus?')">
+                                                    onclick="return confirm('Yakin hapus data bencana?')">
                                                     Hapus
                                                 </button>
                                             </form>
