@@ -62,11 +62,11 @@ class MenuHelper
                 'name' => 'Data Bencana',
                 'path' => '/bencana',
             ],
-            [
-                'icon' => 'forms',
-                'name' => 'Jalur Evakuasi',
-                'path' => '/jalur_evakuasi',
-            ],
+            // [
+            //     'icon' => 'forms',
+            //     'name' => 'Jalur Evakuasi',
+            //     'path' => '/jalur_evakuasi',
+            // ],
             [
                 'icon' => 'tables',
                 'name' => 'Posko',

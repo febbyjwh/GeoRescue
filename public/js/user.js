@@ -44,8 +44,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                         [userLocation.lat, userLocation.lng],
                         {
                             radius: 8,
-                            color: "#2563eb",
-                            fillColor: "#3b82f6",
+                            color: "#eb2525ff",
+                            fillColor: "#8c1d1dff",
                             fillOpacity: 0.9,
                         }
                     )
@@ -196,11 +196,19 @@ document.addEventListener("DOMContentLoaded", async () => {
             type: "posko",
         }));
 
-        const allLocations = poskoLocations;
+        const fasilitasLocations = layerFasilitas.getLayers().map((m) => ({
+            nama: "Fasilitas Umum",
+            lat: m.getLatLng().lat,
+            lng: m.getLatLng().lng,
+            type: "fasilitas",
+        }));
+
+        // const allLocations = poskoLocations;
+        const allLocations = [...poskoLocations, ...fasilitasLocations];
 
         // const allLocations = [...getCustomLocations(), ...poskoLocations];
 
-        const MAX_DISTANCE_KM = 5; // 👈 BATAS MAKSIMAL
+        const MAX_DISTANCE_KM = 5;
 
         allLocations
             .map((l) => ({
@@ -212,7 +220,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     l.lng
                 ),
             }))
-            .filter((l) => l.jarak <= MAX_DISTANCE_KM) // 👈 TAMBAHKAN DI SINI
+            .filter((l) => l.jarak <= MAX_DISTANCE_KM)
             .sort((a, b) => a.jarak - b.jarak)
             .slice(0, 5)
             .forEach((l) => {
@@ -220,6 +228,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 li.className = "p-2 hover:bg-gray-100 rounded cursor-pointer";
                 li.innerHTML = `
                 <strong>${l.nama}</strong><br>
+                <span class="text-xs ml-1 px-2 py-0.5 rounded 
+                    ${
+                        l.type === "posko"
+                            ? "bg-blue-100 text-blue-700"
+                            : "bg-green-100 text-green-700"
+                    }">
+                    ${l.type}
+                </span><br>
                 <span class="text-sm text-gray-500">
                     ${l.jarak.toFixed(2)} km
                 </span>
@@ -231,6 +247,71 @@ document.addEventListener("DOMContentLoaded", async () => {
                 };
                 list.appendChild(li);
             });
+    }
+
+    const warnaFasilitas = {
+        "Rumah Sakit": "#dc2626",
+        Puskesmas: "#16a34a",
+        Sekolah: "#2563eb",
+        "Kantor Polisi": "#213448",
+        "Pemadam Kebakaran": "#ea580c",
+        "Kantor Pemerintahan": "#6b7280",
+    };
+
+    function iconFasilitas(jenis) {
+        const color = warnaFasilitas[jenis] ?? "#64748b";
+
+        return L.divIcon({
+            html: `
+            <div style="color:${color}">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                    stroke="#ffffff"
+                    stroke-width="2"
+                    stroke-linejoin="round"/>
+                </svg>
+            </div>
+        `,
+            className: "",
+            iconSize: [20, 20],
+            iconAnchor: [10, 20],
+        });
+    }
+
+    try {
+        const resF = await fetch("/user/fasilitas-data");
+        const dataF = await resF.json();
+
+        dataF.data.forEach((item) => {
+            const lat = parseFloat(item.latitude);
+            const lng = parseFloat(item.longitude);
+            if (isNaN(lat) || isNaN(lng)) return;
+
+            const marker = L.marker([lat, lng], {
+                icon: iconFasilitas(item.jenis_fasilitas),
+            }).bindPopup(`
+            <div class="p-2 w-56 bg-white rounded shadow-md">
+                <h3 class="font-bold text-blue-600">
+                    ${item.nama_fasilitas}
+                </h3>
+                <p class="text-sm">Jenis: ${item.jenis_fasilitas}</p>
+                <p class="text-sm">Status: ${item.status}</p>
+                <p class="text-xs text-gray-600 mt-1">
+                    ${item.alamat}
+                </p>
+                <button 
+                    class="mt-2 w-full bg-blue-600 text-white px-2 py-1 rounded"
+                    onclick="window.routeToLocation(${lat}, ${lng})"
+                >
+                    Tampilkan Rute
+                </button>
+            </div>
+        `);
+
+            layerFasilitas.addLayer(marker);
+        });
+    } catch (err) {
+        console.error("Gagal load fasilitas:", err);
     }
 
     function showRouteTo(destLat, destLng) {
@@ -249,7 +330,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             ],
             router: L.Routing.osrmv1({
                 serviceUrl: "https://router.project-osrm.org/route/v1",
-                profile: "foot", // 👈 PENTING
+                profile: "foot",
             }),
             routeWhileDragging: false,
             addWaypoints: false,
@@ -270,6 +351,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const layerConfig = {
         bencana: layerBencana,
         posko: layerPosko,
+        fasilitas: layerFasilitas,
+        logistik: layerLogistik,
     };
 
     // event toggle button
@@ -290,7 +373,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // set kondisi awal tombol aktif
-    ["bencana", "posko"].forEach((id) => {
+    ["bencana", "posko", "fasilitas", "logistik"].forEach((id) => {
         document
             .getElementById(id)
             ?.classList.add("bg-yellow-300", "font-semibold");
@@ -299,7 +382,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     map.on("click", (e) => {
         if (!isAddCustomActive) return;
 
-        // hapus marker lama kalau ada
+        // hapus marker lama
         if (customMarker) {
             map.removeLayer(customMarker);
         }
@@ -332,8 +415,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             addCustomBtn.textContent = "📍 Tambah Lokasi Saya";
         }
     });
-    // ================= GLOBAL ROUTE HANDLER =================
-    window.routeToPosko = function (lat, lng) {
+
+    // Route global
+    window.routeToLocation = function (lat, lng) {
         showRouteTo(lat, lng);
     };
 });

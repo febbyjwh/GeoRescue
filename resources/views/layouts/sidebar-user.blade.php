@@ -1,5 +1,5 @@
 <!-- Sidebar default hidden -->
-<div id="sidebar" class="hidden fixed left-0 top-0 h-full w-72 bg-white shadow-lg z-[1000] flex flex-col">
+<div id="sidebar" class="hidden fixed left-0 top-0 h-full w-[380px] bg-white shadow-lg z-[1000] flex flex-col">
     <!-- Header -->
     <div class="p-4 flex items-center gap-3">
         <img src="{{ asset('logo-bencana.png') }}" alt="Logo" class="h-10 w-10 object-contain">
