@@ -11,10 +11,7 @@ use App\Http\Controllers\FasilitasVitalController;
 use App\Http\Controllers\JalurDistribusiLogistikController;
 use App\Http\Controllers\UserController;
 
-Route::get(
-    '/jalur_distribusi_logistik/geojson',
-    [JalurDistribusiLogistikController::class, 'geojson']
-);
+
 
 Route::get('/logistik/villages/{districtId}', [JalurDistribusiLogistikController::class, 'villagesByDistrict']);
 

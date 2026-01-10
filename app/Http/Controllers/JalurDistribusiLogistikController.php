@@ -13,8 +13,8 @@ class JalurDistribusiLogistikController extends Controller
 
     public function index()
     {
-        $logistiks = JalurDistribusiLogistik::with(['district', 'village'])->get();
-        return view('admin.logistik.index', compact('logistiks'));
+        $logistiks = JalurDistribusiLogistik::all();
+        return view('Admin.jalur_distribusi_logistik.index', compact('logistiks'));
     }
 
 
