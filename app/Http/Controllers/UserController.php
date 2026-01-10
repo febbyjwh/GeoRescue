@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bencana;
 use App\Models\PoskoBencana;
+use App\Models\FasilitasVital;
 
 use Illuminate\Http\Request;
 
@@ -51,5 +52,30 @@ class UserController extends Controller
         });
 
         return response()->json(['data' => $poskos]);
+    }
+
+    public function fasilitas()
+    {
+        $fasilitas = FasilitasVital::with(['district', 'village'])
+            ->get()
+            ->map(function ($f) {
+                return [
+                    'id' => $f->id,
+                    'nama_fasilitas' => $f->nama_fasilitas,
+                    'jenis_fasilitas' => $f->jenis_fasilitas,
+                    'alamat' => $f->alamat,
+                    'status' => $f->status,
+                    'latitude' => $f->latitude,
+                    'longitude' => $f->longitude,
+                    'kecamatan_id' => $f->kecamatan_id,
+                    'desa_id' => $f->desa_id,
+                    'nama_kecamatan' => $f->district->name ?? '-',
+                    'nama_desa' => $f->village->name ?? '-',
+                ];
+            });
+
+        return response()->json([
+            'data' => $fasilitas
+        ]);
     }
 }

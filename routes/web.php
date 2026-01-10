@@ -27,6 +27,7 @@ Route::prefix('api/region')->name('api.region.')->group(function () {
 
 Route::get('/user/bencana-data', [UserController::class, 'bencana']);
 Route::get('/user/posko-data', [UserController::class, 'posko']);
+Route::get('/user/fasilitas-data', [UserController::class, 'fasilitas']);
 
 // data mitigasi
 Route::prefix('mitigasi')->name('mitigasi.')->group(function () {
@@ -47,6 +48,7 @@ Route::prefix('posko')->name('posko.')->group(function () {
     Route::get('/', [PoskoController::class, 'index'])->name('index');
     Route::get('/get-posko', [PoskoController::class, 'getPosko'])->name('get_posko');
     Route::post('/', [PoskoController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [PoskoController::class, 'edit'])->name('edit');
     Route::put('/{id}', [PoskoController::class, 'update'])->name('update');
     Route::delete('/{id}', [PoskoController::class, 'destroy'])->name('destroy');
 });

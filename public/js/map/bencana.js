@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
     if (typeof initDistrictVillageSelect === "function") {
         initDistrictVillageSelect("#district_id", "#village_id");
     }
@@ -8,16 +9,19 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    if (!MapState.layers.bencana) {
-        MapState.layers.bencana = L.layerGroup().addTo(MapState.map);
-    }
-    const layerBencana = MapState.layers.bencana;
+    const map = MapState.map;
 
-    if (!MapState.layers.inputPoint) {
-        MapState.layers.inputPoint = L.layerGroup().addTo(MapState.map);
+    if (!MapState.layers.bencana) {
+        MapState.layers.bencana = L.layerGroup().addTo(map);
     }
+    if (!MapState.layers.inputPoint) {
+        MapState.layers.inputPoint = L.layerGroup().addTo(map);
+    }
+
+    const layerBencana = MapState.layers.bencana;
     const inputLayer = MapState.layers.inputPoint;
-    let formMode = "create";
+
+    let formMode = "create"; // create | edit
     let inputMarker = null;
 
     const warnaBencana = {
@@ -38,11 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const lng = parseFloat(item.lang);
                 if (isNaN(lat) || isNaN(lng)) return;
 
-                const warna = warnaBencana[item.nama_bencana] ?? "#2563eb";
-
                 const marker = L.circleMarker([lat, lng], {
                     radius: 9,
-                    fillColor: warna,
+                    fillColor:
+                        warnaBencana[item.nama_bencana] ?? "#2563eb",
                     fillOpacity: 0.85,
                     color: "#ffffff",
                     weight: 1,
@@ -55,7 +58,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     Kerawanan: ${item.tingkat_kerawanan}
                 `);
 
-                marker.on("click", () => fillForm(item));
+                // 👉 KLIK MARKER = EDIT
+                marker.on("click", (e) => {
+                    L.DomEvent.stopPropagation(e);
+                    fillForm(item);
+                });
+
                 layerBencana.addLayer(marker);
             });
         } catch (err) {
@@ -63,11 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    /* ===============================
-     * FILL FORM (EDIT MODE)
-     * =============================== */
+    function setMode(mode) {
+        formMode = mode;
+    }
+
     function fillForm(item) {
-        formMode = "edit";
+        setMode("edit");
 
         document.getElementById("bencana_id").value = item.id;
         document.getElementById("nama_bencana").value = item.nama_bencana;
@@ -85,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         $("#district_id").append(districtOption).trigger("change");
 
-        // Desa
+        // Desa (delay karena async select2)
         setTimeout(() => {
             const villageOption = new Option(
                 item.nama_desa,
@@ -96,18 +105,44 @@ document.addEventListener("DOMContentLoaded", () => {
             $("#village_id").append(villageOption).trigger("change");
         }, 300);
 
+        // Marker input
         inputLayer.clearLayers();
         inputMarker = L.marker([item.lat, item.lang], {
             draggable: true,
         }).addTo(inputLayer);
 
-        inputMarker.on("dragend", (ev) => {
-            const pos = ev.target.getLatLng();
-            document.getElementById("lat").value = pos.lat.toFixed(6);
-            document.getElementById("lang").value = pos.lng.toFixed(6);
-        });
+        inputMarker.on("dragend", updateLatLngFromMarker);
 
-        MapState.map.setView([item.lat, item.lang], 15);
+        map.setView([item.lat, item.lang], 15);
+    }
+
+    function switchToCreateBencana(lat, lng) {
+        setMode("create");
+
+        document.getElementById("bencana_id").value = "";
+        document.querySelector("form")?.reset();
+
+        $("#district_id").val(null).trigger("change");
+        $("#village_id").empty().trigger("change");
+
+        inputLayer.clearLayers();
+
+        if (lat && lng) {
+            document.getElementById("lat").value = lat;
+            document.getElementById("lang").value = lng;
+
+            inputMarker = L.marker([lat, lng], {
+                draggable: true,
+            }).addTo(inputLayer);
+
+            inputMarker.on("dragend", updateLatLngFromMarker);
+        }
+    }
+
+    function updateLatLngFromMarker(e) {
+        const pos = e.target.getLatLng();
+        document.getElementById("lat").value = pos.lat.toFixed(6);
+        document.getElementById("lang").value = pos.lng.toFixed(6);
     }
 
     function getFormData() {
@@ -145,9 +180,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!res.ok) throw await res.json();
 
             alert(
-                isEdit ? "Data berhasil diupdate" : "Data berhasil ditambahkan"
+                isEdit
+                    ? "Data berhasil diupdate"
+                    : "Data berhasil ditambahkan"
             );
-            resetForm();
+
+            switchToCreateBencana();
             loadBencana();
         } catch (err) {
             console.error("Gagal simpan:", err);
@@ -155,67 +193,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    function switchToCreateBencana(lat = null, lng = null) {
-        formMode = "create";
-
-        document.getElementById("bencana_id").value = "";
-        document.querySelector("form")?.reset();
-
-        $("#district_id").val(null).trigger("change");
-        $("#village_id").empty().trigger("change");
-
-        inputLayer.clearLayers();
-
-        if (lat && lng) {
-            document.getElementById("lat").value = lat;
-            document.getElementById("lang").value = lng;
-
-            inputMarker = L.marker([lat, lng], { draggable: true }).addTo(
-                inputLayer
-            );
-            inputMarker.on("dragend", (ev) => {
-                const pos = ev.target.getLatLng();
-                document.getElementById("lat").value = pos.lat.toFixed(6);
-                document.getElementById("lang").value = pos.lng.toFixed(6);
-            });
-        }
-    }
-
-    function resetForm() {
-        document.getElementById("bencana_id").value = "";
-        document.querySelector("form")?.reset();
-
-        $("#district_id").val(null).trigger("change");
-        $("#village_id").empty().trigger("change");
-
-        inputLayer.clearLayers();
-    }
-
-    MapState.map.on("click", (e) => {
-        if (formMode === "edit") {
-            switchToCreateBencana(
-                e.latlng.lat.toFixed(6),
-                e.latlng.lng.toFixed(6)
-            );
-            return;
-        }
-        const lat = e.latlng.lat.toFixed(6);
-        const lng = e.latlng.lng.toFixed(6);
-
-        document.getElementById("lat").value = lat;
-        document.getElementById("lang").value = lng;
-
-        inputLayer.clearLayers();
-
-        inputMarker = L.marker([lat, lng], {
-            draggable: true,
-        }).addTo(inputLayer);
-
-        inputMarker.on("dragend", (ev) => {
-            const pos = ev.target.getLatLng();
-            document.getElementById("lat").value = pos.lat.toFixed(6);
-            document.getElementById("lang").value = pos.lng.toFixed(6);
-        });
+    map.on("click", (e) => {
+        switchToCreateBencana(
+            e.latlng.lat.toFixed(6),
+            e.latlng.lng.toFixed(6)
+        );
     });
 
     loadBencana();
