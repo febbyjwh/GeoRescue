@@ -15,9 +15,9 @@ class DashboardController extends Controller
         $totalBencana = Bencana::count();
         $bencanaTinggi = Bencana::where('tingkat_kerawanan', 'Tinggi')->count();
 
-        $jenisBencana = Bencana::select('nama_bencana', DB::raw('count(*) as total'))
-            ->groupBy('nama_bencana')
-            ->pluck('total', 'nama_bencana');
+        $jenisBencana = Bencana::select('jenis_bencana', DB::raw('count(*) as total'))
+            ->groupBy('jenis_bencana')
+            ->pluck('total', 'jenis_bencana');
 
         $start = $request->input('start_date', now()->startOfYear()->format('Y-m-d')); // default awal tahun
         $end = $request->input('end_date', now()->endOfYear()->format('Y-m-d'));

@@ -10,8 +10,9 @@ class Bencana extends Model
     protected $fillable = [
         "kecamatan_id",
         "desa_id",
-        "nama_bencana",
+        "jenis_bencana",
         "tingkat_kerawanan",
+        "status",
         "lang",
         "lat"
     ];

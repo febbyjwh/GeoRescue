@@ -40,12 +40,12 @@ class SidebarController extends Controller
                     ],
                     [
                         'icon' => 'grid-icon',
-                        'name' => 'Jalur Distribusi Logistik',
+                        'name' => 'Distribusi Logistik',
                         'new' => true,
                         'subItems' => [
                             ['name' => 'Tambah Jalur Distribusi Logistik', 'path' => 'jalur_distribusi_logistik.create'],
                             // ['name' => 'Update Jalur Distribusi Logistik', 'path' => 'jalur_distribusi_logistik.edit'],
-                            ['name' => 'Jalur Distribusi Logistik', 'path' => 'jalur_distribusi_logistik.index'],
+                            ['name' => 'Distribusi Logistik', 'path' => 'jalur_distribusi_logistik.index'],
                         ],
                     ],
                     [

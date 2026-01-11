@@ -21,6 +21,15 @@ class JalurDistribusiLogistik extends Model
         'lang',
     ];
 
+    public function index()
+{
+    $logistiks = JalurDistribusiLogistik::with(['district', 'village'])
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    return view('jalur_distribusi_logistik.index', compact('logistiks'));
+}
+
     /**
      * Relasi ke tabel districts
      */

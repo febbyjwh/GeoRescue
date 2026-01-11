@@ -1,31 +1,93 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    /* ===============================
+     * INIT SELECT KECAMATAN - DESA
+     * =============================== */
     if (typeof initDistrictVillageSelect === "function") {
-        initDistrictVillageSelect("#district_id", "#village_id");
+        initDistrictVillageSelect("#bencana_district", "#bencana_village");
     }
 
+    /* ===============================
+     * MAP STATE CHECK
+     * =============================== */
     if (!window.MapState || !MapState.map) {
         console.error("MapState belum tersedia");
         return;
     }
 
-    if (!MapState.layers.bencana) {
-        MapState.layers.bencana = L.layerGroup().addTo(MapState.map);
-    }
-    const layerBencana = MapState.layers.bencana;
+    const map = MapState.map;
 
-    if (!MapState.layers.inputPoint) {
-        MapState.layers.inputPoint = L.layerGroup().addTo(MapState.map);
+    /* ===============================
+     * ACTIVE MODULE FLAG
+     * =============================== */
+    MapState.activeModule = "bencana";
+
+    /* ===============================
+     * LAYERS
+     * =============================== */
+    if (!MapState.layers.bencana) {
+        MapState.layers.bencana = L.layerGroup().addTo(map);
     }
-    const inputLayer = MapState.layers.inputPoint;
+
+    if (!MapState.layers.bencanaInput) {
+        MapState.layers.bencanaInput = L.layerGroup().addTo(map);
+    }
+
+    const layerBencana = MapState.layers.bencana;
+    const inputLayer = MapState.layers.bencanaInput;
+
     let formMode = "create";
     let inputMarker = null;
 
+    /* ===============================
+     * ICON & WARNA
+     * =============================== */
     const warnaBencana = {
-        Banjir: "#1E40AF",
-        Longsor: "#F59E0B",
-        Gempa: "#10B981",
+        banjir: "#1E40AF",
+        longsor: "#F59E0B",
+        gempa: "#10B981",
     };
 
+    function getSvgIcon(color = "#008eb5") {
+        const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 512 512">
+            <path fill="${color}" d="M256 0C149.3 0 64 85.3 64 192c0 36.9 11 65.4 30.1 94.3l141.7 215c4.3 6.5 11.7 10.7 20.2 10.7s16-4.3 20.2-10.7l141.7-215C437 257.4 448 228.9 448 192C448 85.3 362.7 0 256 0z"/>
+        </svg>
+        `;
+
+        return L.icon({
+            iconUrl: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
+            iconSize: [40, 40],
+            iconAnchor: [20, 40],
+        });
+    }
+
+    /* ===============================
+     * DETAIL PANEL
+     * =============================== */
+    function showBencanaDetail(item) {
+        const box = document.getElementById("selectedBencana");
+        if (!box) return;
+
+        box.classList.remove("hidden");
+
+        document.getElementById("detailJenis").innerText = item.jenis_bencana;
+        document.getElementById("detailKecamatan").innerText = item.nama_kecamatan;
+        document.getElementById("detailDesa").innerText = item.nama_desa;
+        document.getElementById("detailKerawanan").innerText = item.tingkat_kerawanan;
+        document.getElementById("detailStatus").innerText = item.status;
+
+        const jenisEl = document.getElementById("detailJenis");
+        jenisEl.className = "font-semibold";
+
+        if (item.jenis_bencana === "banjir") jenisEl.classList.add("text-blue-600");
+        if (item.jenis_bencana === "longsor") jenisEl.classList.add("text-yellow-600");
+        if (item.jenis_bencana === "gempa") jenisEl.classList.add("text-green-600");
+    }
+
+    /* ===============================
+     * LOAD DATA
+     * =============================== */
     async function loadBencana() {
         layerBencana.clearLayers();
 
@@ -33,189 +95,92 @@ document.addEventListener("DOMContentLoaded", () => {
             const res = await fetch("/bencana/get-bencana");
             const json = await res.json();
 
-            json.data.forEach((item) => {
+            json.data.forEach(item => {
                 const lat = parseFloat(item.lat);
                 const lng = parseFloat(item.lang);
                 if (isNaN(lat) || isNaN(lng)) return;
 
-                const warna = warnaBencana[item.nama_bencana] ?? "#2563eb";
-
-                const marker = L.circleMarker([lat, lng], {
-                    radius: 9,
-                    fillColor: warna,
-                    fillOpacity: 0.85,
-                    color: "#ffffff",
-                    weight: 1,
+                const marker = L.marker([lat, lng], {
+                    icon: getSvgIcon(warnaBencana[item.jenis_bencana]),
                 });
 
-                marker.bindPopup(`
-                    <strong>${item.nama_bencana}</strong><br>
-                    Kecamatan: ${item.nama_kecamatan}<br>
-                    Desa: ${item.nama_desa}<br>
-                    Kerawanan: ${item.tingkat_kerawanan}
-                `);
+                const circle = L.circle([lat, lng], {
+                    radius: 2000,
+                    color: warnaBencana[item.jenis_bencana],
+                    fillOpacity: 0.2,
+                });
 
-                marker.on("click", () => fillForm(item));
+                marker.on("click", e => {
+                    L.DomEvent.stopPropagation(e);
+                    fillForm(item);
+                    showBencanaDetail(item);
+                });
+
                 layerBencana.addLayer(marker);
+                layerBencana.addLayer(circle);
             });
+
         } catch (err) {
             console.error("Gagal load bencana:", err);
         }
     }
 
     /* ===============================
-     * FILL FORM (EDIT MODE)
+     * FORM HANDLING
      * =============================== */
     function fillForm(item) {
         formMode = "edit";
 
         document.getElementById("bencana_id").value = item.id;
-        document.getElementById("nama_bencana").value = item.nama_bencana;
-        document.getElementById("tingkat_kerawanan").value =
-            item.tingkat_kerawanan;
+        document.getElementById("jenis_bencana").value = item.jenis_bencana;
+        document.getElementById("tingkat_kerawanan").value = item.tingkat_kerawanan;
+        document.getElementById("status").value = item.status;
         document.getElementById("lat").value = item.lat;
         document.getElementById("lang").value = item.lang;
 
-        // Kecamatan
-        const districtOption = new Option(
-            item.nama_kecamatan,
-            item.kecamatan_id,
-            true,
-            true
-        );
-        $("#district_id").append(districtOption).trigger("change");
+        $("#bencana_district")
+            .append(new Option(item.nama_kecamatan, item.kecamatan_id, true, true))
+            .trigger("change");
 
-        // Desa
         setTimeout(() => {
-            const villageOption = new Option(
-                item.nama_desa,
-                item.desa_id,
-                true,
-                true
-            );
-            $("#village_id").append(villageOption).trigger("change");
+            $("#bencana_village")
+                .append(new Option(item.nama_desa, item.desa_id, true, true))
+                .trigger("change");
         }, 300);
 
         inputLayer.clearLayers();
-        inputMarker = L.marker([item.lat, item.lang], {
-            draggable: true,
-        }).addTo(inputLayer);
+        inputMarker = L.marker([item.lat, item.lang], { draggable: true })
+            .addTo(inputLayer)
+            .on("dragend", updateLatLngFromMarker);
 
-        inputMarker.on("dragend", (ev) => {
-            const pos = ev.target.getLatLng();
-            document.getElementById("lat").value = pos.lat.toFixed(6);
-            document.getElementById("lang").value = pos.lng.toFixed(6);
-        });
-
-        MapState.map.setView([item.lat, item.lang], 15);
+        map.setView([item.lat, item.lang], 15);
     }
 
-    function getFormData() {
-        return {
-            id: document.getElementById("bencana_id").value || null,
-            nama_bencana: document.getElementById("nama_bencana").value,
-            kecamatan_id: document.getElementById("district_id").value,
-            desa_id: document.getElementById("village_id").value,
-            tingkat_kerawanan:
-                document.getElementById("tingkat_kerawanan").value,
-            lat: document.getElementById("lat").value,
-            lang: document.getElementById("lang").value,
-        };
+    function updateLatLngFromMarker(e) {
+        const pos = e.target.getLatLng();
+        document.getElementById("lat").value = pos.lat.toFixed(6);
+        document.getElementById("lang").value = pos.lng.toFixed(6);
     }
 
-    window.submitBencana = async function () {
-        const data = getFormData();
-        const isEdit = !!data.id;
-
-        const url = isEdit ? `/bencana/${data.id}` : `/bencana`;
-        const method = isEdit ? "PUT" : "POST";
-
-        try {
-            const res = await fetch(url, {
-                method,
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": document
-                        .querySelector('meta[name="csrf-token"]')
-                        .getAttribute("content"),
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (!res.ok) throw await res.json();
-
-            alert(
-                isEdit ? "Data berhasil diupdate" : "Data berhasil ditambahkan"
-            );
-            resetForm();
-            loadBencana();
-        } catch (err) {
-            console.error("Gagal simpan:", err);
-            alert("Gagal menyimpan data");
-        }
-    };
-
-    function switchToCreateBencana(lat = null, lng = null) {
-        formMode = "create";
-
-        document.getElementById("bencana_id").value = "";
-        document.querySelector("form")?.reset();
-
-        $("#district_id").val(null).trigger("change");
-        $("#village_id").empty().trigger("change");
+    /* ===============================
+     * MAP CLICK
+     * =============================== */
+    map.on("click", e => {
+        if (MapState.activeModule !== "bencana") return;
 
         inputLayer.clearLayers();
 
-        if (lat && lng) {
-            document.getElementById("lat").value = lat;
-            document.getElementById("lang").value = lng;
-
-            inputMarker = L.marker([lat, lng], { draggable: true }).addTo(
-                inputLayer
-            );
-            inputMarker.on("dragend", (ev) => {
-                const pos = ev.target.getLatLng();
-                document.getElementById("lat").value = pos.lat.toFixed(6);
-                document.getElementById("lang").value = pos.lng.toFixed(6);
-            });
-        }
-    }
-
-    function resetForm() {
-        document.getElementById("bencana_id").value = "";
-        document.querySelector("form")?.reset();
-
-        $("#district_id").val(null).trigger("change");
-        $("#village_id").empty().trigger("change");
-
-        inputLayer.clearLayers();
-    }
-
-    MapState.map.on("click", (e) => {
-        if (formMode === "edit") {
-            switchToCreateBencana(
-                e.latlng.lat.toFixed(6),
-                e.latlng.lng.toFixed(6)
-            );
-            return;
-        }
         const lat = e.latlng.lat.toFixed(6);
         const lng = e.latlng.lng.toFixed(6);
 
         document.getElementById("lat").value = lat;
         document.getElementById("lang").value = lng;
 
-        inputLayer.clearLayers();
+        inputMarker = L.marker([lat, lng], { draggable: true })
+            .addTo(inputLayer)
+            .on("dragend", updateLatLngFromMarker);
 
-        inputMarker = L.marker([lat, lng], {
-            draggable: true,
-        }).addTo(inputLayer);
-
-        inputMarker.on("dragend", (ev) => {
-            const pos = ev.target.getLatLng();
-            document.getElementById("lat").value = pos.lat.toFixed(6);
-            document.getElementById("lang").value = pos.lng.toFixed(6);
-        });
+        formMode = "create";
     });
 
     loadBencana();

@@ -4,14 +4,14 @@
     <style>
         #map {
             width: 100%;
-            height: 100vh;
+            height: 150vh;
         }
     </style>
 @endpush
 
 @push('scripts')
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+    {{-- <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script> --}}
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
     <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>

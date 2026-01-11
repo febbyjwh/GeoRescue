@@ -11,10 +11,6 @@ use App\Http\Controllers\FasilitasVitalController;
 use App\Http\Controllers\JalurDistribusiLogistikController;
 use App\Http\Controllers\UserController;
 
-Route::get(
-    '/jalur_distribusi_logistik/geojson',
-    [JalurDistribusiLogistikController::class, 'geojson']
-);
 
 Route::get('/logistik/villages/{districtId}', [JalurDistribusiLogistikController::class, 'villagesByDistrict']);
 
@@ -51,6 +47,7 @@ Route::prefix('posko')->name('posko.')->group(function () {
     Route::get('/', [PoskoController::class, 'index'])->name('index');
     Route::get('/get-posko', [PoskoController::class, 'getPosko'])->name('get_posko');
     Route::post('/', [PoskoController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [PoskoController::class, 'edit'])->name('edit');
     Route::put('/{id}', [PoskoController::class, 'update'])->name('update');
     Route::delete('/{id}', [PoskoController::class, 'destroy'])->name('destroy');
 });
@@ -74,7 +71,7 @@ Route::prefix('user')->name('user.')->group(function () {
 
 // Posko
 Route::group(['middleware' => ['isadmin']], function () {
-// Fasilitas vital
+    // Fasilitas vital
     Route::prefix('fasilitasvital')->group(function () {
         Route::get('/', [FasilitasVitalController::class, 'index'])->name('fasilitasvital.index');
         Route::get('/create', [FasilitasVitalController::class, 'create'])->name('fasilitasvital.create');
@@ -85,20 +82,23 @@ Route::group(['middleware' => ['isadmin']], function () {
         Route::get('/get-fasilitas', [FasilitasVitalController::class, 'getFasilitas'])->name('fasilitasvital.get');
     });
 
-// Jalur distribusi logistik
-    Route::resource('jalur_distribusi_logistik', JalurDistribusiLogistikController::class)->names([
-        'index' => 'jalur_distribusi_logistik.index',
-        'create' => 'jalur_distribusi_logistik.create',
-        'store' => 'jalur_distribusi_logistik.store',
-        'update' => 'jalur_distribusi_logistik.update',
-        'destroy' => 'jalur_distribusi_logistik.destroy',
-    ]);
+    // Jalur distribusi logistik
+    Route::prefix('jalur_distribusi_logistik')->group(function () {
+        Route::get('/', [JalurDistribusiLogistikController::class, 'index'])->name('jalur_distribusi_logistik.index');
+        Route::get('/create', [JalurDistribusiLogistikController::class, 'create'])->name('jalur_distribusi_logistik.create');
+        Route::post('/', [JalurDistribusiLogistikController::class, 'store'])->name('jalur_distribusi_logistik.store');
+        Route::get('/{id}/edit', [JalurDistribusiLogistikController::class, 'edit'])->name('jalur_distribusi_logistik.edit');
+        Route::put('/{id}', [JalurDistribusiLogistikController::class, 'update'])->name('jalur_distribusi_logistik.update');
+        Route::delete('/{id}', [JalurDistribusiLogistikController::class, 'destroy'])->name('jalur_distribusi_logistik.destroy');
+        Route::get('/get-logistik', [JalurDistribusiLogistikController::class, 'getLogistik'])->name('jalur_distribusi_logistik.get');
+    });
 });
 
 // calender pages
 Route::get('/calendar', function () {
     return view('pages.calender', ['title' => 'Calendar']);
 })->name('calendar');
+
 
 // profile pages
 Route::get('/profile', function () {

@@ -21,8 +21,9 @@ class BencanaSeeder extends Seeder
             Bencana::create([
                 "kecamatan_id" => $state->kecamatan_id,
                 "desa_id" => $state->desa_id,
-                "nama_bencana" => $state->nama_bencana,
+                "jenis_bencana" => $state->jenis_bencana,
                 "tingkat_kerawanan" => $state->tingkat_kerawanan,
+                "status" => $state->status,
                 "lang" => $state->lang,
                 "lat" => $state->lat
             ]);

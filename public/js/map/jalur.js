@@ -88,21 +88,21 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =============================
        CLICK MAP → PICK 2 POINTS
     ============================== */
-    map.on("click", (e) => {
-        console.log("map clicked");
+    // map.on("click", (e) => {
+    //     console.log("map clicked");
 
-        // Klik ke-3 → reset dan mulai ulang
-        if (selectedPoints.length === 2) {
-            resetRoute();
-        }
+    //     // Klik ke-3 → reset dan mulai ulang
+    //     if (selectedPoints.length === 2) {
+    //         resetRoute();
+    //     }
 
-        selectedPoints.push(e.latlng);
+    //     selectedPoints.push(e.latlng);
 
-        // Klik ke-2 → buat route
-        if (selectedPoints.length === 2) {
-            createRoute(selectedPoints);
-        }
-    });
+    //     // Klik ke-2 → buat route
+    //     if (selectedPoints.length === 2) {
+    //         createRoute(selectedPoints);
+    //     }
+    // });
 
     /* =============================
        SWITCH TO CREATE MODE
