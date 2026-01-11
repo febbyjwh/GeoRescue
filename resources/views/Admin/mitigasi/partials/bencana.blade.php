@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <x-common.page-breadcrumb pageTitle="Data Titik Bencana" class="z-10 relative" />
     <div class="rounded-xl border border-gray-200 bg-white p-6">
-        <form id="formBencana" onsubmit="event.preventDefault()">
+        <form id="formBencana" onsubmit="event.preventDefault()" onclick="setActiveModule('bencana')">
             <x-form.form-elements.select-inputs label="Jenis bencana" name="jenis_bencana" id="jenis_bencana" required>
                 <option value="">Pilih Jenis Bencana</option>
                 <option value="banjir" {{ old('jenis_bencana') == 'banjir' ? 'selected' : '' }}>Banjir</option>
@@ -42,6 +42,7 @@
                 <x-form.form-elements.default-inputs label="Latitude" name="lat" id="lat"
                     placeholder="-6.200000" value="{{ old('lat') }}" />
             </div>
+
             <div class="mb-3">
                 <button type="button" onclick="submitBencana()"
                     class="inline-flex items-center rounded-lg bg-amber-300 px-5 py-2.5 text-sm mt-6 font-medium text-black hover:bg-amber-500 transition">

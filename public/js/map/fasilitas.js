@@ -183,6 +183,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     MapState.map.on("click", (e) => {
+        console.log("Map clicked!", e.latlng);
+        console.log("Active module:", MapState.activeModule);
+        if (MapState.activeModule !== "fasilitas") return;
+
+        inputLayer.clearLayers();
+
         const lat = e.latlng.lat.toFixed(6);
         const lng = e.latlng.lng.toFixed(6);
 

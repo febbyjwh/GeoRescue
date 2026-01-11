@@ -1,15 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-    /* ===============================
-     * INIT SELECT KECAMATAN - DESA
-     * =============================== */
     if (typeof initDistrictVillageSelect === "function") {
         initDistrictVillageSelect("#bencana_district", "#bencana_village");
     }
 
-    /* ===============================
-     * MAP STATE CHECK
-     * =============================== */
     if (!window.MapState || !MapState.map) {
         console.error("MapState belum tersedia");
         return;
@@ -17,14 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const map = MapState.map;
 
-    /* ===============================
-     * ACTIVE MODULE FLAG
-     * =============================== */
-    MapState.activeModule = "bencana";
+    // MapState.activeModule = "bencana";
 
-    /* ===============================
-     * LAYERS
-     * =============================== */
     if (!MapState.layers.bencana) {
         MapState.layers.bencana = L.layerGroup().addTo(map);
     }
@@ -39,9 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let formMode = "create";
     let inputMarker = null;
 
-    /* ===============================
-     * ICON & WARNA
-     * =============================== */
     const warnaBencana = {
         banjir: "#1E40AF",
         longsor: "#F59E0B",
@@ -56,15 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         return L.icon({
-            iconUrl: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
+            iconUrl:
+                "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
             iconSize: [40, 40],
             iconAnchor: [20, 40],
         });
     }
 
-    /* ===============================
-     * DETAIL PANEL
-     * =============================== */
     function showBencanaDetail(item) {
         const box = document.getElementById("selectedBencana");
         if (!box) return;
@@ -72,22 +54,24 @@ document.addEventListener("DOMContentLoaded", () => {
         box.classList.remove("hidden");
 
         document.getElementById("detailJenis").innerText = item.jenis_bencana;
-        document.getElementById("detailKecamatan").innerText = item.nama_kecamatan;
+        document.getElementById("detailKecamatan").innerText =
+            item.nama_kecamatan;
         document.getElementById("detailDesa").innerText = item.nama_desa;
-        document.getElementById("detailKerawanan").innerText = item.tingkat_kerawanan;
+        document.getElementById("detailKerawanan").innerText =
+            item.tingkat_kerawanan;
         document.getElementById("detailStatus").innerText = item.status;
 
         const jenisEl = document.getElementById("detailJenis");
         jenisEl.className = "font-semibold";
 
-        if (item.jenis_bencana === "banjir") jenisEl.classList.add("text-blue-600");
-        if (item.jenis_bencana === "longsor") jenisEl.classList.add("text-yellow-600");
-        if (item.jenis_bencana === "gempa") jenisEl.classList.add("text-green-600");
+        if (item.jenis_bencana === "banjir")
+            jenisEl.classList.add("text-blue-600");
+        if (item.jenis_bencana === "longsor")
+            jenisEl.classList.add("text-yellow-600");
+        if (item.jenis_bencana === "gempa")
+            jenisEl.classList.add("text-green-600");
     }
 
-    /* ===============================
-     * LOAD DATA
-     * =============================== */
     async function loadBencana() {
         layerBencana.clearLayers();
 
@@ -95,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const res = await fetch("/bencana/get-bencana");
             const json = await res.json();
 
-            json.data.forEach(item => {
+            json.data.forEach((item) => {
                 const lat = parseFloat(item.lat);
                 const lng = parseFloat(item.lang);
                 if (isNaN(lat) || isNaN(lng)) return;
@@ -110,36 +94,36 @@ document.addEventListener("DOMContentLoaded", () => {
                     fillOpacity: 0.2,
                 });
 
-                marker.on("click", e => {
+                marker.on("click", (e) => {
                     L.DomEvent.stopPropagation(e);
                     fillForm(item);
                     showBencanaDetail(item);
                 });
 
                 layerBencana.addLayer(marker);
+                console.log("Jumlah marker bencana:", layerBencana.getLayers().length);
                 layerBencana.addLayer(circle);
             });
-
         } catch (err) {
             console.error("Gagal load bencana:", err);
         }
     }
 
-    /* ===============================
-     * FORM HANDLING
-     * =============================== */
     function fillForm(item) {
         formMode = "edit";
 
         document.getElementById("bencana_id").value = item.id;
         document.getElementById("jenis_bencana").value = item.jenis_bencana;
-        document.getElementById("tingkat_kerawanan").value = item.tingkat_kerawanan;
+        document.getElementById("tingkat_kerawanan").value =
+            item.tingkat_kerawanan;
         document.getElementById("status").value = item.status;
         document.getElementById("lat").value = item.lat;
         document.getElementById("lang").value = item.lang;
 
         $("#bencana_district")
-            .append(new Option(item.nama_kecamatan, item.kecamatan_id, true, true))
+            .append(
+                new Option(item.nama_kecamatan, item.kecamatan_id, true, true)
+            )
             .trigger("change");
 
         setTimeout(() => {
@@ -162,13 +146,14 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("lang").value = pos.lng.toFixed(6);
     }
 
-    /* ===============================
-     * MAP CLICK
-     * =============================== */
-    map.on("click", e => {
+    map.on("click", (e) => {
+        console.log("Map clicked!", e.latlng);
+        console.log("Active module:", MapState.activeModule);
         if (MapState.activeModule !== "bencana") return;
 
-        inputLayer.clearLayers();
+        if (layerBencana.getLayers().length > 0) {
+            layerBencana.clearLayers();
+        }
 
         const lat = e.latlng.lat.toFixed(6);
         const lng = e.latlng.lng.toFixed(6);
@@ -183,5 +168,8 @@ document.addEventListener("DOMContentLoaded", () => {
         formMode = "create";
     });
 
-    loadBencana();
+    if (!MapState.bencanaLoaded) {
+        loadBencana();
+        MapState.bencanaLoaded = true;
+    }
 });

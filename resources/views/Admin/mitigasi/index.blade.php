@@ -13,12 +13,12 @@
 
             <x-form.form-elements.select-inputs name="jenis_data" id="formSelector" label="Jenis Data" class="mb-4">
                 <option value="" disabled selected>
-                    -- Pilih Jenis Data --
+                    Pilih Jenis Data
                 </option>
                 <option value="bencana">Bencana</option>
                 <option value="posko">Posko</option>
                 <option value="fasilitas">Fasilitas Vital</option>
-                <option value="jalur">Jalur Evakuasi</option>
+                {{-- <option value="jalur">Jalur Evakuasi</option> --}}
                 <option value="logistik">Distribusi Logistik</option>
             </x-form.form-elements.select-inputs>
 
@@ -39,9 +39,9 @@
                     @include('admin.mitigasi.partials.fasilitas_vital')
                 </div>
 
-                <div class="form-item hidden" data-form="jalur">
+                {{-- <div class="form-item hidden" data-form="jalur">
                     @include('admin.mitigasi.partials.jalur_evakuasi')
-                </div>
+                </div> --}}
 
                 <div class="form-item hidden" data-form="logistik">
                     @include('admin.mitigasi.partials.distribusi_logistik')

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\Bencana;
+use App\Models\PoskoBencana;
 use Illuminate\Http\Request;
 
 class MitigasiController extends Controller
@@ -78,5 +79,44 @@ class MitigasiController extends Controller
         ];
     }
 
-    private function getPoskoSummary() {}
+    private function getPoskoSummary()
+    {
+        $data = PoskoBencana::with(['district', 'village'])->get();
+
+        // total posko
+        $total = $data->count();
+
+        // status posko
+        $status = $data->groupBy('status_posko')->map->count();
+
+        // jenis posko
+        $jenis = $data->groupBy('jenis_posko')->map->count();
+
+        // sebaran wilayah
+        $kecamatan = $data->pluck('kecamatan_id')->unique()->count();
+        $desa = $data->pluck('desa_id')->unique()->count();
+
+        // kecamatan dengan posko terbanyak
+        $topKecamatan = PoskoBencana::select('kecamatan_id')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('kecamatan_id')
+            ->orderByDesc('total')
+            ->with('district')
+            ->first();
+
+        return [
+            'total' => $total,
+            'status' => $status,
+            'jenis' => $jenis,
+            'kecamatan' => $kecamatan,
+            'desa' => $desa,
+            'wilayah_terbanyak' => $topKecamatan
+                ? [
+                    'nama' => $topKecamatan->district->name ?? '-',
+                    'total' => $topKecamatan->total,
+                ]
+                : null,
+            'last_update' => $data->max('updated_at'),
+        ];
+    }
 }

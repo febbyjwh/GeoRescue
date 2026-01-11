@@ -2,41 +2,55 @@ document.addEventListener("DOMContentLoaded", () => {
     const selector = document.querySelector('select[name="jenis_data"]');
     if (!selector) return;
 
-    selector.addEventListener("change", () => {
-        const map = MapState.map;
+    function showOnlyLayers(layerNames = []) {
+        Object.entries(MapState.layers).forEach(([name, layer]) => {
+            if (!layer) return;
 
-        Object.values(MapState.layers).forEach((l) => map.removeLayer(l));
-        map.addLayer(MapState.drawnItems);
+            if (layerNames.includes(name)) {
+                if (!MapState.map.hasLayer(layer)) {
+                    MapState.map.addLayer(layer);
+                }
+            } else {
+                if (MapState.map.hasLayer(layer)) {
+                    MapState.map.removeLayer(layer);
+                }
+            }
+        });
+    }
+
+    selector.addEventListener("change", () => {
+        console.log("Filter changed:", selector.value);
 
         switch (selector.value) {
             case "bencana":
-                map.addLayer(MapState.layers.kabBandung);
-                map.addLayer(MapState.layers.bencana);
+                showOnlyLayers(["kabBandung", "bencana", "bencanaInput"]);
+                setActiveModule("bencana");
                 break;
 
             case "posko":
-                map.addLayer(MapState.layers.kabBandung);
-                // map.addLayer(MapState.layers.bencana);
-                map.addLayer(MapState.layers.posko);
+                showOnlyLayers(["kabBandung", "posko", "poskoInput"]);
+                setActiveModule("posko");
                 break;
 
             case "fasilitas":
-                map.addLayer(MapState.layers.kabBandung);
-                // map.addLayer(MapState.layers.bencana);
-                map.addLayer(MapState.layers.fasilitas);
+                showOnlyLayers(["kabBandung", "fasilitas", "fasilitasInput"]);
+                setActiveModule("fasilitas");
                 break;
 
             case "logistik":
-                map.addLayer(MapState.layers.kabBandung);
-                map.addLayer(MapState.layers.logistik);
+                showOnlyLayers(["kabBandung", "logistik", "logistikInput"]);
+                setActiveModule("logistik");
                 break;
 
             default:
-                map.addLayer(MapState.layers.kabBandung);
-                map.addLayer(MapState.layers.bencana);
-                map.addLayer(MapState.layers.posko);
-                map.addLayer(MapState.layers.logistik);
-                map.addLayer(MapState.layers.fasilitas);
+                showOnlyLayers([
+                    "kabBandung",
+                    "bencana",
+                    "posko",
+                    "fasilitas",
+                    "logistik",
+                ]);
+                setActiveModule(null);
         }
     });
 });
