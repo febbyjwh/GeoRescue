@@ -23,8 +23,15 @@ class UserController extends Controller
                     'id' => $bn->id,
                     'kecamatan_id' => $bn->kecamatan_id,
                     'desa_id' => $bn->desa_id,
-                    'nama_bencana' => $bn->nama_bencana,
-                    'tingkat_kerawanan' => $bn->tingkat_kerawanan,
+                    
+                    // ⚠️ UBAH: dari 'nama_bencana' jadi 'jenis_bencana'
+                    'jenis_bencana' => $bn->jenis_bencana,  // 'banjir', 'gempa', 'longsor'
+                    
+                    'tingkat_kerawanan' => ucfirst($bn->tingkat_kerawanan),  // ⚠️ UBAH: capitalize (Rendah, Sedang, Tinggi)
+                    
+                    // ⚠️ TAMBAH: status (field baru)
+                    'status' => ucfirst($bn->status),  // Aktif, Penanganan, Selesai
+                    
                     'lat' => $bn->lat,
                     'lang' => $bn->lang,
                     'nama_kecamatan' => $bn->district->name ?? '-',
