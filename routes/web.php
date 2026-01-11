@@ -11,6 +11,7 @@ use App\Http\Controllers\FasilitasVitalController;
 use App\Http\Controllers\JalurDistribusiLogistikController;
 use App\Http\Controllers\UserController;
 
+<<<<<<< HEAD
 Route::get('/test', function() {
     return view('test');
 });
@@ -19,6 +20,9 @@ Route::get(
     '/jalur_distribusi_logistik/geojson',
     [JalurDistribusiLogistikController::class, 'geojson']
 );
+=======
+
+>>>>>>> aa13473c91cf6b434d8ee540ab00330342863a52
 
 Route::get('/logistik/villages/{districtId}', [JalurDistribusiLogistikController::class, 'villagesByDistrict']);
 
