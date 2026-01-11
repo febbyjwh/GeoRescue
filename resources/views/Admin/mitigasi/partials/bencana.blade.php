@@ -222,3 +222,4 @@
     @push('scripts')
         <script src="{{ asset('js/select-region.js') }}"></script>
     @endpush
+</div>

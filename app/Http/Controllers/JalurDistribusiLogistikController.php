@@ -19,75 +19,75 @@ class JalurDistribusiLogistikController extends Controller
 
 
     public function getLogistik()
-{
-    $logistiks = JalurDistribusiLogistik::with('district', 'village')->get()->map(function ($lg) {
-        return [
-            'id' => $lg->id,
-            'kecamatan_id' => $lg->district_id,
-            'desa_id' => $lg->village_id,
-            'nama_kecamatan' => $lg->district->name ?? '-',
-            'nama_desa' => $lg->village->name ?? '-',
-            'nama_lokasi' => $lg->nama_lokasi,
-            'jenis_logistik' => $lg->jenis_logistik,
-            'jumlah' => $lg->jumlah,
-            'satuan' => $lg->satuan,
-            'status' => $lg->status,
-            'lang' => $lg->village->longitude ?? null,
-            'lat' => $lg->village->latitude ?? null,
-        ];
-    });
+    {
+        $logistiks = JalurDistribusiLogistik::with('district', 'village')->get()->map(function ($lg) {
+            return [
+                'id' => $lg->id,
+                'kecamatan_id' => $lg->district_id,
+                'desa_id' => $lg->village_id,
+                'nama_kecamatan' => $lg->district->name ?? '-',
+                'nama_desa' => $lg->village->name ?? '-',
+                'nama_lokasi' => $lg->nama_lokasi,
+                'jenis_logistik' => $lg->jenis_logistik,
+                'jumlah' => $lg->jumlah,
+                'satuan' => $lg->satuan,
+                'status' => $lg->status,
+                'lang' => $lg->village->longitude ?? null,
+                'lat' => $lg->village->latitude ?? null,
+            ];
+        });
 
-    return response()->json(['data' => $logistiks]);
-}
-
-
-
-   public function store(Request $request)
-{
-    $validated = $request->validate([
-        'district_id'    => 'required|exists:districts,id',
-        'village_id'     => 'required|exists:villages,id',
-        'nama_lokasi'    => 'required|string|max:255',
-        'jenis_logistik' => 'required|string|max:255',
-        'jumlah'         => 'required|numeric',
-        'satuan'         => 'required|string|max:100',
-        'status'         => 'required|string|max:100',
-
-        // ✅ pastikan input lat/lang masuk
-        'lat'            => 'required|numeric',
-        'lang'           => 'required|numeric',
-    ]);
-
-    // ✅ normalize biar pasti numeric rapi
-    $validated['lat']  = (float) $validated['lat'];
-    $validated['lang'] = (float) $validated['lang'];
-
-    $logistik = JalurDistribusiLogistik::create($validated);
-
-    // ✅ Kalau request dari fetch/ajax → balikin JSON
-    if ($request->wantsJson()) {
-        return response()->json([
-            'message' => 'Logistik created successfully.',
-            'data'    => [
-                'id'             => $logistik->id,
-                'kecamatan_id'    => $logistik->district_id,
-                'desa_id'         => $logistik->village_id,
-                'nama_lokasi'     => $logistik->nama_lokasi,
-                'jenis_logistik'  => $logistik->jenis_logistik,
-                'jumlah'          => $logistik->jumlah,
-                'satuan'          => $logistik->satuan,
-                'status'          => $logistik->status,
-                'lat'             => $logistik->lat,
-                'lang'            => $logistik->lang,
-            ]
-        ], 201);
+        return response()->json(['data' => $logistiks]);
     }
 
-    // ✅ Kalau submit form biasa → redirect
-    return redirect()
-        ->route('jalur_distribusi_logistik.index')
-        ->with('success', 'Data logistik berhasil ditambahkan');
-}
+
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'district_id'    => 'required|exists:districts,id',
+            'village_id'     => 'required|exists:villages,id',
+            'nama_lokasi'    => 'required|string|max:255',
+            'jenis_logistik' => 'required|string|max:255',
+            'jumlah'         => 'required|numeric',
+            'satuan'         => 'required|string|max:100',
+            'status'         => 'required|string|max:100',
+
+            // ✅ pastikan input lat/lang masuk
+            'lat'            => 'required|numeric',
+            'lang'           => 'required|numeric',
+        ]);
+
+        // ✅ normalize biar pasti numeric rapi
+        $validated['lat']  = (float) $validated['lat'];
+        $validated['lang'] = (float) $validated['lang'];
+
+        $logistik = JalurDistribusiLogistik::create($validated);
+
+        // ✅ Kalau request dari fetch/ajax → balikin JSON
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'Logistik created successfully.',
+                'data'    => [
+                    'id'             => $logistik->id,
+                    'kecamatan_id'    => $logistik->district_id,
+                    'desa_id'         => $logistik->village_id,
+                    'nama_lokasi'     => $logistik->nama_lokasi,
+                    'jenis_logistik'  => $logistik->jenis_logistik,
+                    'jumlah'          => $logistik->jumlah,
+                    'satuan'          => $logistik->satuan,
+                    'status'          => $logistik->status,
+                    'lat'             => $logistik->lat,
+                    'lang'            => $logistik->lang,
+                ]
+            ], 201);
+        }
+
+        // ✅ Kalau submit form biasa → redirect
+        return redirect()
+            ->route('jalur_distribusi_logistik.index')
+            ->with('success', 'Data logistik berhasil ditambahkan');
+    }
 
 
 
@@ -156,9 +156,9 @@ class JalurDistribusiLogistikController extends Controller
         ]);
     }
 
-   public function villagesByDistrict($districtId)
+    public function villagesByDistrict($districtId)
     {
-        $villages = Village::select('id','name')
+        $villages = Village::select('id', 'name')
             ->where('district_id', $districtId)
             ->orderBy('name')
             ->get();
@@ -183,5 +183,5 @@ class JalurDistribusiLogistikController extends Controller
     // }
 
 
-     
+
 }

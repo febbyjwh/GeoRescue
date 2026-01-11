@@ -110,7 +110,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Marker edit
         inputLayer.clearLayers();
-        inputMarker = L.marker([item.latitude, item.longitude], { draggable: true }).addTo(inputLayer);
+        inputMarker = L.marker([item.latitude, item.longitude], {
+            draggable: true
+        }).addTo(inputLayer);
         inputMarker.on("dragend", updateLatLngFromMarker);
 
         map.setView([item.latitude, item.longitude], 15);
@@ -126,7 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
             formElements.latitude.value = lat;
             formElements.longitude.value = lng;
 
-            inputMarker = L.marker([lat, lng], { draggable: true }).addTo(inputLayer);
+            inputMarker = L.marker([lat, lng], {
+                draggable: true
+            }).addTo(inputLayer);
             inputMarker.on("dragend", updateLatLngFromMarker);
         }
     }
@@ -190,7 +194,9 @@ document.addEventListener("DOMContentLoaded", () => {
         formElements.longitude.value = lng;
 
         inputLayer.clearLayers();
-        inputMarker = L.marker([lat, lng], { draggable: true }).addTo(inputLayer);
+        inputMarker = L.marker([lat, lng], {
+            draggable: true
+        }).addTo(inputLayer);
         inputMarker.on("dragend", updateLatLngFromMarker);
     });
 

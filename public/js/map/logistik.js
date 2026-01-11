@@ -2,8 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // 1) Dependent dropdown: Kecamatan -> Desa
   // ===============================
-  const district = document.getElementById("district_id");
-  const village = document.getElementById("village_id");
+  const district = document.getElementById("logistik_district");
+  const village = document.getElementById("logistik_village");
+  let isPickingPoint = false;
+const btnTambahTitik = document.getElementById("btnTambahTitik");
+
+if (btnTambahTitik) {
+  btnTambahTitik.addEventListener("click", () => {
+    isPickingPoint = true;
+    alert("Klik peta untuk menentukan lokasi");
+  });
+}
+
 
   if (district && village) {
     district.addEventListener("change", async function () {
@@ -29,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof initDistrictVillageSelect === "function") {
 
 
-    initDistrictVillageSelect("#district_id", "#village_id");
+    initDistrictVillageSelect("#logistik_district", "#logistik_village");
   }
 
   // ===============================
@@ -155,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
       true,
       true
     );
-    $("#district_id").append(districtOption).trigger("change");
+    $("#logistik_district").append(districtOption).trigger("change");
 
     // Desa
     setTimeout(() => {
@@ -165,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
         true,
         true
       );
-      $("#village_id").append(villageOption).trigger("change");
+      $("#logistik_village").append(villageOption).trigger("change");
     }, 300);
 
 
@@ -187,8 +197,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return {
       id: document.getElementById("logistik_id")?.value || null,
       nama_lokasi: document.getElementById("nama_lokasi").value,
-      district_id: document.getElementById("district_id").value,
-      village_id: document.getElementById("village_id").value,
+      district_id: document.getElementById("logistik_district").value,
+      village_id: document.getElementById("logistik_village").value,
       jenis_logistik: document.getElementById("jenis_logistik").value,
       jumlah: document.getElementById("jumlah").value,
       satuan: document.getElementById("satuan").value,
@@ -242,8 +252,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("logistik_id") && (document.getElementById("logistik_id").value = "");
     document.querySelector("form")?.reset();
 
-    $("#district_id").val(null).trigger("change");
-    $("#village_id").empty().trigger("change");
+    $("#logistik_district").val(null).trigger("change");
+    $("#logistik_village").empty().trigger("change");
 
     inputLayer.clearLayers();
     formMode = "create";
@@ -252,29 +262,43 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // 7) Klik map -> isi lat/lang + marker input
   // ===============================
-  MapState.map.on("click", (e) => {
-    
-    const lat = e.latlng.lat.toFixed(6);
-    const lng = e.latlng.lng.toFixed(6);
+MapState.map.on("click", (e) => {
+  // ⛔ belum klik tombol → jangan isi apa-apa
+  if (!isPickingPoint) return;
 
-    const latEl = document.getElementById("lat");
-    const lngEl = document.getElementById("lang");
+  const lat = e.latlng.lat.toFixed(6);
+  const lng = e.latlng.lng.toFixed(6);
 
-    if (latEl) latEl.value = lat;
-    if (lngEl) lngEl.value = lng;
+  const latEl = document.getElementById("lat");
+  const lngEl = document.getElementById("lang");
 
-    inputLayer.clearLayers();
+  // ✅ AUTO FILL INPUT
+  if (latEl) latEl.value = lat;
+  if (lngEl) lngEl.value = lng;
 
-    inputMarker = L.marker([lat, lng], { draggable: true }).addTo(inputLayer);
-    inputMarker.on("dragend", (ev) => {
-      const pos = ev.target.getLatLng();
-      if (latEl) latEl.value = pos.lat.toFixed(6);
-      if (lngEl) lngEl.value = pos.lng.toFixed(6);
-    });
+  // Bersihkan marker lama
+  inputLayer.clearLayers();
 
-    // kalau lagi edit, klik map otomatis balik create mode biar konsisten
-    if (formMode === "edit") formMode = "create";
+  // Tambah marker baru
+  inputMarker = L.marker([lat, lng], {
+    draggable: true
+  }).addTo(inputLayer);
+
+  // Drag marker → update input
+  inputMarker.on("dragend", (ev) => {
+    const pos = ev.target.getLatLng();
+    if (latEl) latEl.value = pos.lat.toFixed(6);
+    if (lngEl) lngEl.value = pos.lng.toFixed(6);
   });
+
+  console.log('lat:' + lat );
+  console.log('lang:' + lng );
+  
+  // 🎯 SELESAI → matikan mode
+  isPickingPoint = false;
+});
+
+
 
   // initial load
   loadLogistik();
