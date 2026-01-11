@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('kecamatan_id');
             $table->foreignId('desa_id');
-            $table->string('nama_bencana');
-            $table->string('tingkat_kerawanan');
+            $table->enum('jenis_bencana', ['banjir', 'gempa', 'longsor']);
+            $table->enum('tingkat_kerawanan', ['rendah', 'sedang', 'tinggi']);
+            $table->enum('status', ['aktif', 'penanganan', 'selesai']);
             $table->decimal('lang', 11, 8)->nullable();
             $table->decimal('lat', 10, 8)->nullable();
             $table->timestamps();

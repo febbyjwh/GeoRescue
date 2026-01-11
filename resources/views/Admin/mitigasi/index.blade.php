@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex gap-4 px-4">
+    <div class="flex gap-4 h-sreen">
 
         <!-- MAP -->
-        <div class="w-1/2 min-h-screen">
+        <div class="w-1/2 h-full">
             <div id="map" class="w-full h-screen rounded border"></div>
         </div>
 
         <!-- FORM -->
-        <div class="w-1/2">
+        <div class="w-1/2 h-full overflow-y-auto pr-2">
 
             <x-form.form-elements.select-inputs name="jenis_data" id="formSelector" label="Jenis Data" class="mb-4">
                 <option value="" disabled selected>

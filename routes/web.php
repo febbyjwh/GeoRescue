@@ -11,6 +11,10 @@ use App\Http\Controllers\FasilitasVitalController;
 use App\Http\Controllers\JalurDistribusiLogistikController;
 use App\Http\Controllers\UserController;
 
+Route::get('/test', function() {
+    return view('test');
+});
+
 Route::get(
     '/jalur_distribusi_logistik/geojson',
     [JalurDistribusiLogistikController::class, 'geojson']

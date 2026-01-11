@@ -1,37 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("select2:", $.fn.select2);
-    console.log("initDistrictVillageSelect:", typeof initDistrictVillageSelect);
+    console.log("POSKO JS LOADED");
 
-    if (typeof initDistrictVillageSelect === "function") {
-        initDistrictVillageSelect("#district_id", "#village_id");
+    // ===============================
+    // FORM ELEMENTS
+    // ===============================
+    const formElements = {
+        form: document.getElementById("formPosko"),
+        id: document.getElementById("posko_id"),
+        nama: document.getElementById("nama_posko"),
+        jenis: document.getElementById("jenis_posko"),
+        status: document.getElementById("status_posko"),
+        kecamatan: document.getElementById("kecamatan_id"),
+        desa: document.getElementById("desa_id"),
+        latitude: document.getElementById("latitude"),
+        longitude: document.getElementById("longitude"),
+    };
+
+    // Cek semua element ada
+    for (const [key, el] of Object.entries(formElements)) {
+        if (!el) console.warn(`Form element "${key}" belum ada di DOM!`);
     }
 
+    // ===============================
+    // MAP CHECK
+    // ===============================
     if (!window.MapState || !MapState.map) {
         console.error("MapState belum tersedia");
         return;
     }
 
-    if (!MapState.layers.posko) {
-        MapState.layers.posko = L.layerGroup().addTo(MapState.map);
-    }
-    const layerPosko = MapState.layers.posko;
+    const map = MapState.map;
 
-    if (!MapState.layers.inputPoint) {
-        MapState.layers.inputPoint = L.layerGroup().addTo(MapState.map);
-    }
-    const inputLayer = MapState.layers.inputPoint;
+    // ===============================
+    // ACTIVE MODULE FLAG
+    // ===============================
+    MapState.activeModule = "posko";
+    console.log("Active module set to POSKO");
+
+    // ===============================
+    // LAYERS
+    // ===============================
+    if (!MapState.layers.posko) MapState.layers.posko = L.layerGroup().addTo(map);
+    if (!MapState.layers.poskoInput) MapState.layers.poskoInput = L.layerGroup().addTo(map);
+
+    const layerPosko = MapState.layers.posko;
+    const inputLayer = MapState.layers.poskoInput;
 
     let formMode = "create";
     let inputMarker = null;
 
+    // ===============================
+    // LOAD POSKO
+    // ===============================
     async function loadPosko() {
         layerPosko.clearLayers();
-
         try {
             const res = await fetch("/posko/get-posko");
             const json = await res.json();
 
-            json.data.forEach((item) => {
+            json.data.forEach(item => {
                 const lat = parseFloat(item.latitude);
                 const lng = parseFloat(item.longitude);
                 if (isNaN(lat) || isNaN(lng)) return;
@@ -40,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     radius: 8,
                     fillColor: "#2563eb",
                     fillOpacity: 0.85,
-                    color: "#ffffff",
+                    color: "#fff",
                     weight: 1,
                 });
 
@@ -53,99 +80,79 @@ document.addEventListener("DOMContentLoaded", () => {
                 `);
 
                 marker.on("click", () => fillForm(item));
+
                 layerPosko.addLayer(marker);
+                console.log("Marker added:", marker.getLatLng());
             });
+
+            console.log("Posko loaded:", json.data.length);
         } catch (err) {
             console.error("Gagal load posko:", err);
         }
     }
 
+    // ===============================
+    // FILL FORM
+    // ===============================
     function fillForm(item) {
         formMode = "edit";
 
-        document.getElementById("posko_id").value = item.id;
-        document.getElementById("nama_posko").value = item.nama_posko;
-        document.getElementById("jenis_posko").value = item.jenis_posko;
-        document.getElementById("status_posko").value = item.status_posko;
-        document.getElementById("latitude").value = item.latitude;
-        document.getElementById("longitude").value = item.longitude;
+        formElements.id.value = item.id;
+        formElements.nama.value = item.nama_posko;
+        formElements.jenis.value = item.jenis_posko;
+        formElements.status.value = item.status_posko;
+        formElements.latitude.value = item.latitude;
+        formElements.longitude.value = item.longitude;
 
-        // Kecamatan
-        const districtOption = new Option(
-            item.nama_kecamatan,
-            item.district_id,
-            true,
-            true
-        );
-        $("#district_id").append(districtOption).trigger("change");
+        // Kecamatan & Desa
+        formElements.kecamatan.innerHTML = `<option value="${item.kecamatan_id}" selected>${item.nama_kecamatan}</option>`;
+        formElements.desa.innerHTML = `<option value="${item.desa_id}" selected>${item.nama_desa}</option>`;
 
-        // Desa
-        setTimeout(() => {
-            const villageOption = new Option(
-                item.nama_desa,
-                item.village_id,
-                true,
-                true
-            );
-            $("#village_id").append(villageOption).trigger("change");
-        }, 300);
-
+        // Marker edit
         inputLayer.clearLayers();
-        inputMarker = L.marker([item.latitude, item.longitude], {
-            draggable: true,
-        }).addTo(inputLayer);
+        inputMarker = L.marker([item.latitude, item.longitude], { draggable: true }).addTo(inputLayer);
+        inputMarker.on("dragend", updateLatLngFromMarker);
 
-        inputMarker.on("dragend", (ev) => {
-            const pos = ev.target.getLatLng();
-            document.getElementById("latitude").value = pos.lat.toFixed(7);
-            document.getElementById("longitude").value = pos.lng.toFixed(7);
-        });
-
-        MapState.map.setView([item.latitude, item.longitude], 15);
+        map.setView([item.latitude, item.longitude], 15);
     }
 
     function switchToCreatePosko(lat = null, lng = null) {
         formMode = "create";
-        document.getElementById("posko_id").value = "";
-        document.querySelector("form")?.reset();
-        $("#district_id").val(null).trigger("change");
-        $("#village_id").empty().trigger("change");
+        formElements.form.reset();
 
         inputLayer.clearLayers();
 
         if (lat && lng) {
-            document.getElementById("latitude").value = lat;
-            document.getElementById("longitude").value = lng;
+            formElements.latitude.value = lat;
+            formElements.longitude.value = lng;
 
-            inputMarker = L.marker([lat, lng], { draggable: true }).addTo(
-                inputLayer
-            );
-
-            inputMarker.on("dragend", (ev) => {
-                const pos = ev.target.getLatLng();
-                document.getElementById("latitude").value = pos.lat.toFixed(7);
-                document.getElementById("longitude").value = pos.lng.toFixed(7);
-            });
+            inputMarker = L.marker([lat, lng], { draggable: true }).addTo(inputLayer);
+            inputMarker.on("dragend", updateLatLngFromMarker);
         }
     }
 
-    function getFormData() {
-        return {
-            id: document.getElementById("posko_id").value || null,
-            nama_posko: document.getElementById("nama_posko").value,
-            jenis_posko: document.getElementById("jenis_posko").value,
-            status_posko: document.getElementById("status_posko").value,
-            district_id: document.getElementById("district_id").value, // sesuaikan
-            village_id: document.getElementById("village_id").value, // sesuaikan
-            latitude: document.getElementById("latitude").value,
-            longitude: document.getElementById("longitude").value,
-        };
+    function updateLatLngFromMarker(e) {
+        const pos = e.target.getLatLng();
+        formElements.latitude.value = pos.lat.toFixed(7);
+        formElements.longitude.value = pos.lng.toFixed(7);
     }
 
+    // ===============================
+    // SUBMIT POSKO
+    // ===============================
     window.submitPosko = async function () {
-        const data = getFormData();
-        const isEdit = !!data.id;
+        const data = {
+            id: formElements.id.value || null,
+            nama_posko: formElements.nama.value,
+            jenis_posko: formElements.jenis.value,
+            status_posko: formElements.status.value,
+            kecamatan_id: formElements.kecamatan.value,
+            desa_id: formElements.desa.value,
+            latitude: formElements.latitude.value,
+            longitude: formElements.longitude.value,
+        };
 
+        const isEdit = !!data.id;
         const url = isEdit ? `/posko/${data.id}` : `/posko`;
         const method = isEdit ? "PUT" : "POST";
 
@@ -154,63 +161,41 @@ document.addEventListener("DOMContentLoaded", () => {
                 method,
                 headers: {
                     "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": document
-                        .querySelector('meta[name="csrf-token"]')
-                        .getAttribute("content"),
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
                 },
                 body: JSON.stringify(data),
             });
 
             if (!res.ok) throw await res.json();
 
-            alert(
-                isEdit
-                    ? "Data posko berhasil diupdate"
-                    : "Data posko berhasil ditambahkan"
-            );
-            resetForm();
+            alert(isEdit ? "Posko diupdate" : "Posko ditambahkan");
+            switchToCreatePosko();
             loadPosko();
         } catch (err) {
-            console.error("Gagal simpan posko:", err);
-            alert("Gagal menyimpan data posko");
+            console.error(err);
+            alert("Gagal menyimpan posko");
         }
     };
 
-    function resetForm() {
-        document.getElementById("posko_id").value = "";
-        document.querySelector("form")?.reset();
-        $("#district_id").val(null).trigger("change");
-        $("#village_id").empty().trigger("change");
-        inputLayer.clearLayers();
-    }
-
-    MapState.map.on("click", (e) => {
-        if (formMode === "edit") {
-            switchToCreatePosko(
-                e.latlng.lat.toFixed(7),
-                e.latlng.lng.toFixed(7)
-            );
-            return;
-        }
+    // ===============================
+    // MAP CLICK TO ADD MARKER
+    // ===============================
+    map.on("click", (e) => {
+        if (formMode === "edit") return;
 
         const lat = e.latlng.lat.toFixed(7);
         const lng = e.latlng.lng.toFixed(7);
 
-        document.getElementById("latitude").value = lat;
-        document.getElementById("longitude").value = lng;
+        formElements.latitude.value = lat;
+        formElements.longitude.value = lng;
 
         inputLayer.clearLayers();
-
-        inputMarker = L.marker([lat, lng], { draggable: true }).addTo(
-            inputLayer
-        );
-
-        inputMarker.on("dragend", (ev) => {
-            const pos = ev.target.getLatLng();
-            document.getElementById("latitude").value = pos.lat.toFixed(7);
-            document.getElementById("longitude").value = pos.lng.toFixed(7);
-        });
+        inputMarker = L.marker([lat, lng], { draggable: true }).addTo(inputLayer);
+        inputMarker.on("dragend", updateLatLngFromMarker);
     });
 
+    // ===============================
+    // INITIAL LOAD
+    // ===============================
     loadPosko();
 });

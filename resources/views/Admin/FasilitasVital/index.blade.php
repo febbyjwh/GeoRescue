@@ -4,7 +4,9 @@
 <div class="container-fluid">
     <div class="row mb-4">
         <div class="col-12">
-            <h1 class="h3 mb-3">Data Fasilitas Vital</h1>
+            {{-- <h1 class="h3 mb-3">Data Fasilitas Vital</h1> --}}
+
+            <x-common.page-breadcrumb pageTitle="Data Fsilitass Vital" class="z-10 relative" />
 
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -23,6 +25,7 @@
                     <x-tables.basic-tables.basic-tables-one>
                         <thead>
                             <tr class="border-b border-gray-200">
+                                <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">No</th>
                                 <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Nama</th>
                                 <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Jenis</th>
                                 <th class="px-5 py-3 text-left text-sm font-medium text-gray-500">Alamat</th>
@@ -38,11 +41,12 @@
                         <tbody>
                         @forelse($fasilitas as $item)
                             <tr class="border-b border-gray-100">
+                                <td class="px-5 py-4 text-sm">{{ $loop->iteration }} </td>
                                 <td class="px-5 py-4 text-sm">{{ $item->nama_fasilitas }}</td>
                                 <td class="px-5 py-4 text-sm">{{ $item->jenis_fasilitas }}</td>
                                 <td class="px-5 py-4 text-sm">{{ $item->alamat }}</td>
-                                <td class="px-5 py-4 text-sm">{{ $item->desa }}</td>
-                                <td class="px-5 py-4 text-sm">{{ $item->kecamatan }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->village->name ?? '-' }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->district->name ?? '-' }}</td>
                                 <td class="px-5 py-4 text-sm">{{ $item->latitude }}</td>
                                 <td class="px-5 py-4 text-sm">{{ $item->longitude }}</td>
                                 <td class="px-5 py-4 text-sm">

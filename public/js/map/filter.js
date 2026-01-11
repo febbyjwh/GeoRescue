@@ -16,13 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             case "posko":
                 map.addLayer(MapState.layers.kabBandung);
-                map.addLayer(MapState.layers.bencana);
+                // map.addLayer(MapState.layers.bencana);
                 map.addLayer(MapState.layers.posko);
                 break;
 
             case "fasilitas":
                 map.addLayer(MapState.layers.kabBandung);
-                map.addLayer(MapState.layers.bencana);
+                // map.addLayer(MapState.layers.bencana);
                 map.addLayer(MapState.layers.fasilitas);
                 break;
 
@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 map.addLayer(MapState.layers.posko);
                 map.addLayer(MapState.layers.logistik);
                 map.addLayer(MapState.layers.fasilitas);
-                map.addLayer(MapState.layers.logistik);
         }
     });
 });

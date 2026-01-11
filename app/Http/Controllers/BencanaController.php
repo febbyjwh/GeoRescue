@@ -22,8 +22,9 @@ class BencanaController extends Controller
                 'desa_id' => $bn->desa_id,
                 'nama_kecamatan' => $bn->district->name ?? '-',
                 'nama_desa' => $bn->village->name ?? '-',
-                'nama_bencana' => $bn->nama_bencana,
+                'jenis_bencana' => $bn->jenis_bencana,
                 'tingkat_kerawanan' => $bn->tingkat_kerawanan,
+                'status' => $bn->status,
                 'lang' => $bn->lang,
                 'lat' => $bn->lat,
             ];
@@ -37,8 +38,9 @@ class BencanaController extends Controller
         $request->validate([
             'kecamatan_id' => 'required|exists:districts,id',
             'desa_id' => 'required|exists:villages,id',
-            'nama_bencana' => 'required|string|max:255',
+            'jenis_bencana' => 'required|string|max:255',
             'tingkat_kerawanan' => 'required|string|max:100',
+            'status' => 'required|string|max:100',
             'lang' => 'required|numeric',
             'lat' => 'required|numeric',
         ]);
@@ -53,8 +55,9 @@ class BencanaController extends Controller
         $request->validate([
             'kecamatan_id' => 'required|exists:districts,id',
             'desa_id' => 'required|exists:villages,id',
-            'nama_bencana' => 'required|string|max:255',
+            'jenis_bencana' => 'required|string|max:255',
             'tingkat_kerawanan' => 'required|string|max:100',
+            'status' => 'required|string|max:100',
             'lang' => 'required|numeric',
             'lat' => 'required|numeric',
         ]);
@@ -75,8 +78,9 @@ class BencanaController extends Controller
             'id' => $bencana->id,
             'kecamatan_id' => $bencana->kecamatan_id,
             'desa_id' => $bencana->desa_id,
-            'nama_bencana' => $bencana->nama_bencana,
+            'jenis_bencana' => $bencana->jenis_bencana,
             'tingkat_kerawanan' => $bencana->tingkat_kerawanan,
+            'status' => $bencana->status,
             'lang' => $bencana->lang,
             'lat' => $bencana->lat,
         ]);

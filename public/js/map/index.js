@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!window.MapState) window.MapState = {};
     if (!MapState.layers) MapState.layers = {};
-    if (!MapState.drawnItems) MapState.drawnItems = L.featureGroup();
+    // if (!MapState.drawnItems) MapState.drawnItems = L.featureGroup();
 
     MapState.map = L.map('map').setView([-6.9756, 107.615], 12);
 
@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // layer data 
     if (!MapState.layers.bencana) MapState.layers.bencana = L.layerGroup();
-    if (!MapState.layers.jalur) MapState.layers.jalur = L.layerGroup();
     if (!MapState.layers.fasilitas) MapState.layers.fasilitas = L.layerGroup();
     if (!MapState.layers.posko) MapState.layers.posko = L.layerGroup();
     if (!MapState.layers.logistik) MapState.layers.logistik = L.layerGroup();
@@ -41,10 +40,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Tambahkan semua layer ke map (polygon sudah duluan di bawah)
     MapState.layers.kabBandung.addTo(MapState.map);
     MapState.layers.bencana.addTo(MapState.map);
-    MapState.layers.jalur.addTo(MapState.map);
     MapState.layers.fasilitas.addTo(MapState.map);
     MapState.layers.posko.addTo(MapState.map);
     MapState.layers.logistik.addTo(MapState.map);
-    MapState.drawnItems.addTo(MapState.map);
-
+    // MapState.drawnItems.addTo(MapState.map)
 });
