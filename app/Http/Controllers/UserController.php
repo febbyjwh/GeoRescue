@@ -23,8 +23,15 @@ class UserController extends Controller
                     'id' => $bn->id,
                     'kecamatan_id' => $bn->kecamatan_id,
                     'desa_id' => $bn->desa_id,
-                    'nama_bencana' => $bn->nama_bencana,
-                    'tingkat_kerawanan' => $bn->tingkat_kerawanan,
+                    
+                    // ⚠️ UBAH: dari 'nama_bencana' jadi 'jenis_bencana'
+                    'jenis_bencana' => $bn->jenis_bencana,  // 'banjir', 'gempa', 'longsor'
+                    
+                    'tingkat_kerawanan' => ucfirst($bn->tingkat_kerawanan),  // ⚠️ UBAH: capitalize (Rendah, Sedang, Tinggi)
+                    
+                    // ⚠️ TAMBAH: status (field baru)
+                    'status' => ucfirst($bn->status),  // Aktif, Penanganan, Selesai
+                    
                     'lat' => $bn->lat,
                     'lang' => $bn->lang,
                     'nama_kecamatan' => $bn->district->name ?? '-',
@@ -34,7 +41,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function Posko()
+    public function posko()
     {
         $poskos = PoskoBencana::with(['district', 'village'])->get()->map(function ($p) {
             return [
@@ -44,8 +51,8 @@ class UserController extends Controller
                 'nama_posko' => $p->nama_posko,
                 'jenis_posko' => $p->jenis_posko,
                 'status_posko' => $p->status_posko,
-                'longitude' => $p->longitude,
                 'latitude' => $p->latitude,
+                'longitude' => $p->longitude,
                 'nama_kecamatan' => $p->district->name ?? '-',
                 'nama_desa' => $p->village->name ?? '-',
             ];
@@ -56,26 +63,22 @@ class UserController extends Controller
 
     public function fasilitas()
     {
-        $fasilitas = FasilitasVital::with(['district', 'village'])
-            ->get()
-            ->map(function ($f) {
-                return [
-                    'id' => $f->id,
-                    'nama_fasilitas' => $f->nama_fasilitas,
-                    'jenis_fasilitas' => $f->jenis_fasilitas,
-                    'alamat' => $f->alamat,
-                    'status' => $f->status,
-                    'latitude' => $f->latitude,
-                    'longitude' => $f->longitude,
-                    'kecamatan_id' => $f->kecamatan_id,
-                    'desa_id' => $f->desa_id,
-                    'nama_kecamatan' => $f->district->name ?? '-',
-                    'nama_desa' => $f->village->name ?? '-',
-                ];
-            });
+        $fasilitas = FasilitasVital::with(['district', 'village'])->get()->map(function ($f) {
+            return [
+                'id' => $f->id,
+                'kecamatan_id' => $f->kecamatan_id,
+                'desa_id' => $f->desa_id,
+                'nama_fasilitas' => $f->nama_fasilitas,
+                'jenis_fasilitas' => $f->jenis_fasilitas,
+                'alamat' => $f->alamat,
+                'status' => $f->status,
+                'latitude' => $f->latitude,
+                'longitude' => $f->longitude,
+                'nama_kecamatan' => $f->district->name ?? '-',
+                'nama_desa' => $f->village->name ?? '-',
+            ];
+        });
 
-        return response()->json([
-            'data' => $fasilitas
-        ]);
+        return response()->json([ 'data' => $fasilitas]);
     }
 }
