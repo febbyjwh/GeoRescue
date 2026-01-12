@@ -22,8 +22,18 @@
                 <option value="logistik">Distribusi Logistik</option>
             </x-form.form-elements.select-inputs>
 
-            <div id="formPlaceholder" class="text-gray-500 italic">
-                Silakan pilih jenis data pada dropdown di atas untuk mulai mengelola peta mitigasi.
+            <div id="formPlaceholder" class="flex flex-col items-center justify-center mt-35 text-gray-500 italic space-y-4">
+                <!-- SVG Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 20 20"
+                    fill="currentColor" class="text-gray-400">
+                    <path
+                        d="m13 13.14l1.17-5.94c.79-.43 1.33-1.25 1.33-2.2a2.5 2.5 0 0 0-5 0c0 .95.54 1.77 1.33 2.2zm0-9.64c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5zm1.72 4.8L18 6.97v9L13.12 18L7 15.97l-5 2v-9l5-2l4.27 1.41l1.73 7.3z" />
+                </svg>
+
+                <!-- Placeholder Text -->
+                <div class="text-gray-500 italic text-center">
+                    Silakan pilih jenis data pada dropdown di atas untuk mulai mengelola peta mitigasi.
+                </div>
             </div>
 
             <div id="formContainer">

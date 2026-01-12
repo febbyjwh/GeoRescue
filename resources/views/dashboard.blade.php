@@ -27,13 +27,5 @@
             :end="$end"
              />
         </div>
-
-        {{-- <div class="col-span-12 xl:col-span-5">
-            <x-ecommerce.customer-demographic />
-        </div>
-
-        <div class="col-span-12 xl:col-span-7">
-            <x-ecommerce.recent-orders />
-        </div> --}}
     </div>
 @endsection

@@ -9,7 +9,7 @@ class BencanaController extends Controller
 {
     public function index()
     {
-        $bencanas = Bencana::with(['district', 'village'])->get();
+        $bencanas = Bencana::with(['district', 'village'])->paginate(10);
         return view('admin.bencana.index', compact('bencanas'));
     }
 

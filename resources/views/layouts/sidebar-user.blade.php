@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="px-4 pb-3">
+    {{-- <div class="px-4 pb-3">
         <div class="relative">
             <input 
                 type="text" 
@@ -25,29 +25,29 @@
         <div id="searchResults" class="hidden mt-2 max-h-60 overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg">
             <!-- Results will be populated here -->
         </div>
-    </div>
+    </div> --}}
 
     <!-- Filter Layer -->
     <div class="p-4 flex-1 overflow-y-auto">
         <h3 class="font-semibold text-gray-700 mb-2">Filter Layer</h3>
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-3">
             <button id="posko"
-                class="filter-btn text-left px-3 py-2 rounded hover:bg-gray-200 transition bg-transparent">
+                class="filter-btn text-left px-4 py-2 rounded-[12px] bg-white font-semibold text-sm tracking-wide shadow-sm hover:bg-amber-200/40 hover:scale-105 transition-all duration-200">
                 Posko Evakuasi
             </button>
 
             <button id="fasilitas"
-                class="filter-btn text-left px-3 py-2 rounded hover:bg-gray-200 transition bg-transparent">
+                class="filter-btn text-left px-4 py-2 rounded-[12px] bg-white font-semibold text-sm tracking-wide shadow-sm hover:bg-amber-200/40 hover:scale-105 transition-all duration-200">
                 Fasilitas Vital
             </button>
 
             <button id="logistik"
-                class="filter-btn text-left px-3 py-2 rounded hover:bg-gray-200 transition bg-transparent">
+                class="filter-btn text-left px-4 py-2 rounded-[12px] bg-white font-semibold text-sm tracking-wide shadow-sm hover:bg-amber-200/40 hover:scale-105 transition-all duration-200">
                 Distribusi Logistik
             </button>
 
             <button id="bencana"
-                class="filter-btn text-left px-3 py-2 rounded hover:bg-gray-200 transition bg-transparent">
+                class="filter-btn text-left px-4 py-2 rounded-[12px] bg-white font-semibold text-sm tracking-wide shadow-sm hover:bg-amber-200/40 hover:scale-105 transition-all duration-200">
                 Bencana
             </button>
         </div>

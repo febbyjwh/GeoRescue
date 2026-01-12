@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputLayer = MapState.layers.bencanaInput;
 
     let formMode = "create";
-    let inputMarker = null;
+    let inputMarker = [];
 
     const warnaBencana = {
         banjir: "#1E40AF",
@@ -32,12 +32,17 @@ document.addEventListener("DOMContentLoaded", () => {
         gempa: "#10B981",
     };
 
-    function getSvgIcon(color = "#008eb5") {
+    function getBencanaIcon(jenis) {
+        let fillColor = "#1E40AF"; // default biru
+        if (jenis === "longsor") fillColor = "#F59E0B";
+        if (jenis === "gempa") fillColor = "#10B981";
+
         const svg = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 512 512">
-            <path fill="${color}" d="M256 0C149.3 0 64 85.3 64 192c0 36.9 11 65.4 30.1 94.3l141.7 215c4.3 6.5 11.7 10.7 20.2 10.7s16-4.3 20.2-10.7l141.7-215C437 257.4 448 228.9 448 192C448 85.3 362.7 0 256 0z"/>
-        </svg>
-        `;
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 512 512">
+      <circle cx="256" cy="192" r="32" fill="${fillColor}" stroke="#fff" stroke-width="8"/>
+      <path fill="${fillColor}" stroke="#fff" stroke-width="18" d="M256 32c-88.22 0-160 68.65-160 153c0 40.17 18.31 93.59 54.42 158.78c29 52.34 62.55 99.67 80 123.22a31.75 31.75 0 0 0 51.22 0c17.42-23.55 51-70.88 80-123.22C397.69 278.61 416 225.19 416 185c0-84.35-71.78-153-160-153Zm0 224a64 64 0 1 1 64-64a64.07 64.07 0 0 1-64 64Z"/>
+    </svg>
+    `;
 
         return L.icon({
             iconUrl:
@@ -45,7 +50,66 @@ document.addEventListener("DOMContentLoaded", () => {
             iconSize: [40, 40],
             iconAnchor: [20, 40],
         });
+        // let url = "";
+
+        // if (jenis === "banjir") {
+        //     url = "/image/banjir.png"; // path ke file image
+        // } else if (jenis === "longsor") {
+        //     url = "/image/longsor.png";
+        // } else if (jenis === "gempa") {
+        //     url = "/image/gempa.png";
+        // }
+
+        // return L.icon({
+        //     iconUrl: url,
+        //     iconSize: [40, 40],
+        //     iconAnchor: [20, 40],
+        // });
     }
+
+    window.submitBencana = async function () {
+        const formElements = document.getElementById("formBencana").elements;
+
+        const data = {
+            id: formElements.bencana_id.value || null,
+            jenis_bencana: formElements.jenis_bencana.value,
+            tingkat_kerawanan: formElements.tingkat_kerawanan.value,
+            status: formElements.status.value,
+            kecamatan_id: formElements.bencana_district.value,
+            desa_id: formElements.bencana_village.value,
+            lat: formElements.lat.value,
+            lang: formElements.lang.value,
+        };
+
+        const isEdit = !!data.id;
+        const url = isEdit ? `/bencana/${data.id}` : `/bencana`;
+        const method = isEdit ? "PUT" : "POST";
+
+        try {
+            const res = await fetch(url, {
+                method,
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document
+                        .querySelector('meta[name="csrf-token"]')
+                        .getAttribute("content"),
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!res.ok) throw await res.json();
+
+            alert(
+                isEdit ? "Titik bencana diupdate" : "Titik bencana ditambahkan"
+            );
+            formElements.reset();
+            inputLayer.clearLayers(); // hapus marker input
+            loadBencana(); // reload semua marker bencana
+        } catch (err) {
+            console.error(err);
+            alert("Gagal menyimpan titik bencana");
+        }
+    };
 
     function showBencanaDetail(item) {
         const box = document.getElementById("selectedBencana");
@@ -60,6 +124,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("detailKerawanan").innerText =
             item.tingkat_kerawanan;
         document.getElementById("detailStatus").innerText = item.status;
+        document.getElementById(
+            "detailKoordinatBencana"
+        ).innerText = `${item.lat}, ${item.lang}`;
 
         const jenisEl = document.getElementById("detailJenis");
         jenisEl.className = "font-semibold";
@@ -73,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function loadBencana() {
-        layerBencana.clearLayers();
+        // layerBencana.clearLayers();
 
         try {
             const res = await fetch("/bencana/get-bencana");
@@ -85,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (isNaN(lat) || isNaN(lng)) return;
 
                 const marker = L.marker([lat, lng], {
-                    icon: getSvgIcon(warnaBencana[item.jenis_bencana]),
+                    icon: getBencanaIcon(item.jenis_bencana),
                 });
 
                 const circle = L.circle([lat, lng], {
@@ -101,7 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 layerBencana.addLayer(marker);
-                console.log("Jumlah marker bencana:", layerBencana.getLayers().length);
+                console.log(
+                    "Jumlah marker bencana:",
+                    layerBencana.getLayers().length
+                );
                 layerBencana.addLayer(circle);
             });
         } catch (err) {
@@ -146,13 +216,15 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("lang").value = pos.lng.toFixed(6);
     }
 
+    // const inputMarkers = []
+
     map.on("click", (e) => {
         console.log("Map clicked!", e.latlng);
         console.log("Active module:", MapState.activeModule);
         if (MapState.activeModule !== "bencana") return;
 
         if (layerBencana.getLayers().length > 0) {
-            layerBencana.clearLayers();
+            // layerBencana.clearLayers();
         }
 
         const lat = e.latlng.lat.toFixed(6);

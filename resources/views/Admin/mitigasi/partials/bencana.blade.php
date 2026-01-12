@@ -79,6 +79,12 @@
                     <span class="font-medium">Status:</span>
                     <span id="detailStatus">-</span>
                 </li>
+
+                <li>
+                    <span class="font-medium">Koordinat:</span> 
+                    <span id="detailKoordinatBencana">-</span>
+                </li>
+                
             </ul>
 
             <p class="text-xs text-gray-500 mt-3">
@@ -159,6 +165,7 @@
                             <span class="w-3 h-3 rounded-full bg-green-500"></span>
                             <span>Gempa – {{ $bencanaSummary['jenis']['gempa'] ?? 0 }} Titik</span>
                         </li>
+                        
                     </ul>
                 </div>
 

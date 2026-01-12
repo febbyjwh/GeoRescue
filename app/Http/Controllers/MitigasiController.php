@@ -6,6 +6,7 @@ use App\Models\District;
 use App\Models\Village;
 use App\Models\Bencana;
 use App\Models\PoskoBencana;
+use App\Models\FasilitasVital;
 use Illuminate\Http\Request;
 
 class MitigasiController extends Controller
@@ -17,6 +18,7 @@ class MitigasiController extends Controller
             'villages' => $this->getVillages(),
             'bencanaSummary' => $this->getBencanaSummary(),
             'poskoSummary' => $this->getPoskoSummary(),
+            'fasilitasSummary' => $this->getFasilitasSummary(),
         ]);
     }
 
@@ -36,24 +38,12 @@ class MitigasiController extends Controller
     private function getBencanaSummary()
     {
         $data = Bencana::with('district')->get();
-
-        // total titik
         $total = $data->count();
-
-        // jumlah kecamatan & desa terdampak
         $kecamatan = $data->pluck('kecamatan_id')->unique()->count();
         $desa = $data->pluck('desa_id')->unique()->count();
-
-        // jenis bencana
         $jenis = $data->groupBy('jenis_bencana')->map->count();
-
-        // tingkat kerawanan
         $kerawanan = $data->groupBy('tingkat_kerawanan')->map->count();
-
-        // status kejadian
         $status = $data->groupBy('status')->map->count();
-
-        // wilayah paling terdampak (kecamatan)
         $topKecamatan = Bencana::select('kecamatan_id')
             ->selectRaw('COUNT(*) as total')
             ->groupBy('kecamatan_id')
@@ -81,22 +71,17 @@ class MitigasiController extends Controller
 
     private function getPoskoSummary()
     {
-        $data = PoskoBencana::with(['district', 'village'])->get();
-
-        // total posko
+        $data = \App\Models\PoskoBencana::with(['district', 'village'])->get();
         $total = $data->count();
-
-        // status posko
-        $status = $data->groupBy('status_posko')->map->count();
-
-        // jenis posko
-        $jenis = $data->groupBy('jenis_posko')->map->count();
-
-        // sebaran wilayah
+        $statusRaw = $data->groupBy('status_posko')->map->count()->toArray();
+        $status = [
+            'Aktif' => $statusRaw['Aktif'] ?? 0,
+            'Penuh' => $statusRaw['Penuh'] ?? 0,
+            'Tutup' => $statusRaw['Tutup'] ?? 0,
+        ];
+        $jenisRaw = $data->groupBy('jenis_posko')->map->count()->toArray();
         $kecamatan = $data->pluck('kecamatan_id')->unique()->count();
         $desa = $data->pluck('desa_id')->unique()->count();
-
-        // kecamatan dengan posko terbanyak
         $topKecamatan = PoskoBencana::select('kecamatan_id')
             ->selectRaw('COUNT(*) as total')
             ->groupBy('kecamatan_id')
@@ -107,7 +92,42 @@ class MitigasiController extends Controller
         return [
             'total' => $total,
             'status' => $status,
+            'jenis' => $jenisRaw,
+            'kecamatan' => $kecamatan,
+            'desa' => $desa,
+            'wilayah_terbanyak' => $topKecamatan
+                ? [
+                    'nama' => $topKecamatan->district->name ?? '-',
+                    'total' => $topKecamatan->total,
+                ]
+                : null,
+            'last_update' => $data->max('updated_at'),
+        ];
+    }
+
+    private function getFasilitasSummary()
+    {
+        $data = FasilitasVital::with(['district', 'village'])->get();
+        $total = $data->count();
+        $jenis = $data->groupBy('jenis_fasilitas')->map->count();
+        $statusRaw = $data->groupBy('status')->map->count()->toArray();
+        $status = [
+            'Beroperasi' => $statusRaw['Beroperasi'] ?? 0,
+            'Tidak Tersedia' => $statusRaw['Tidak Tersedia'] ?? 0,
+        ];
+        $kecamatan = $data->pluck('kecamatan_id')->unique()->count();
+        $desa = $data->pluck('desa_id')->unique()->count();
+        $topKecamatan = FasilitasVital::select('kecamatan_id')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('kecamatan_id')
+            ->orderByDesc('total')
+            ->with('district')
+            ->first();
+
+        return [
+            'total' => $total,
             'jenis' => $jenis,
+            'status' => $status,
             'kecamatan' => $kecamatan,
             'desa' => $desa,
             'wilayah_terbanyak' => $topKecamatan

@@ -1,8 +1,9 @@
 <script src="https://cdn.tailwindcss.com"></script>
-
+@include('layouts.search-user')
 <div id="map" style="width:100%; height:100vh;"></div>
 
 {{-- Include Sidebar & Modal --}}
+
 @include('layouts.sidebar-user')
 @include('layouts/modal-user')
 

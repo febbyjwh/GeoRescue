@@ -18,9 +18,9 @@
 
                 @php
                     $options = [
-                        ['value' => 'overview', 'label' => 'Overview'],
-                        ['value' => 'sales', 'label' => 'Sales'],
-                        ['value' => 'revenue', 'label' => 'Revenue'],
+                        ['value' => 'overview', 'label' => 'Banjir'],
+                        ['value' => 'sales', 'label' => 'Gempa'],
+                        ['value' => 'revenue', 'label' => 'Longsor'],
                     ];
                 @endphp
 
@@ -42,6 +42,7 @@
                 class="datepicker text-theme-sm shadow-theme-xs h-10 w-full max-w-40 rounded-lg border border-gray-200 bg-white py-2.5 pr-4 pl-10 font-medium text-gray-700 focus:ring-0 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
                 readonly>
             <div class="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+                <!-- SVG Calendar Icon -->
                 <svg class="fill-gray-700 dark:fill-gray-400" width="20" height="20" viewBox="0 0 20 20"
                     fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -59,59 +60,93 @@
 
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const labels = {!! json_encode(array_keys($bencanaPerBulan)) !!}; // Jan, Feb, ...
-    const seriesData = {!! json_encode(array_values($bencanaPerBulan)) !!}; // 5, 3, ...
+    document.addEventListener("DOMContentLoaded", function() {
+        const labels = {!! json_encode(array_keys($bencanaPerBulan)) !!}; // Jan, Feb, ...
+        const seriesData = {!! json_encode(array_values($bencanaPerBulan)) !!}; // 5, 3, ...
 
-    const options = {
-        chart: {
-            type: 'area',
-            height: 320,
-            toolbar: { show: false },
-            zoom: { enabled: false },
-        },
-        series: [{
-            name: 'Kejadian Bencana',
-            data: seriesData
-        }],
-        xaxis: {
-            categories: labels,
-            labels: {
-                style: { colors: '#000000', fontSize: '12px' }
+        const options = {
+            chart: {
+                type: 'area',
+                height: 320,
+                toolbar: {
+                    show: false
+                },
+                zoom: {
+                    enabled: false
+                },
             },
-            tooltip: { enabled: false }
-        },
-        yaxis: {
-            labels: { style: { colors: '#000000', fontSize: '12px' } }
-        },
-        stroke: {
-            curve: 'smooth',
-            width: 3
-        },
-        fill: {
-            type: 'gradient',
-            gradient: {
-                shade: 'light',
-                type: 'vertical',
-                gradientToColors: ['#EAB308'],
-                opacityFrom: 0.4,
-                opacityTo: 0.05,
-            }
-        },
-        colors: ['#EAB308'],
-        tooltip: {
-            theme: 'dark',
-            x: { show: true },
-            y: { formatter: val => `${val} kejadian` }
-        },
-        grid: {
-            borderColor: '#E5E7EB',
-            strokeDashArray: 3,
-            row: { colors: ['transparent'], opacity: 0.5 },
-        },
-    };
+            series: [{
+                name: 'Kejadian Bencana',
+                data: seriesData
+            }],
+            xaxis: {
+                categories: labels,
+                labels: {
+                    style: {
+                        colors: '#000000',
+                        fontSize: '12px'
+                    }
+                },
+                tooltip: {
+                    enabled: false
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: '#000000',
+                        fontSize: '12px'
+                    }
+                }
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 3
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'light',
+                    type: 'vertical',
+                    gradientToColors: ['#EAB308'],
+                    opacityFrom: 0.4,
+                    opacityTo: 0.05,
+                }
+            },
+            colors: ['#EAB308'],
+            tooltip: {
+                theme: 'dark',
+                x: {
+                    show: true
+                },
+                y: {
+                    formatter: val => `${val} kejadian`
+                }
+            },
+            grid: {
+                borderColor: '#E5E7EB',
+                strokeDashArray: 3,
+                row: {
+                    colors: ['transparent'],
+                    opacity: 0.5
+                },
+            },
+        };
 
-    const chart = new ApexCharts(document.querySelector("#chartThree"), options);
-    chart.render();
-});
+        const chart = new ApexCharts(document.querySelector("#chartThree"), options);
+        chart.render();
+    });
+</script>
+<!-- Flatpickr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr(".datepicker", {
+        enableTime: false,
+        dateFormat: "Y-m-d",
+        appendTo: document.body, // kalender di luar semua container
+        onReady: function(selectedDates, dateStr, instance) {
+            instance.calendarContainer.style.zIndex = 9999;
+        }
+    });
 </script>

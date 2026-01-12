@@ -79,7 +79,7 @@ class MenuHelper
             ],
             [
                 'icon' => 'tables',
-                'name' => 'Jalur Distribusi Logistik',
+                'name' => 'Distribusi Logistik',
                 'path' => '/jalur_distribusi_logistik',
             ]
             // [

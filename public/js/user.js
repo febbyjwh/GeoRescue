@@ -584,17 +584,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (map.hasLayer(layer)) {
                 map.removeLayer(layer);
-                btn.classList.remove("bg-yellow-300", "font-semibold");
+                btn.classList.remove("bg-yellow-200", "font-semibold");
             } else {
                 map.addLayer(layer);
-                btn.classList.add("bg-yellow-300", "font-semibold");
+                btn.classList.add("bg-yellow-200", "font-semibold");
             }
         });
     });
 
     // set kondisi awal tombol aktif
     ["bencana", "posko", "fasilitas", "logistik"].forEach((id) => {
-        document.getElementById(id)?.classList.add("bg-yellow-300", "font-semibold");
+        document.getElementById(id)?.classList.add("bg-yellow-200", "font-semibold");
     });
 
     if (window.initUserInteraction) {

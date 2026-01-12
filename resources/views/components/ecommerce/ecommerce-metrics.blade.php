@@ -100,8 +100,8 @@
 
         <div class="flex items-end justify-between mt-5">
             <div>
-                <span class="text-sm text-gray-500 dark:text-gray-400">Orders</span>
-                <h4 class="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">5,359</h4>
+                <span class="text-sm text-gray-500 dark:text-gray-400">Distribusi Logistik</span>
+                <h4 class="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">15</h4>
             </div>
 
             <span
@@ -113,7 +113,7 @@
                         fill="" />
                 </svg>
 
-                9.05%
+                8 Tersedia . 2 Menipis . 5 Habis
             </span>
         </div>
     </div>
