@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <x-common.page-breadcrumb pageTitle="Data Fasilitas Vital" class="z-10 relative" />
-    <form id="formBencana" onsubmit="event.preventDefault()" onclick="setActiveModule('fasilitas')">
+    <form id="formFasilitas" onsubmit="event.preventDefault()" onclick="setActiveModule('fasilitas')">
         <div class="rounded-xl border border-gray-200 bg-white p-6">
 
             <div class="mb-3">

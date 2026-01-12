@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    const map = MapState.map;
+    MapState.activeModule = "fasilitas";
+
     if (!MapState.layers.fasilitas) {
         MapState.layers.fasilitas = L.layerGroup().addTo(MapState.map);
     }
@@ -161,6 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.submitFasilitas = async function () {
+        console.log("Data dikirim:", getFormData());
         const data = getFormData();
         const isEdit = !!data.id;
 
@@ -210,26 +214,31 @@ document.addEventListener("DOMContentLoaded", () => {
     MapState.map.on("click", (e) => {
         console.log("Map clicked!", e.latlng);
         console.log("Active module:", MapState.activeModule);
-        if (MapState.activeModule !== "fasilitas") return;
 
-        inputLayer.clearLayers();
+        if (MapState.activeModule !== "fasilitas") return;
 
         const lat = e.latlng.lat.toFixed(6);
         const lng = e.latlng.lng.toFixed(6);
 
-        document.getElementById("latitude").value = lat;
-        document.getElementById("longitude").value = lng;
+        const latInput = document.getElementById("latitude");
+        const lngInput = document.getElementById("longitude");
+
+        console.log("Updating input fields", lat, lng, latInput, lngInput);
+
+        if (latInput && lngInput) {
+            latInput.value = lat;
+            lngInput.value = lng;
+        }
 
         inputLayer.clearLayers();
-
-        inputMarker = L.marker([lat, lng], {
-            draggable: true,
-        }).addTo(inputLayer);
+        inputMarker = L.marker([lat, lng], { draggable: true }).addTo(
+            inputLayer
+        );
 
         inputMarker.on("dragend", (ev) => {
             const pos = ev.target.getLatLng();
-            document.getElementById("latitude").value = pos.lat.toFixed(6);
-            document.getElementById("longitude").value = pos.lng.toFixed(6);
+            latInput.value = pos.lat.toFixed(6);
+            lngInput.value = pos.lng.toFixed(6);
         });
     });
 

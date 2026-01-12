@@ -227,8 +227,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // layerBencana.clearLayers();
         }
 
-        const lat = e.latlng.lat.toFixed(6);
-        const lng = e.latlng.lng.toFixed(6);
+        const lat = e.latlng.lat.toFixed(7);
+        const lng = e.latlng.lng.toFixed(7);
 
         document.getElementById("lat").value = lat;
         document.getElementById("lang").value = lng;
