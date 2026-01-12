@@ -102,9 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
             alert(
                 isEdit ? "Titik bencana diupdate" : "Titik bencana ditambahkan"
             );
-            formElements.reset();
-            inputLayer.clearLayers(); // hapus marker input
-            loadBencana(); // reload semua marker bencana
+            resetBencanaForm();
+            layerBencana.clearLayers();
+            loadBencana();
         } catch (err) {
             console.error(err);
             alert("Gagal menyimpan titik bencana");
@@ -215,6 +215,30 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("lat").value = pos.lat.toFixed(6);
         document.getElementById("lang").value = pos.lng.toFixed(6);
     }
+
+    function resetBencanaForm() {
+        const form = document.getElementById("formBencana");
+
+        // reset form biasa
+        form.reset();;
+
+        // reset hidden id & mode
+        document.getElementById("bencana_id").value = "";
+        formMode = "create";
+
+        // reset select2
+        $("#bencana_district").val(null).trigger("change");
+        $("#bencana_village").val(null).trigger("change");
+
+        // hapus marker input
+        inputLayer.clearLayers();
+        inputMarker = [];
+
+        // sembunyikan detail
+        const box = document.getElementById("selectedBencana");
+        if (box) box.classList.add("hidden");
+    }
+
 
     // const inputMarkers = []
 

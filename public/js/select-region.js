@@ -1,6 +1,7 @@
 function initDistrictVillageSelect(districtSelector, villageSelector) {
 
     $(districtSelector).select2({
+        width: '100%',
         placeholder: 'Pilih Kecamatan',
         ajax: {
             url: '/api/region/districts',
@@ -19,6 +20,7 @@ function initDistrictVillageSelect(districtSelector, villageSelector) {
     });
 
     $(villageSelector).select2({
+        width: '100%',
         placeholder: 'Pilih Desa',
         ajax: {
             url: '/api/region/villages',
