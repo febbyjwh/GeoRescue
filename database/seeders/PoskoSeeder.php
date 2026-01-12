@@ -13,7 +13,7 @@ class PoskoSeeder extends Seeder
      */
     public function run(): void
     {
-        PoskoBencana::truncate(); // Kosongin dulu tabel
+        PoskoBencana::truncate();
 
         $json = File::get(database_path('data/posko.json'));
         $poskos = json_decode($json);

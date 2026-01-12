@@ -54,6 +54,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function getFasilitasPopup(item) {
+        return `
+        <div style="min-width:220px">
+            <strong>${item.nama_fasilitas ?? "-"}</strong>
+            <hr style="margin:6px 0">
+            <div><b>Jenis:</b> ${item.jenis_fasilitas ?? "-"}</div>
+            <div><b>Status:</b> ${item.status ?? "-"}</div>
+            <div><b>Kecamatan:</b> ${item.nama_kecamatan ?? "-"}</div>
+            <div><b>Desa:</b> ${item.nama_desa ?? "-"}</div>
+            <div><b>Alamat:</b> ${item.alamat ?? "-"}</div>
+            <hr style="margin:6px 0">
+            <small>Koordinat: ${item.latitude}, ${item.longitude}</small>
+        </div>
+    `;
+    }
+
     async function loadFasilitas() {
         layerFasilitas.clearLayers();
 
@@ -70,13 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     icon: iconFasilitas(item.jenis_fasilitas),
                 });
 
-                marker.bindPopup(`
-                    <strong>${item.nama_fasilitas}</strong><br>
-                    Jenis: ${item.jenis_fasilitas}<br>
-                    Kecamatan: ${item.nama_kecamatan}<br>
-                    Desa: ${item.nama_desa}<br>
-                    Status: ${item.status}
-                `);
+                marker.bindPopup(getFasilitasPopup(item), {
+                    closeButton: true,
+                    offset: [0, -20],
+                });
 
                 marker.on("click", () => fillForm(item));
                 layerFasilitas.addLayer(marker);

@@ -9,7 +9,7 @@ class FasilitasVitalController extends Controller
 {
     public function index()
     {
-        $fasilitas = FasilitasVital::with(['district', 'village'])->get();
+        $fasilitas = FasilitasVital::with(['district', 'village'])->paginate(10);
         return view('admin.FasilitasVital.index', compact('fasilitas'));
     }
 

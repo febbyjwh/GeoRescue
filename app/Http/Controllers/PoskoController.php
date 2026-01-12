@@ -9,7 +9,7 @@ class PoskoController extends Controller
 {
     public function index()
     {
-        $poskos = PoskoBencana::with(['district', 'village'])->paginate(10); // gunakan paginate
+        $poskos = PoskoBencana::with(['district', 'village'])->paginate(10);
         return view('admin.posko.index', compact('poskos'));
     }
 

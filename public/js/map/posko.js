@@ -168,6 +168,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function getPoskoPopup(item) {
+        return `
+        <div style="min-width:220px">
+            <strong>${item.nama_posko ?? "-"}</strong>
+            <hr style="margin:6px 0">
+
+            <div><b>Jenis:</b> ${item.jenis_posko ?? "-"}</div>
+            <div><b>Status:</b> ${item.status_posko ?? "-"}</div>
+            <div><b>Kecamatan:</b> ${item.nama_kecamatan ?? "-"}</div>
+            <div><b>Desa:</b> ${item.nama_desa ?? "-"}</div>
+
+            <hr style="margin:6px 0">
+            <small>
+                Koordinat:<br>
+                ${item.latitude}, ${item.longitude}
+            </small>
+        </div>
+    `;
+    }
+
     async function loadPosko() {
         layerPosko.clearLayers();
         try {
@@ -183,13 +203,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     icon: getPoskoIcon(item.jenis_posko, item.status_posko),
                 });
 
-                marker.bindPopup(`
-                    <strong>${item.nama_posko}</strong><br>
-                    Kecamatan: ${item.nama_kecamatan}<br>
-                    Desa: ${item.nama_desa}<br>
-                    Jenis: ${item.jenis_posko}<br>
-                    Status: ${item.status_posko}
-                `);
+                marker.bindPopup(getPoskoPopup(item), {
+                    closeButton: true,
+                    offset: [0, -28],
+                });
+
+                // marker.bindPopup(`
+                //     <strong>${item.nama_posko}</strong><br>
+                //     Kecamatan: ${item.nama_kecamatan}<br>
+                //     Desa: ${item.nama_desa}<br>
+                //     Jenis: ${item.jenis_posko}<br>
+                //     Status: ${item.status_posko}
+                // `);
 
                 // Hanya trigger fillForm saat marker diklik
                 marker.on("click", () => fillForm(item));

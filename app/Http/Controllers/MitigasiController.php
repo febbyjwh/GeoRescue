@@ -7,6 +7,7 @@ use App\Models\Village;
 use App\Models\Bencana;
 use App\Models\PoskoBencana;
 use App\Models\FasilitasVital;
+use App\Models\JalurDistribusiLogistik;
 use Illuminate\Http\Request;
 
 class MitigasiController extends Controller
@@ -19,6 +20,7 @@ class MitigasiController extends Controller
             'bencanaSummary' => $this->getBencanaSummary(),
             'poskoSummary' => $this->getPoskoSummary(),
             'fasilitasSummary' => $this->getFasilitasSummary(),
+            'logistikSummary' => $this->getLogistikSummary(),
         ]);
     }
 
@@ -137,6 +139,29 @@ class MitigasiController extends Controller
                 ]
                 : null,
             'last_update' => $data->max('updated_at'),
+        ];
+    }
+
+    private function getLogistikSummary()
+    {
+        $data = JalurDistribusiLogistik::all();
+
+        $jenis = $data->groupBy('jenis_logistik')->map(function ($items) {
+            return $items->sum('jumlah');
+        });
+
+        $jenisTerbanyak = $jenis->sortDesc()->keys()->first();
+
+        $lastUpdate = $data->max('updated_at');
+
+        return [
+            'total_lokasi' => $data->count(),
+            'total_stok' => $data->sum('jumlah'),
+            'kecamatan' => $data->pluck('district_id')->unique()->count(),
+            'desa' => $data->pluck('village_id')->unique()->count(),
+            'jenis' => $jenis,
+            'jenis_terbanyak' => $jenisTerbanyak,
+            'last_update' => $lastUpdate,
         ];
     }
 }

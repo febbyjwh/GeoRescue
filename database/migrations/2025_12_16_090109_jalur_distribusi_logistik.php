@@ -12,30 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('logistiks', function (Blueprint $table) {
-        $table->id();
-
-        $table->string('nama_lokasi');
-
-        $table->string('district_id'); // contoh: 320405
-        $table->string('village_id');  // contoh: 3204052001
-
-        $table->string('jenis_logistik'); // Makanan, Obat, dll
-        $table->integer('jumlah');
-        $table->string('satuan'); // Paket, Box, Kg, dll
-
-        $table->enum('status', ['Tersedia', 'Menipis', 'Habis'])->default('Tersedia');
-
-        // simpan point GeoJSON
-        $table->json('geojson');
-
-        $table->timestamps();
-    });
-
+            $table->id();
+            $table->string('nama_lokasi');
+            $table->string('district_id'); // contoh: 320405
+            $table->string('village_id');  // contoh: 3204052001
+            $table->enum('jenis_logistik', ['all(pangan, sandang, kesehatan, hunian)', 'pangan', 'sandang', 'kesehatan', 'hunian']); // Makanan, Obat, dll
+            $table->integer('jumlah');
+            $table->string('satuan'); // Paket, Box, Kg, dll
+            $table->enum('status', ['Tersedia', 'Menipis', 'Habis'])->default('Tersedia');
+            $table->decimal('lang', 10, 7)->nullable();
+            $table->decimal('lat', 10, 7)->nullable();
+            $table->timestamps();
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         //

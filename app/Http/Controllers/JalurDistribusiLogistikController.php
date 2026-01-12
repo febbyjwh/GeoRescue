@@ -3,18 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\JalurDistribusiLogistik;
-use App\Models\Village;
-
+use Illuminate\Http\Request;
 
 class JalurDistribusiLogistikController extends Controller
 {
 
     public function index()
     {
-        $logistiks = JalurDistribusiLogistik::all();
-        return view('Admin.jalur_distribusi_logistik.index', compact('logistiks'));
+        $logistiks = JalurDistribusiLogistik::with(['district', 'village'])->paginate(10);
+        return view('admin.jalur_distribusi_logistik.index', compact('logistiks'));
     }
 
 
@@ -23,23 +21,22 @@ class JalurDistribusiLogistikController extends Controller
         $logistiks = JalurDistribusiLogistik::with('district', 'village')->get()->map(function ($lg) {
             return [
                 'id' => $lg->id,
+                'nama_lokasi' => $lg->nama_lokasi,
                 'kecamatan_id' => $lg->district_id,
                 'desa_id' => $lg->village_id,
                 'nama_kecamatan' => $lg->district->name ?? '-',
                 'nama_desa' => $lg->village->name ?? '-',
-                'nama_lokasi' => $lg->nama_lokasi,
                 'jenis_logistik' => $lg->jenis_logistik,
                 'jumlah' => $lg->jumlah,
                 'satuan' => $lg->satuan,
                 'status' => $lg->status,
-                'lang' => $lg->village->longitude ?? null,
-                'lat' => $lg->village->latitude ?? null,
+                'lat' => $lg->lat,
+                'lng' => $lg->lng,
             ];
         });
 
         return response()->json(['data' => $logistiks]);
     }
-
 
 
     public function store(Request $request)
@@ -52,19 +49,15 @@ class JalurDistribusiLogistikController extends Controller
             'jumlah'         => 'required|numeric',
             'satuan'         => 'required|string|max:100',
             'status'         => 'required|string|max:100',
-
-            // ✅ pastikan input lat/lang masuk
             'lat'            => 'required|numeric',
-            'lang'           => 'required|numeric',
+            'lng'           => 'required|numeric',
         ]);
 
-        // ✅ normalize biar pasti numeric rapi
         $validated['lat']  = (float) $validated['lat'];
-        $validated['lang'] = (float) $validated['lang'];
+        $validated['lng'] = (float) $validated['lng'];
 
         $logistik = JalurDistribusiLogistik::create($validated);
 
-        // ✅ Kalau request dari fetch/ajax → balikin JSON
         if ($request->wantsJson()) {
             return response()->json([
                 'message' => 'Logistik created successfully.',
@@ -78,19 +71,14 @@ class JalurDistribusiLogistikController extends Controller
                     'satuan'          => $logistik->satuan,
                     'status'          => $logistik->status,
                     'lat'             => $logistik->lat,
-                    'lang'            => $logistik->lang,
+                    'lng'            => $logistik->lng,
                 ]
             ], 201);
         }
-
-        // ✅ Kalau submit form biasa → redirect
         return redirect()
             ->route('jalur_distribusi_logistik.index')
             ->with('success', 'Data logistik berhasil ditambahkan');
     }
-
-
-
 
     public function update(Request $request, $id)
     {
@@ -129,20 +117,17 @@ class JalurDistribusiLogistikController extends Controller
 
         return response()->json([
             'id' => $logistik->id,
-
-            // samakan response key seperti bencana
             'kecamatan_id' => $logistik->district_id,
             'desa_id'      => $logistik->village_id,
-
+            'nama_kecamatan' => $logistik->district->name ?? '-',
+            'nama_desa' => $logistik->village->name ?? '-',
             'nama_lokasi'    => $logistik->nama_lokasi,
             'jenis_logistik' => $logistik->jenis_logistik,
             'jumlah'         => $logistik->jumlah,
             'satuan'         => $logistik->satuan,
             'status'         => $logistik->status,
-
-            // kalau frontend butuh lat/lng seperti bencana:
-            'lang' => $logistik->village->longitude ?? null,
-            'lat'  => $logistik->village->latitude ?? null,
+            'lng' => $logistik->lng,
+            'lat' => $logistik->lat,
         ]);
     }
 
@@ -155,33 +140,4 @@ class JalurDistribusiLogistikController extends Controller
             'message' => 'Data logistik berhasil dihapus'
         ]);
     }
-
-    public function villagesByDistrict($districtId)
-    {
-        $villages = Village::select('id', 'name')
-            ->where('district_id', $districtId)
-            ->orderBy('name')
-            ->get();
-
-        return response()->json(['data' => $villages]);
-    }
-
-    // public function geojson()
-    // {
-    //     $path = database_path('data/bandung_villages.geojson');
-
-    //     if (!File::exists($path)) {
-    //         return response()->json([
-    //             'message' => 'File geojson tidak ditemukan'
-    //         ], 404);
-    //     }
-
-    //     $geojson = json_decode(File::get($path), true);
-
-    //     // OPTIONAL: kalau mau langsung return GEOJSON utuh
-    //     return response()->json($geojson);
-    // }
-
-
-
 }

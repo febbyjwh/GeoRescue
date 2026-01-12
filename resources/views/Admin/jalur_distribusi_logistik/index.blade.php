@@ -1,87 +1,78 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row mb-4">
-        <div class="col-12">
-            <h1 class="h3 mb-3">Data Logistik</h1>
+    <div class="container-fluid">
 
-            @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-            @endif
-        </div>
-    </div>
+        <x-common.page-breadcrumb pageTitle="Data Logistik" class="z-10 relative" />
 
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <a href="{{ route('jalur_distribusi_logistik.create') }}" class="btn btn-primary">
-                        + Tambah Logistik
-                    </a>
-                </div>
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
 
-                <div class="card-body">
-                    <x-tables.basic-tables.basic-tables-one>
-                        <thead>
-                            <tr class="border-b border-gray-200">
-                                <th>ID</th>
-                                <th>Nama Lokasi</th>
-                                <th>Kecamatan</th>
-                                <th>Desa</th>
-                                <th>Jenis Logistik</th>
-                                <th>Jumlah</th>
-                                <th>Satuan</th>
-                                <th>Lat</th>
-                                <th>Lang</th>
-                                <th>Status</th>
-                                <th>Dibuat</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
+        <div class="card">
+            <div class="card-body">
 
-                        <tbody>
+                <x-tables.basic-tables.basic-tables-one>
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="px-5 py-3 text-sm font-medium text-gray-500">ID</th>
+                            <th class="px-5 py-3 text-sm font-medium text-gray-500">Nama Lokasi</th>
+                            <th class="px-5 py-3 text-sm font-medium text-gray-500">Kecamatan</th>
+                            <th class="px-5 py-3 text-sm font-medium text-gray-500">Desa</th>
+                            <th class="px-5 py-3 text-sm font-medium text-gray-500">Jenis Logistik</th>
+                            <th class="px-5 py-3 text-sm font-medium text-gray-500">Jumlah</th>
+                            <th class="px-5 py-3 text-sm font-medium text-gray-500">Satuan</th>
+                            <th class="px-5 py-3 text-sm font-medium text-gray-500">Latitude</th>
+                            <th class="px-5 py-3 text-sm font-medium text-gray-500">Longitude</th>
+                            <th class="px-5 py-3 text-sm font-medium text-gray-500">Status</th>
+                            <th class="px-5 py-3 text-sm font-medium text-gray-500">Dibuat</th>
+                            <th class="px-5 py-3 text-sm font-medium text-gray-500">Aksi</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
                         @forelse($logistiks as $item)
-                            <tr>
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->nama_lokasi }}</td>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="px-5 py-4 text-sm">{{ $item->id }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->nama_lokasi }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->district->name ?? $item->district_id }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->village->name ?? $item->village_id }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->jenis_logistik }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->jumlah }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->satuan }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->lat }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->lng }}</td>
 
-                                {{-- relasi district & village --}}
-                                <td>{{ $item->district->name ?? $item->district_id }}</td>
-                                <td>{{ $item->village->name ?? $item->village_id }}</td>
-
-                                <td>{{ $item->jenis_logistik }}</td>
-                                <td>{{ $item->jumlah }}</td>
-                                <td>{{ $item->satuan }}</td>
-
-                                <td>{{ $item->lat }}</td>
-                                <td>{{ $item->lang }}</td>
-
-                                <td>
-                                    <span class="badge
-                                        {{ strtolower($item->status) === 'tersedia' ? 'bg-success' : (strtolower($item->status) === 'menipis' ? 'bg-warning' : 'bg-danger') }}">
+                                <td class="px-5 py-4 text-sm">
+                                    <span
+                                        class="px-3 py-1 rounded-full text-xs font-semibold
+                                    {{ strtolower($item->status) === 'tersedia'
+                                        ? 'bg-green-100 text-green-700'
+                                        : (strtolower($item->status) === 'menipis'
+                                            ? 'bg-yellow-100 text-yellow-700'
+                                            : 'bg-red-100 text-red-700') }}">
                                         {{ ucfirst($item->status) }}
                                     </span>
                                 </td>
 
-                                <td>{{ optional($item->created_at)->format('Y-m-d H:i') }}</td>
+                                <td class="px-5 py-4 text-sm">
+                                    {{ optional($item->created_at)->format('Y-m-d H:i') }}
+                                </td>
 
-                                <td class="d-flex gap-2">
+                                <td class="px-5 py-4 text-sm whitespace-nowrap">
                                     <a href="{{ route('jalur_distribusi_logistik.edit', $item->id) }}"
-                                       class="btn btn-warning btn-sm">
+                                        class="text-yellow-600 hover:underline">
                                         Edit
                                     </a>
 
                                     <form action="{{ route('jalur_distribusi_logistik.destroy', $item->id) }}"
-                                          method="POST"
-                                          onsubmit="return confirm('Yakin hapus data ini?')">
+                                        method="POST" class="inline" onsubmit="return confirm('Yakin hapus data ini?')">
                                         @csrf
                                         @method('DELETE')
-
-                                        <button type="submit" class="btn btn-danger btn-sm">
+                                        <button type="submit" class="ml-2 text-red-600 hover:underline">
                                             Hapus
                                         </button>
                                     </form>
@@ -89,16 +80,18 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="12" class="text-center text-muted">
+                                <td colspan="12" class="px-5 py-4 text-center text-gray-500">
                                     Belum ada data logistik
                                 </td>
                             </tr>
                         @endforelse
-                        </tbody>
-                    </x-tables.basic-tables.basic-tables-one>
+                    </tbody>
+                </x-tables.basic-tables.basic-tables-one>
+                {{-- Pagination --}}
+                <div class="mt-4">
+                    {{ $logistiks->links() }}
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

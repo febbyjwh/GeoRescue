@@ -84,7 +84,10 @@
                             </tbody>
 
                         </x-tables.basic-tables.basic-tables-one>
-
+                        {{-- Pagination --}}
+                        <div class="mt-4">
+                            {{ $poskos->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

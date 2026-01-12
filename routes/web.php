@@ -64,14 +64,7 @@ Route::prefix('jalur_evakuasi')->name('jalur_evakuasi.')->group(function () {
     Route::delete('/{id}', [EvakuasiController::class, 'destroy'])->name('destroy');
 });
 
-// user
-Route::prefix('user')->name('user.')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('index');
-});
-
-// Posko
-Route::group(['middleware' => ['isadmin']], function () {
-    // Fasilitas vital
+// Fasilitas vital
     Route::prefix('fasilitasvital')->group(function () {
         Route::get('/', [FasilitasVitalController::class, 'index'])->name('fasilitasvital.index');
         Route::get('/create', [FasilitasVitalController::class, 'create'])->name('fasilitasvital.create');
@@ -92,6 +85,14 @@ Route::group(['middleware' => ['isadmin']], function () {
         Route::delete('/{id}', [JalurDistribusiLogistikController::class, 'destroy'])->name('jalur_distribusi_logistik.destroy');
         Route::get('/get-logistik', [JalurDistribusiLogistikController::class, 'getLogistik'])->name('jalur_distribusi_logistik.get');
     });
+    
+// user
+Route::prefix('user')->name('user.')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+});
+
+Route::group(['middleware' => ['isadmin']], function () {
+    
 });
 
 // calender pages

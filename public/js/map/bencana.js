@@ -67,6 +67,26 @@ document.addEventListener("DOMContentLoaded", () => {
         // });
     }
 
+    function getBencanaPopup(item) {
+        return `
+        <div style="min-width:220px">
+            <strong>${item.jenis_bencana.toUpperCase()}</strong>
+            <hr style="margin:6px 0">
+
+            <div><b>Status:</b> ${item.status}</div>
+            <div><b>Tingkat Kerawanan:</b> ${item.tingkat_kerawanan}</div>
+            <div><b>Kecamatan:</b> ${item.nama_kecamatan ?? "-"}</div>
+            <div><b>Desa:</b> ${item.nama_desa ?? "-"}</div>
+
+            <hr style="margin:6px 0">
+            <small>
+                Koordinat:<br>
+                ${item.lat}, ${item.lang}
+            </small>
+        </div>
+    `;
+    }
+
     window.submitBencana = async function () {
         const formElements = document.getElementById("formBencana").elements;
 
@@ -155,6 +175,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     icon: getBencanaIcon(item.jenis_bencana),
                 });
 
+                marker.bindPopup(getBencanaPopup(item), {
+                    closeButton: true,
+                    offset: [0, -30],
+                });
+
                 const circle = L.circle([lat, lng], {
                     radius: 2000,
                     color: warnaBencana[item.jenis_bencana],
@@ -220,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const form = document.getElementById("formBencana");
 
         // reset form biasa
-        form.reset();;
+        form.reset();
 
         // reset hidden id & mode
         document.getElementById("bencana_id").value = "";
@@ -238,7 +263,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const box = document.getElementById("selectedBencana");
         if (box) box.classList.add("hidden");
     }
-
 
     // const inputMarkers = []
 
