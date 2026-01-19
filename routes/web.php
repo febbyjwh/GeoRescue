@@ -27,6 +27,7 @@ Route::prefix('api/region')->name('api.region.')->group(function () {
 Route::get('/user/bencana-data', [UserController::class, 'bencana']);
 Route::get('/user/posko-data', [UserController::class, 'posko']);
 Route::get('/user/fasilitas-data', [UserController::class, 'fasilitas']);
+Route::get('/user/logistik-data', [UserController::class, 'logistik']);
 
 // data mitigasi
 Route::prefix('mitigasi')->name('mitigasi.')->group(function () {

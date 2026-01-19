@@ -19,7 +19,7 @@
     "desa_id": "3204122004",
     "latitude": -6.9812,
     "longitude": 107.6155,
-    "status_posko": "Aktif"
+    "status_posko": "Penuh"
   },
   {
     "id": 3,
@@ -52,7 +52,7 @@
     "desa_id": "3204122004",
     "latitude": -6.9795,
     "longitude": 107.6185,
-    "status_posko": "Aktif"
+    "status_posko": "Tutup"
   },
   {
     "id": 6,
@@ -74,7 +74,7 @@
     "desa_id": "3204322006",
     "latitude": -6.9875,
     "longitude": 107.6190,
-    "status_posko": "Aktif"
+    "status_posko": "Penuh"
   },
   {
     "id": 8,
@@ -107,7 +107,7 @@
     "desa_id": "3204322006",
     "latitude": -6.9885,
     "longitude": 107.6175,
-    "status_posko": "Aktif"
+    "status_posko": "Tutup"
   },
   {
     "id": 11,
@@ -140,7 +140,7 @@
     "desa_id": "3204082001",
     "latitude": -6.9785,
     "longitude": 107.6425,
-    "status_posko": "Aktif"
+    "status_posko": "Penuh"
   },
   {
     "id": 14,

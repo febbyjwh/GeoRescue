@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bencana;
 use App\Models\PoskoBencana;
 use App\Models\FasilitasVital;
+use App\Models\JalurDistribusiLogistik;
 
 use Illuminate\Http\Request;
 
@@ -23,15 +24,9 @@ class UserController extends Controller
                     'id' => $bn->id,
                     'kecamatan_id' => $bn->kecamatan_id,
                     'desa_id' => $bn->desa_id,
-                    
-                    // ⚠️ UBAH: dari 'nama_bencana' jadi 'jenis_bencana'
                     'jenis_bencana' => $bn->jenis_bencana,  // 'banjir', 'gempa', 'longsor'
-                    
-                    'tingkat_kerawanan' => ucfirst($bn->tingkat_kerawanan),  // ⚠️ UBAH: capitalize (Rendah, Sedang, Tinggi)
-                    
-                    // ⚠️ TAMBAH: status (field baru)
+                    'tingkat_kerawanan' => ucfirst($bn->tingkat_kerawanan),  
                     'status' => ucfirst($bn->status),  // Aktif, Penanganan, Selesai
-                    
                     'lat' => $bn->lat,
                     'lang' => $bn->lang,
                     'nama_kecamatan' => $bn->district->name ?? '-',
@@ -79,6 +74,28 @@ class UserController extends Controller
             ];
         });
 
-        return response()->json([ 'data' => $fasilitas]);
+        return response()->json(['data' => $fasilitas]);
+    }
+
+    public function logistik()
+    {
+        $logistiks = JalurDistribusiLogistik::with(['district', 'village'])->get()->map(function ($lg) {
+            return [
+                'id' => $lg->id,
+                'nama_lokasi' => $lg->nama_lokasi,
+                'kecamatan_id' => $lg->district_id,
+                'desa_id' => $lg->village_id,
+                'nama_kecamatan' => $lg->district->name ?? '-',
+                'nama_desa' => $lg->village->name ?? '-',
+                'jenis_logistik' => $lg->jenis_logistik,
+                'jumlah' => $lg->jumlah,
+                'satuan' => $lg->satuan,
+                'status' => $lg->status,
+                'lat' => $lg->lat,
+                'lng' => $lg->lng,
+            ];
+        });
+
+        return response()->json(['data' => $logistiks]);
     }
 }

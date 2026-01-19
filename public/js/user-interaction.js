@@ -20,14 +20,14 @@ function hitungJarak(lat1, lng1, lat2, lng2) {
 
 function getFasilitasIcon(jenis) {
     const icons = {
-        'Rumah Sakit': '🏥',
-        'Puskesmas': '🩺',
-        'Sekolah': '🏫',
-        'Kantor Polisi': '🚔',
-        'Pemadam Kebakaran': '🚒',
-        'Kantor Pemerintahan': '🏛️'
+        "Rumah Sakit": "🏥",
+        Puskesmas: "🩺",
+        Sekolah: "🏫",
+        "Kantor Polisi": "🚔",
+        "Pemadam Kebakaran": "🚒",
+        "Kantor Pemerintahan": "🏛️",
     };
-    return icons[jenis] || '📍';
+    return icons[jenis] || "📍";
 }
 
 // ================= CUSTOM LOCATION =================
@@ -65,7 +65,7 @@ function initCustomLocation(map) {
         addCustomBtn.classList.remove("bg-amber-500");
         addCustomBtn.textContent = "📍 Tambah Lokasi Saya";
 
-        console.log('📍 Custom location set:', userLocation);
+        console.log("📍 Custom location set:", userLocation);
 
         if (window.updateAllPopups) window.updateAllPopups();
         renderNearby();
@@ -94,7 +94,7 @@ function initGPSLocation(map) {
                         lng: pos.coords.longitude,
                     };
 
-                    console.log('🗺️ GPS Location obtained:', userLocation);
+                    console.log("🗺️ GPS Location obtained:", userLocation);
 
                     if (window.updateAllPopups) window.updateAllPopups();
                     renderNearby();
@@ -117,11 +117,32 @@ function initGPSLocation(map) {
     }
 }
 
+function getStatusClass(type, status) {
+    if (type === "logistik") {
+        if (status === "Tersedia") {
+            return "bg-green-100 text-green-800";
+        }
+        if (status === "Menipis") {
+            return "bg-orange-100 text-orange-800";
+        }
+        if (status === "Habis") {
+            return "bg-red-100 text-red-800";
+        }
+        return "bg-gray-100 text-gray-800";
+    }
+
+    if (status === "Aktif" || status === "Beroperasi") {
+        return "bg-green-100 text-green-800";
+    }
+
+    return "bg-red-100 text-red-800";
+}
+
 // ================= NEARBY LIST =================
 function renderNearby() {
     const list = document.getElementById("nearby-list");
     const emptyMsg = document.getElementById("nearby-empty");
-    
+
     if (!list) return;
 
     if (!userLocation) {
@@ -134,7 +155,7 @@ function renderNearby() {
     list.innerHTML = "";
 
     if (!window.layerPosko || !window.layerFasilitas) {
-        console.warn('Layers belum siap');
+        console.warn("Layers belum siap");
         return;
     }
 
@@ -147,7 +168,7 @@ function renderNearby() {
             lng: m.getLatLng().lng,
             type: "posko",
             icon: "🏕️",
-            data: data
+            data: data,
         };
     });
 
@@ -160,11 +181,30 @@ function renderNearby() {
             lng: m.getLatLng().lng,
             type: "fasilitas",
             icon: getFasilitasIcon(data.jenis_fasilitas),
-            data: data
+            data: data,
         };
     });
 
-    const allLocations = [...poskoLocations, ...fasilitasLocations];
+    const logistikLocations = window.layerLogistik
+        ? window.layerLogistik.getLayers().map((m) => {
+              const data = m.options.markerData || {};
+              return {
+                  nama: data.nama_lokasi || "Logistik",
+                  status: data.status || "-",
+                  lat: m.getLatLng().lat,
+                  lng: m.getLatLng().lng,
+                  type: "logistik",
+                  icon: "📦",
+                  data: data,
+              };
+          })
+        : [];
+
+    const allLocations = [
+        ...poskoLocations,
+        ...fasilitasLocations,
+        ...logistikLocations,
+    ];
     const MAX_DISTANCE_KM = 10;
 
     const nearbyItems = allLocations
@@ -192,11 +232,10 @@ function renderNearby() {
 
     nearbyItems.forEach((l) => {
         const li = document.createElement("li");
-        li.className = "p-3 hover:bg-gray-50 rounded-lg cursor-pointer border border-gray-200 transition";
-        
-        const statusClass = l.status === 'Aktif' || l.status === 'Beroperasi' 
-            ? 'bg-green-100 text-green-800' 
-            : 'bg-red-100 text-red-800';
+        li.className =
+            "p-3 hover:bg-gray-50 rounded-lg cursor-pointer border border-gray-200 transition";
+
+        const statusClass = getStatusClass(l.type, l.status);
 
         li.innerHTML = `
             <div class="flex items-start gap-2">
@@ -215,7 +254,9 @@ function renderNearby() {
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
-                        <span class="font-medium text-amber-500">${l.jarak.toFixed(2)} km</span>
+                        <span class="font-medium text-amber-500">${l.jarak.toFixed(
+                            2
+                        )} km</span>
                     </div>
                 </div>
             </div>
@@ -223,18 +264,25 @@ function renderNearby() {
 
         li.onclick = () => {
             if (!window.mapInstance) return;
-            
+
             window.mapInstance.setView([l.lat, l.lng], 16);
-            
-            if (l.type === 'posko') {
+
+            if (l.type === "posko") {
                 window.layerPosko.eachLayer((marker) => {
                     const mLatLng = marker.getLatLng();
                     if (mLatLng.lat === l.lat && mLatLng.lng === l.lng) {
                         marker.openPopup();
                     }
                 });
-            } else if (l.type === 'fasilitas') {
+            } else if (l.type === "fasilitas") {
                 window.layerFasilitas.eachLayer((marker) => {
+                    const mLatLng = marker.getLatLng();
+                    if (mLatLng.lat === l.lat && mLatLng.lng === l.lng) {
+                        marker.openPopup();
+                    }
+                });
+            } else if (l.type === "logistik") {
+                window.layerLogistik.eachLayer((marker) => {
                     const mLatLng = marker.getLatLng();
                     if (mLatLng.lat === l.lat && mLatLng.lng === l.lng) {
                         marker.openPopup();
@@ -248,24 +296,24 @@ function renderNearby() {
 }
 
 function setupSearch(map) {
-    const searchInput = document.getElementById('searchLocation');
-    const searchResults = document.getElementById('searchResults');
-    
+    const searchInput = document.getElementById("searchLocation");
+    const searchResults = document.getElementById("searchResults");
+
     if (!searchInput) {
-        console.warn('Search input tidak ditemukan');
+        console.warn("Search input tidak ditemukan");
         return;
     }
 
     let searchTimeout;
 
-    searchInput.addEventListener('input', (e) => {
+    searchInput.addEventListener("input", (e) => {
         clearTimeout(searchTimeout);
-        
+
         const query = e.target.value.trim().toLowerCase();
-        
+
         if (query.length < 2) {
-            searchResults.classList.add('hidden');
-            searchResults.innerHTML = '';
+            searchResults.classList.add("hidden");
+            searchResults.innerHTML = "";
             return;
         }
 
@@ -274,84 +322,102 @@ function setupSearch(map) {
         }, 300);
     });
 
-    document.addEventListener('click', (e) => {
-        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-            searchResults.classList.add('hidden');
+    document.addEventListener("click", (e) => {
+        if (
+            !searchInput.contains(e.target) &&
+            !searchResults.contains(e.target)
+        ) {
+            searchResults.classList.add("hidden");
         }
     });
 }
 
 function performSearch(query, map) {
-    const searchResults = document.getElementById('searchResults');
-    
+    const searchResults = document.getElementById("searchResults");
+
     if (!window.layerPosko || !window.layerFasilitas || !window.layerLogistik) {
-        console.warn('Layers belum siap untuk search');
+        console.warn("Layers belum siap untuk search");
         return;
     }
 
-    const poskoResults = window.layerPosko.getLayers()
-        .map(m => {
+    const poskoResults = window.layerPosko
+        .getLayers()
+        .map((m) => {
             const data = m.options.markerData || {};
             return {
                 nama: data.nama_posko || "Posko Evakuasi",
-                kecamatan: data.nama_kecamatan || '',
-                desa: data.nama_desa || '',
-                status: data.status_posko || '-',
+                kecamatan: data.nama_kecamatan || "",
+                desa: data.nama_desa || "",
+                status: data.status_posko || "-",
                 lat: m.getLatLng().lat,
                 lng: m.getLatLng().lng,
                 type: "posko",
                 icon: "🏕️",
-                marker: m
+                marker: m,
             };
         })
-        .filter(item => 
-            item.nama.toLowerCase().includes(query) ||
-            item.kecamatan.toLowerCase().includes(query) ||
-            item.desa.toLowerCase().includes(query)
+        .filter(
+            (item) =>
+                item.nama.toLowerCase().includes(query) ||
+                item.kecamatan.toLowerCase().includes(query) ||
+                item.desa.toLowerCase().includes(query)
         );
 
-    const fasilitasResults = window.layerFasilitas.getLayers()
-        .map(m => {
+    const fasilitasResults = window.layerFasilitas
+        .getLayers()
+        .map((m) => {
             const data = m.options.markerData || {};
             return {
                 nama: data.nama_fasilitas || "Fasilitas",
-                jenis: data.jenis_fasilitas || '',
-                kecamatan: data.nama_kecamatan || '',
-                desa: data.nama_desa || '',
-                status: data.status || '-',
+                jenis: data.jenis_fasilitas || "",
+                kecamatan: data.nama_kecamatan || "",
+                desa: data.nama_desa || "",
+                status: data.status || "-",
                 lat: m.getLatLng().lat,
                 lng: m.getLatLng().lng,
                 type: "fasilitas",
                 icon: getFasilitasIcon(data.jenis_fasilitas),
-                marker: m
+                marker: m,
             };
         })
-        .filter(item => 
-            item.nama.toLowerCase().includes(query) ||
-            item.jenis.toLowerCase().includes(query) ||
-            item.kecamatan.toLowerCase().includes(query) ||
-            item.desa.toLowerCase().includes(query)
+        .filter(
+            (item) =>
+                item.nama.toLowerCase().includes(query) ||
+                item.jenis.toLowerCase().includes(query) ||
+                item.kecamatan.toLowerCase().includes(query) ||
+                item.desa.toLowerCase().includes(query)
         );
 
-    const logistikResults = window.layerLogistik.getLayers()
-        .map(m => {
+    const logistikResults = window.layerLogistik
+        .getLayers()
+        .map((m) => {
             const data = m.options.markerData || {};
             return {
-                nama: data.nama_logistik || "Logistik",
-                jenis: data.jenis_logistik || '',
+                nama: data.nama_lokasi || "Logistik",
+                jenis: data.jenis_logistik || "",
+                status: data.status || "-",
+                kecamatan: data.nama_kecamatan || "",
+                desa: data.nama_desa || "",
                 lat: m.getLatLng().lat,
                 lng: m.getLatLng().lng,
                 type: "logistik",
                 icon: "📦",
-                marker: m
+                marker: m,
             };
         })
-        .filter(item => 
-            item.nama.toLowerCase().includes(query) ||
-            item.jenis.toLowerCase().includes(query)
+        .filter(
+            (item) =>
+                item.nama.toLowerCase().includes(query) ||
+                item.jenis.toLowerCase().includes(query) ||
+                item.kecamatan.toLowerCase().includes(query) ||
+                item.desa.toLowerCase().includes(query)
         );
 
-    const allResults = [...poskoResults, ...fasilitasResults, ...logistikResults];
+    const allResults = [
+        ...poskoResults,
+        ...fasilitasResults,
+        ...logistikResults,
+    ];
 
     if (allResults.length === 0) {
         searchResults.innerHTML = `
@@ -359,20 +425,25 @@ function performSearch(query, map) {
                 Tidak ditemukan hasil untuk "${query}"
             </div>
         `;
-        searchResults.classList.remove('hidden');
+        searchResults.classList.remove("hidden");
         return;
     }
 
-    searchResults.innerHTML = allResults.slice(0, 8).map(item => {
-        const statusClass = item.status === 'Aktif' || item.status === 'Beroperasi' 
-            ? 'bg-green-100 text-green-800' 
-            : 'bg-red-100 text-red-800';
+    searchResults.innerHTML = allResults
+        .slice(0, 8)
+        .map((item) => {
+            const statusClass = getStatusClass(item.type, item.status);
 
-        const jarak = userLocation 
-            ? hitungJarak(userLocation.lat, userLocation.lng, item.lat, item.lng).toFixed(2) 
-            : null;
+            const jarak = userLocation
+                ? hitungJarak(
+                      userLocation.lat,
+                      userLocation.lng,
+                      item.lat,
+                      item.lng
+                  ).toFixed(2)
+                : null;
 
-        return `
+            return `
             <div class="search-result-item p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0" 
                  data-lat="${item.lat}" 
                  data-lng="${item.lng}" 
@@ -388,40 +459,51 @@ function performSearch(query, map) {
                                 ${item.status}
                             </span>
                         </div>
-                        ${item.kecamatan ? `<div class="text-xs text-gray-600">${item.kecamatan}${item.desa ? ', ' + item.desa : ''}</div>` : ''}
-                        ${jarak ? `<div class="text-xs text-blue-600 font-medium mt-1">📍 ${jarak} km</div>` : ''}
+                        ${
+                            item.kecamatan
+                                ? `<div class="text-xs text-gray-600">${
+                                      item.kecamatan
+                                  }${item.desa ? ", " + item.desa : ""}</div>`
+                                : ""
+                        }
+                        ${
+                            jarak
+                                ? `<div class="text-xs text-blue-600 font-medium mt-1">📍 ${jarak} km</div>`
+                                : ""
+                        }
                     </div>
                 </div>
             </div>
         `;
-    }).join('');
+        })
+        .join("");
 
-    searchResults.classList.remove('hidden');
+    searchResults.classList.remove("hidden");
 
-    searchResults.querySelectorAll('.search-result-item').forEach(item => {
-        item.addEventListener('click', () => {
+    searchResults.querySelectorAll(".search-result-item").forEach((item) => {
+        item.addEventListener("click", () => {
             const lat = parseFloat(item.dataset.lat);
             const lng = parseFloat(item.dataset.lng);
             const type = item.dataset.type;
 
             map.setView([lat, lng], 16);
 
-            if (type === 'posko') {
-                window.layerPosko.eachLayer(marker => {
+            if (type === "posko") {
+                window.layerPosko.eachLayer((marker) => {
                     const mLatLng = marker.getLatLng();
                     if (mLatLng.lat === lat && mLatLng.lng === lng) {
                         marker.openPopup();
                     }
                 });
-            } else if (type === 'fasilitas') {
-                window.layerFasilitas.eachLayer(marker => {
+            } else if (type === "fasilitas") {
+                window.layerFasilitas.eachLayer((marker) => {
                     const mLatLng = marker.getLatLng();
                     if (mLatLng.lat === lat && mLatLng.lng === lng) {
                         marker.openPopup();
                     }
                 });
-            } else if (type === 'logistik') {
-                window.layerLogistik.eachLayer(marker => {
+            } else if (type === "logistik") {
+                window.layerLogistik.eachLayer((marker) => {
                     const mLatLng = marker.getLatLng();
                     if (mLatLng.lat === lat && mLatLng.lng === lng) {
                         marker.openPopup();
@@ -429,8 +511,8 @@ function performSearch(query, map) {
                 });
             }
 
-            searchResults.classList.add('hidden');
-            document.getElementById('searchLocation').value = '';
+            searchResults.classList.add("hidden");
+            document.getElementById("searchLocation").value = "";
         });
     });
 }

@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(VillageSeeder::class);
         $this->call(FasilitasVitalSeeder::class);
         $this->call(PoskoSeeder::class);
+        $this->call(LogistikSeeder::class);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bencana;
 use App\Models\PoskoBencana;
 use App\Models\FasilitasVital;
+use App\Models\JalurDistribusiLogistik;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -51,6 +52,10 @@ class DashboardController extends Controller
             $bencanaPerBulan[$name] = $record ? (int)$record->total : 0;
         }
 
+        $poskoStatus = PoskoBencana::select('status_posko')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('status_posko')
+            ->pluck('total', 'status_posko');
         $totalPosko = PoskoBencana::count();
         $poskoAktif = PoskoBencana::where('status_posko', 'Aktif')->count();
         $poskoPenuh = PoskoBencana::where('status_posko', 'Penuh')->count();
@@ -60,6 +65,20 @@ class DashboardController extends Controller
         $fasilitasBeroperasi = FasilitasVital::where('status', 'Beroperasi')->count();
         $fasilitasTidakTersedia = FasilitasVital::where('status', 'Tidak Tersedia')->count();
 
+        $topLogistikBermasalah = JalurDistribusiLogistik::with(['district', 'village'])
+            ->whereIn('status', ['Habis', 'Menipis'])
+            ->orderByRaw("FIELD(status, 'Habis', 'Menipis')")
+            ->limit(5)
+            ->get();
+        $logistikStatus = JalurDistribusiLogistik::select('status')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('status')
+            ->pluck('total', 'status');
+        $totalLogistik = JalurDistribusiLogistik::count();
+        $logistikTersedia = JalurDistribusiLogistik::where('status', 'Tersedia')->count();
+        $logistikMenipis  = JalurDistribusiLogistik::where('status', 'Menipis')->count();
+        $logistikHabis    = JalurDistribusiLogistik::where('status', 'Habis')->count();
+
         return view('dashboard', compact(
             'totalBencana',
             'bencanaTinggi',
@@ -67,13 +86,23 @@ class DashboardController extends Controller
             'bencanaPerBulan',
             'start',
             'end',
+
             'totalPosko',
             'poskoAktif',
             'poskoPenuh',
             'poskoTutup',
+            'poskoStatus',
+
             'totalFasilitas',
             'fasilitasBeroperasi',
             'fasilitasTidakTersedia',
+
+            'totalLogistik',
+            'logistikTersedia',
+            'logistikMenipis',
+            'logistikHabis',
+            'logistikStatus',
+            'topLogistikBermasalah',
         ));
     }
 }

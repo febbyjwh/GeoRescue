@@ -17,7 +17,7 @@ class JalurDistribusiLogistik extends Model
         'satuan',
         'status',
         'lat',
-        'lang',
+        'lng',
     ];
 
     public function district()

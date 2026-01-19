@@ -1,7 +1,7 @@
 @props(['bencanaPerBulan', 'jenisBencana', 'start', 'end'])
 
 <div
-    class="rounded-2xl border border-gray-200 bg-white px-5 pb-5 pt-5 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6 sm:pt-6">
+    class="rounded-2xl border border-gray-200 bg-white px-5 pb-5 pt-5 h-153 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6 sm:pt-6">
     <div class="flex flex-col gap-5 mb-6 sm:flex-row sm:justify-between">
         <div class="w-full">
             <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
@@ -38,7 +38,7 @@
         </div>
 
         <div class="relative max-w-40">
-            <input type="text" placeholder="Select dates"
+            <input type="text"
                 class="datepicker text-theme-sm shadow-theme-xs h-10 w-full max-w-40 rounded-lg border border-gray-200 bg-white py-2.5 pr-4 pl-10 font-medium text-gray-700 focus:ring-0 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
                 readonly>
             <div class="pointer-events-none absolute inset-y-0 left-3 flex items-center">
@@ -54,7 +54,7 @@
     </div>
 
     <div class="max-w-full overflow-x-auto custom-scrollbar">
-        <div id="chartThree" class="-ml-4 min-w-[500px] pl-2 xl:min-w-full h-[300px]"></div>
+        <div id="chartThree" class="-ml-4 min-w-[500px] pl-2 xl:min-w-full h-[500px]"></div>
     </div>
 </div>
 
@@ -67,7 +67,8 @@
         const options = {
             chart: {
                 type: 'area',
-                height: 320,
+                height: 455,
+                width: 800, 
                 toolbar: {
                     show: false
                 },
