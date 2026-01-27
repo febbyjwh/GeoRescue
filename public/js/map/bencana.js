@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div><b>Tingkat Kerawanan:</b> ${item.tingkat_kerawanan}</div>
             <div><b>Kecamatan:</b> ${item.nama_kecamatan ?? "-"}</div>
             <div><b>Desa:</b> ${item.nama_desa ?? "-"}</div>
+            <div><b>Radius/Dampak:</b> ${item.nilai ?? "-"}</div>
 
             <hr style="margin:6px 0">
             <small>
@@ -97,6 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
             status: formElements.status.value,
             kecamatan_id: formElements.bencana_district.value,
             desa_id: formElements.bencana_village.value,
+            nilai: formElements.nilai.value,
+            satuan: formElements.satuan.value,
             lat: formElements.lat.value,
             lang: formElements.lang.value,
         };
@@ -110,6 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 method,
                 headers: {
                     "Content-Type": "application/json",
+                    "Accept": "application/json",
                     "X-CSRF-TOKEN": document
                         .querySelector('meta[name="csrf-token"]')
                         .getAttribute("content"),

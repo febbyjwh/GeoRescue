@@ -23,6 +23,8 @@ class BencanaSeeder extends Seeder
                 "desa_id" => $state->desa_id,
                 "jenis_bencana" => $state->jenis_bencana,
                 "tingkat_kerawanan" => $state->tingkat_kerawanan,
+                "nilai" => $state->nilai,
+                "satuan" => $state->satuan,
                 "status" => $state->status,
                 "lang" => $state->lang,
                 "lat" => $state->lat

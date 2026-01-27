@@ -24,17 +24,42 @@
             <x-form.form-elements.select-inputs label="Tingkat Kerawanan" name="tingkat_kerawanan"
                 id="tingkat_kerawanan" required>
                 <option value="">Pilih Tingkat Kerawanan</option>
-                <option value="Tinggi" {{ old('tingkat_kerawanan') == 'Tinggi' ? 'selected' : '' }}>Tinggi</option>
-                <option value="Sedang" {{ old('tingkat_kerawanan') == 'Sedang' ? 'selected' : '' }}>Sedang</option>
-                <option value="Rendah" {{ old('tingkat_kerawanan') == 'Rendah' ? 'selected' : '' }}>Rendah</option>
+                <option value="tinggi" {{ old('tingkat_kerawanan') == 'tinggi' ? 'selected' : '' }}>Tinggi</option>
+                <option value="sedang" {{ old('tingkat_kerawanan') == 'sedang' ? 'selected' : '' }}>Sedang</option>
+                <option value="rendah" {{ old('tingkat_kerawanan') == 'rendah' ? 'selected' : '' }}>Rendah</option>
             </x-form.form-elements.select-inputs>
 
             <x-form.form-elements.select-inputs label="Status" name="status" id="status" required>
                 <option value="">Status</option>
-                <option value="Aktif" {{ old('status') == 'Aktif' ? 'selected' : '' }}>Aktif</option>
-                <option value="Penanganan" {{ old('status') == 'Penanganan' ? 'selected' : '' }}>Penanganan</option>
-                <option value="Selesai" {{ old('status') == 'Selesai' ? 'selected' : '' }}>Selesai</option>
+                <option value="aktif" {{ old('status') == 'aktif' ? 'selected' : '' }}>Aktif</option>
+                <option value="penanganan" {{ old('status') == 'penanganan' ? 'selected' : '' }}>Penanganan</option>
+                <option value="selesai" {{ old('status') == 'selesai' ? 'selected' : '' }}>Selesai</option>
             </x-form.form-elements.select-inputs>
+
+            <!-- RADIUS / NILAI DAMPAK -->
+            <div class="mb-4">
+                <label for="nilai" class="block text-sm font-medium mb-2 mt-4">
+                    Radius / Nilai Dampak
+                    <span id="satuanLabel" class="text-xs text-gray-500">(cm)</span>
+                </label>
+
+                <input type="range" id="nilai" name="nilai" class="w-full accent-amber-400" min="0"
+                    max="100" step="1" value="0" />
+
+                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                    <span id="minValue">0</span>
+                    <span id="maxValue">100</span>
+                </div>
+
+                <p class="mt-2 text-sm text-gray-700">
+                    Nilai:
+                    <span class="font-semibold" id="radiusValue">0</span>
+                    <span id="radiusSatuan">-</span>
+                </p>
+
+                <!-- satuan disimpan ke DB -->
+                <input for="satuan" type="hidden" name="satuan" id="satuan">
+            </div>
 
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <x-form.form-elements.default-inputs label="Longitude" name="lang" id="lang"
@@ -81,10 +106,10 @@
                 </li>
 
                 <li>
-                    <span class="font-medium">Koordinat:</span> 
+                    <span class="font-medium">Koordinat:</span>
                     <span id="detailKoordinatBencana">-</span>
                 </li>
-                
+
             </ul>
 
             <p class="text-xs text-gray-500 mt-3">
@@ -165,7 +190,7 @@
                             <span class="w-3 h-3 rounded-full bg-green-500"></span>
                             <span>Gempa – {{ $bencanaSummary['jenis']['gempa'] ?? 0 }} Titik</span>
                         </li>
-                        
+
                     </ul>
                 </div>
 
@@ -204,8 +229,8 @@
                 <!-- RADIUS DAMPAK -->
                 <div class="mb-3">
                     <p>
-                        <span class="font-medium">Radius Dampak:</span>
-                        ± {{ $bencanaSummary['radius'] }}
+                        <span class="font-medium">Radius Dampak: Disesuaikan dengan dampak jenis bencana</span>
+                        {{-- ± {{ $bencanaSummary['radius'] }} --}}
                     </p>
 
                     <p class="text-xs text-gray-500 mt-1">
@@ -231,3 +256,62 @@
         <script src="{{ asset('js/select-region.js') }}"></script>
     @endpush
 </div>
+<script>
+    const bencanaConfig = {
+        banjir: {
+            min: 0,
+            max: 300,
+            step: 5,
+            satuan: 'cm'
+        },
+        longsor: {
+            min: 0,
+            max: 1000,
+            step: 10,
+            satuan: 'm'
+        },
+        gempa: {
+            min: 1,
+            max: 9,
+            step: 0.1,
+            satuan: 'SR'
+        }
+    };
+
+    const jenisSelect = document.getElementById('jenis_bencana');
+    const radiusInput = document.getElementById('nilai');
+    const satuanInput = document.getElementById('satuan');
+
+    const radiusValue = document.getElementById('radiusValue');
+    const radiusSatuan = document.getElementById('radiusSatuan');
+    const satuanLabel = document.getElementById('satuanLabel');
+
+    const minValue = document.getElementById('minValue');
+    const maxValue = document.getElementById('maxValue');
+
+    jenisSelect.addEventListener('change', function() {
+        const jenis = this.value;
+        if (!jenis || !bencanaConfig[jenis]) return;
+
+        const config = bencanaConfig[jenis];
+
+        radiusInput.min = config.min;
+        radiusInput.max = config.max;
+        radiusInput.step = config.step;
+        radiusInput.value = config.min;
+
+        satuanInput.value = config.satuan;
+
+        radiusValue.textContent = config.min;
+        radiusSatuan.textContent = config.satuan;
+        satuanLabel.textContent = `(${config.satuan})`;
+
+        minValue.textContent = config.min;
+        maxValue.textContent = config.max;
+    });
+
+    function updateRadiusValue(val) {
+        radiusValue.textContent = val;
+        radiusSatuan.textContent = satuanInput.value || '-';
+    }
+</script>

@@ -602,6 +602,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     className: "",
                     html: `
 <svg
+
     viewBox="0 0 36 36"
     width="28"
     height="28"

@@ -12,6 +12,8 @@ class Bencana extends Model
         "desa_id",
         "jenis_bencana",
         "tingkat_kerawanan",
+        "nilai",
+        "satuan",
         "status",
         "lang",
         "lat"

@@ -6,6 +6,8 @@
     "jenis_bencana": "banjir",
     "tingkat_kerawanan": "tinggi",
     "status": "aktif",
+    "nilai": 120,
+    "satuan": "cm",
     "lang": "107.615",
     "lat": "-6.9756"
   },
@@ -16,6 +18,8 @@
     "jenis_bencana": "banjir",
     "tingkat_kerawanan": "tinggi",
     "status": "penanganan",
+    "nilai": 150,
+    "satuan": "cm",
     "lang": "107.6103",
     "lat": "-6.9789"
   },
@@ -26,6 +30,8 @@
     "jenis_bencana": "banjir",
     "tingkat_kerawanan": "tinggi",
     "status": "aktif",
+    "nilai": 100,
+    "satuan": "cm",
     "lang": "107.6267",
     "lat": "-6.9864"
   },
@@ -36,6 +42,8 @@
     "jenis_bencana": "banjir",
     "tingkat_kerawanan": "tinggi",
     "status": "penanganan",
+    "nilai": 130,
+    "satuan": "cm",
     "lang": "107.6201",
     "lat": "-6.9821"
   },
@@ -46,6 +54,8 @@
     "jenis_bencana": "banjir",
     "tingkat_kerawanan": "rendah",
     "status": "selesai",
+    "nilai": 50,
+    "satuan": "cm",
     "lang": "107.6423",
     "lat": "-6.9819"
   },
@@ -56,6 +66,8 @@
     "jenis_bencana": "banjir",
     "tingkat_kerawanan": "tinggi",
     "status": "aktif",
+    "nilai": 140,
+    "satuan": "cm",
     "lang": "107.6488",
     "lat": "-6.9762"
   },
@@ -66,6 +78,8 @@
     "jenis_bencana": "banjir",
     "tingkat_kerawanan": "tinggi",
     "status": "penanganan",
+    "nilai": 160,
+    "satuan": "cm",
     "lang": "107.7456",
     "lat": "-6.9989"
   },
@@ -76,6 +90,8 @@
     "jenis_bencana": "banjir",
     "tingkat_kerawanan": "tinggi",
     "status": "aktif",
+    "nilai": 170,
+    "satuan": "cm",
     "lang": "107.7402",
     "lat": "-7.0021"
   },
@@ -86,6 +102,8 @@
     "jenis_bencana": "banjir",
     "tingkat_kerawanan": "tinggi",
     "status": "penanganan",
+    "nilai": 110,
+    "satuan": "cm",
     "lang": "107.5784",
     "lat": "-7.0064"
   },
@@ -96,6 +114,8 @@
     "jenis_bencana": "banjir",
     "tingkat_kerawanan": "tinggi",
     "status": "selesai",
+    "nilai": 80,
+    "satuan": "cm",
     "lang": "107.5723",
     "lat": "-7.0122"
   },
@@ -106,6 +126,8 @@
     "jenis_bencana": "longsor",
     "tingkat_kerawanan": "sedang",
     "status": "penanganan",
+    "nilai": 25,
+    "satuan": "m",
     "lang": "107.5502",
     "lat": "-7.1867"
   },
@@ -116,6 +138,8 @@
     "jenis_bencana": "longsor",
     "tingkat_kerawanan": "sedang",
     "status": "selesai",
+    "nilai": 15,
+    "satuan": "m",
     "lang": "107.5441",
     "lat": "-7.1782"
   },
@@ -126,6 +150,8 @@
     "jenis_bencana": "longsor",
     "tingkat_kerawanan": "sedang",
     "status": "penanganan",
+    "nilai": 30,
+    "satuan": "m",
     "lang": "107.6734",
     "lat": "-7.2033"
   },
@@ -136,6 +162,8 @@
     "jenis_bencana": "longsor",
     "tingkat_kerawanan": "sedang",
     "status": "selesai",
+    "nilai": 18,
+    "satuan": "m",
     "lang": "107.6899",
     "lat": "-7.1956"
   },
@@ -146,6 +174,8 @@
     "jenis_bencana": "longsor",
     "tingkat_kerawanan": "sedang",
     "status": "penanganan",
+    "nilai": 22,
+    "satuan": "m",
     "lang": "107.3812",
     "lat": "-7.138"
   },
@@ -156,6 +186,8 @@
     "jenis_bencana": "longsor",
     "tingkat_kerawanan": "sedang",
     "status": "selesai",
+    "nilai": 14,
+    "satuan": "m",
     "lang": "107.3728",
     "lat": "-7.1314"
   },
@@ -166,6 +198,8 @@
     "jenis_bencana": "longsor",
     "tingkat_kerawanan": "sedang",
     "status": "penanganan",
+    "nilai": 28,
+    "satuan": "m",
     "lang": "107.4523",
     "lat": "-7.0994"
   },
@@ -176,6 +210,8 @@
     "jenis_bencana": "longsor",
     "tingkat_kerawanan": "sedang",
     "status": "selesai",
+    "nilai": 16,
+    "satuan": "m",
     "lang": "107.4487",
     "lat": "-7.1058"
   },
@@ -186,6 +222,8 @@
     "jenis_bencana": "gempa",
     "tingkat_kerawanan": "rendah",
     "status": "selesai",
+    "nilai": 3.2,
+    "satuan": "sr",
     "lang": "107.8376",
     "lat": "-6.9848"
   },
@@ -196,6 +234,8 @@
     "jenis_bencana": "gempa",
     "tingkat_kerawanan": "rendah",
     "status": "aktif",
+    "nilai": 4.1,
+    "satuan": "sr",
     "lang": "107.8867",
     "lat": "-7.0156"
   },
@@ -206,6 +246,8 @@
     "jenis_bencana": "gempa",
     "tingkat_kerawanan": "rendah",
     "status": "selesai",
+    "nilai": 2.8,
+    "satuan": "sr",
     "lang": "107.7704",
     "lat": "-7.0412"
   },
@@ -216,6 +258,8 @@
     "jenis_bencana": "gempa",
     "tingkat_kerawanan": "rendah",
     "status": "selesai",
+    "nilai": 3.5,
+    "satuan": "sr",
     "lang": "107.8146",
     "lat": "-7.0319"
   }
