@@ -46,9 +46,9 @@
 
             {{-- LAT & LNG --}}
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 mt-4">
-                <x-form.form-elements.default-inputs label="Latitude" name="lat" id="lat"
+                <x-form.form-elements.default-inputs label="Latitude" name="logistik_lat" id="logistik_lat"
                     placeholder="-6.914744" />
-                <x-form.form-elements.default-inputs label="Longitude" name="lng" id="lng"
+                <x-form.form-elements.default-inputs label="Longitude" name="logistik_lng" id="logistik_lng"
                     placeholder="107.609810" />
             </div>
 
@@ -63,7 +63,7 @@
 
             {{-- BUTTON --}}
             <div class="flex gap-3 mt-6">
-                <button type="submit"
+                <button type="button"
                     class="inline-flex items-center rounded-lg
                            bg-amber-300 px-5 py-2 text-sm font-medium
                            text-black hover:bg-amber-500 transition">

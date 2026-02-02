@@ -30,8 +30,8 @@ class JalurDistribusiLogistikController extends Controller
                 'jumlah' => $lg->jumlah,
                 'satuan' => $lg->satuan,
                 'status' => $lg->status,
-                'lat' => $lg->lat,
-                'lng' => $lg->lng,
+                'lat' => $lg->logistik_lat,
+                'lng' => $lg->logistik_lng,
             ];
         });
 

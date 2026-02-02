@@ -22,8 +22,8 @@ class FasilitasVitalSeeder extends Seeder
                 "alamat"          => $state->alamat,
                 "kecamatan_id"    => $state->kecamatan_id,
                 "desa_id"         => $state->desa_id,
-                "latitude"        => $state->latitude,
-                "longitude"       => $state->longitude,
+                "fasilitas_lat"        => $state->latitude,
+                "fasilitas_lng"       => $state->longitude,
                 "status"          => $state->status
             ]);
         }

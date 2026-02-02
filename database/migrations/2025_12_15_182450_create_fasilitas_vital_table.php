@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('alamat')->nullable();
             $table->foreignId('kecamatan_id');
             $table->foreignId('desa_id');
-            $table->decimal('latitude', 10, 7)->nullable();
-            $table->decimal('longitude', 10, 7)->nullable();
+            $table->decimal('fasilitas_lat', 10, 7)->nullable();
+            $table->decimal('fasilitas_lng', 10, 7)->nullable();
             $table->enum('status', ['Beroperasi', 'Tidak Tersedia']);
             $table->timestamps();
         });

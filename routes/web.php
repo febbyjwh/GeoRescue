@@ -66,35 +66,33 @@ Route::prefix('jalur_evakuasi')->name('jalur_evakuasi.')->group(function () {
 });
 
 // Fasilitas vital
-    Route::prefix('fasilitasvital')->group(function () {
-        Route::get('/', [FasilitasVitalController::class, 'index'])->name('fasilitasvital.index');
-        Route::get('/create', [FasilitasVitalController::class, 'create'])->name('fasilitasvital.create');
-        Route::post('/', [FasilitasVitalController::class, 'store'])->name('fasilitasvital.store');
-        Route::get('/{id}/edit', [FasilitasVitalController::class, 'edit'])->name('fasilitasvital.edit');
-        Route::put('/{id}', [FasilitasVitalController::class, 'update'])->name('fasilitasvital.update');
-        Route::delete('/{id}', [FasilitasVitalController::class, 'destroy'])->name('fasilitasvital.destroy');
-        Route::get('/get-fasilitas', [FasilitasVitalController::class, 'getFasilitas'])->name('fasilitasvital.get');
-    });
+Route::prefix('fasilitasvital')->group(function () {
+    Route::get('/', [FasilitasVitalController::class, 'index'])->name('fasilitasvital.index');
+    Route::get('/create', [FasilitasVitalController::class, 'create'])->name('fasilitasvital.create');
+    Route::post('/', [FasilitasVitalController::class, 'store'])->name('fasilitasvital.store');
+    Route::get('/{id}/edit', [FasilitasVitalController::class, 'edit'])->name('fasilitasvital.edit');
+    Route::put('/{id}', [FasilitasVitalController::class, 'update'])->name('fasilitasvital.update');
+    Route::delete('/{id}', [FasilitasVitalController::class, 'destroy'])->name('fasilitasvital.destroy');
+    Route::get('/get-fasilitas', [FasilitasVitalController::class, 'getFasilitas'])->name('fasilitasvital.get');
+});
 
-    // Jalur distribusi logistik
-    Route::prefix('jalur_distribusi_logistik')->group(function () {
-        Route::get('/', [JalurDistribusiLogistikController::class, 'index'])->name('jalur_distribusi_logistik.index');
-        Route::get('/create', [JalurDistribusiLogistikController::class, 'create'])->name('jalur_distribusi_logistik.create');
-        Route::post('/', [JalurDistribusiLogistikController::class, 'store'])->name('jalur_distribusi_logistik.store');
-        Route::get('/{id}/edit', [JalurDistribusiLogistikController::class, 'edit'])->name('jalur_distribusi_logistik.edit');
-        Route::put('/{id}', [JalurDistribusiLogistikController::class, 'update'])->name('jalur_distribusi_logistik.update');
-        Route::delete('/{id}', [JalurDistribusiLogistikController::class, 'destroy'])->name('jalur_distribusi_logistik.destroy');
-        Route::get('/get-logistik', [JalurDistribusiLogistikController::class, 'getLogistik'])->name('jalur_distribusi_logistik.get');
-    });
-    
+// Jalur distribusi logistik
+Route::prefix('jalur_distribusi_logistik')->group(function () {
+    Route::get('/', [JalurDistribusiLogistikController::class, 'index'])->name('jalur_distribusi_logistik.index');
+    Route::get('/create', [JalurDistribusiLogistikController::class, 'create'])->name('jalur_distribusi_logistik.create');
+    Route::post('/', [JalurDistribusiLogistikController::class, 'store'])->name('jalur_distribusi_logistik.store');
+    Route::get('/{id}/edit', [JalurDistribusiLogistikController::class, 'edit'])->name('jalur_distribusi_logistik.edit');
+    Route::put('/{id}', [JalurDistribusiLogistikController::class, 'update'])->name('jalur_distribusi_logistik.update');
+    Route::delete('/{id}', [JalurDistribusiLogistikController::class, 'destroy'])->name('jalur_distribusi_logistik.destroy');
+    Route::get('/get-logistik', [JalurDistribusiLogistikController::class, 'getLogistik'])->name('jalur_distribusi_logistik.get');
+});
+
 // user
 Route::prefix('user')->name('user.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
 });
 
-Route::group(['middleware' => ['isadmin']], function () {
-    
-});
+Route::group(['middleware' => ['isadmin']], function () {});
 
 // calender pages
 Route::get('/calendar', function () {

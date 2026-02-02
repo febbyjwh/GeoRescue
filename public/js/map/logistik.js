@@ -47,17 +47,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const color = getColor(jenis);
 
         const svg = `
-<svg xmlns="http://www.w3.org/2000/svg"
-     width="36" height="36"
-     viewBox="0 0 20 20">
-  <path
-    d="M19.367 18.102L18 14h-1.5l.833 4H2.667l.833-4H2L.632 18.102C.285 19.146.9 20 2 20h16c1.1 0 1.715-.854 1.367-1.898zM15 5A5 5 0 1 0 5 5c0 4.775 5 10 5 10s5-5.225 5-10zm-7.7.06A2.699 2.699 0 0 1 10 2.361a2.699 2.699 0 1 1 0 5.399a2.7 2.7 0 0 1-2.7-2.7z"
-    fill="${color}"
-    stroke="white"
-    stroke-width="1.5"
-    paint-order="stroke fill"
-  />
-</svg>`;
+            <svg xmlns="http://www.w3.org/2000/svg"
+                width="36" height="36"
+                viewBox="0 0 20 20">
+            <path
+                d="M19.367 18.102L18 14h-1.5l.833 4H2.667l.833-4H2L.632 18.102C.285 19.146.9 20 2 20h16c1.1 0 1.715-.854 1.367-1.898zM15 5A5 5 0 1 0 5 5c0 4.775 5 10 5 10s5-5.225 5-10zm-7.7.06A2.699 2.699 0 0 1 10 2.361a2.699 2.699 0 1 1 0 5.399a2.7 2.7 0 0 1-2.7-2.7z"
+                fill="${color}"
+                stroke="white"
+                stroke-width="1.5"
+                paint-order="stroke fill"
+            />
+            </svg>`;
 
         return L.icon({
             iconUrl:
@@ -102,9 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("detailDesaLogistik").textContent =
             item.nama_desa ?? "-";
 
-        document.getElementById("detailKoordinatLogistik").textContent = `${
-            item.lat ?? "-"
-        }, ${item.lng ?? "-"}`;
+        document.getElementById("detailKoordinatLogistik").textContent = `${item.lat ?? "-"
+            }, ${item.lng ?? "-"}`;
     }
 
     /* ===============================
@@ -164,8 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
             item.nama_kecamatan ?? "-";
         document.getElementById("detailDesaLogistik").textContent =
             item.nama_desa ?? "-";
-        document.getElementById("lat").value = item.lat;
-        document.getElementById("lng").value = item.lng;
+        document.getElementById("logistik_lat").value = item.lat;
+        document.getElementById("logistik_lng").value = item.lng;
 
         // select kecamatan & desa
         $("#logistik_district")
@@ -213,26 +212,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateLatLng(e) {
         const pos = e.target.getLatLng();
-        document.getElementById("lat").value = pos.lat.toFixed(6);
-        document.getElementById("lng").value = pos.lng.toFixed(6);
+        document.getElementById("logistik_lat").value = pos.lat.toFixed(6);
+        document.getElementById("logistik_lng").value = pos.lng.toFixed(6);
     }
 
     /* ===============================
      * MAP CLICK → CREATE
      * =============================== */
     map.on("click", (e) => {
-        // if (MapState.activeModule !== "logistik") return;
-        MapState.activeModule == "logistik";
+        if (MapState.activeModule !== "logistik") return;
 
         inputLayer.clearLayers();
 
         const lat = e.latlng.lat.toFixed(7);
         const lng = e.latlng.lng.toFixed(7);
 
-        document.getElementById("lat").value = lat;
-        document.getElementById("lng").value = lng;
+        document.getElementById("logistik_lat").value = lat;
+        document.getElementById("logistik_lng").value = lng;
 
-        console.log("logistik nich: " + document.querySelectorAll("lat"));
+        console.log($('#logistik_lat').val());
+        
 
         inputMarker = L.marker([lat, lng], { draggable: true })
             .addTo(inputLayer)

@@ -21,7 +21,7 @@
         type="{{ $type }}"
         name="{{ $name }}"
         id="{{ $name }}"
-        value="{{ old($name, $value) }}"
+        value="{{ $value !== '' ? $value : old($name) }}"
         placeholder="{{ $placeholder }}"
         @if($required) required @endif
         {{ $attributes->merge([
