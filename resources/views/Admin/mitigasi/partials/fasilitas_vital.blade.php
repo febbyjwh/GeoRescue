@@ -40,15 +40,15 @@
             </div>
 
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <x-form.form-elements.default-inputs label="Latitude" name="latitude" id="latitude"
-                    placeholder="-6.200000" value="{{ old('latitude') }}" />
+                <x-form.form-elements.default-inputs label="Latitude" name="fasilitas_lat" id="fasilitas_lat"
+                    placeholder="-6.200000" value="{{ old('fasilitas_lat') }}" />
 
-                <x-form.form-elements.default-inputs label="Longitude" name="longitude" id="longitude"
-                    placeholder="106.816666" value="{{ old('longitude') }}" />
+                <x-form.form-elements.default-inputs label="Longitude" name="fasilitas_lng" id="fasilitas_lng"
+                    placeholder="106.816666" value="{{ old('fasilitas_lng') }}" />
             </div>
 
             <div class="mb-3">
-                <x-form.form-elements.select-inputs label="Status" name="status" id="status">
+                <x-form.form-elements.select-inputs label="Status" name="fasilitas_status" id="fasilitas_status">
                     <option value="">-- Pilih Status --</option>
                     <option value="Beroperasi">Beroperasi</option>
                     <option value="Tidak Tersedia">Tidak Tersedia</option>

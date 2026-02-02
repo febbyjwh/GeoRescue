@@ -47,13 +47,13 @@
                                         <td class="px-5 py-4 text-sm">{{ $item->alamat }}</td>
                                         <td class="px-5 py-4 text-sm">{{ $item->village->name ?? '-' }}</td>
                                         <td class="px-5 py-4 text-sm">{{ $item->district->name ?? '-' }}</td>
-                                        <td class="px-5 py-4 text-sm">{{ $item->latitude }}</td>
-                                        <td class="px-5 py-4 text-sm">{{ $item->longitude }}</td>
+                                        <td class="px-5 py-4 text-sm">{{ $item->fasilitas_lat }}</td>
+                                        <td class="px-5 py-4 text-sm">{{ $item->fasilitas_lng }}</td>
                                         <td class="px-5 py-4 text-sm">
                                             <span
                                                 class="inline-block rounded-full px-2 py-0.5 text-xs
-                                        {{ $item->status == 'Beroperasi' ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-700' }}">
-                                                {{ $item->status }}
+                                        {{ $item->fasilitas_status == 'Beroperasi' ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-700' }}">
+                                                {{ $item->fasilitas_status }}
                                             </span>
                                         </td>
                                         <td class="px-5 py-4 text-sm whitespace-nowrap">

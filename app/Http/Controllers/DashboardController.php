@@ -62,22 +62,22 @@ class DashboardController extends Controller
         $poskoTutup = PoskoBencana::where('status_posko', 'Tutup')->count();
 
         $totalFasilitas = FasilitasVital::count();
-        $fasilitasBeroperasi = FasilitasVital::where('status', 'Beroperasi')->count();
-        $fasilitasTidakTersedia = FasilitasVital::where('status', 'Tidak Tersedia')->count();
+        $fasilitasBeroperasi = FasilitasVital::where('fasilitas_status', 'Beroperasi')->count();
+        $fasilitasTidakTersedia = FasilitasVital::where('fasilitas_status', 'Tidak Tersedia')->count();
 
         $topLogistikBermasalah = JalurDistribusiLogistik::with(['district', 'village'])
-            ->whereIn('status', ['Habis', 'Menipis'])
-            ->orderByRaw("FIELD(status, 'Habis', 'Menipis')")
+            ->whereIn('logistik_status', ['Habis', 'Menipis'])
+            ->orderByRaw("FIELD(logistik_status, 'Habis', 'Menipis')")
             ->limit(5)
             ->get();
-        $logistikStatus = JalurDistribusiLogistik::select('status')
+        $logistikStatus = JalurDistribusiLogistik::select('logistik_status')
             ->selectRaw('COUNT(*) as total')
-            ->groupBy('status')
-            ->pluck('total', 'status');
+            ->groupBy('logistik_status')
+            ->pluck('total', 'logistik_status');
         $totalLogistik = JalurDistribusiLogistik::count();
-        $logistikTersedia = JalurDistribusiLogistik::where('status', 'Tersedia')->count();
-        $logistikMenipis  = JalurDistribusiLogistik::where('status', 'Menipis')->count();
-        $logistikHabis    = JalurDistribusiLogistik::where('status', 'Habis')->count();
+        $logistikTersedia = JalurDistribusiLogistik::where('logistik_status', 'Tersedia')->count();
+        $logistikMenipis  = JalurDistribusiLogistik::where('logistik_status', 'Menipis')->count();
+        $logistikHabis    = JalurDistribusiLogistik::where('logistik_status', 'Habis')->count();
 
         return view('dashboard', compact(
             'totalBencana',

@@ -20,18 +20,18 @@ class JalurDistribusiLogistikController extends Controller
     {
         $logistiks = JalurDistribusiLogistik::with('district', 'village')->get()->map(function ($lg) {
             return [
-                'id' => $lg->id,
-                'nama_lokasi' => $lg->nama_lokasi,
-                'kecamatan_id' => $lg->district_id,
-                'desa_id' => $lg->village_id,
-                'nama_kecamatan' => $lg->district->name ?? '-',
-                'nama_desa' => $lg->village->name ?? '-',
-                'jenis_logistik' => $lg->jenis_logistik,
-                'jumlah' => $lg->jumlah,
-                'satuan' => $lg->satuan,
-                'status' => $lg->status,
-                'lat' => $lg->logistik_lat,
-                'lng' => $lg->logistik_lng,
+                'id'              => $lg->id,
+                'nama_lokasi'     => $lg->nama_lokasi,
+                'kecamatan_id'    => $lg->district_id,
+                'desa_id'         => $lg->village_id,
+                'nama_kecamatan'  => $lg->district->name ?? '-',
+                'nama_desa'       => $lg->village->name ?? '-',
+                'jenis_logistik'  => $lg->jenis_logistik,
+                'jumlah'          => $lg->jumlah,
+                'logistik_satuan' => $lg->logistik_satuan,
+                'logistik_status' => $lg->logistik_status,
+                'lat'             => $lg->logistik_lat,
+                'lng'             => $lg->logistik_lng,
             ];
         });
 
@@ -42,19 +42,19 @@ class JalurDistribusiLogistikController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'district_id'    => 'required|exists:districts,id',
-            'village_id'     => 'required|exists:villages,id',
-            'nama_lokasi'    => 'required|string|max:255',
-            'jenis_logistik' => 'required|string|max:255',
-            'jumlah'         => 'required|numeric',
-            'satuan'         => 'required|string|max:100',
-            'status'         => 'required|string|max:100',
-            'lat'            => 'required|numeric',
-            'lng'           => 'required|numeric',
+            'district_id'     => 'required|exists:districts,id',
+            'village_id'      => 'required|exists:villages,id',
+            'nama_lokasi'     => 'required|string|max:255',
+            'jenis_logistik'  => 'required|string|max:255',
+            'jumlah'          => 'required|numeric',
+            'logistik_satuan' => 'required|string|max:100',
+            'logistik_status' => 'required|string|max:100',
+            'logistik_lat'    => 'required|numeric',
+            'logistik_lng'    => 'required|numeric',
         ]);
 
-        $validated['lat']  = (float) $validated['lat'];
-        $validated['lng'] = (float) $validated['lng'];
+        $validated['logistik_lat']  = (float) $validated['logistik_lat'];
+        $validated['logistik_lng'] = (float) $validated['logistik_lng'];
 
         $logistik = JalurDistribusiLogistik::create($validated);
 
@@ -62,16 +62,16 @@ class JalurDistribusiLogistikController extends Controller
             return response()->json([
                 'message' => 'Logistik created successfully.',
                 'data'    => [
-                    'id'             => $logistik->id,
-                    'kecamatan_id'    => $logistik->district_id,
-                    'desa_id'         => $logistik->village_id,
+                    'id'              => $logistik->id,
+                    'district_id'     => $logistik->district_id,
+                    'village_id'      => $logistik->village_id,
                     'nama_lokasi'     => $logistik->nama_lokasi,
                     'jenis_logistik'  => $logistik->jenis_logistik,
                     'jumlah'          => $logistik->jumlah,
-                    'satuan'          => $logistik->satuan,
-                    'status'          => $logistik->status,
-                    'lat'             => $logistik->lat,
-                    'lng'            => $logistik->lng,
+                    'logistik_satuan' => $logistik->logistik_satuan,
+                    'logistik_status' => $logistik->logistik_status,
+                    'logistik_lat'    => $logistik->logistik_lat,
+                    'logistik_lng'    => $logistik->logistik_lng,
                 ]
             ], 201);
         }
@@ -82,52 +82,47 @@ class JalurDistribusiLogistikController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'kecamatan_id'   => 'required|exists:districts,id',
-            'desa_id'        => 'required|exists:villages,id',
-
-            'nama_lokasi'    => 'required|string|max:255',
-            'jenis_logistik' => 'required|string|max:255',
-            'jumlah'         => 'required|numeric',
-            'satuan'         => 'required|string|max:100',
-            'status'         => 'required|string|max:100',
+        $validated = $request->validate([
+            'district_id'     => 'required|exists:districts,id',
+            'village_id'      => 'required|exists:villages,id',
+            'nama_lokasi'     => 'required|string|max:255',
+            'jenis_logistik'  => 'required|string|max:255',
+            'jumlah'          => 'required|numeric',
+            'logistik_satuan' => 'required|string|max:100',
+            'logistik_status' => 'required|string|max:100',
+            'logistik_lat'    => 'required|numeric',
+            'logistik_lng'    => 'required|numeric',
         ]);
+
+        $validated['logistik_lat'] = (float) $validated['logistik_lat'];
+        $validated['logistik_lng'] = (float) $validated['logistik_lng'];
 
         $logistik = JalurDistribusiLogistik::findOrFail($id);
-
-        $logistik->update([
-            'district_id'    => $request->kecamatan_id,
-            'village_id'     => $request->desa_id,
-
-            'nama_lokasi'    => $request->nama_lokasi,
-            'jenis_logistik' => $request->jenis_logistik,
-            'jumlah'         => $request->jumlah,
-            'satuan'         => $request->satuan,
-            'status'         => $request->status,
-        ]);
+        $logistik->update($validated);
 
         return response()->json([
             'message' => 'Data logistik berhasil diperbarui'
         ]);
     }
+    
 
     public function edit($id)
     {
         $logistik = JalurDistribusiLogistik::with('district', 'village')->findOrFail($id);
 
         return response()->json([
-            'id' => $logistik->id,
-            'kecamatan_id' => $logistik->district_id,
-            'desa_id'      => $logistik->village_id,
-            'nama_kecamatan' => $logistik->district->name ?? '-',
-            'nama_desa' => $logistik->village->name ?? '-',
-            'nama_lokasi'    => $logistik->nama_lokasi,
-            'jenis_logistik' => $logistik->jenis_logistik,
-            'jumlah'         => $logistik->jumlah,
-            'satuan'         => $logistik->satuan,
-            'status'         => $logistik->status,
-            'lng' => $logistik->lng,
-            'lat' => $logistik->lat,
+            'id'              => $logistik->id,
+            'district_id'     => $logistik->district_id,
+            'village_id'      => $logistik->village_id,
+            'nama_kecamatan'  => $logistik->district->name ?? '-',
+            'nama_desa'       => $logistik->village->name ?? '-',
+            'nama_lokasi'     => $logistik->nama_lokasi,
+            'jenis_logistik'  => $logistik->jenis_logistik,
+            'jumlah'          => $logistik->jumlah,
+            'logistik_satuan' => $logistik->logistik_satuan,
+            'logistik_status' => $logistik->logistik_status,
+            'logistik_lng'    => $logistik->logistik_lng,
+            'logistik_lat'    => $logistik->logistik_lat,
         ]);
     }
 

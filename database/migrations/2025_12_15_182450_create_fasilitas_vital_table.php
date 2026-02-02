@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('desa_id');
             $table->decimal('fasilitas_lat', 10, 7)->nullable();
             $table->decimal('fasilitas_lng', 10, 7)->nullable();
-            $table->enum('status', ['Beroperasi', 'Tidak Tersedia']);
+            $table->enum('fasilitas_status', ['Beroperasi', 'Tidak Tersedia']);
             $table->timestamps();
         });
     }

@@ -64,8 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
             iconSize: [40, 40],
             iconAnchor: [20, 40],
             popupAnchor: [0, -36],
-            });
-        }
+        });
+    }
 
     function getLogistikPopup(item) {
         return `
@@ -73,13 +73,87 @@ document.addEventListener("DOMContentLoaded", () => {
             <strong>${item.nama_lokasi}</strong>
             <hr style="margin:6px 0">
             <div><b>Jenis:</b> ${item.jenis_logistik}</div>
-            <div><b>Jumlah:</b> ${item.jumlah} ${item.satuan}</div>
-            <div><b>Status:</b> ${item.status}</div>
+            <div><b>Jumlah:</b> ${item.jumlah} ${item.logistik_satuan}</div>
+            <div><b>Status:</b> ${item.logistik_status}</div>
             <div><b>Kecamatan:</b> ${item.nama_kecamatan ?? "-"}</div>
             <div><b>Desa:</b> ${item.nama_desa ?? "-"}</div>
         </div>
     `;
     }
+
+
+    function resetLogistikForm() {
+        const form = document.getElementById("formLogistik");
+
+        // reset form biasa
+        form.reset();
+
+        // reset hidden id & mode
+        document.getElementById("logistik_id").value = "";
+        formMode = "create";
+
+        // reset select2
+        $("#logistik_district").val(null).trigger("change");
+        $("#logistik_village").val(null).trigger("change");
+
+        // hapus marker input
+        inputLayer.clearLayers();
+        inputMarker = [];
+
+        // sembunyikan detail
+        const box = document.getElementById("selectedLogistik");
+        if (box) box.classList.add("hidden");
+    }
+
+    window.submitLogistik = async function () {
+        const formElements = document.getElementById("formLogistik").elements;
+
+        const data = {
+            id: formElements.logistik_id.value || null,
+            nama_lokasi: formElements.nama_lokasi.value,
+            jenis_logistik: formElements.jenis_logistik.value,
+            jumlah: formElements.jumlah.value,
+            logistik_status: formElements.logistik_status.value,
+            district_id: formElements.logistik_district.value,
+            village_id: formElements.logistik_village.value,
+            logistik_satuan: formElements.logistik_satuan.value,
+            logistik_lat: formElements.logistik_lat.value,
+            logistik_lng: formElements.logistik_lng.value,
+        };
+
+        const isEdit = !!data.id;
+        const url = isEdit
+            ? `/jalur_distribusi_logistik/${data.id}`
+            : `/jalur_distribusi_logistik`;
+
+        if (isEdit) data._method = "PUT";
+
+        try {
+            const res = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "X-CSRF-TOKEN": document
+                        .querySelector('meta[name="csrf-token"]')
+                        .getAttribute("content"),
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!res.ok) throw await res.json();
+
+            alert(
+                isEdit ? "Titik logistik diupdate" : "Titik logistik ditambahkan"
+            );
+            resetLogistikForm();
+            layerLogistik.clearLayers();
+            loadLogistik();
+        } catch (err) {
+            console.error("Message: error" + err.message + ", " + err);
+            alert("Gagal menyimpan titik Logistik");
+        }
+    };
 
     function showLogistikDetail(item) {
         const box = document.getElementById("selectedLogistik");
@@ -151,63 +225,89 @@ document.addEventListener("DOMContentLoaded", () => {
      * FILL FORM (EDIT)
      * =============================== */
     function fillForm(item) {
-        // isi form
-        document.getElementById("logistik_id").value = item.id;
-        document.getElementById("nama_lokasi").value = item.nama_lokasi;
-        document.getElementById("jenis_logistik").value = item.jenis_logistik;
-        document.getElementById("jumlah").value = item.jumlah;
-        document.getElementById("satuan").value = item.satuan;
-        document.getElementById("status").value = item.status;
+        console.log(item);
+
+        // ===== MODE EDIT =====
+        document.getElementById("logistik_id").value = item.id ?? "";
+
+        // ===== INPUT TEXT =====
+        document.getElementById("nama_lokasi").value = item.nama_lokasi ?? "";
+        document.getElementById("jenis_logistik").value = item.jenis_logistik ?? "";
+        document.getElementById("jumlah").value = item.jumlah ?? "";
+        document.getElementById("logistik_satuan").value = item.logistik_satuan ?? "";
+        document.getElementById("logistik_status").value = item.logistik_status ?? "";
+
+        // ===== KOORDINAT =====
+        document.getElementById("logistik_lat").value = item.lat ?? "";
+        document.getElementById("logistik_lng").value = item.lng ?? "";
+
+        // ===== SELECT KECAMATAN =====
+        if (item.kecamatan_id) {
+            const kecamatanOption = new Option(
+                item.nama_kecamatan ?? "Kecamatan Terpilih",
+                item.kecamatan_id,
+                true,
+                true
+            );
+
+            $("#logistik_district")
+                .empty()
+                .append(kecamatanOption)
+                .trigger("change");
+        }
+
+        // ===== SELECT DESA (WAIT KECAMATAN LOAD) =====
+        if (item.desa_id) {
+            setTimeout(() => {
+                const desaOption = new Option(
+                    item.nama_desa ?? "Desa Terpilih",
+                    item.desa_id,
+                    true,
+                    true
+                );
+
+                $("#logistik_village")
+                    .empty()
+                    .append(desaOption)
+                    .trigger("change");
+            }, 400);
+        }
+
+        // ===== MARKER INPUT =====
+        inputLayer.clearLayers();
+
+        if (item.lat && item.lng) {
+            inputMarker = L.marker([item.lat, item.lng], { draggable: true })
+                .addTo(inputLayer)
+                .on("dragend", updateLatLng);
+
+            map.setView([item.lat, item.lng], 15);
+        }
+
+        // ===== DETAIL PANEL =====
+        document.getElementById("detailNamaLogistik").textContent =
+            item.nama_lokasi ?? "-";
+
+        document.getElementById("detailJenisLogistik").textContent =
+            item.jenis_logistik ?? "-";
+
+        document.getElementById("detailJumlahSatuan").textContent = (item.jumlah ?? "-") + " " + (item.logistik_satuan ?? "-");
+
+        document.getElementById("detailStatusLogistik").textContent = item.logistik_status ?? "-";
+
         document.getElementById("detailKecamatanLogistik").textContent =
             item.nama_kecamatan ?? "-";
+
         document.getElementById("detailDesaLogistik").textContent =
             item.nama_desa ?? "-";
-        document.getElementById("logistik_lat").value = item.lat;
-        document.getElementById("logistik_lng").value = item.lng;
-
-        // select kecamatan & desa
-        $("#logistik_district")
-            .append(new Option(item.district_id, item.district_id, true, true))
-            .trigger("change");
-
-        setTimeout(() => {
-            $("#logistik_village")
-                .append(
-                    new Option(item.village_id, item.village_id, true, true),
-                )
-                .trigger("change");
-        }, 300);
-
-        // marker input
-        inputLayer.clearLayers();
-        inputMarker = L.marker([item.lat, item.lng], { draggable: true })
-            .addTo(inputLayer)
-            .on("dragend", updateLatLng);
-
-        map.setView([item.lat, item.lng], 15);
-
-        // ==== UPDATE DETAIL LOGISTIK TERPILIH ====
-        document.getElementById("detailNamaLogistik").textContent =
-            item.nama_lokasi;
-        document.getElementById("detailJenisLogistik").textContent =
-            item.jenis_logistik;
-        document.getElementById("detailJumlahSatuan").textContent =
-            item.jumlah + " " + item.satuan;
-        document.getElementById("detailStatusLogistik").textContent =
-            item.status;
-
-        // Karena JSON hanya ada district_id & village_id
-        document.getElementById("detailKecamatanLogistik").textContent =
-            item.district_id || "-";
-        document.getElementById("detailDesaLogistik").textContent =
-            item.village_id || "-";
 
         document.getElementById("detailKoordinatLogistik").textContent =
-            `${item.lat}, ${item.lng}`;
+            `${item.lat ?? "-"}, ${item.lng ?? "-"}`;
 
-        // tampilkan container
         document.getElementById("selectedLogistik").classList.remove("hidden");
     }
+
+
 
     function updateLatLng(e) {
         const pos = e.target.getLatLng();
@@ -230,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("logistik_lng").value = lng;
 
         console.log($('#logistik_lat').val());
-        
+
 
         inputMarker = L.marker([lat, lng], { draggable: true })
             .addTo(inputLayer)

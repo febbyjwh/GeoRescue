@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('village_id');  // contoh: 3204052001
             $table->enum('jenis_logistik', ['all(pangan, sandang, kesehatan, hunian)', 'pangan', 'sandang', 'kesehatan', 'hunian']); // Makanan, Obat, dll
             $table->integer('jumlah');
-            $table->string('satuan'); // Paket, Box, Kg, dll
-            $table->enum('status', ['Tersedia', 'Menipis', 'Habis'])->default('Tersedia');
+            $table->string('logistik_satuan'); // Paket, Box, Kg, dll
+            $table->enum('logistik_status', ['Tersedia', 'Menipis', 'Habis'])->default('Tersedia');
             $table->decimal('logistik_lng', 10, 7);
             $table->decimal('logistik_lat', 10, 7);
             $table->timestamps();

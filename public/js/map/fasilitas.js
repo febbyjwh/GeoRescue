@@ -60,12 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
             <strong>${item.nama_fasilitas ?? "-"}</strong>
             <hr style="margin:6px 0">
             <div><b>Jenis:</b> ${item.jenis_fasilitas ?? "-"}</div>
-            <div><b>Status:</b> ${item.status ?? "-"}</div>
+            <div><b>Status:</b> ${item.fasilitas_tatus ?? "-"}</div>
             <div><b>Kecamatan:</b> ${item.nama_kecamatan ?? "-"}</div>
             <div><b>Desa:</b> ${item.nama_desa ?? "-"}</div>
             <div><b>Alamat:</b> ${item.alamat ?? "-"}</div>
             <hr style="margin:6px 0">
-            <small>Koordinat: ${item.latitude}, ${item.longitude}</small>
+            <small>Koordinat: ${item.fasilitas_lat}, ${item.fasilitas_lng}</small>
         </div>
     `;
     }
@@ -77,9 +77,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const res = await fetch("/fasilitasvital/get-fasilitas");
             const json = await res.json();
 
+            console.log(json);
+            
+
             json.data.forEach((item) => {
-                const lat = parseFloat(item.latitude);
-                const lng = parseFloat(item.longitude);
+                const lat = parseFloat(item.fasilitas_lat);
+                const lng = parseFloat(item.fasilitas_lng);
                 if (isNaN(lat) || isNaN(lng)) return;
 
                 const marker = L.marker([lat, lng], {
@@ -101,13 +104,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function fillForm(item) {
         // isi form
+        console.log(item);
+        
         document.getElementById("fasilitas_id").value = item.id;
         document.getElementById("nama_fasilitas").value = item.nama_fasilitas;
         document.getElementById("jenis_fasilitas").value = item.jenis_fasilitas;
         document.getElementById("alamat").value = item.alamat || "";
-        document.getElementById("status").value = item.status;
-        document.getElementById("latitude").value = item.latitude;
-        document.getElementById("longitude").value = item.longitude;
+        document.getElementById("fasilitas_status").value = item.fasilitas_status;
+        document.getElementById("fasilitas_lat").value = item.fasilitas_lat;
+        document.getElementById("fasilitas_lng").value = item.fasilitas_lng;
 
         const districtOption = new Option(
             item.nama_kecamatan,
@@ -150,12 +155,12 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("detailDesaFasilitas").textContent =
             item.nama_desa;
         document.getElementById("detailStatusFasilitas").textContent =
-            item.status;
+            item.fasilitas_status;
         document.getElementById("detailAlamatFasilitas").textContent =
             item.alamat || "-";
         document.getElementById(
             "detailKoordinatFasilitas"
-        ).textContent = `${item.latitude}, ${item.longitude}`;
+        ).textContent = `${item.fasilitas_lat}, ${item.fasilitas_lng}`;
 
         // tampilkan container
         document.getElementById("selectedFasilitas").classList.remove("hidden");
@@ -167,12 +172,11 @@ document.addEventListener("DOMContentLoaded", () => {
             nama_fasilitas: document.getElementById("nama_fasilitas").value,
             jenis_fasilitas: document.getElementById("jenis_fasilitas").value,
             alamat: document.getElementById("alamat").value,
-            kecamatan_id: document.getElementById("fasilitas_district_id")
-                .value,
+            kecamatan_id: document.getElementById("fasilitas_district_id").value,
             desa_id: document.getElementById("fasilitas_village_id").value,
-            status: document.getElementById("status").value,
-            latitude: document.getElementById("latitude").value,
-            longitude: document.getElementById("longitude").value,
+            fasilitas_status: document.getElementById("fasilitas_status").value,
+            fasilitas_lat: document.getElementById("fasilitas_lat").value,
+            fasilitas_lng: document.getElementById("fasilitas_lng").value,
         };
     }
 
@@ -215,8 +219,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("jenis_fasilitas").value = "";
         document.getElementById("alamat").value = "";
         document.getElementById("status").value = "";
-        document.getElementById("latitude").value = "";
-        document.getElementById("longitude").value = "";
+        document.getElementById("fasilitas_lat").value = "";
+        document.getElementById("fasilitas_lng").value = "";
 
         $("#fasilitas_district_id").val(null).trigger("change");
         $("#fasilitas_village_id").empty().trigger("change");
@@ -233,10 +237,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const lat = e.latlng.lat.toFixed(6);
         const lng = e.latlng.lng.toFixed(6);
 
-        const latInput = document.getElementById("latitude");
-        const lngInput = document.getElementById("longitude");
+        const latInput = document.getElementById("fasilitas_lat");
+        const lngInput = document.getElementById("fasilitas_lng");
 
-        console.log("Updating input fields", lat, lng, latInput, lngInput);
+        // console.log("Updating input fields", lat, lng, latInput, lngInput);
 
         if (latInput && lngInput) {
             latInput.value = lat;

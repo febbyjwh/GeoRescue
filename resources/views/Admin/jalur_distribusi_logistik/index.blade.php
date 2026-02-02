@@ -42,19 +42,19 @@
                                 <td class="px-5 py-4 text-sm">{{ $item->village->name ?? $item->village_id }}</td>
                                 <td class="px-5 py-4 text-sm">{{ $item->jenis_logistik }}</td>
                                 <td class="px-5 py-4 text-sm">{{ $item->jumlah }}</td>
-                                <td class="px-5 py-4 text-sm">{{ $item->satuan }}</td>
-                                <td class="px-5 py-4 text-sm">{{ $item->lat }}</td>
-                                <td class="px-5 py-4 text-sm">{{ $item->lng }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->logistik_satuan }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->logistik_lat }}</td>
+                                <td class="px-5 py-4 text-sm">{{ $item->logistik_lng }}</td>
 
                                 <td class="px-5 py-4 text-sm">
                                     <span
                                         class="px-3 py-1 rounded-full text-xs font-semibold
-                                    {{ strtolower($item->status) === 'tersedia'
+                                    {{ strtolower($item->logistik_status) === 'tersedia'
                                         ? 'bg-green-100 text-green-700'
-                                        : (strtolower($item->status) === 'menipis'
+                                        : (strtolower($item->logistik_status) === 'menipis'
                                             ? 'bg-yellow-100 text-yellow-700'
                                             : 'bg-red-100 text-red-700') }}">
-                                        {{ ucfirst($item->status) }}
+                                        {{ ucfirst($item->logistik_status) }}
                                     </span>
                                 </td>
 

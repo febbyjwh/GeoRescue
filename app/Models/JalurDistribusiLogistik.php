@@ -14,10 +14,10 @@ class JalurDistribusiLogistik extends Model
         'village_id',
         'jenis_logistik',
         'jumlah',
-        'satuan',
-        'status',
-        'lat',
-        'lng',
+        'logistik_satuan',
+        'logistik_status',
+        'logistik_lat',
+        'logistik_lng',
     ];
 
     public function district()

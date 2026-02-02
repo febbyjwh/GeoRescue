@@ -40,7 +40,7 @@
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 mt-4">
                 <x-form.form-elements.default-inputs label="Jumlah" name="jumlah" id="jumlah" type="number"
                     placeholder="Contoh: 100" required />
-                <x-form.form-elements.default-inputs label="Satuan" name="satuan" id="satuan"
+                <x-form.form-elements.default-inputs label="Satuan" name="logistik_satuan" id="logistik_satuan"
                     placeholder="Contoh: Paket / Dus / Liter" required />
             </div>
 
@@ -53,17 +53,17 @@
             </div>
 
             {{-- STATUS --}}
-            <x-form.form-elements.select-inputs label="Status Logistik" name="status" id="status" required
+            <x-form.form-elements.select-inputs label="Status Logistik" name="logistik_status" id="logistik_status" required
                 class="mt-4">
                 <option value="">-- Pilih Status --</option>
-                <option value="tersedia">Tersedia</option>
-                <option value="menipis">Menipis</option>
-                <option value="habis">Habis</option>
+                <option value="Tersedia">Tersedia</option>
+                <option value="Menipis">Menipis</option>
+                <option value="Habis">Habis</option>
             </x-form.form-elements.select-inputs>
 
             {{-- BUTTON --}}
             <div class="flex gap-3 mt-6">
-                <button type="button"
+                <button type="button" onclick="submitLogistik()"
                     class="inline-flex items-center rounded-lg
                            bg-amber-300 px-5 py-2 text-sm font-medium
                            text-black hover:bg-amber-500 transition">

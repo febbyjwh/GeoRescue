@@ -14,9 +14,9 @@ class FasilitasVital extends Model
         'alamat',
         'desa_id',
         'kecamatan_id',
-        'latitude',
-        'longitude',
-        'status'
+        'fasilitas_lat',
+        'fasilitas_lng',
+        'fasilitas_status'
     ];
 
     public function district()
