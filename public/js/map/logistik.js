@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function getLogistikIcon(jenis) {
         const color = getColor(jenis);
-
         const svg = `
             <svg xmlns="http://www.w3.org/2000/svg"
                 width="36" height="36"
@@ -65,8 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
             iconSize: [40, 40],
             iconAnchor: [20, 40],
             popupAnchor: [0, -36],
-        });
-    }
+            });
+        }
 
     function getLogistikPopup(item) {
         return `
