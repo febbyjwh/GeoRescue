@@ -14,11 +14,17 @@ class IsAdmin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, string ...$guards): Response
     {
-        // if (Auth::check() && Auth::user()->role === 'admin') {
+        $guards = empty($guards) ? [null] : $guards;
+
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                // PENTING: Redirect ke dashboard, BUKAN ke /user atau /home
+                return redirect()->route('dashboard');
+            }
+        }
+
         return $next($request);
-        // }
-        // abort(403, 'Anda harus login sebagai admin!');
     }
 }

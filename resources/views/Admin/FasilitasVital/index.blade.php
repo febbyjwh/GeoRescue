@@ -6,7 +6,7 @@
             <div class="col-12">
                 {{-- <h1 class="h3 mb-3">Data Fasilitas Vital</h1> --}}
 
-                <x-common.page-breadcrumb pageTitle="Data Fsilitass Vital" class="z-10 relative" />
+                <x-common.page-breadcrumb pageTitle="Data Fasilitas Vital" class="z-10 relative" />
 
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
