@@ -197,10 +197,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 layerBencana.addLayer(marker);
-                console.log(
-                    "Jumlah marker bencana:",
-                    layerBencana.getLayers().length
-                );
+                // console.log(
+                //     "Jumlah marker bencana:",
+                //     layerBencana.getLayers().length
+                // );
                 layerBencana.addLayer(circle);
             });
         } catch (err) {
@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     map.on("click", (e) => {
         console.log("Map clicked!", e.latlng);
-        console.log("Active module:", MapState.activeModule);
+        // console.log("Active module:", MapState.activeModule);
         if (MapState.activeModule !== "bencana") return;
 
         if (layerBencana.getLayers().length > 0) {

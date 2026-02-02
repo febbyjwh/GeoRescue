@@ -63,7 +63,7 @@
 
             {{-- BUTTON --}}
             <div class="flex gap-3 mt-6">
-                <button type="button" onclick="submitLogistik()"
+                <button type="submit"
                     class="inline-flex items-center rounded-lg
                            bg-amber-300 px-5 py-2 text-sm font-medium
                            text-black hover:bg-amber-500 transition">

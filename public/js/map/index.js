@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     window.setActiveModule = function (module) {
         MapState.activeModule = module;
-        console.log("Active module set to:", module);
+        // console.log("Active module set to:", module);
     };
 
     // ===============================
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // ===============================
     MapState.map.on("click", (e) => {
         console.log("Map clicked:", e.latlng);
-        console.log("Active module:", MapState.activeModule);
+        // console.log("Active module:", MapState.activeModule);
 
         switch (MapState.activeModule) {
             case "bencana":

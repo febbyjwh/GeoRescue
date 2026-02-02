@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     MapState.map.on("click", (e) => {
         console.log("Map clicked!", e.latlng);
-        console.log("Active module:", MapState.activeModule);
+        // console.log("Active module:", MapState.activeModule);
 
         if (MapState.activeModule !== "fasilitas") return;
 

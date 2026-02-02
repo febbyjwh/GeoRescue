@@ -140,10 +140,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 layerLogistik.addLayer(marker);
             });
 
-            console.log(
-                "Jumlah marker logistik:",
-                layerLogistik.getLayers().length
-            );
+            // console.log(
+            //     "Jumlah marker logistik:",
+            //     layerLogistik.getLayers().length,
+            // );
         } catch (err) {
             console.error("Gagal load logistik:", err);
         }
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             $("#logistik_village")
                 .append(
-                    new Option(item.village_id, item.village_id, true, true)
+                    new Option(item.village_id, item.village_id, true, true),
                 )
                 .trigger("change");
         }, 300);
@@ -204,9 +204,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("detailDesaLogistik").textContent =
             item.village_id || "-";
 
-        document.getElementById(
-            "detailKoordinatLogistik"
-        ).textContent = `${item.lat}, ${item.lng}`;
+        document.getElementById("detailKoordinatLogistik").textContent =
+            `${item.lat}, ${item.lng}`;
 
         // tampilkan container
         document.getElementById("selectedLogistik").classList.remove("hidden");
@@ -222,15 +221,18 @@ document.addEventListener("DOMContentLoaded", () => {
      * MAP CLICK → CREATE
      * =============================== */
     map.on("click", (e) => {
-        if (MapState.activeModule !== "logistik") return;
+        // if (MapState.activeModule !== "logistik") return;
+        MapState.activeModule == "logistik";
 
         inputLayer.clearLayers();
 
-        const lat = e.latlng.lat.toFixed(6);
-        const lng = e.latlng.lng.toFixed(6);
+        const lat = e.latlng.lat.toFixed(7);
+        const lng = e.latlng.lng.toFixed(7);
 
         document.getElementById("lat").value = lat;
         document.getElementById("lng").value = lng;
+
+        console.log("logistik nich: " + document.querySelectorAll("lat"));
 
         inputMarker = L.marker([lat, lng], { draggable: true })
             .addTo(inputLayer)
