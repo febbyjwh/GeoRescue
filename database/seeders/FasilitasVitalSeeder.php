@@ -24,7 +24,7 @@ class FasilitasVitalSeeder extends Seeder
                 "desa_id"         => $state->desa_id,
                 "fasilitas_lat"        => $state->latitude,
                 "fasilitas_lng"       => $state->longitude,
-                "status"          => $state->status
+                "fasilitas_status"          => $state->status
             ]);
         }
     }

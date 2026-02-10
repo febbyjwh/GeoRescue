@@ -30,8 +30,8 @@ class LogistikSeeder extends Seeder
                 'village_id'     => $item->village_id,
                 'jenis_logistik' => $jenis,
                 'jumlah'         => $item->jumlah,
-                'satuan'         => $item->satuan,
-                'status'         => $item->status,
+                'logistik_satuan'         => $item->satuan,
+                'logistik_status'         => $item->status,
                 'logistik_lat'   => $item->lat,
                 'logistik_lng'   => $item->lng,
             ]);

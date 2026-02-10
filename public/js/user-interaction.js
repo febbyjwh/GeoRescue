@@ -176,9 +176,9 @@ function renderNearby() {
         const data = m.options.markerData || {};
         return {
             nama: data.nama_fasilitas || "Fasilitas",
-            status: data.status || "-",
-            lat: m.getLatLng().lat,
-            lng: m.getLatLng().lng,
+            fasilitas_status: data.fasilitas_status || "-",
+            fasilitas_lat: m.getLatLng().fasilitas_lat,
+            fasilitas_lng: m.getLatLng().fasilitas_lng,
             type: "fasilitas",
             icon: getFasilitasIcon(data.jenis_fasilitas),
             data: data,
@@ -373,8 +373,8 @@ function performSearch(query, map) {
                 kecamatan: data.nama_kecamatan || "",
                 desa: data.nama_desa || "",
                 status: data.status || "-",
-                lat: m.getLatLng().lat,
-                lng: m.getLatLng().lng,
+                fasilitas_lat: m.getLatLng().lat,
+                fasilitas_lng: m.getLatLng().lng,
                 type: "fasilitas",
                 icon: getFasilitasIcon(data.jenis_fasilitas),
                 marker: m,

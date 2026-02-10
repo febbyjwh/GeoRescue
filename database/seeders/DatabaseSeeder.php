@@ -23,19 +23,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $user = User::create([
-            'name' => 'Admin',
-            'username' => 'admin',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password'),
-            'change_password' => false,
-        ]);
-
         $this->call(BencanaSeeder::class);
         $this->call(DistrictSeeder::class);
-        $this->call(VillageSeeder::class);
-        $this->call(FasilitasVitalSeeder::class);
+        $this->call(VillageSeeder::class);  
         $this->call(PoskoSeeder::class);
         $this->call(LogistikSeeder::class);
+        $this->call(FasilitasVitalSeeder::class);
+        // $this->call(UserSeeder::class);
     }
 }

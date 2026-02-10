@@ -66,9 +66,9 @@ class UserController extends Controller
                 'nama_fasilitas' => $f->nama_fasilitas,
                 'jenis_fasilitas' => $f->jenis_fasilitas,
                 'alamat' => $f->alamat,
-                'status' => $f->status,
-                'latitude' => $f->latitude,
-                'longitude' => $f->longitude,
+                'fasilitas_status' => $f->fasitas_status,
+                'fasilitas_lat' => $f->fasilitas_lat,
+                'fasilitas_lng' => $f->fasilitas_lng,
                 'nama_kecamatan' => $f->district->name ?? '-',
                 'nama_desa' => $f->village->name ?? '-',
             ];
@@ -89,10 +89,10 @@ class UserController extends Controller
                 'nama_desa' => $lg->village->name ?? '-',
                 'jenis_logistik' => $lg->jenis_logistik,
                 'jumlah' => $lg->jumlah,
-                'satuan' => $lg->satuan,
-                'status' => $lg->status,
-                'lat' => $lg->lat,
-                'lng' => $lg->lng,
+                'logistik_satuan' => $lg->logistik_satuan,
+                'logistik_status' => $lg->logistik_status,
+                'logistik_lat' => $lg->logistik_lat,
+                'logistik_lng' => $lg->logistik_lng,
             ];
         });
 

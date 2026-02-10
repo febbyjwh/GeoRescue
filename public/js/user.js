@@ -124,11 +124,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <div class="flex items-center justify-between">
                     <strong>${data.nama_fasilitas}</strong>
                     <span class="inline-block px-2 py-0.5 text-xs rounded ${
-                        data.status === "Beroperasi"
+                        data.fasilitas_status === "Beroperasi"
                             ? "bg-green-100 text-green-800"
                             : "bg-red-100 text-red-800"
                     }">
-                        ${data.status}
+                        ${data.fasilitas_status}
                     </span>
                 </div>
                 
@@ -204,11 +204,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </div>
                 <div class="flex items-start">
                     <span class="text-gray-500 w-20 flex-shrink-0 font-medium">Jumlah:</span>
-                    <span class="font-semibold text-gray-800">${data.jumlah} ${data.satuan}</span>
+                    <span class="font-semibold text-gray-800">${data.jumlah} ${data.logistik_satuan}</span>
                 </div>
                 <div class="flex items-start">
                     <span class="text-gray-500 w-20 flex-shrink-0 font-medium">Status:</span>
-                    <span class="font-semibold text-gray-800">${data.status}</span>
+                    <span class="font-semibold text-gray-800">${data.logistik_status}</span>
                 </div>
             </div>
 
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     "posko",
                     markerData,
                     latLng.lat,
-                    latLng.lng
+                    latLng.lng,
                 );
                 marker.getPopup().setContent(newContent);
             }
@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     "fasilitas",
                     markerData,
                     latLng.lat,
-                    latLng.lng
+                    latLng.lng,
                 );
                 marker.getPopup().setContent(newContent);
             }
@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     "logistik",
                     markerData,
                     latLng.lat,
-                    latLng.lng
+                    latLng.lng,
                 );
                 marker.getPopup().setContent(newContent);
             }
@@ -429,7 +429,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const bencanaInfo = getBencanaInfo(
                 item.jenis_bencana,
-                item.tingkat_kerawanan
+                item.tingkat_kerawanan,
             );
 
             const circle = L.circle([lat, lng], {
@@ -494,8 +494,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                         item.tingkat_kerawanan === "Tinggi"
                             ? "bg-red-100 text-red-800 ring-1 ring-red-200"
                             : item.tingkat_kerawanan === "Sedang"
-                            ? "bg-yellow-100 text-yellow-800 ring-1 ring-yellow-200"
-                            : "bg-green-100 text-green-800 ring-1 ring-green-200"
+                              ? "bg-yellow-100 text-yellow-800 ring-1 ring-yellow-200"
+                              : "bg-green-100 text-green-800 ring-1 ring-green-200"
                     }">
                         ${item.tingkat_kerawanan || "Rendah"}
                     </span>
@@ -506,15 +506,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                         item.tingkat_kerawanan === "Tinggi"
                             ? "bg-red-50 border border-red-200"
                             : item.tingkat_kerawanan === "Sedang"
-                            ? "bg-yellow-50 border border-yellow-200"
-                            : "bg-blue-50 border border-blue-200"
+                              ? "bg-yellow-50 border border-yellow-200"
+                              : "bg-blue-50 border border-blue-200"
                     }">
                         <p class="text-xs font-semibold ${
                             item.tingkat_kerawanan === "Tinggi"
                                 ? "text-red-800"
                                 : item.tingkat_kerawanan === "Sedang"
-                                ? "text-yellow-800"
-                                : "text-blue-800"
+                                  ? "text-yellow-800"
+                                  : "text-blue-800"
                         } leading-tight">
                             ⚠️ ${bencanaInfo.peringatan}
                         </p>
@@ -638,9 +638,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         const dataF = await resF.json();
 
         dataF.data.forEach((item) => {
-            const lat = parseFloat(item.latitude);
-            const lng = parseFloat(item.longitude);
-            if (isNaN(lat) || isNaN(lng)) return;
+            const lat = parseFloat(item.fasilitas_lat);
+            const lng = parseFloat(item.fasilitas_lng);
+
+            console.log("Parsed:", lat, lng);
+
+            if (isNaN(lat) || isNaN(lng)) {
+                console.warn("❌ Koordinat fasilitas invalid:", item);
+                return;
+            }
+            // if (isNaN(lat) || isNaN(lng)) return;
 
             const color = warnaFasilitas[item.jenis_fasilitas] ?? "#64748b";
 
@@ -662,7 +669,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }),
                 markerData: item,
             });
-
+            console.log("Fasilitas:", item.fasilitas_lat, item.fasilitas_lng);
             marker.bindPopup(createPopupContent("fasilitas", item, lat, lng));
             layerFasilitas.addLayer(marker);
         });
@@ -674,12 +681,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     function getLogistikColor(jenis) {
         const jenisLower = jenis?.toLowerCase();
-        return {
-            pangan: "#10B981",
-            sandang: "#F59E0B",
-            kesehatan: "#EF4444",
-            hunian: "#8B5CF6",
-        }[jenisLower] || "#2563EB";
+        return (
+            {
+                pangan: "#10B981",
+                sandang: "#F59E0B",
+                kesehatan: "#EF4444",
+                hunian: "#8B5CF6",
+            }[jenisLower] || "#2563EB"
+        );
     }
 
     function getLogistikIcon(jenis) {
@@ -711,13 +720,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         const dataL = await resL.json();
 
         dataL.data.forEach((item) => {
-            const lat = parseFloat(item.lat);
-            const lng = parseFloat(item.lng);
+            const lat = parseFloat(item.logistik_lat);
+            const lng = parseFloat(item.logistik_lng);
 
             if (isNaN(lat) || isNaN(lng)) {
                 console.warn(
                     "Skipping logistik tanpa koordinat:",
-                    item.nama_lokasi
+                    item.nama_lokasi,
                 );
                 return;
             }
@@ -764,4 +773,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else {
         console.warn("⚠️ user-interaction.js belum dimuat");
     }
+
+    // console.log("Fasilitas:", item.fasilitas_lat, item.fasilitas_lng);
+    // console.log("Logistik:", item.logistik_lat, item.logistik_lng);
 });
